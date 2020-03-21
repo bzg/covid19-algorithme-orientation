@@ -62,7 +62,7 @@ header:
  title:    "Aide à l'auto-diagnostic pour COVID19"
  logo:     ""
  color:    "is-primary" 
- subtitle: "En cas de doute, consultez un médecin ou appelez le [15](tel:15)."
+ subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
 
 # Website footer
 footer:
