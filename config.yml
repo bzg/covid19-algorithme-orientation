@@ -41,7 +41,7 @@ init-scores:
     value: 0
     result: "Mal de gorge"
   diarrhees:
-    display: ""
+    display: "Diarrhées"
     value: 0
     result: "Diarrhées"
   gravite:
