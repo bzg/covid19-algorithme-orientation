@@ -132,9 +132,7 @@
       [:div.section
        [:div.level
         [:h1.title.level-item.has-text-centered (md-to-string text)]
-        (when (and (or force-help @show-help)
-                   (not-empty help))
-          [:div.level-item (md-to-string help)])
+        
         (if-not done
           ;; Not done: display the help button
           [:a.level-item.button.is-text
@@ -149,6 +147,9 @@
              :title    (i18n [:toggle-summary-style])
              :on-click #(swap! show-summary-answers not)} "🔗"]
            [clipboard-button "📋" "#copy-this"]])]
+       (when (and (or force-help @show-help)
+                  (not-empty help))
+         [:div.notification (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
