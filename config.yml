@@ -1,5 +1,5 @@
 # Default locale for UI strings
-locale: "en"
+locale: "fr"
 
 # Customize UI strings
 ui-strings:
@@ -24,87 +24,450 @@ display-help: true
 display-score: true
 
 init-scores:
-  score-1:
-    display: "Score for 1"
+  fievre:
+    display: ""
     value: 0
-    result: "1 wins!"
-  score-2:
-    display: "Score for 2"
+    result: "De la fièvre"
+  toux:
+    display: ""
     value: 0
-    result: "2 wins!"
+    result: "De la toux"
+  courbatures:
+    display: ""
+    value: 0
+    result: "Des courbatures"
+  mal_de_gorge:
+    display: ""
+    value: 0
+    result: "Des courbatures"
+  diarrhees:
+    display: ""
+    value: 0
+    result: "Des courbatures"
+  gravite:
+    display: ""
+    value: 0
+    result: ""
+  pronostic:
+    display: ""
+    value: 0
+    result: ""
 
 # Website header
 header:
- title:    "Here is my title."
+ title:    "Aide à l'auto-diagnostic pour COVID19"
  logo:     ""
  color:    "is-primary" 
- subtitle: "A subtitle here, possibly with _markdown_ formatting."
+ subtitle: "En cas de doute, consultez un médecin ou appelez le [15](tel:15)."
 
 # Website footer
 footer:
- text:    "Some text here, possibly with **markdown** formatting."
- contact:  ""
+ text:    "Site en version alpha."
+ contact:  "Une adresse email"
 
 # Mandatory configuration option
 tree:
   - name:       "0"  
-    text:       "A title for the default page"
+    text:       "Un titre pour la page d'accueil"
     home-page:  true
     force-help: true
     no-summary: true
-    help:       "Some introductory text here."
+    help:       "Un texte d'introduction ici."
     choices:
-    - answer: "Start now"
+    - answer: "Commencez à s'auto-diagnotiquer"
       goto:   "1"
       color:  "is-info"
 
   - name:       "1"
-    text:       "Is it the first question?"
-    help:       "Some **help text** here for the first question.  Markdown formatting accepted."
+    text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
+    help:       ""
     start-page: true
     choices:
-    - answer:  "Yes"
-      summary: "Yes, this is the first question."
-      explain: "Some explanation here."
+    - answer:  "Oui"
+      no-summary: true
       score:
-        score-1:
+        fievre:
+          value: 1
+      goto:    "1bis"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      color:   "is-warning"
+      goto:    "2"
+    - answer:  "Je ne sais pas"
+      no-summary: true
+      color:   "is-warning"
+      goto:    "2"
+      score:
+        fievre:
+          value: 1
+
+  - name:       "1bis"
+    text:       "Quelle est votre température ?"
+    help:       ""
+    choices:
+    - answer:  "<= 35,4°C"
+      no-summary: true
+      score:
+        gravite:
           value: 1
       goto:    "2"
       color:   "is-info"
-    - answer:  "No"
-      summary: "No, this is not the first question."
-      color:   "is-warning"
-      goto:    "end"
-
-  - name:    "2"
-    text:    "Is it the second question?"
-    help:    "Some help text here for the second question."
-    choices:
-    - answer:  "Yes"
-      summary: "Yes, this is the second question!"
+    - answer:  ">= 39°C"
+      no-summary: true
       score:
-        score-2:
-          value: 10
+        gravite:
+          value: 1
+      goto:    "2"
+      color:   "is-info"
+    - answer:  "35,5 - 37,7°C"
+      no-summary: true
+      goto:    "2"
+      color:   "is-info"
+    - answer:  "37,8 – 38,9°C"
+      no-summary: true
+      goto:    "2"
+      color:   "is-info"
+      
+  - name:    "2"
+    text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        toux:
+          value: 1
       goto:    "3"
       color:   "is-info"
-    - answer:  "No"
-      summary: "No, this is not the second question."
-      color:   "is-warning"
-      goto:    "end"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "3"
+      color:   "is-info"
 
   - name:    "3"
-    text:    "Is it the _third_ question?"
-    help:    "Some help text here for the second question."
+    text:    "Avez-vous des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
     choices:
-      - answer:  "Yes"
-        summary: ["Yes, this is the third question...", "This will end soon, I promise."]
-        goto: "end"
-        color: "is-info"
-      - answer:  "No"
-        summary: "No, this is not the third question."
-        color: "is-warning"
-        goto: "end"
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        courbatures:
+          value: 1
+      goto:    "4"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "4"
+      color:   "is-info"
 
-  - name: "end"
-    text: "This is the end."
+  - name:    "4"
+    text:    "Avez-vous un mal de gorge apparu ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        mal_de_gorge:
+          value: 1
+      goto:    "5"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "5"
+      color:   "is-info"
+      
+  - name:    "5"
+    text:    "Avez-vous de la diarrhée ces dernièrs 24 heures (au moins 3 selles molles) ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        diarrhees:
+          value: 1
+      goto:    "6"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "6"
+      color:   "is-info"
+
+  - name:    "6"
+    text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "61"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "7"
+      color:   "is-info"
+
+  - name:    "61"
+    text:    "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        gravite:
+          value: 1
+      goto:    "7"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "7"
+      color:   "is-info"
+
+  - name:    "7"
+    text:    "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        gravite:
+          value: 1
+      goto:    "8"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "8"
+      color:   "is-info"
+
+  - name:    "8"
+    text:    "Avez-vous vu apparaître une gêne respiratoire ou une augmentation de votre gêne respiratoire habituelle ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      score:
+        gravite:
+          value: 1
+      goto:    "9"
+      color:   "is-info"
+    - answer:  "Non"
+      no-summary: true
+      goto:    "9"
+      color:   "is-info"
+
+  - name:    "9"
+    text:    "Comment vous sentez-vous ?"
+    choices:
+    - answer:  "Bien"
+      no-summary: true
+      goto:    "10"
+      color:   "is-info"
+    - answer:  "Pas bien"
+      no-summary: true
+      goto:    "10"
+      color:   "is-info"
+    - answer:  "Mal"
+      no-summary: true
+      goto:    "10"
+      color:   "is-info"
+      score:
+        gravite:
+          value: 1
+
+  - name:    "10"
+    text:    "Quel est votre âge ?"
+    choices:
+    - answer:  "< 15 ans"
+      summary: "Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le [15](tel:15)."
+      goto:    "moins15ans"
+      color:   "is-info"
+    - answer:  "15-50 ans"
+      no-summary: true
+      goto:    "11"
+      color:   "is-info"
+    - answer:  "50-69 ans"
+      no-summary: true
+      goto:    "11"
+      color:   "is-info"
+    - answer:  ">= 70 ans"
+      no-summary: true
+      goto:    "11"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+
+  - name:    "11"
+    text:    "Quel est votre poids ? Quelle est votre taille ?"
+    choices:
+    - answer:  "IMC > ou = 30 kg/m2"
+      no-summary: true
+      goto:    "12"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "IMC < 30 kg/m2"
+      no-summary: true
+      goto:    "12"
+      color:   "is-info"
+
+  - name:    "12"
+    text:    "Avez-vous de l’hypertension artérielle ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "13"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "13"
+      color:   "is-info"
+    - answer:  "Je ne sais pas"
+      no-summary: true
+      goto:    "13"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+      
+  - name:    "13"
+    text:    "Êtes-vous diabétique ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "14"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "14"
+      color:   "is-info"
+
+  - name:    "14"
+    text:    "Avez-vous ou avez-vous eu un cancer ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "16"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "16"
+      color:   "is-info"
+
+  - name:    "16"
+    text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "17"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "17"
+      color:   "is-info"
+
+  - name:    "17"
+    text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "18"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "18"
+      color:   "is-info"
+
+  - name:    "18"
+    text:    "Avez-vous une maladie chronique du foie ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "19"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "19"
+      color:   "is-info"
+
+  - name:    "19"
+    text:    "Êtes-vous enceinte ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "20"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "20"
+      color:   "is-info"
+    - answer:  "Non applicable"
+      no-summary: true
+      goto:    "20"
+      color:   "is-info"
+
+  - name:    "20"
+    text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "21"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "21"
+      color:   "is-info"
+    - answer:  "Je ne sais pas"
+      no-summary: true
+      goto:    "21"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+
+  - name:    "21"
+    text:    "Prenez-vous un traitement immunosuppresseur ?"
+    help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
+    choices:
+    - answer:  "Oui"
+      no-summary: true
+      goto:    "fin"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+    - answer:  "Non"
+      no-summary: true
+      goto:    "fin"
+      color:   "is-info"
+    - answer:  "Je ne sais pas"
+      no-summary: true
+      goto:    "fin"
+      color:   "is-info"
+      score:
+        pronostic:
+          value: 1
+
+  - name: "moins15ans"
+    text: "Vous avez moins de quinze ans."
+    done: true
+
+  - name: "fin"
+    text: "Merci de vous être auto-diagnostiqué"
     done: true
