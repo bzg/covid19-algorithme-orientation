@@ -18,6 +18,8 @@
 ;; General configuration
 (def config (inline-yaml-resource "config.yml"))
 
+(def scores-results (:scores-results config))
+
 ;; UI variables
 (def bigger {:font-size "2em" :text-decoration "none"})
 
@@ -191,36 +193,57 @@
               [:div
                (when (:display-score config)
                  [:div.is-6
-                  (for [row-score (partition-all 4 scores)]
-                    ^{:key (pr-str row-score)}
-                    [:div.tile.is-parent
-                     (for [s row-score]
-                       ^{:key (pr-str s)}
-                       [:div.tile.is-child.is-3.box
-                        (str (:display (val s)) ": " (:value (val s)))])])
+                  ;; Optional, for debuggin purpose
+                  (when (:display-score-details config)
+                    (for [row-score (partition-all 4 scores)]
+                      ^{:key (pr-str row-score)}
+                      [:div.tile.is-parent
+                       (for [s row-score]
+                         ^{:key (pr-str s)}
+                         [:div.tile.is-child.is-3.box
+                          (str (:display (val s)) ": " (:value (val s)))])]))
 
-                  (let [final-scores  (sort-map-by-score-values scores)
-                        last-score    (first final-scores)
-                        butlast-score (second final-scores)]
-                    (when (> (:value (val last-score)) (:value (val butlast-score)))
-                      [:div.tile.is-parent.is-6
-                       [:p.tile.is-child.box.is-warning.notification
-                        (:result (val last-score))]]))])
+                  ;; Optional, only when no score-results
+                  (when (and (not (:score-results config))
+                             (:display-score-main-result config))
+                    (let [final-scores  (sort-map-by-score-values scores)
+                          last-score    (first final-scores)
+                          butlast-score (second final-scores)]
+                      (when (> (:value (val last-score)) (:value (val butlast-score)))
+                        [:div.tile.is-parent.is-6
+                         [:p.tile.is-child.box.is-warning.notification
+                          (:result (val last-score))]])))
+
+                  (let [s0  (map (fn [[k v]] {k (:value v)}) scores)
+                        s   (apply merge s0)
+                        out (atom "")]
+                    (do (doseq [ss   scores-results
+                                :let [cas (last ss)
+                                      message (:message cas)
+                                      conditions (dissoc cas :message)]]
+                          (doseq [cnd  conditions
+                                  :let [c (val cnd)]]
+                            (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
+                              (reset! out message))))
+                        [:div.tile.is-parent.is-6
+                         [:p.tile.is-child.box.is-warning.notification
+                          @out]]))])
                [:br]])
             ;; Display answers FIXME
-            (for [o (if @show-summary-answers
-                      (reverse (:answers (peek @history)))
-                      (reverse (:questions (peek @history))))]
-              ^{:key o}
-              [:div.tile.is-child.notification
-               (if (string? o)
-                 [:div.subtitle (md-to-string o)]
-                 [:div.tile.is-parent.is-horizontal.notification
-                  (for [n (butlast o)]
-                    ^{:key n}
-                    [:div.tile.is-child.subtitle (md-to-string n)])
-                  [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
-                   (md-to-string (peek o))]])])]]
+            ;; (for [o (if @show-summary-answers
+            ;;           (reverse (:answers (peek @history)))
+            ;;           (reverse (:questions (peek @history))))]
+            ;;   ^{:key o}
+            ;;   [:div.tile.is-child.notification
+            ;;    (if (string? o)
+            ;;      [:div.subtitle (md-to-string o)]
+            ;;      [:div.tile.is-parent.is-horizontal.notification
+            ;;       (for [n (butlast o)]
+            ;;         ^{:key n}
+            ;;         [:div.tile.is-child.subtitle (md-to-string n)])
+            ;;       [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
+            ;;        (md-to-string (peek o))]])])
+            ]]
           [:div.level-right
            [:a.button.level-item
             {:style bigger

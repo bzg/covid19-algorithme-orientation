@@ -20,8 +20,14 @@ mail-to:
 # Display help along with questions by default?
 display-help: true
 
-# Display score along with the results?
+# Display score information?
 display-score: true
+
+# Display score information?
+display-score-details: true
+
+# Display the main score result?
+display-score-main-result: false
 
 init-scores:
   fievre:
@@ -32,11 +38,15 @@ init-scores:
     display: "Toux"
     value: 0
     result: "De la toux"
+  plus50ans:
+    display: "Plus de 50 ans"
+    value: 0
+    result: "Plus de 50 ans"
   courbatures:
     display: "Courbatures"
     value: 0
     result: "Des courbatures"
-  mal_de_gorge:
+  mal-de-gorge:
     display: "Mal de gorge"
     value: 0
     result: "Mal de gorge"
@@ -44,24 +54,127 @@ init-scores:
     display: "Diarrhées"
     value: 0
     result: "Diarrhées"
-  gravite_niveau1:
-    display: "Facture de gravité"
+  gravite-niveau1:
+    display: "Gravité niveau 1"
     value: 0
-    result: "Facture de gravité"
-  gravite_niveau2:
-    display: "Facture de gravité"
+    result: "Gravité niveau 1"
+  gravite-niveau2:
+    display: "Gravité niveau 2"
     value: 0
-    result: "Facture de gravité"
+    result: "Gravité niveau 2"
   pronostic:
     display: "Facteur pronostic"
     value: 0
     result: "Facteur pronostic"
 
+scores-results:
+  ras:
+    message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."
+    conditions:
+      toux: 0
+      fievre: 0
+      mal-de-gorge: 0
+      courbatures: 0
+  no-gravite-one-symptom:
+    message: "Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute."
+    condition-1: # un-seul-symptome-no-gravite-toux
+      toux: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-2: # un-seul-symptome-no-gravite-fievre
+      fievre: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-3: # un-seul-symptome-no-gravite-mal-de-gorge
+      mal-de-gorge: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-4: #un-seul-symptome-no-gravite-courbatures
+      courbatures: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+  no-pronostic-no-gravite-symptoms-inf50:
+    message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes."
+    conditions:
+      pronostic: 0
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+      plus50ans: 0
+  gravite-niveau-1-symptom:
+    message: "Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15."
+    condition-1: #un-seul-symptome-gravite-niveau1-toux
+      toux: 1
+      gravite-niveau1: 1
+    condition-2: #un-seul-symptome-gravite-niveau1-fievre
+      fievre: 1
+      gravite-niveau1: 1
+    condition-3: # un-seul-symptome-gravite-niveau1-mal-de-gorge
+      mal-de-gorge: 1
+      gravite-niveau1: 1
+    condition-4: #un-seul-symptome-gravite-niveau1-courbatures
+      courbatures: 1
+      gravite-niveau1: 1
+  no-pronostic-no-gravite-niveau2-symptoms:
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins)"
+    condition-1:
+      pronostic: 0
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+      plus50ans: 1
+    condition-2: #no-pronostic-one-gravite-niveau1-sup50
+      pronostic: 0
+      gravite-niveau1: 1
+      gravite-niveau2: 0
+      plus50ans: 1
+    condition-3: #no-pronostic-no-gravite-fievre-et-toux
+      pronostic: 0
+      fievre: 1
+      toux: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-4: #no-pronostic-gravite-fievre-et-toux
+      pronostic: 0
+      fievre: 1
+      toux: 1
+      gravite-niveau1: 1
+      gravite-niveau2: 0
+    condition-5: #pronostic-no-gravite-fievre-et-toux
+      pronostic: 1
+      fievre: 1
+      toux: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-6: #pronostic-gravite-one-niveau-1-fievre-et-toux:
+      pronostic: 1
+      fievre: 1
+      toux: 1
+      gravite-niveau1: 1
+      gravite-niveau2: 0
+    condition-7: #pronostic-no-gravite:
+      pronostic: 1
+      gravite-niveau1: 0
+      gravite-niveau2: 0
+    condition-8: #pronostic-one-gravite-niveau1:
+      pronostic: 1
+      gravite-niveau1: 1
+  pronostic-gravite-symptoms:
+    message: "Appel du 15"
+    condition-1:
+      pronostic: 1
+      fievre: 1
+      toux: 1
+      gravite-niveau1: 2
+    condition-2: #pronostic-more-gravite-niveau1:
+      pronostic: 1
+      gravite-niveau1: 2
+    condition-3: #gravite-niveau2:
+      gravite-niveau2: 1
+
 # Website header
 header:
  title:    "Aide à l'auto-diagnostic pour COVID19"
  logo:     ""
- color:    "is-primary" 
+ color:    "is-primary"
  subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
 
 # Website footer
@@ -71,7 +184,7 @@ footer:
 
 # Mandatory configuration option
 tree:
-  - name:       "0"  
+  - name:       "0"
     text:       "Un titre pour la page d'accueil"
     home-page:  true
     force-help: true
@@ -111,13 +224,13 @@ tree:
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
-        gravite_niveau2:
+        gravite-niveau2:
           value: 1
       goto:    "2"
       color:   "is-danger"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
-        gravite_niveau1:
+        gravite-niveau1:
           value: 1
       goto:    "2"
       color:   "is-danger"
@@ -127,7 +240,7 @@ tree:
     - answer:  "Entre 37,8 et 38,9°C"
       goto:    "2"
       color:   "is-warning"
-      
+
   - name:    "2"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
     no-summary: true
@@ -162,14 +275,14 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        mal_de_gorge:
+        mal-de-gorge:
           value: 1
       goto:    "5"
       color:   "is-warning"
     - answer:  "Non"
       goto:    "5"
       color:   "is-success"
-      
+
   - name:    "5"
     text:    "Avez-vous de la diarrhée ces dernièrs 24 heures (au moins 3 selles molles) ?"
     no-summary: true
@@ -196,12 +309,12 @@ tree:
       color:   "is-success"
 
   - name:    "61"
-    text:    "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
+    text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
     no-summary: true
     choices:
     - answer:  "Oui"
       score:
-        gravite_niveau1:
+        gravite-niveau1:
           value: 1
       goto:    "7"
       color:   "is-danger"
@@ -215,7 +328,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        gravite_niveau2:
+        gravite-niveau2:
           value: 1
       goto:    "8"
       color:   "is-danger"
@@ -229,7 +342,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        gravite_niveau2:
+        gravite-niveau2:
           value: 1
       goto:    "9"
       color:   "is-danger"
@@ -266,6 +379,9 @@ tree:
       goto:    "11"
       color:   "is-success"
     - answer:  "Entre 50 et 69 ans"
+      score:
+        plus50ans:
+          value: 1
       goto:    "11"
       color:   "is-info"
     - answer:  "Supérieur ou égal 70 ans"
@@ -273,6 +389,8 @@ tree:
       color:   "is-danger"
       score:
         pronostic:
+          value: 1
+        plus50ans:
           value: 1
 
   - name:    "11"
@@ -308,7 +426,7 @@ tree:
       score:
         pronostic:
           value: 1
-      
+
   - name:    "13"
     text:    "Êtes-vous diabétique ?"
     no-summary: true
@@ -345,12 +463,12 @@ tree:
       goto:    "16"
       color:   "is-warning"
       score:
-        gravite_niveau1:
+        gravite-niveau1:
           value: 1
     - answer:  "Non"
       goto:    "16"
       color:   "is-success"
-      
+
   - name:    "16"
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
     no-summary: true
