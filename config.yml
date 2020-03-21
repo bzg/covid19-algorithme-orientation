@@ -44,7 +44,11 @@ init-scores:
     display: "Diarrhées"
     value: 0
     result: "Diarrhées"
-  gravite:
+  gravite_niveau1:
+    display: "Facture de gravité"
+    value: 0
+    result: "Facture de gravité"
+  gravite_niveau2:
     display: "Facture de gravité"
     value: 0
     result: "Facture de gravité"
@@ -107,13 +111,13 @@ tree:
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
-        gravite:
+        gravite_niveau2:
           value: 1
       goto:    "2"
       color:   "is-info"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
-        gravite:
+        gravite_niveau1:
           value: 1
       goto:    "2"
       color:   "is-info"
@@ -197,7 +201,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        gravite:
+        gravite_niveau1:
           value: 1
       goto:    "7"
       color:   "is-info"
@@ -211,7 +215,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        gravite:
+        gravite_niveau2:
           value: 1
       goto:    "8"
       color:   "is-info"
@@ -225,7 +229,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        gravite:
+        gravite_niveau2:
           value: 1
       goto:    "9"
       color:   "is-info"
@@ -324,15 +328,29 @@ tree:
     no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "16"
+      goto:    "15"
       color:   "is-info"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "16"
+      goto:    "15"
       color:   "is-info"
 
+  - name:    "15"
+    text:    "Avez-vous une sensation générale de malaise ?"
+    no-summary: true
+    choices:
+    - answer:  "Oui"
+      goto:    "16"
+      color:   "is-info"
+      score:
+        gravite_niveau1:
+          value: 1
+    - answer:  "Non"
+      goto:    "16"
+      color:   "is-info"
+      
   - name:    "16"
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
     no-summary: true
