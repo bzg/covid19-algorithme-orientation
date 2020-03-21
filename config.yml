@@ -105,22 +105,22 @@ tree:
     help:       ""
     no-summary: true
     choices:
-    - answer:  "<= 35,4°C"
+    - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
         gravite:
           value: 1
       goto:    "2"
       color:   "is-info"
-    - answer:  ">= 39°C"
+    - answer:  "**Supérieure** ou égale à 39°C"
       score:
         gravite:
           value: 1
       goto:    "2"
       color:   "is-info"
-    - answer:  "35,5 - 37,7°C"
+    - answer:  "Entre 35,5 et 37,7°C"
       goto:    "2"
       color:   "is-info"
-    - answer:  "37,8 – 38,9°C"
+    - answer:  "Entre 37,8 et 38,9°C"
       goto:    "2"
       color:   "is-info"
       
@@ -254,17 +254,17 @@ tree:
     text:    "Quel est votre âge ?"
     no-summary: true
     choices:
-    - answer:  "< 15 ans"
+    - answer:  "Moins de 15 ans"
       summary: "Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le [15](tel:15)."
       goto:    "moins15ans"
       color:   "is-info"
-    - answer:  "15-50 ans"
+    - answer:  "Entre 15 et 50 ans"
       goto:    "11"
       color:   "is-info"
-    - answer:  "50-69 ans"
+    - answer:  "Entre 50 et 69 ans"
       goto:    "11"
       color:   "is-info"
-    - answer:  ">= 70 ans"
+    - answer:  "Supérieur ou égal 70 ans"
       goto:    "11"
       color:   "is-info"
       score:
@@ -275,13 +275,13 @@ tree:
     text:    "Quel est votre poids ? Quelle est votre taille ?"
     no-summary: true
     choices:
-    - answer:  "IMC > ou = 30 kg/m2"
+    - answer:  "IMC supérieure ou égal à 30 kg/m2"
       goto:    "12"
       color:   "is-info"
       score:
         pronostic:
           value: 1
-    - answer:  "IMC < 30 kg/m2"
+    - answer:  "IMC inférieur ou égal à 30 kg/m2"
       goto:    "12"
       color:   "is-info"
 
