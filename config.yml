@@ -93,12 +93,12 @@ tree:
         fievre:
           value: 1
       goto:    "1bis"
-      color:   "is-info"
-    - answer:  "Non"
       color:   "is-warning"
+    - answer:  "Non"
+      color:   "is-success"
       goto:    "2"
     - answer:  "Je ne sais pas"
-      color:   "is-warning"
+      color:   "is-info"
       goto:    "2"
       score:
         fievre:
@@ -114,19 +114,19 @@ tree:
         gravite_niveau2:
           value: 1
       goto:    "2"
-      color:   "is-info"
+      color:   "is-danger"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
         gravite_niveau1:
           value: 1
       goto:    "2"
-      color:   "is-info"
+      color:   "is-danger"
     - answer:  "Entre 35,5 et 37,7°C"
       goto:    "2"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Entre 37,8 et 38,9°C"
       goto:    "2"
-      color:   "is-info"
+      color:   "is-warning"
       
   - name:    "2"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
@@ -137,10 +137,10 @@ tree:
         toux:
           value: 1
       goto:    "3"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Non"
       goto:    "3"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "3"
     text:    "Avez-vous des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
@@ -151,10 +151,10 @@ tree:
         courbatures:
           value: 1
       goto:    "4"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Non"
       goto:    "4"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "4"
     text:    "Avez-vous un mal de gorge apparu ces derniers jours ?"
@@ -165,10 +165,10 @@ tree:
         mal_de_gorge:
           value: 1
       goto:    "5"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Non"
       goto:    "5"
-      color:   "is-info"
+      color:   "is-success"
       
   - name:    "5"
     text:    "Avez-vous de la diarrhée ces dernièrs 24 heures (au moins 3 selles molles) ?"
@@ -179,10 +179,10 @@ tree:
         diarrhees:
           value: 1
       goto:    "6"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Non"
       goto:    "6"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "6"
     text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
@@ -190,10 +190,10 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "61"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Non"
       goto:    "7"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "61"
     text:    "cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
@@ -204,10 +204,10 @@ tree:
         gravite_niveau1:
           value: 1
       goto:    "7"
-      color:   "is-info"
+      color:   "is-danger"
     - answer:  "Non"
       goto:    "7"
-      color:   "is-info"
+      color:   "is-warning"
 
   - name:    "7"
     text:    "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?"
@@ -218,10 +218,10 @@ tree:
         gravite_niveau2:
           value: 1
       goto:    "8"
-      color:   "is-info"
+      color:   "is-danger"
     - answer:  "Non"
       goto:    "8"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "8"
     text:    "Avez-vous vu apparaître une gêne respiratoire<br/> ou une augmentation de votre gêne respiratoire habituelle ?"
@@ -232,10 +232,10 @@ tree:
         gravite_niveau2:
           value: 1
       goto:    "9"
-      color:   "is-info"
+      color:   "is-danger"
     - answer:  "Non"
       goto:    "9"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "9"
     text:    "Comment vous sentez-vous ?"
@@ -243,13 +243,13 @@ tree:
     choices:
     - answer:  "Bien"
       goto:    "10"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Pas bien"
       goto:    "10"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Mal"
       goto:    "10"
-      color:   "is-info"
+      color:   "is-danger"
       score:
         gravite:
           value: 1
@@ -261,16 +261,16 @@ tree:
     - answer:  "Moins de 15 ans"
       summary: "Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le [15](tel:15)."
       goto:    "moins15ans"
-      color:   "is-info"
+      color:   "is-warning"
     - answer:  "Entre 15 et 50 ans"
       goto:    "11"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Entre 50 et 69 ans"
       goto:    "11"
       color:   "is-info"
     - answer:  "Supérieur ou égal 70 ans"
       goto:    "11"
-      color:   "is-info"
+      color:   "is-danger"
       score:
         pronostic:
           value: 1
@@ -281,13 +281,13 @@ tree:
     choices:
     - answer:  "IMC supérieure ou égal à 30 kg/m2"
       goto:    "12"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "IMC inférieur ou égal à 30 kg/m2"
       goto:    "12"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "12"
     text:    "Avez-vous de l’hypertension artérielle ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
@@ -295,16 +295,16 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "13"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "13"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Je ne sais pas"
       goto:    "13"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
@@ -315,13 +315,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "14"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "14"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "14"
     text:    "Avez-vous ou avez-vous eu un cancer ?"
@@ -329,13 +329,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "15"
-      color:   "is-info"
+      color:   "is-danger"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "15"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "15"
     text:    "Avez-vous une sensation générale de malaise ?"
@@ -343,13 +343,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "16"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         gravite_niveau1:
           value: 1
     - answer:  "Non"
       goto:    "16"
-      color:   "is-info"
+      color:   "is-success"
       
   - name:    "16"
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
@@ -357,13 +357,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "17"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "17"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "17"
     text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
@@ -371,13 +371,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "18"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "18"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "18"
     text:    "Avez-vous une maladie chronique du foie ?"
@@ -385,13 +385,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "19"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "19"
-      color:   "is-info"
+      color:   "is-success"
 
   - name:    "19"
     text:    "Êtes-vous enceinte ?"
@@ -399,13 +399,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "20"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "20"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Non applicable"
       goto:    "20"
       color:   "is-info"
@@ -416,13 +416,13 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "21"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "21"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Je ne sais pas"
       goto:    "21"
       color:   "is-info"
@@ -437,16 +437,16 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "fin"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
       goto:    "fin"
-      color:   "is-info"
+      color:   "is-success"
     - answer:  "Je ne sais pas"
       goto:    "fin"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
