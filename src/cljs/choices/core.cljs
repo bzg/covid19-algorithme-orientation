@@ -190,12 +190,15 @@
             (if-let [scores (:score (peek @history))]
               [:div
                (when (:display-score config)
-                 [:div.tile.is-parent.is-horizontal.is-6
-                  (for [s scores]
-                    ^{:key (pr-str s)}
-                    [:div.tile.is-parent.is-6
-                     [:div.tile.is-child.box
-                      (str (:display (val s)) ": " (:value (val s)))]])
+                 [:div.is-6
+                  (for [row-score (partition-all 4 scores)]
+                    ^{:key (pr-str row-score)}
+                    [:div.tile.is-parent
+                     (for [s row-score]
+                       ^{:key (pr-str s)}
+                       [:div.tile.is-child.is-3.box
+                        (str (:display (val s)) ": " (:value (val s)))])])
+
                   (let [final-scores  (sort-map-by-score-values scores)
                         last-score    (first final-scores)
                         butlast-score (second final-scores)]
@@ -204,7 +207,7 @@
                        [:p.tile.is-child.box.is-warning.notification
                         (:result (val last-score))]]))])
                [:br]])
-            ;; Display answers
+            ;; Display answers FIXME
             (for [o (if @show-summary-answers
                       (reverse (:answers (peek @history)))
                       (reverse (:questions (peek @history))))]
