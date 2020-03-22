@@ -6,6 +6,7 @@
 
  :deps
  {
+  cheshire                        {:mvn/version "5.10.0"}
   cljsjs/clipboard                {:mvn/version "2.0.4-0"}
   com.bhauman/figwheel-main       {:mvn/version "0.2.3"}
   com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
