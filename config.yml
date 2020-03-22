@@ -18,7 +18,7 @@ ui-strings:
 mail-to:
 
 # Display help along with questions by default?
-display-help: true
+display-help: false
 
 # Display summary when done?
 display-summary: true
