@@ -212,11 +212,12 @@
                     (when (:display-score-details config)
                       (for [row-score (partition-all 4 scores)]
                         ^{:key (pr-str row-score)}
-                        [:div.tile.is-parent
+                        [:div.tile.is-ancestor
                          (for [s row-score]
                            ^{:key (pr-str s)}
-                           [:div.tile.is-child.is-3.box
-                            (str (:display (val s)) ": " (:value (val s)))])]))
+                           [:div.tile.is-parent
+                            [:div.tile.is-child.box
+                             (str (:display (val s)) ": " (:value (val s)))]])]))
 
                     ;; Only when no score-results
                     (when (and (not conditional-score-output)
@@ -244,11 +245,12 @@
                                 (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
                                   (reset! out message)
                                   (reset! notif notification))))
-                            [:div.tile.is-parent.is-12
-                             [:p {:class (str "tile is-child box "
+                            [:div.tile.is-parent
+                             [:p {:class (str "tile is-child "
                                               (or (not-empty @notif) "is-info")
                                               " notification subtitle")}
-                              @out]])))])])
+                              @out]])))])
+                 [:br]])
               [:br])
             ;; Display answers
             (when  show-summary
