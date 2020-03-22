@@ -192,16 +192,19 @@
            [:div.tile.is-parent.is-vertical.is-12
             ;; Display score
             (if-let [scores (:score (peek @history))]
-              (let [imc {:imc {:display "imc"
-                               :value   (imc (:value (:poids scores))
-                                             (:value (:taille scores)))}}]
+              (let [imc-val (imc (:value (:poids scores))
+                                 (:value (:taille scores)))
+                    imc-map {:imc {:display "IMC" :value imc-val}}
+                    scores  (merge scores imc-map)
+                    scores  (update-in scores [:pronostic :value]
+                                       #(if (> imc-val 30) (inc %) %))]
                 [:div
                  (when (:display-score config)
                    [:div.is-6
 
                     ;; Optional, mainly for debugging purpose
                     (when (:display-score-details config)
-                      (for [row-score (partition-all 4 (merge scores imc))]
+                      (for [row-score (partition-all 4 scores)]
                         ^{:key (pr-str row-score)}
                         [:div.tile.is-parent
                          (for [s row-score]
@@ -212,7 +215,7 @@
                     ;; Only when no score-results
                     (when (and (not conditional-score-output)
                                (:display-score-main-result config))
-                      (let [final-scores  (sort-map-by-score-values (merge scores imc))
+                      (let [final-scores  (sort-map-by-score-values scores)
                             last-score    (first final-scores)
                             butlast-score (second final-scores)]
                         (when (> (:value (val last-score)) (:value (val butlast-score)))
@@ -223,7 +226,7 @@
 
                     ;; Only when score-results is defined
                     (when conditional-score-output
-                      (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores) imc)
+                      (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
                             out   (atom "")
                             notif (atom "")]
                         (do (doseq [ss   conditional-score-output
