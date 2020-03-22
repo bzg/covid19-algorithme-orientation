@@ -399,7 +399,7 @@ tree:
           value: 1
       goto:    "11"
       color:   "is-info"
-    - answer:  "Supérieur ou égal 70 ans"
+    - answer:  "70 ans ou plus"
       goto:    "11"
       color:   "is-danger"
       score:
