@@ -32,6 +32,14 @@ display-score-details: true
 # Only the score with the highest value?
 display-score-main-result: true
 
+# Set initial variables to register scores.  Each entry of
+# score-variables start with the name of the variable (you can pick
+# up any yaml-acceptable name), then:
+#
+# (1) "display": what to display when detailed scores are displayed
+# (2) "value": the initial value of the variable
+# (3) "as-top-result-display": what to display when the variable is
+#      the one with the highest score when the user is done.
 score-variables:
   fievre:
     display: "Fièvre"
@@ -70,6 +78,15 @@ score-variables:
     value: 0
     as-top-result-display: "Facteur pronostic"
 
+# Set conditional output depending on scores.
+# Each entry is composed of the name of the condition (you can pick up
+# any yaml-acceptable name), then:
+#
+# (1) notification (optional): bulma-based class names for the UI notification
+# (2) message (mandatory): message to display when one of the condition is met
+# (3) anything else is a "condition", which lists variables and their minimal
+# values for the condition to be met.
+#
 conditional-score-output:
   ras:
     notification: "is-success"
@@ -192,6 +209,7 @@ footer:
  contact:  "Une adresse email"
 
 # Mandatory configuration option
+# FIXME: complete documentation
 tree:
   - name:       "0"
     text:       "Un titre pour la page d'accueil"
