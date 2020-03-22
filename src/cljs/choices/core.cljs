@@ -13,6 +13,7 @@
             [choices.i18n :as i18n]
             [cljsjs.clipboard]
             [clojure.string :as string]
+            [goog.string :as gstring]
             [markdown-to-hiccup.core :as md]
             [taoensso.tempura :refer [tr]]))
 
@@ -85,7 +86,8 @@
                               [(:value (get m k1)) k1])))
         m))
 
-(defn imc [^number p ^number t] (/ p (Math/pow t 2)))
+(defn imc [^number p ^number t]
+  (gstring/format "%.2f" (/ p (Math/pow t 2))))
 
 ;; Create routes
 (def routes
