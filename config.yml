@@ -198,7 +198,7 @@ conditional-score-output:
 
 # Website header
 header:
- title:    "Aide à l'auto-diagnostic pour COVID19"
+ title:    "Aide à l'auto-évaluation pour COVID19"
  logo:     ""
  color:    "is-primary"
  subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
@@ -218,7 +218,7 @@ tree:
     no-summary: true
     help:       "Un texte d'introduction ici."
     choices:
-    - answer: "Commencez à s'auto-diagnotiquer"
+    - answer: "Commencez à s'auto-évaluer"
       goto:   "1"
       color:  "is-info"
 
@@ -601,5 +601,5 @@ tree:
     done: true
 
   - name: "fin"
-    text: "Merci de vous être auto-diagnostiqué"
+    text: "Merci de vous être auto-évalué"
     done: true
