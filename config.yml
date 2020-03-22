@@ -30,7 +30,7 @@ display-score: true
 display-score-details: true
 
 # Only the score with the highest value?
-display-score-main-result: true
+display-score-top-result: true
 
 # Set initial variables to register scores.  Each entry of
 # score-variables start with the name of the variable (you can pick
@@ -111,7 +111,7 @@ score-variables:
 # (3) anything else is a "condition", which lists variables and their minimal
 # values for the condition to be met.
 #
-conditional-score-output:
+conditional-score-outputs:
   ras:
     notification: "is-success"
     message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."

@@ -27,7 +27,7 @@
 (def show-summary-answers (reagent/atom true))
 (def modal-message (reagent/atom ""))
 (def show-summary (:display-summary config))
-(def conditional-score-output (:conditional-score-output config))
+(def conditional-score-outputs (:conditional-score-outputs config))
 
 ;; UI variables
 (def bigger {:font-size "2em" :text-decoration "none"})
@@ -96,31 +96,73 @@
 ;; Define multimethod for later use in `create-page-contents`
 (defmulti page-contents identity)
 
+(defn header []
+  [:section {:class (str "hero " (:color (:header config)))}
+   [:div.hero-body
+    [:div.container
+     [:div.columns
+      (let [logo (:logo (:header config))]
+        (when (not-empty logo)
+          [:div.column
+           [:figure.media-left
+            [:p.image.is-128x128
+             [:a {:href (rfe/href home-page)}
+              [:img {:src logo}]]]]])
+        [:div.column
+         {:class (if (not-empty logo)
+                   "has-text-right"
+                   "has-text-centered")}
+         [:h1.title (:title (:header config))]
+         [:br]
+         [:h2.subtitle
+          (md-to-string (:subtitle (:header config)))]])]]]]) 
+
+(defn score-details [scores]
+  (for [row-score (partition-all 4 scores)]
+    ^{:key row-score}
+    [:div.tile.is-ancestor
+     (for [s row-score]
+       ^{:key s}
+       [:div.tile.is-parent
+        [:div.tile.is-child.box
+         (str (:display (val s)) ": " (:value (val s)))]])]))
+
+(defn score-top-result [scores]
+  (let [final-scores  (sort-map-by-score-values scores)
+        last-score    (first final-scores)
+        butlast-score (second final-scores)]
+    (when (> (:value (val last-score)) (:value (val butlast-score)))
+      (when-let [s (:as-top-result-display (val last-score))]
+        [:div.tile.is-parent.is-6
+         [:p.tile.is-child.box.is-warning.notification
+          (:as-top-result-display s)]]))))
+
+(defn conditional-score-output [scores]
+  (let [scores (apply merge (map (fn [[k v]] {k (:value v)}) scores))
+        output (atom "")
+        notify (atom "")]
+    (do (doseq [hypothese conditional-score-outputs
+                :let      [cas (last hypothese)
+                           notification (:notification cas)
+                           message (:message cas)
+                           conditions (dissoc cas :message :notification)]]
+          (doseq [cnd conditions :let [c (val cnd)]]
+            (when (every? true? (map (fn [[k v]] (>= (k scores) v)) c))
+              (reset! output message)
+              (reset! notify notification))))
+        [:div.tile.is-parent
+         [:p {:class (str "tile is-child "
+                          (or (not-empty @notify) "is-info")
+                          " notification subtitle")}
+          @output]])))
+
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
                                     progress force-help choices]}]
   (defmethod page-contents (keyword name) []
     [:div
      (when (not-empty (:header config))
-       [:section {:class (str "hero " (:color (:header config)))}
-        [:div.hero-body
-         [:div.container
-          [:div.columns
-           (let [logo (:logo (:header config))]
-             (when (not-empty logo)
-               [:div.column
-                [:figure.media-left
-                 [:p.image.is-128x128
-                  [:a {:href (rfe/href home-page)}
-                   [:img {:src logo}]]]]])
-             [:div.column
-              {:class (if (not-empty logo)
-                        "has-text-right"
-                        "has-text-centered")}
-              [:h1.title (:title (:header config))]
-              [:br]
-              [:h2.subtitle
-               (md-to-string (:subtitle (:header config)))]])]]]])
+       (header))
      [:div.container
       [:div {:class (str "modal " (when @show-modal "is-active"))}
        [:div.modal-background]
@@ -207,49 +249,16 @@
                 [:div
                  (when (:display-score config)
                    [:div.is-6
-
                     ;; Optional, mainly for debugging purpose
                     (when (:display-score-details config)
-                      (for [row-score (partition-all 4 scores)]
-                        ^{:key (pr-str row-score)}
-                        [:div.tile.is-ancestor
-                         (for [s row-score]
-                           ^{:key (pr-str s)}
-                           [:div.tile.is-parent
-                            [:div.tile.is-child.box
-                             (str (:display (val s)) ": " (:value (val s)))]])]))
-
+                      (score-details scores))
                     ;; Only when no score-results
-                    (when (and (not conditional-score-output)
-                               (:display-score-main-result config))
-                      (let [final-scores  (sort-map-by-score-values scores)
-                            last-score    (first final-scores)
-                            butlast-score (second final-scores)]
-                        (when (> (:value (val last-score)) (:value (val butlast-score)))
-                          (when-let [s (:as-top-result-display (val last-score))]
-                            [:div.tile.is-parent.is-6
-                             [:p.tile.is-child.box.is-warning.notification
-                              (:as-top-result-display s)]]))))
-
+                    (when (and (not conditional-score-outputs)
+                               (:display-score-top-result config))
+                      (score-top-result scores))
                     ;; Only when score-results is defined
-                    (when conditional-score-output
-                      (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
-                            out   (atom "")
-                            notif (atom "")]
-                        (do (doseq [ss   conditional-score-output
-                                    :let [cas (last ss)
-                                          notification (:notification cas)
-                                          message (:message cas)
-                                          conditions (dissoc cas :message :notification)]]
-                              (doseq [cnd conditions :let [c (val cnd)]]
-                                (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
-                                  (reset! out message)
-                                  (reset! notif notification))))
-                            [:div.tile.is-parent
-                             [:p {:class (str "tile is-child "
-                                              (or (not-empty @notif) "is-info")
-                                              " notification subtitle")}
-                              @out]])))])
+                    (when conditional-score-outputs
+                      (conditional-score-output scores))])
                  [:br]])
               [:br])
             ;; Display answers
