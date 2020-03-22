@@ -18,7 +18,7 @@ ui-strings:
 mail-to:
 
 # Display help along with questions by default?
-display-help: false
+display-help: true
 
 # Display summary when done?
 display-summary: true
@@ -223,7 +223,6 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    no-summary: true
     help:       "Ce site a pour but d'exposer l'algorithme d'orientation COVID-19"
     choices:
     - answer: "Démarrer"
@@ -232,9 +231,8 @@ tree:
 
   - name:       "1.1"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
-    help:       ""
+    help:       "HELP TEXT: Fièvre"
     start-page: true
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:

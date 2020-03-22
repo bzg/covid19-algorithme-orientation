@@ -20,6 +20,7 @@
 (def config (inline-yaml-resource "config.yml"))
 
 ;; Variables
+(def show-help-global (reagent/atom (:display-help config)))
 (def show-help (reagent/atom (:display-help config)))
 (def show-modal (reagent/atom false))
 (def show-summary-answers (reagent/atom true))
@@ -139,12 +140,14 @@
          [:h1.level-item (md-to-string text)]]
         (if-not done
           ;; Not done: display the help button
-          [:div.level-right
-           [:a.level-item.button.is-text
-            {:style    bigger
-             :title    (i18n [:display-help])
-             :on-click #(swap! show-help not)}
-            "💬"]]
+          (when (and (or force-help @show-help-global)
+                     (not-empty help))
+            [:div.level-right
+             [:a.level-item.button.is-text
+              {:style    bigger
+               :title    (i18n [:display-help])
+               :on-click #(swap! show-help not)}
+              "💬"]])
           ;; Done: display the copy-to-clipboard button
           [:div.level-right
            [:div.level-item
@@ -153,8 +156,7 @@
               :title    (i18n [:toggle-summary-style])
               :on-click #(swap! show-summary-answers not)} "🔗"]
             [clipboard-button "📋" "#copy-this"]]])]
-       (when (and (or force-help @show-help)
-                  (not-empty help))
+       (when (and (or force-help @show-help) (not-empty help))
          [:div.notification (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
