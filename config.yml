@@ -10,12 +10,12 @@ ui-strings:
   # mail-body:            "Hi,\n%s\nThanks."
   # redo:                 "Redo"
   # ok:                   "Okay"
-  # contact-intro:        "Contact: "
+  contact-intro:        "Vos remarques : bastien.guerry@data.gouv.fr"
   # toggle-summary-style: "Toggle summary style"
   # attention:            "Attention"
 
 # Allow users to send you emails with the summary?
-mail-to:
+mail-to: "bastien.guerry@data.gouv.fr"
 
 # Display help along with questions by default?
 display-help: true
