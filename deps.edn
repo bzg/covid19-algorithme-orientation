@@ -1,6 +1,6 @@
-{:version     "0.9.2"
- :description "Build SPAs to let users traverse choices"
- :url         "https://github.com/etalab/choices"
+{:version     "0.0.1"
+ :description "Documentation de l'algorithme d'orientation COVID19"
+ :url         "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation"
  :license     {:name "Eclipse Public License - v 2.0"
                :url  "http://www.eclipse.org/legal/epl-v20.html"}
 
