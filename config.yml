@@ -246,7 +246,7 @@ tree:
       color:   "is-success"
       goto:    "1.2"
     - answer:  "Je ne sais pas"
-      color:   "is-info"
+      color:   "is-warning"
       goto:    "1.2"
       score:
         fievre:
@@ -607,7 +607,7 @@ tree:
       color:   "is-success"
     - answer:  "Je ne sais pas"
       goto:    "2.13"
-      color:   "is-info"
+      color:   "is-warning"
       score:
         pronostic:
           value: 1
