@@ -227,10 +227,10 @@ tree:
     help:       "Ce site a pour but d'exposer l'algorithme d'orientation COVID-19"
     choices:
     - answer: "Démarrer"
-      goto:   "1"
+      goto:   "1.1"
       color:  "is-info"
 
-  - name:       "1"
+  - name:       "1.1"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
     help:       ""
     start-page: true
@@ -240,167 +240,159 @@ tree:
       score:
         fievre:
           value: 1
-      goto:    "1bis"
+      goto:    "1.1.1"
       color:   "is-warning"
     - answer:  "Non"
       color:   "is-success"
-      goto:    "2"
+      goto:    "1.2"
     - answer:  "Je ne sais pas"
       color:   "is-info"
-      goto:    "2"
+      goto:    "1.2"
       score:
         fievre:
           value: 1
 
-  - name:       "1bis"
+  - name:       "1.1.1"
     text:       "Quelle est votre température ?"
-    help:       ""
-    no-summary: true
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
-      goto:    "2"
+      goto:    "1.2"
       color:   "is-warning"
     - answer:  "Entre 35,5 et 37,7°C"
-      goto:    "2"
+      goto:    "1.2"
       color:   "is-success"
     - answer:  "Entre 37,8 et 38,9°C"
-      goto:    "2"
+      goto:    "1.2"
       color:   "is-warning"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
         gravite-niveau1:
           value: 1
-      goto:    "2"
+      goto:    "1.2"
+      color:   "is-danger"
+    - answer:  "Je ne sais pas"
+      score:
+        gravite-niveau1:
+          value: 1
+      goto:    "1.2"
       color:   "is-danger"
 
-  - name:    "2"
+  - name:    "1.2"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:
         toux:
           value: 1
-      goto:    "3"
+      goto:    "1.3"
       color:   "is-warning"
     - answer:  "Non"
-      goto:    "3"
+      goto:    "1.3"
       color:   "is-success"
 
-  - name:    "3"
-    text:    "Avez-vous des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
-    no-summary: true
+  - name:      "1.3"
+    text:      "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
     choices:
     - answer:  "Oui"
-      score:
-        courbatures:
-          value: 1
-      goto:    "4"
+      goto:    "1.4"
       color:   "is-warning"
     - answer:  "Non"
-      goto:    "4"
+      goto:    "1.4"
       color:   "is-success"
 
-  - name:    "4"
+  - name:    "1.4"
     text:    "Avez-vous un mal de gorge apparu ces derniers jours ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:
         mal-de-gorge:
           value: 1
-      goto:    "5"
+      goto:    "1.5"
       color:   "is-warning"
     - answer:  "Non"
-      goto:    "5"
+      goto:    "1.5"
       color:   "is-success"
 
-  - name:    "5"
-    text:    "Avez-vous de la diarrhée ces dernièrs 24 heures (au moins 3 selles molles) ?"
-    no-summary: true
+  - name:    "1.5"
+    text:    "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
     choices:
     - answer:  "Oui"
       score:
         diarrhees:
           value: 1
-      goto:    "6"
+      goto:    "1.6"
       color:   "is-warning"
     - answer:  "Non"
-      goto:    "6"
+      goto:    "1.6"
       color:   "is-success"
 
-  - name:    "6"
+  - name:    "1.6"
     text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "61"
+      goto:    "1.6.1"
       color:   "is-warning"
     - answer:  "Non"
-      goto:    "7"
+      goto:    "1.7"
       color:   "is-success"
 
-  - name:    "61"
+  - name:    "1.6.1"
     text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:
         gravite-niveau1:
           value: 1
-      goto:    "7"
+      goto:    "1.7"
       color:   "is-danger"
     - answer:  "Non"
-      goto:    "7"
+      goto:    "1.7"
       color:   "is-warning"
 
-  - name:    "7"
+  - name:    "1.7"
     text:    "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:
         gravite-niveau2:
           value: 1
-      goto:    "8"
+      goto:    "1.8"
       color:   "is-danger"
     - answer:  "Non"
-      goto:    "8"
+      goto:    "1.8"
       color:   "is-success"
 
-  - name:    "8"
+  - name:    "1.8"
     text:    "Êtes-vous essoufflé lorsque vous parlez ou faites un petit effort ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
       score:
         gravite-niveau2:
           value: 1
-      goto:    "10"
+      goto:    "2.1"
       color:   "is-danger"
     - answer:  "Non"
-      goto:    "10"
+      goto:    "2.1"
       color:   "is-success"
 
-  - name:    "10"
+  - name:    "2.1"
     text:    "Quel est votre âge ?"
-    no-summary: true
     choices:
     - answer:  "Moins de 15 ans"
       summary: "Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le [15](tel:15)."
-      goto:    "moins15ans"
+      goto:    "fin-moins15ans"
       color:   "is-warning"
     - answer:  "Entre 15 et 50 ans"
-      goto:    "11"
+      goto:    "2.2"
       color:   "is-success"
     - answer:  "Entre 50 et 69 ans"
       score:
         plus50ans:
           value: 1
-      goto:    "11"
+      goto:    "2.2"
       color:   "is-info"
     - answer:  "70 ans ou plus"
-      goto:    "11"
+      goto:    "2.2"
       color:   "is-danger"
       score:
         pronostic:
@@ -408,233 +400,221 @@ tree:
         plus50ans:
           value: 1
 
-  - name:    "11"
+  - name:    "2.2"
     text:    "Quel est votre poids en kilogrammes ?"
-    no-summary: true
     choices:
     - answer:  "Moins de 60"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 60
     - answer:  "60-70"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 70
     - answer:  "70-80"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 80
     - answer:  "80-90"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 90
     - answer:  "90-100"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 100
     - answer:  "Plus de 100"
-      goto:    "111"
+      goto:    "2.3"
       color:   "is-info"
       score:
         poids:
           value: 110
 
-  - name:    "111"
+  - name:    "2.3"
     text:    "Quelle est votre taille en mètre ?"
-    no-summary: true
     choices:
     - answer:  "Moins de 1m50"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.40
     - answer:  "1m50-1m60"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.50
     - answer:  "1m60-1m70"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.60
     - answer:  "1m70-1m80"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.70
     - answer:  "1m80-1m90"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.80
     - answer:  "Plus de 1m90"
-      goto:    "12"
+      goto:    "2.4"
       color:   "is-info"
       score:
         taille:
           value: 1.90
 
-  - name:    "12"
+  - name:    "2.4"
     text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "13"
+      goto:    "2.5"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "13"
+      goto:    "2.5"
       color:   "is-success"
     - answer:  "Je ne sais pas"
-      goto:    "13"
+      goto:    "2.5"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
 
-  - name:    "13"
+  - name:    "2.5"
     text:    "Êtes-vous diabétique ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "14"
+      goto:    "2.6"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "14"
+      goto:    "2.6"
       color:   "is-success"
 
-  - name:    "14"
+  - name:    "2.6"
     text:    "Avez-vous ou avez-vous eu un cancer ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "15"
+      goto:    "2.7"
       color:   "is-danger"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "15"
+      goto:    "2.7"
       color:   "is-success"
 
-  - name:    "15"
+  - name:    "2.7"
     text:    "Avez-vous une sensation générale de malaise ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "16"
+      goto:    "2.8"
       color:   "is-warning"
       score:
         gravite-niveau1:
           value: 1
     - answer:  "Non"
-      goto:    "16"
+      goto:    "2.8"
       color:   "is-success"
 
-  - name:    "16"
+  - name:    "2.8"
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "17"
+      goto:    "2.9"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "17"
+      goto:    "2.9"
       color:   "is-success"
 
-  - name:    "17"
+  - name:    "2.9"
     text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "18"
+      goto:    "2.10"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "18"
+      goto:    "2.10"
       color:   "is-success"
 
-  - name:    "18"
+  - name:    "2.10"
     text:    "Avez-vous une maladie chronique du foie ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "19"
+      goto:    "2.11"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "19"
+      goto:    "2.11"
       color:   "is-success"
 
-  - name:    "19"
+  - name:    "2.11"
     text:    "Êtes-vous enceinte ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "20"
+      goto:    "2.12"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "20"
+      goto:    "2.12"
       color:   "is-success"
     - answer:  "Non applicable"
-      goto:    "20"
+      goto:    "2.12"
       color:   "is-info"
 
-  - name:    "20"
+  - name:    "2.12"
     text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
-    no-summary: true
     choices:
     - answer:  "Oui"
-      goto:    "21"
+      goto:    "2.13"
       color:   "is-warning"
       score:
         pronostic:
           value: 1
     - answer:  "Non"
-      goto:    "21"
+      goto:    "2.13"
       color:   "is-success"
     - answer:  "Je ne sais pas"
-      goto:    "21"
+      goto:    "2.13"
       color:   "is-info"
       score:
         pronostic:
           value: 1
 
-  - name:    "21"
+  - name:    "2.13"
     text:    "Prenez-vous un traitement immunosuppresseur ?"
     help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
-    no-summary: true
     choices:
     - answer:  "Oui"
       goto:    "fin"
@@ -652,7 +632,7 @@ tree:
         pronostic:
           value: 1
 
-  - name: "moins15ans"
+  - name: "fin-moins15ans"
     text: "Vous avez moins de quinze ans."
     done: true
 
