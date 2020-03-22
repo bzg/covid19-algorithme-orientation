@@ -190,18 +190,18 @@ conditional-score-output:
     condition-8: #pronostic-one-gravite-niveau1:
       pronostic: 1
       gravite-niveau1: 1
-  pronostic-gravite-symptoms:
-    message: "Appel du 15"
-    notification: "is-danger"
-    condition-1:
+    condition-9:
       pronostic: 1
       fievre: 1
       toux: 1
       gravite-niveau1: 2
-    condition-2: #pronostic-more-gravite-niveau1:
+    condition-10: #pronostic-more-gravite-niveau1:
       pronostic: 1
       gravite-niveau1: 2
-    condition-3: #gravite-niveau2:
+  pronostic-gravite-symptoms:
+    message: "Appel du 15"
+    notification: "is-danger"
+    condition-1: #gravite-niveau2:
       gravite-niveau2: 1
 
 # Website header
@@ -258,11 +258,8 @@ tree:
     no-summary: true
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
-      score:
-        gravite-niveau2:
-          value: 1
       goto:    "2"
-      color:   "is-danger"
+      color:   "is-warning"
     - answer:  "Entre 35,5 et 37,7°C"
       goto:    "2"
       color:   "is-success"
@@ -372,35 +369,18 @@ tree:
       color:   "is-success"
 
   - name:    "8"
-    text:    "Avez-vous vu apparaître une gêne respiratoire<br/> ou une augmentation de votre gêne respiratoire habituelle ?"
+    text:    "Êtes-vous essoufflé lorsque vous parlez ou faites un petit effort ?"
     no-summary: true
     choices:
     - answer:  "Oui"
       score:
         gravite-niveau2:
           value: 1
-      goto:    "9"
+      goto:    "10"
       color:   "is-danger"
     - answer:  "Non"
-      goto:    "9"
-      color:   "is-success"
-
-  - name:    "9"
-    text:    "Comment vous sentez-vous ?"
-    no-summary: true
-    choices:
-    - answer:  "Bien"
       goto:    "10"
       color:   "is-success"
-    - answer:  "Pas bien"
-      goto:    "10"
-      color:   "is-warning"
-    - answer:  "Mal"
-      goto:    "10"
-      color:   "is-danger"
-      score:
-        gravite:
-          value: 1
 
   - name:    "10"
     text:    "Quel est votre âge ?"
@@ -429,7 +409,7 @@ tree:
           value: 1
 
   - name:    "11"
-    text:    "Quel est votre poids en kilos ?"
+    text:    "Quel est votre poids en kilogrammes ?"
     no-summary: true
     choices:
     - answer:  "Moins de 60"
@@ -470,7 +450,7 @@ tree:
           value: 110
 
   - name:    "111"
-    text:    "Quel est votre taille en mètre"
+    text:    "Quelle est votre taille en mètre ?"
     no-summary: true
     choices:
     - answer:  "Moins de 1m50"
@@ -511,7 +491,7 @@ tree:
           value: 1.90
 
   - name:    "12"
-    text:    "Avez-vous de l’hypertension artérielle ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+    text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
     no-summary: true
     choices:
     - answer:  "Oui"
