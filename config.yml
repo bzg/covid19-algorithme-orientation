@@ -206,27 +206,27 @@ conditional-score-output:
 
 # Website header
 header:
- title:    "Aide à l'auto-évaluation pour COVID19"
+ title:    "COVID19: Algorithme d'orientation"
  logo:     ""
  color:    "is-primary"
  subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
 
 # Website footer
 footer:
- text:    "Site en version alpha."
- contact:  "Une adresse email"
+ text:    "Site de démonstration de l'algorithme d'orientation pour le COVID-19"
+ contact:  ""
 
 # Mandatory configuration option
 # FIXME: complete documentation
 tree:
   - name:       "0"
-    text:       "Un titre pour la page d'accueil"
+    text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
     no-summary: true
-    help:       "Un texte d'introduction ici."
+    help:       "Ce site a pour but d'exposer l'algorithme d'orientation COVID-19"
     choices:
-    - answer: "Commencez à évaluer son état de santé"
+    - answer: "Démarrer"
       goto:   "1"
       color:  "is-info"
 
@@ -657,5 +657,5 @@ tree:
     done: true
 
   - name: "fin"
-    text: "Merci d'avoir évalué votre état de santé"
+    text: "Merci d'avoir parcouru l'algorithme d'orientation COVID-19"
     done: true
