@@ -51,7 +51,6 @@
   (into {} (map (fn [locale] {(key locale)
                               (merge (val locale) (:ui-strings config))})
                 i18n/localization)))
-
 (def lang (keyword (or (not-empty (:locale config)) "en-GB")))
 (def opts {:dict localization-custom})
 (def i18n (partial tr opts [lang]))
@@ -84,6 +83,8 @@
          (fn [k1 k2] (compare [(:value (get m k2)) k2]
                               [(:value (get m k1)) k1])))
         m))
+
+(defn imc [^number p ^number t] (/ p (Math/pow t 2)))
 
 ;; Create routes
 (def routes
@@ -134,29 +135,31 @@
          :on-click   #(reset! show-modal false)}]]
       [:div.section
        [:div.level
-        [:h1.title.level-item.has-text-centered (md-to-string text)]
+        [:div.level-left
+         [:h1.level-item (md-to-string text)]]
         (if-not done
           ;; Not done: display the help button
-          [:a.level-item.button.is-text
-           {:style    bigger
-            :title    (i18n [:display-help])
-            :on-click #(swap! show-help not)}
-           "💬"]
-          ;; Done: display the copy-to-clipboard button
-          [:div.level-item
-           [:a.button.is-text
+          [:div.level-right
+           [:a.level-item.button.is-text
             {:style    bigger
-             :title    (i18n [:toggle-summary-style])
-             :on-click #(swap! show-summary-answers not)} "🔗"]
-           [clipboard-button "📋" "#copy-this"]])]
+             :title    (i18n [:display-help])
+             :on-click #(swap! show-help not)}
+            "💬"]]
+          ;; Done: display the copy-to-clipboard button
+          [:div.level-right
+           [:div.level-item
+            [:a.button.is-text
+             {:style    bigger
+              :title    (i18n [:toggle-summary-style])
+              :on-click #(swap! show-summary-answers not)} "🔗"]
+            [clipboard-button "📋" "#copy-this"]]])]
        (when (and (or force-help @show-help)
                   (not-empty help))
          [:div.notification (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
-          (for [{:keys [answer goto explain color summary score] :as c}
-                choices]
+          (for [{:keys [answer goto explain color summary score] :as c} choices]
             ^{:key c}
             [:div.tile.is-parent
              [:a.tile.is-child
@@ -178,7 +181,7 @@
                              {:questions (when-not no-summary [text answer])}
                              {:answers summary})))}
               [:div.card-content.tile.is-parent.is-vertical
-               [:div {:class (str "tile is-child box title notification " color)}
+               [:div {:class (str "tile is-child box is-size-4 notification " color)}
                 (md-to-string answer)]
                (when (and explain @show-help)
                  [:div.tile.is-child.subtitle
@@ -189,48 +192,54 @@
            [:div.tile.is-parent.is-vertical.is-12
             ;; Display score
             (if-let [scores (:score (peek @history))]
-              [:div
-               (when (:display-score config)
-                 [:div.is-6
-                  ;; Optional, mainly for debuggin purpose
-                  (when (:display-score-details config)
-                    (for [row-score (partition-all 4 scores)]
-                      ^{:key (pr-str row-score)}
-                      [:div.tile.is-parent
-                       (for [s row-score]
-                         ^{:key (pr-str s)}
-                         [:div.tile.is-child.is-3.box
-                          (str (:display (val s)) ": " (:value (val s)))])]))
-                  ;; Only when no score-results
-                  (when (and (not conditional-score-output)
-                             (:display-score-main-result config))
-                    (let [final-scores  (sort-map-by-score-values scores)
-                          last-score    (first final-scores)
-                          butlast-score (second final-scores)]
-                      (when (> (:value (val last-score)) (:value (val butlast-score)))
-                        (when-let [s (:as-top-result-display (val last-score))]
-                          [:div.tile.is-parent.is-6
-                           [:p.tile.is-child.box.is-warning.notification
-                            (:as-top-result-display s)]]))))
-                  ;; Only when score-results is defined
-                  (when conditional-score-output
-                    (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
-                          out   (atom "")
-                          notif (atom "")]
-                      (do (doseq [ss   conditional-score-output
-                                  :let [cas (last ss)
-                                        notification (:notification cas)
-                                        message (:message cas)
-                                        conditions (dissoc cas :message :notification)]]
-                            (doseq [cnd conditions :let [c (val cnd)]]
-                              (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
-                                (reset! out message)
-                                (reset! notif notification))))
-                          [:div.tile.is-parent.is-12
-                           [:p {:class (str "tile is-child box "
-                                            (or (not-empty @notif) "is-info")
-                                            " notification subtitle")}
-                            @out]])))])]
+              (let [imc {:imc {:display "imc"
+                               :value   (imc (:value (:poids scores))
+                                             (:value (:taille scores)))}}]
+                [:div
+                 (when (:display-score config)
+                   [:div.is-6
+
+                    ;; Optional, mainly for debugging purpose
+                    (when (:display-score-details config)
+                      (for [row-score (partition-all 4 (merge scores imc))]
+                        ^{:key (pr-str row-score)}
+                        [:div.tile.is-parent
+                         (for [s row-score]
+                           ^{:key (pr-str s)}
+                           [:div.tile.is-child.is-3.box
+                            (str (:display (val s)) ": " (:value (val s)))])]))
+
+                    ;; Only when no score-results
+                    (when (and (not conditional-score-output)
+                               (:display-score-main-result config))
+                      (let [final-scores  (sort-map-by-score-values (merge scores imc))
+                            last-score    (first final-scores)
+                            butlast-score (second final-scores)]
+                        (when (> (:value (val last-score)) (:value (val butlast-score)))
+                          (when-let [s (:as-top-result-display (val last-score))]
+                            [:div.tile.is-parent.is-6
+                             [:p.tile.is-child.box.is-warning.notification
+                              (:as-top-result-display s)]]))))
+
+                    ;; Only when score-results is defined
+                    (when conditional-score-output
+                      (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores) imc)
+                            out   (atom "")
+                            notif (atom "")]
+                        (do (doseq [ss   conditional-score-output
+                                    :let [cas (last ss)
+                                          notification (:notification cas)
+                                          message (:message cas)
+                                          conditions (dissoc cas :message :notification)]]
+                              (doseq [cnd conditions :let [c (val cnd)]]
+                                (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
+                                  (reset! out message)
+                                  (reset! notif notification))))
+                            [:div.tile.is-parent.is-12
+                             [:p {:class (str "tile is-child box "
+                                              (or (not-empty @notif) "is-info")
+                                              " notification subtitle")}
+                              @out]])))])])
               [:br])
             ;; Display answers
             (when  show-summary

@@ -41,6 +41,14 @@ display-score-main-result: true
 # (3) "as-top-result-display": what to display when the variable is
 #      the one with the highest score when the user is done.
 score-variables:
+  poids:
+    display: "Poids"
+    value: 0
+    as-top-result-display: "Du poids"
+  taille:
+    display: "Taille"
+    value: 0
+    as-top-result-display: "Taille"
   fievre:
     display: "Fièvre"
     value: 0
@@ -421,18 +429,86 @@ tree:
           value: 1
 
   - name:    "11"
-    text:    "Quel est votre poids ? Quelle est votre taille ?"
+    text:    "Quel est votre poids en kilos ?"
     no-summary: true
     choices:
-    - answer:  "IMC supérieure ou égal à 30 kg/m2"
-      goto:    "12"
-      color:   "is-warning"
+    - answer:  "Moins de 60"
+      goto:    "111"
+      color:   "is-info"
       score:
-        pronostic:
-          value: 1
-    - answer:  "IMC inférieur ou égal à 30 kg/m2"
+        poids:
+          value: 60
+    - answer:  "60-70"
+      goto:    "111"
+      color:   "is-info"
+      score:
+        poids:
+          value: 70
+    - answer:  "70-80"
+      goto:    "111"
+      color:   "is-info"
+      score:
+        poids:
+          value: 80
+    - answer:  "80-90"
+      goto:    "111"
+      color:   "is-info"
+      score:
+        poids:
+          value: 90
+    - answer:  "90-100"
+      goto:    "111"
+      color:   "is-info"
+      score:
+        poids:
+          value: 100
+    - answer:  "Plus de 100"
+      goto:    "111"
+      color:   "is-info"
+      score:
+        poids:
+          value: 110
+
+  - name:    "111"
+    text:    "Quel est votre taille en mètre"
+    no-summary: true
+    choices:
+    - answer:  "Moins de 1m50"
       goto:    "12"
-      color:   "is-success"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.40
+    - answer:  "1m50-1m60"
+      goto:    "12"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.50
+    - answer:  "1m60-1m70"
+      goto:    "12"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.60
+    - answer:  "1m70-1m80"
+      goto:    "12"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.70
+    - answer:  "1m80-1m90"
+      goto:    "12"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.80
+    - answer:  "Plus de 1m90"
+      goto:    "12"
+      color:   "is-info"
+      score:
+        taille:
+          value: 1.90
 
   - name:    "12"
     text:    "Avez-vous de l’hypertension artérielle ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
