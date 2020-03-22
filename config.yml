@@ -32,49 +32,49 @@ display-score-details: true
 # Only the score with the highest value?
 display-score-main-result: true
 
-init-scores:
+score-variables:
   fievre:
     display: "Fièvre"
     value: 0
-    result: "De la fièvre"
+    as-top-result-display: "De la fièvre"
   toux:
     display: "Toux"
     value: 0
-    result: "De la toux"
+    as-top-result-display: "De la toux"
   plus50ans:
     display: "Plus de 50 ans"
     value: 0
-    result: "Plus de 50 ans"
+    as-top-result-display: "Plus de 50 ans"
   courbatures:
     display: "Courbatures"
     value: 0
-    result: "Des courbatures"
+    as-top-result-display: "Des courbatures"
   mal-de-gorge:
     display: "Mal de gorge"
     value: 0
-    result: "Mal de gorge"
+    as-top-result-display: "Mal de gorge"
   diarrhees:
     display: "Diarrhées"
     value: 0
-    result: "Diarrhées"
+    as-top-result-display: "Diarrhées"
   gravite-niveau1:
     display: "Gravité niveau 1"
     value: 0
-    result: "Gravité niveau 1"
+    as-top-result-display: "Gravité niveau 1"
   gravite-niveau2:
     display: "Gravité niveau 2"
     value: 0
-    result: "Gravité niveau 2"
+    as-top-result-display: "Gravité niveau 2"
   pronostic:
     display: "Facteur pronostic"
     value: 0
-    result: "Facteur pronostic"
+    as-top-result-display: "Facteur pronostic"
 
-scores-results:
+conditional-score-output:
   ras:
     notification: "is-success"
     message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."
-    conditions:
+    condition-1:
       toux: 0
       fievre: 0
       mal-de-gorge: 0
@@ -101,7 +101,7 @@ scores-results:
   no-pronostic-no-gravite-symptoms-inf50:
     notification: "is-info"
     message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes."
-    conditions:
+    condition-1:
       pronostic: 0
       gravite-niveau1: 0
       gravite-niveau2: 0

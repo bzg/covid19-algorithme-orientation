@@ -18,7 +18,7 @@
 ;; General configuration
 (def config (inline-yaml-resource "config.yml"))
 
-(def scores-results (:scores-results config))
+(def conditional-score-output (:conditional-score-output config))
 (def show-summary (:display-summary config))
 
 ;; UI variables
@@ -43,7 +43,7 @@
   (-> s (md/md->hiccup) (md/component)))
 
 ;; History-handling variables
-(def history (reagent/atom [{:score (:init-scores config)}]))
+(def history (reagent/atom [{:score (:score-variables config)}]))
 (def hist-to-redo (reagent/atom {}))
 (def hist-to-add (reagent/atom {}))
 
@@ -171,9 +171,9 @@
                              (merge
                               {:score
                                (merge-with
-                                (fn [a b] {:display (:display a)
-                                           :result  (:result a)
-                                           :value   (+ (:value a) (:value b))})
+                                (fn [a b] {:display               (:display a)
+                                           :as-top-result-display (:as-top-result-display a)
+                                           :value                 (+ (:value a) (:value b))})
                                 (:score (peek @history))
                                 score)}
                               {:questions (when-not no-summary [text answer])}
@@ -203,21 +203,22 @@
                          [:div.tile.is-child.is-3.box
                           (str (:display (val s)) ": " (:value (val s)))])]))
                   ;; Only when no score-results
-                  (when (and (not scores-results)
+                  (when (and (not conditional-score-output)
                              (:display-score-main-result config))
                     (let [final-scores  (sort-map-by-score-values scores)
                           last-score    (first final-scores)
                           butlast-score (second final-scores)]
                       (when (> (:value (val last-score)) (:value (val butlast-score)))
-                        [:div.tile.is-parent.is-6
-                         [:p.tile.is-child.box.is-warning.notification
-                          (:result (val last-score))]])))
+                        (when-let [s (:as-top-result-display (val last-score))]
+                          [:div.tile.is-parent.is-6
+                           [:p.tile.is-child.box.is-warning.notification
+                            (:as-top-result-display s)]]))))
                   ;; Only when score-results is defined
-                  (when scores-results
+                  (when conditional-score-output
                     (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
                           out   (atom "")
                           notif (atom "")]
-                      (do (doseq [ss   scores-results
+                      (do (doseq [ss   conditional-score-output
                                   :let [cas (last ss)
                                         notification (:notification cas)
                                         message (:message cas)
@@ -293,7 +294,7 @@
     (cond
       ;; Reset history?
       (= target-page start-page)
-      (do (reset! history [{:score (:init-scores config)}])
+      (do (reset! history [{:score (:score-variables config)}])
           (reset! hist-to-redo {})
           (reset! hist-to-add {}))
       ;; History backward?
