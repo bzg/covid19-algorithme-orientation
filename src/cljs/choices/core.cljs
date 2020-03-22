@@ -19,18 +19,16 @@
 ;; General configuration
 (def config (inline-yaml-resource "config.yml"))
 
-(def conditional-score-output (:conditional-score-output config))
-(def show-summary (:display-summary config))
-
-;; UI variables
-(def bigger {:font-size "2em" :text-decoration "none"})
-
-;; Modal variables
+;; Variables
 (def show-help (reagent/atom (:display-help config)))
-
 (def show-modal (reagent/atom false))
 (def show-summary-answers (reagent/atom true))
 (def modal-message (reagent/atom ""))
+(def show-summary (:display-summary config))
+(def conditional-score-output (:conditional-score-output config))
+
+;; UI variables
+(def bigger {:font-size "2em" :text-decoration "none"})
 
 ;; home-page and start-page
 (def home-page
@@ -58,13 +56,6 @@
 (def opts {:dict localization-custom})
 (def i18n (partial tr opts [lang]))
 
-;; Create routes
-(def routes
-  (into [] (for [n (:tree config)] [(:name n) (keyword (:name n))])))
-
-;; Define multimethod for later use in `create-page-contents`
-(defmulti page-contents identity)
-
 ;; Create a copy-to-clipboard component
 (defn clipboard-button [label target]
   (let [clipboard-atom (reagent/atom nil)]
@@ -84,6 +75,7 @@
           :data-clipboard-target target}
          label])})))
 
+;; Utility functions
 (defn strip-html-tags [^string s]
   (if (string? s) (string/replace s #"<([^>]+)>" "") s))
 
@@ -92,6 +84,13 @@
          (fn [k1 k2] (compare [(:value (get m k2)) k2]
                               [(:value (get m k1)) k1])))
         m))
+
+;; Create routes
+(def routes
+  (into [] (for [n (:tree config)] [(:name n) (keyword (:name n))])))
+
+;; Define multimethod for later use in `create-page-contents`
+(defmulti page-contents identity)
 
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
@@ -280,7 +279,7 @@
            [:p (i18n [:contact-intro])
             [:a {:href (str "mailto:" c)} c]])]])]))
 
-;; Create all the pages from `config/tree`
+;; Create all the pages from config.yml
 (dorun (map create-page-contents (:tree config)))
 
 ;; Create component to mount the current page
@@ -288,6 +287,7 @@
   (let [page (or (session/get :current-page) home-page)]
     [:div ^{:key page} [page-contents page]]))
 
+;; Setup navigation
 (defn on-navigate [match]
   (let [target-page (:name (:data match))
         prev        (peek @history)]
@@ -312,6 +312,7 @@
     (reset! hist-to-redo (peek @history))
     (session/put! :current-page target-page)))
 
+;; Initialize the app
 (defn ^:export init []
   (rfe/start!
    (rf/router routes)
