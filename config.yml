@@ -255,18 +255,18 @@ tree:
           value: 1
       goto:    "2"
       color:   "is-danger"
-    - answer:  "**Supérieure** ou égale à 39°C"
-      score:
-        gravite-niveau1:
-          value: 1
-      goto:    "2"
-      color:   "is-danger"
     - answer:  "Entre 35,5 et 37,7°C"
       goto:    "2"
       color:   "is-success"
     - answer:  "Entre 37,8 et 38,9°C"
       goto:    "2"
       color:   "is-warning"
+    - answer:  "**Supérieure** ou égale à 39°C"
+      score:
+        gravite-niveau1:
+          value: 1
+      goto:    "2"
+      color:   "is-danger"
 
   - name:    "2"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
