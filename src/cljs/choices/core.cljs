@@ -5,6 +5,7 @@
 (ns choices.core
   (:require-macros [choices.macros :refer [inline-yaml-resource]])
   (:require [reagent.core :as reagent]
+            [reagent.dom]
             [reagent.format :as fmt]
             [reagent.session :as session]
             [reitit.frontend :as rf]
@@ -70,7 +71,7 @@
     (reagent/create-class
      {:display-name "clipboard-button"
       :component-did-mount
-      #(let [clipboard (new js/ClipboardJS (reagent/dom-node %))]
+      #(let [clipboard (new js/ClipboardJS (reagent.dom/dom-node %))]
          (reset! clipboard-atom clipboard))
       :component-will-unmount
       #(when-not (nil? @clipboard-atom)
@@ -317,6 +318,6 @@
    (rf/router routes)
    on-navigate
    {:use-fragment true})
-  (reagent/render-component
+  (reagent.dom/render
    [current-page]
    (. js/document (getElementById "app"))))
