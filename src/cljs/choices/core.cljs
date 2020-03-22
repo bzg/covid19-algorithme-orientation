@@ -156,35 +156,34 @@
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
-          (doall
-           (for [{:keys [answer goto explain color summary score] :as c}
-                 choices]
-             ^{:key c}
-             [:div.tile.is-parent
-              [:a.tile.is-child
-               {:style {:text-decoration "none"}
-                :href  (rfe/href (keyword goto))
-                :on-click
-                #(do (when (vector? summary)
-                       (reset! show-modal true)
-                       (reset! modal-message (md-to-string (peek summary))))
-                     (reset! hist-to-add
-                             (merge
-                              {:score
-                               (merge-with
-                                (fn [a b] {:display               (:display a)
-                                           :as-top-result-display (:as-top-result-display a)
-                                           :value                 (+ (:value a) (:value b))})
-                                (:score (peek @history))
-                                score)}
-                              {:questions (when-not no-summary [text answer])}
-                              {:answers summary})))}
-               [:div.card-content.tile.is-parent.is-vertical
-                [:div {:class (str "tile is-child box title notification " color)}
-                 (md-to-string answer)]
-                (when (and explain @show-help)
-                  [:div.tile.is-child.subtitle
-                   (md-to-string explain)])]]]))]
+          (for [{:keys [answer goto explain color summary score] :as c}
+                choices]
+            ^{:key c}
+            [:div.tile.is-parent
+             [:a.tile.is-child
+              {:style {:text-decoration "none"}
+               :href  (rfe/href (keyword goto))
+               :on-click
+               #(do (when (vector? summary)
+                      (reset! show-modal true)
+                      (reset! modal-message (md-to-string (peek summary))))
+                    (reset! hist-to-add
+                            (merge
+                             {:score
+                              (merge-with
+                               (fn [a b] {:display               (:display a)
+                                          :as-top-result-display (:as-top-result-display a)
+                                          :value                 (+ (:value a) (:value b))})
+                               (:score (peek @history))
+                               score)}
+                             {:questions (when-not no-summary [text answer])}
+                             {:answers summary})))}
+              [:div.card-content.tile.is-parent.is-vertical
+               [:div {:class (str "tile is-child box title notification " color)}
+                (md-to-string answer)]
+               (when (and explain @show-help)
+                 [:div.tile.is-child.subtitle
+                  (md-to-string explain)])]]])]
          ;; Done: display the final summary-answers
          [:div
           [:div.tile.is-ancestor {:id "copy-this"}
@@ -282,7 +281,7 @@
             [:a {:href (str "mailto:" c)} c]])]])]))
 
 ;; Create all the pages from `config/tree`
-(doall (map create-page-contents (:tree config)))
+(dorun (map create-page-contents (:tree config)))
 
 ;; Create component to mount the current page
 (defn current-page []
