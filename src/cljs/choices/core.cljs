@@ -96,7 +96,7 @@
 
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
-                                    force-help choices]}]
+                                    progress force-help choices]}]
   (defmethod page-contents (keyword name) []
     [:div
      (when (not-empty (:header config))
@@ -135,6 +135,8 @@
         {:aria-label "close"
          :on-click   #(reset! show-modal false)}]]
       [:div.section
+       (if-let [[v m] (cljs.reader/read-string progress)]
+         [:progress.progress.is-primary {:value v :max m}])
        [:div.level
         [:div.level-left
          [:h1.level-item (md-to-string text)]]
