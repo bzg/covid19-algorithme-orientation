@@ -14,6 +14,18 @@ ui-strings:
   # toggle-summary-style: "Toggle summary style"
   # attention:            "Attention"
 
+# Website header
+header:
+ title:    "COVID19: Algorithme d'orientation"
+ logo:     ""
+ color:    "is-primary"
+ subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
+
+# Website footer
+footer:
+ text:    "Site de démonstration de l'algorithme d'orientation pour le COVID-19"
+ contact:  ""
+
 # Allow users to send you emails with the summary?
 mail-to: "bastien.guerry@data.gouv.fr"
 
@@ -45,62 +57,50 @@ score-variables:
     doc: "Le poids en kilogrammes."
     display: "Poids"
     value: 0
-    as-top-result-display: "Du poids"
   taille:
     doc: "La taille en mètre."
     display: "Taille"
     value: 0
-    as-top-result-display: "Taille"
   fievre:
     doc: "Indicateur de fièvre."
     display: "Fièvre"
     value: 0
-    as-top-result-display: "De la fièvre"
   toux:
     doc: "Indicateur de toux."
     display: "Toux"
     value: 0
-    as-top-result-display: "De la toux"
   moins15ans:
     doc: "Si la personne a moins de 15 ans."
     display: "Moins de 15 ans"
     value: 0
-    as-top-result-display: "Moins de 15 ans"
   plus50ans:
     doc: "Si la personne a plus de 50 ans."
     display: "Plus de 50 ans"
     value: 0
-    as-top-result-display: "Plus de 50 ans"
   courbatures:
     doc: "Si la personne a indiqué des courbatures."
     display: "Courbatures"
     value: 0
-    as-top-result-display: "Des courbatures"
   mal-de-gorge:
     doc: "Si la personne a indiqué avoir eu mal à la gorge."
     display: "Mal de gorge"
     value: 0
-    as-top-result-display: "Mal de gorge"
   diarrhees:
     doc: "Si la personne a indiqué des diarrhées."
     display: "Diarrhées"
     value: 0
-    as-top-result-display: "Diarrhées"
   facteurs-gravite-mineurs:
     doc: "Facteurs de gravité mineurs."
     display: "Gravité niveau 1"
     value: 0
-    as-top-result-display: "Gravité niveau 1"
   facteurs-gravite-majeurs:
     doc: "Facteurs de gravité majeurs."
     display: "Gravité niveau 2"
     value: 0
-    as-top-result-display: "Gravité niveau 2"
   facteur-pronostique:
     doc: "Facteur pronostique."
     display: "Facteur pronostic"
     value: 0
-    as-top-result-display: "Facteur pronostic"
 
 # Set conditional output depending on scores.
 # Each entry is composed of the name of the condition (you can pick up
@@ -110,7 +110,6 @@ score-variables:
 # (2) message (mandatory): message to display when one of the condition is met
 # (3) anything else is a "condition", which lists variables and their minimal
 # values for the condition to be met.
-#
 conditional-score-outputs:
   ras:
     notification: "is-success"
@@ -224,18 +223,6 @@ conditional-score-outputs:
     notification: "is-danger"
     condition-1:
       moins15ans: 1
-
-# Website header
-header:
- title:    "COVID19: Algorithme d'orientation"
- logo:     ""
- color:    "is-primary"
- subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
-
-# Website footer
-footer:
- text:    "Site de démonstration de l'algorithme d'orientation pour le COVID-19"
- contact:  ""
 
 # Mandatory configuration option
 # FIXME: complete documentation
