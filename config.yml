@@ -20,14 +20,17 @@ mail-to:
 # Display help along with questions by default?
 display-help: true
 
+# Display summary when done?
+display-summary: true
+
 # Display score information?
 display-score: true
 
-# Display score information?
+# Display each score?
 display-score-details: true
 
-# Display the main score result?
-display-score-main-result: false
+# Only the score with the highest value?
+display-score-main-result: true
 
 init-scores:
   fievre:
@@ -69,6 +72,7 @@ init-scores:
 
 scores-results:
   ras:
+    notification: "is-success"
     message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."
     conditions:
       toux: 0
@@ -76,6 +80,7 @@ scores-results:
       mal-de-gorge: 0
       courbatures: 0
   no-gravite-one-symptom:
+    notification: "is-success"
     message: "Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute."
     condition-1: # un-seul-symptome-no-gravite-toux
       toux: 1
@@ -94,6 +99,7 @@ scores-results:
       gravite-niveau1: 0
       gravite-niveau2: 0
   no-pronostic-no-gravite-symptoms-inf50:
+    notification: "is-info"
     message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes."
     conditions:
       pronostic: 0
@@ -101,6 +107,7 @@ scores-results:
       gravite-niveau2: 0
       plus50ans: 0
   gravite-niveau-1-symptom:
+    notification: "is-warning"
     message: "Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15."
     condition-1: #un-seul-symptome-gravite-niveau1-toux
       toux: 1
@@ -115,6 +122,7 @@ scores-results:
       courbatures: 1
       gravite-niveau1: 1
   no-pronostic-no-gravite-niveau2-symptoms:
+    notification: "is-warning"
     message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins)"
     condition-1:
       pronostic: 0
@@ -159,6 +167,7 @@ scores-results:
       gravite-niveau1: 1
   pronostic-gravite-symptoms:
     message: "Appel du 15"
+    notification: "is-danger"
     condition-1:
       pronostic: 1
       fievre: 1

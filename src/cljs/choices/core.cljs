@@ -19,6 +19,7 @@
 (def config (inline-yaml-resource "config.yml"))
 
 (def scores-results (:scores-results config))
+(def show-summary (:display-summary config))
 
 ;; UI variables
 (def bigger {:font-size "2em" :text-decoration "none"})
@@ -134,7 +135,6 @@
       [:div.section
        [:div.level
         [:h1.title.level-item.has-text-centered (md-to-string text)]
-        
         (if-not done
           ;; Not done: display the help button
           [:a.level-item.button.is-text
@@ -193,7 +193,7 @@
               [:div
                (when (:display-score config)
                  [:div.is-6
-                  ;; Optional, for debuggin purpose
+                  ;; Optional, mainly for debuggin purpose
                   (when (:display-score-details config)
                     (for [row-score (partition-all 4 scores)]
                       ^{:key (pr-str row-score)}
@@ -202,9 +202,8 @@
                          ^{:key (pr-str s)}
                          [:div.tile.is-child.is-3.box
                           (str (:display (val s)) ": " (:value (val s)))])]))
-
-                  ;; Optional, only when no score-results
-                  (when (and (not (:score-results config))
+                  ;; Only when no score-results
+                  (when (and (not scores-results)
                              (:display-score-main-result config))
                     (let [final-scores  (sort-map-by-score-values scores)
                           last-score    (first final-scores)
@@ -213,37 +212,46 @@
                         [:div.tile.is-parent.is-6
                          [:p.tile.is-child.box.is-warning.notification
                           (:result (val last-score))]])))
-
-                  (let [s0  (map (fn [[k v]] {k (:value v)}) scores)
-                        s   (apply merge s0)
-                        out (atom "")]
-                    (do (doseq [ss   scores-results
-                                :let [cas (last ss)
-                                      message (:message cas)
-                                      conditions (dissoc cas :message)]]
-                          (doseq [cnd  conditions
-                                  :let [c (val cnd)]]
-                            (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
-                              (reset! out message))))
-                        [:div.tile.is-parent.is-6
-                         [:p.tile.is-child.box.is-warning.notification
-                          @out]]))])
-               [:br]])
-            ;; Display answers FIXME
-            ;; (for [o (if @show-summary-answers
-            ;;           (reverse (:answers (peek @history)))
-            ;;           (reverse (:questions (peek @history))))]
-            ;;   ^{:key o}
-            ;;   [:div.tile.is-child.notification
-            ;;    (if (string? o)
-            ;;      [:div.subtitle (md-to-string o)]
-            ;;      [:div.tile.is-parent.is-horizontal.notification
-            ;;       (for [n (butlast o)]
-            ;;         ^{:key n}
-            ;;         [:div.tile.is-child.subtitle (md-to-string n)])
-            ;;       [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
-            ;;        (md-to-string (peek o))]])])
-            ]]
+                  ;; Only when score-results is defined
+                  (when scores-results
+                    (let [s     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
+                          out   (atom "")
+                          notif (atom "")]
+                      (do (doseq [ss   scores-results
+                                  :let [cas (last ss)
+                                        notification (:notification cas)
+                                        message (:message cas)
+                                        conditions (dissoc cas :message :notification)]]
+                            (doseq [cnd conditions :let [c (val cnd)]]
+                              (when (every? true? (map (fn [[k v]] (>= (k s) v)) c))
+                                (reset! out message)
+                                (reset! notif notification))))
+                          [:div.tile.is-parent.is-12
+                           [:p {:class (str "tile is-child box "
+                                            (or (not-empty @notif) "is-info")
+                                            " notification subtitle")}
+                            @out]])))])]
+              [:br])
+            ;; Display answers
+            (when  show-summary
+              (for [o (if @show-summary-answers
+                        (reverse (:answers (peek @history)))
+                        (reverse (:questions (peek @history))))]
+                ^{:key o}
+                (cond
+                  (and (string? o) (not-empty o))
+                  [:div.tile.is-parent
+                   [:div.tite.is-child.notification
+                    [:div.subtitle (md-to-string o)]]]
+                  (not-empty (butlast o))
+                  [:div.tile.is-parent.is-horizontal.notification
+                   (for [n (butlast o)]
+                     ^{:key n}
+                     (when (not-empty n)
+                       [:div.tile.is-child.subtitle (md-to-string n)]))
+                   (when-let [a (not-empty (peek o))]
+                     [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
+                      (md-to-string a)])])))]]
           [:div.level-right
            [:a.button.level-item
             {:style bigger
