@@ -117,6 +117,14 @@
          [:h2.subtitle
           (md-to-string (:subtitle (:header config)))]])]]]]) 
 
+(defn footer []
+  [:section.footer
+   [:div.content.has-text-centered
+    (md-to-string (:text (:footer config)))
+    (when-let [c (not-empty (:contact (:footer config)))]
+      [:p (i18n [:contact-intro])
+       [:a {:href (str "mailto:" c)} c]])]])
+
 (defn score-details [scores]
   (for [row-score (partition-all 4 scores)]
     ^{:key row-score}
@@ -301,12 +309,7 @@
                             #"[\n\t]" "%0D%0A%0D%0A"))}
               "📩"])]])]]
      (when (not-empty (:footer config))
-       [:section.footer
-        [:div.content.has-text-centered
-         (md-to-string (:text (:footer config)))
-         (when-let [c (not-empty (:contact (:footer config)))]
-           [:p (i18n [:contact-intro])
-            [:a {:href (str "mailto:" c)} c]])]])]))
+       (footer))]))
 
 ;; Create all the pages from config.yml
 (dorun (map create-page-contents (:tree config)))
