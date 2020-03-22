@@ -161,7 +161,7 @@
               :on-click #(swap! show-summary-answers not)} "🔗"]
             [clipboard-button "📋" "#copy-this"]]])]
        (when (and (or force-help @show-help) (not-empty help))
-         [:div.notification (md-to-string help)])
+         [:div.notification.is-size-5 (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
