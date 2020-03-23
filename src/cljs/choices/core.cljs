@@ -188,7 +188,7 @@
          :on-click   #(reset! show-modal false)}]]
       [:div.section
        (if-let [[v m] (cljs.reader/read-string progress)]
-         [:progress.progress.is-primary {:value v :max m}])
+         [:div [:progress.progress.is-primary {:value v :max m}] [:br]])
        [:div.level
         [:div.level-left
          [:h1.level-item (md-to-string text)]]
