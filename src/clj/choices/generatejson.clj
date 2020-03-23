@@ -17,9 +17,9 @@
     (spit
      "config.json"
      (json/generate-string
-      {:questions           (map
-                             (fn [n] (select-keys n [:node :text :choices]))
-                             (remove #(= (:home-page %) true) tree))
-       :variables           score-variables
-       :resultats-possibles conditional-score-outputs}))
+      {:questions    (map
+                      (fn [n] (select-keys n [:node :text :choices]))
+                      (remove #(= (:home-page %) true) tree))
+       :variables    score-variables
+       :alternatives conditional-score-outputs}))
     (println "File config.json generated")))
