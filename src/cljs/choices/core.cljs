@@ -87,7 +87,7 @@
         m))
 
 (defn imc [^number p ^number t]
-  (gstring/format "%.2f" (/ p (Math/pow t 2))))
+  (.toFixed (/ p (Math/pow t 2)) 2))
 
 ;; Create routes
 (def routes
