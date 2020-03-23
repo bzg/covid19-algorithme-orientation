@@ -237,7 +237,7 @@
           (conditional-score-output scores))])
      [:br]]))
 
-(defn summary [history]
+(defn summary []
   (for [o (if @show-summary-answers
             (remove nil? (reverse (:answers (peek @history))))
             (remove nil? (reverse (:questions (peek @history)))))]
@@ -258,7 +258,7 @@
          [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
           (md-to-string a)])])))
 
-(defn restart-button []
+(defn restart-mailto-buttons []
   [:div.level-right
    [:a.button.level-item
     {:style bigger
@@ -333,9 +333,8 @@
               (scores-result scores)
               [:br])
             ;; Display answers
-            (when  show-summary
-              (summary history))]]
-          (restart-button)])]]
+            (when show-summary (summary))]]
+          (restart-mailto-buttons)])]]
      (when (not-empty (:footer config))
        (footer))]))
 
