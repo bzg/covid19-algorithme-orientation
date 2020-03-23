@@ -92,11 +92,11 @@ score-variables:
     value: 0
   facteurs-gravite-mineurs:
     doc: "Facteurs de gravité mineurs."
-    display: "Gravité niveau 1"
+    display: "Facteurs de gravité mineurs"
     value: 0
   facteurs-gravite-majeurs:
     doc: "Facteurs de gravité majeurs."
-    display: "Gravité niveau 2"
+    display: "Facteurs de gravité majeurs"
     value: 0
   facteurs-pronostique:
     doc: "Facteur pronostique."
