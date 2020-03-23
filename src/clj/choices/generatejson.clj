@@ -9,11 +9,18 @@
    data))
 
 (defn -main []
-  (let [parsed-config             (yaml/parse-string (slurp "config.yml"))
-        tree                      (remove-deep (:tree parsed-config) [:color])
-        score-variables           (remove-deep (:score-variables parsed-config) [:display])
-        conditional-score-outputs (remove-deep (:conditional-score-outputs parsed-config)
-                                               [:notification])]
+  (let [parsed-config   (yaml/parse-string (slurp "config.yml"))
+        tree            (map
+                         (fn [branch]
+                           (if (re-matches #"^2\.[12]$" (:node branch))
+                             (merge branch {:choices "Saisie utilisateur"})
+                             branch))
+                         (remove-deep (:tree parsed-config) [:color]))
+        score-variables (remove-deep (:score-variables parsed-config) [:display])
+        conditional-score-outputs
+        (remove-deep (:conditional-score-outputs parsed-config)
+                     [:notification])]
+    (reset! mytree tree)
     (spit
      "config.json"
      (json/generate-string
