@@ -214,9 +214,9 @@
       (reset! output (:msg match))
       (reset! notify (:not match)))
     [:div.tile.is-parent
-     [:p.is-size-4 {:class (str "tile is-child "
-                                (or (not-empty @notify) "is-info")
-                                " notification subtitle")}
+     [:div.is-size-4.tile.is-child
+      {:class (str (or (not-empty @notify) "is-info")
+                   " notification subtitle")}
       (md-to-string @output)]]))
 
 (defn scores-result [scores]
@@ -297,10 +297,14 @@
       (modal show-modal)
       [:div.section
        (if-let [[v m] (cljs.reader/read-string progress)]
-         [:div [:progress.progress.is-primary {:value v :max m}] [:br]])
+         [:div [:progress.progress.is-primary
+                {:value v :max m}]
+          [:br]])
        (help-clipboard done text force-help help)
-       (when (and (or force-help @show-help) (not-empty help))
-         [:div.notification.is-size-5 (md-to-string help)])
+       (when (and (or force-help @show-help)
+                  (not-empty help))
+         [:div.notification.is-size-5
+          (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
@@ -326,7 +330,8 @@
                              {:questions (when-not no-summary [text answer])}
                              {:answers summary})))}
               [:div.card-content.tile.is-parent.is-vertical
-               [:div {:class (str "tile is-child box is-size-4 notification " color)}
+               [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
+                {:class color}
                 (md-to-string answer)]
                (when (and explain @show-help)
                  [:div.tile.is-child.subtitle
