@@ -53,7 +53,7 @@
   (into {} (map (fn [locale] {(key locale)
                               (merge (val locale) (:ui-strings config))})
                 i18n/localization)))
-(def lang (keyword (or (not-empty (:locale config)) "en-GB")))
+(def lang (keyword (or (not-empty (:locale config)) "en")))
 (def opts {:dict localization-custom})
 (def i18n (partial tr opts [lang]))
 
