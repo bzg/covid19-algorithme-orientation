@@ -20,9 +20,8 @@
         conditional-score-outputs
         (remove-deep (:conditional-score-outputs parsed-config)
                      [:notification])]
-    (reset! mytree tree)
     (spit
-     "config.json"
+     "docs/config.json"
      (json/generate-string
       {:questions    (map
                       (fn [n] (select-keys n [:node :text :choices]))
@@ -30,3 +29,6 @@
        :variables    score-variables
        :alternatives conditional-score-outputs}))
     (println "File config.json generated")))
+
+;; (-main)
+
