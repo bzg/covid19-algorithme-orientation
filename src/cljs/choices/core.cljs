@@ -169,10 +169,10 @@
 
 (defn score-details [scores]
   (for [row-score (partition-all 4 scores)]
-    ^{:key row-score}
+    ^{:key (random-uuid)}
     [:div.tile.is-ancestor
      (for [s row-score]
-       ^{:key (pr-str s)}
+       ^{:key (random-uuid)}
        [:div.tile.is-parent
         [:div.tile.is-child.box
          (str (:display (val s)) ": " (:value (val s)))]])]))
@@ -241,11 +241,11 @@
   (for [o (if @show-summary-answers
             (remove nil? (reverse (:answers (peek @history))))
             (remove nil? (reverse (:questions (peek @history)))))]
-    ^{:key (pr-str o)}
+    ^{:key (random-uuid)}
     (cond
       (and (string? o) (not-empty o))
       [:div.tile.is-parent
-       {:key "summary"}
+       {:key (random-uuid)}
        [:div.title.is-child.notification
         [:div.subtitle (md-to-string o)]]]
       (not-empty (butlast o))
@@ -253,7 +253,7 @@
        {:key (random-uuid)}
        (for [n (butlast o)]
          (when (not-empty n)
-           [:div.tile.is-child.subtitle {:key (pr-str n)} (md-to-string n)]))
+           [:div.tile.is-child.subtitle {:key (random-uuid)} (md-to-string n)]))
        (when-let [a (not-empty (peek o))]
          [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
           {:key (random-uuid)}
@@ -299,7 +299,7 @@
          ;; Not done: display the choices
          [:div.tile.is-ancestor
           (for [{:keys [answer goto explain color summary score] :as c} choices]
-            ^{:key c}
+            ^{:key (random-uuid)}
             [:div.tile.is-parent
              [:a.tile.is-child
               {:style {:text-decoration "none"}
@@ -345,7 +345,7 @@
 ;; Create component to mount the current page
 (defn current-page []
   (let [page (or (session/get :current-page) home-page)]
-    [:div ^{:key page} [page-contents page]]))
+    [:div ^{:key random-uuid} [page-contents page]]))
 
 ;; Setup navigation
 (defn on-navigate [match]
