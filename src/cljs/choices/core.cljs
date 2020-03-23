@@ -250,12 +250,13 @@
         [:div.subtitle (md-to-string o)]]]
       (not-empty (butlast o))
       [:div.tile.is-parent.is-horizontal.notification
+       {:key (random-uuid)}
        (for [n (butlast o)]
-         ^{:key (pr-str n)}
          (when (not-empty n)
-           [:div.tile.is-child.subtitle (md-to-string n)]))
+           [:div.tile.is-child.subtitle {:key (pr-str n)} (md-to-string n)]))
        (when-let [a (not-empty (peek o))]
          [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
+          {:key (random-uuid)}
           (md-to-string a)])])))
 
 (defn restart-mailto-buttons []
