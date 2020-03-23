@@ -7,10 +7,11 @@
 
 (def config (inline-yaml-resource "config.yml"))
 
-(def init-scores (:init-scores config))
+(def score-variables (:score-variables config))
 
-(s/def ::name string?)
+(s/def ::node string?)
 (s/def ::text string?)
+(s/def ::doc string?)
 (s/def ::answer string?)
 (s/def ::explain string?)
 (s/def ::goto string?)
@@ -25,20 +26,20 @@
 
 (s/def ::display string?)
 (s/def ::value int?)
-(s/def ::result string?)
+(s/def ::as-top-result-display string?)
 
-(s/def ::init-score (s/keys :req-un [::display ::value ::result]))
-(s/def ::init-scores (s/map-of keyword? ::init-score))
+(s/def ::score-variable (s/keys :req-un [::display ::value ::as-top-result-display]))
+(s/def ::score-variables (s/map-of keyword? ::score-variable))
 
-(s/def ::choice-score (s/keys :opt-un [::display ::value ::result]))
-(s/def ::score (s/map-of (into #{} (keys init-scores)) ::choice-score))
+(s/def ::choice-score (s/keys :opt-un [::display ::value ::as-top-result-display]))
+(s/def ::score (s/map-of (into #{} (keys score-variables)) ::choice-score))
 
 (s/def ::choice (s/keys :req-un [::answer ::goto]
                         :opt-un [::color ::summary ::score ::explain]))
 
 (s/def ::choices (s/coll-of ::choice))
 
-(s/def ::branch (s/keys :req-un [::name ::text]
+(s/def ::branch (s/keys :req-un [::node ::text]
                         :opt-un [::choices ::home-page ::start-page
                                  ::help ::no-summary ::done]))
 (s/def ::tree (s/coll-of ::branch))
@@ -62,8 +63,8 @@
 
 (deftest score
   (testing "Testing score setting"
-    (is (s/valid? ::init-scores init-scores))
-    (is (map? (:init-scores config)))))
+    (is (s/valid? ::score-variables init-scores))
+    (is (map? (:score-variables config)))))
 
 (deftest tree
   (testing "Testing the options tree format"
