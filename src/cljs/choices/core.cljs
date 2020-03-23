@@ -222,7 +222,7 @@
                              (:value (:taille scores)))
         imc-map {:imc {:display "IMC" :value imc-val}}
         scores  (merge scores imc-map)
-        scores  (update-in scores [:facteur-pronostique :value]
+        scores  (update-in scores [:facteurs-pronostique :value]
                            #(if (> imc-val 30) (inc %) %))]
     [:div
      (when (:display-score config)

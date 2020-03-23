@@ -54,6 +54,14 @@ display-score-top-result: true
 # (3) "as-top-result-display": what to display when the variable is
 #      the one with the highest score when the user is done.
 score-variables:
+  moins15ans:
+    doc: "Si la personne a moins de 15 ans."
+    display: "Moins de 15 ans"
+    value: 0
+  plus50ans:
+    doc: "Si la personne a plus de 50 ans."
+    display: "Plus de 50 ans"
+    value: 0
   poids:
     doc: "Le poids en kilogrammes."
     display: "Poids"
@@ -70,17 +78,9 @@ score-variables:
     doc: "Indicateur de toux."
     display: "Toux"
     value: 0
-  moins15ans:
-    doc: "Si la personne a moins de 15 ans."
-    display: "Moins de 15 ans"
-    value: 0
-  plus50ans:
-    doc: "Si la personne a plus de 50 ans."
-    display: "Plus de 50 ans"
-    value: 0
-  courbatures:
-    doc: "Si la personne a indiqué des courbatures."
-    display: "Courbatures"
+  anosmie:
+    doc: "Si la personne a indiqué un trouble du goût ou de l'odorat."
+    display: "Trouble goût/odorat"
     value: 0
   mal-de-gorge:
     doc: "Si la personne a indiqué avoir eu mal à la gorge."
@@ -98,7 +98,7 @@ score-variables:
     doc: "Facteurs de gravité majeurs."
     display: "Gravité niveau 2"
     value: 0
-  facteur-pronostique:
+  facteurs-pronostique:
     doc: "Facteur pronostique."
     display: "Facteur pronostic"
     value: 0
@@ -112,118 +112,75 @@ score-variables:
 # (3) anything else is a "condition", which lists variables and their minimal
 # values for the condition to be met.
 conditional-score-outputs:
+  # Patient de moins de 15 ans, court-circuiter le questionnaire.
   moins-15-ans:
     priority: 1
     message: "Cette application n'est pas pour l'instant pas adaptée aux personnes de moins de 15 ans.<br/>Prenez contact avec votre médecin généraliste au moindre doute. En cas d’urgence, appeler le [15](tel:15)."
     notification: "is-danger"
     condition-1:
       moins15ans: 1
-  pronostic-gravite-symptoms:
+  # Tout patient avec au moins un facteur de gravité majeur
+  au-moins-un-facteur-de-gravite-majeur:
     priority: 2
-    message: "Appelez le [15](tel:15)"
+    message: "Appelez le [15](tel:15)."
     notification: "is-danger"
     condition-1:
       facteurs-gravite-majeurs: 1
-  no-pronostic-no-facteurs-gravite-majeurs-symptoms:
+  # Tout patient avec un facteur pronostic ou plus et deux facteurs de gravite mineurs
+  deux-facteurs-de-gravite-mineurs:
     priority: 3
-    notification: "is-warning"
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins)"
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).  Si vous n'arrive pas à joindre un médecin, appelez le [15](tel:15)."
+    notification: "is-danger"
     condition-1:
-      facteur-pronostique: 0
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-      plus50ans: 1
-    condition-2:
-      facteur-pronostique: 0
-      facteurs-gravite-mineurs: 1
-      facteurs-gravite-majeurs: 0
-      plus50ans: 1
-    condition-3:
-      facteur-pronostique: 0
-      fievre: 1
-      toux: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-    condition-4:
-      facteur-pronostique: 0
-      fievre: 1
-      toux: 1
-      facteurs-gravite-mineurs: 1
-      facteurs-gravite-majeurs: 0
-    condition-5:
-      facteur-pronostique: 1
-      fievre: 1
-      toux: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-    condition-6:
-      facteur-pronostique: 1
-      fievre: 1
-      toux: 1
-      facteurs-gravite-mineurs: 1
-      facteurs-gravite-majeurs: 0
-    condition-7:
-      facteur-pronostique: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-    condition-8:
-      facteur-pronostique: 1
-      facteurs-gravite-mineurs: 1
-    condition-9:
-      facteur-pronostique: 1
-      fievre: 1
-      toux: 1
       facteurs-gravite-mineurs: 2
-    condition-10:
-      facteur-pronostique: 1
-      facteurs-gravite-mineurs: 2
-  gravite-niveau-1-symptom:
+      facteurs-pronostique: 1
+  un-seul-facteur-de-gravite-mineure-ou-autres-variables:
     priority: 4
     notification: "is-warning"
-    message: "Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15."
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le [15](tel:15) si un gêne respiratoire ou des difficultés importantes pour s'alimenter ou boire pendant plus de 24 heures apparaissent."
+    # Sans facteur de gravité & 50-60 ans
     condition-1:
-      toux: 1
-      facteurs-gravite-mineurs: 1
+      plus50ans: 1
+    # Ou avec au moins un facteur de gravité mineur
     condition-2:
-      fievre: 1
       facteurs-gravite-mineurs: 1
     condition-3:
-      mal-de-gorge: 1
-      facteurs-gravite-mineurs: 1
-    condition-4:
-      courbatures: 1
-      facteurs-gravite-mineurs: 1
-  no-pronostic-no-gravite-symptoms-inf50:
+      facteurs-pronostique: 1
+    condition-4: 
+  un-symptome-avec-facteur-de-gravite-ou-pronostique:
     priority: 5
-    notification: "is-info"
-    message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes."
-    condition-1:
-      facteur-pronostique: 0
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-      plus50ans: 0
-  no-gravite-one-symptom:
-    priority: 6
-    notification: "is-success"
-    message: "Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute."
+    notification: "is-warning"
+    message: "Votre situation ne relève probablement pas du Covid-19.  **Un avis médical est recommandé**. Au moindre doute, appelez le [15](tel:15)."
     condition-1:
       toux: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
+      facteurs-gravite-mineurs: 1
     condition-2:
-      fievre: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-    condition-3:
       mal-de-gorge: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
+      facteurs-gravite-mineurs: 1
+    condition-3:
+      anosmie: 1
+      facteurs-gravite-mineurs: 1
     condition-4:
-      courbatures: 1
-      facteurs-gravite-mineurs: 0
-      facteurs-gravite-majeurs: 0
-  ras:
-    priority: 7
+      toux: 1
+      facteurs-pronostique: 1
+    condition-5:
+      mal-de-gorge: 1
+      facteurs-pronostique: 1
+    condition-6:
+      anosmie: 1
+      facteurs-gravite-mineurs: 1
+  un-symptome-sans-facteur-de-gravite-ou-pronostique:
+    priority: 6
+    notification: "is-info"
+    message: "Votre situation ne relève probablement pas du Covid-19. Si de nouveaux symptômes apparaissent, refaites le test."
+    condition-1:
+      toux: 1
+    condition-2:
+      mal-de-gorge: 1
+    condition-3:
+      anosmie: 1
+  pas-de-symptom-pas-de-facteur-gravite-ou-pronostique:
+    priority: 5
     notification: "is-success"
     message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."
     condition-1:
@@ -313,6 +270,9 @@ tree:
     - answer:  "Oui"
       goto:    "1.4"
       color:   "is-warning"
+      score:
+        anosmie:
+          value: 1
     - answer:  "Non"
       goto:    "1.4"
       color:   "is-success"
@@ -421,7 +381,7 @@ tree:
       goto:    "2.2"
       color:   "is-danger"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
         plus50ans:
           value: 1
@@ -516,7 +476,7 @@ tree:
       goto:    "2.5"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.5"
@@ -525,7 +485,7 @@ tree:
       goto:    "2.5"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
 
   - node:    "2.5"
@@ -536,7 +496,7 @@ tree:
       goto:    "2.6"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.6"
@@ -550,7 +510,7 @@ tree:
       goto:    "2.7"
       color:   "is-danger"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.7"
@@ -564,7 +524,7 @@ tree:
       goto:    "2.8"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.8"
@@ -578,7 +538,7 @@ tree:
       goto:    "2.9"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.9"
@@ -592,7 +552,7 @@ tree:
       goto:    "2.10"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.10"
@@ -606,7 +566,7 @@ tree:
       goto:    "2.11"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.11"
@@ -623,7 +583,7 @@ tree:
       goto:    "2.12"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "2.12"
@@ -632,7 +592,7 @@ tree:
       goto:    "2.13"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
 
   - node:    "2.12"
@@ -644,7 +604,7 @@ tree:
       goto:    "fin"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
     - answer:  "Non"
       goto:    "fin"
@@ -653,7 +613,7 @@ tree:
       goto:    "fin"
       color:   "is-warning"
       score:
-        facteur-pronostique:
+        facteurs-pronostique:
           value: 1
 
   - node: "fin-moins15ans"
