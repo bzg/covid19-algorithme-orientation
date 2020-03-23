@@ -215,7 +215,7 @@
      [:p {:class (str "tile is-child "
                       (or (not-empty @notify) "is-info")
                       " notification subtitle")}
-      @output]]))
+      (md-to-string @output)]]))
 
 (defn scores-result [scores]
   (let [imc-val (compute-imc (:value (:poids scores))
@@ -268,19 +268,21 @@
      :title (i18n [:redo])
      :href  (rfe/href start-page)} "🔃"]
    (when (not-empty (:mail-to config))
-     [:a.button.level-item
-      {:style bigger
-       :title (i18n [:mail-to-message])
-       :href  (str "mailto:" (:mail-to config)
-                   "?subject=" (i18n [:mail-subject])
-                   "&body="
-                   (string/replace
-                    (fmt/format (i18n [:mail-body])
-                                (string/join "%0D%0A%0D%0A"
-                                             (map strip-html-tags
-                                                  (flatten (:answers (peek @history))))))
-                    #"[\n\t]" "%0D%0A%0D%0A"))}
-      "📩"])])
+     (let [contents (or (not-empty (remove nil? (:answers (peek @history))))
+                        (not-empty (remove nil? (:questions (peek @history))))
+                        (i18n [:mail-body-default]))
+           body     (->> contents flatten
+                         (map strip-html-tags)
+                         (string/join "%0D%0A%0D%0A")
+                         (fmt/format (i18n [:mail-body])))]
+       [:a.button.level-item
+        {:style bigger
+         :title (i18n [:mail-to-message])
+         :href  (str "mailto:" (:mail-to config)
+                     "?subject=" (i18n [:mail-subject])
+                     "&body="
+                     (string/replace body #"[\n\t]" "%0D%0A%0D%0A"))}
+        "📩"]))])
 
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
