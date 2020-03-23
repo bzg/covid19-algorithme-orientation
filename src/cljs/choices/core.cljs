@@ -130,7 +130,7 @@
     ^{:key row-score}
     [:div.tile.is-ancestor
      (for [s row-score]
-       ^{:key s}
+       ^{:key (pr-str s)}
        [:div.tile.is-parent
         [:div.tile.is-child.box
          (str (:display (val s)) ": " (:value (val s)))]])]))
