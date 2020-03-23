@@ -274,11 +274,11 @@
               (for [o (if @show-summary-answers
                         (reverse (:answers (peek @history)))
                         (reverse (:questions (peek @history))))]
-                ^{:key o}
+                ^{:key (pr-str o)}
                 (cond
                   (and (string? o) (not-empty o))
                   [:div.tile.is-parent
-                   [:div.tite.is-child.notification
+                   [:div.title.is-child.notification
                     [:div.subtitle (md-to-string o)]]]
                   (not-empty (butlast o))
                   [:div.tile.is-parent.is-horizontal.notification
