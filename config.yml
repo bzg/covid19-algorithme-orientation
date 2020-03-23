@@ -127,17 +127,69 @@ conditional-score-outputs:
     condition-1:
       facteurs-gravite-majeurs: 1
   # Tout patient avec un facteur pronostic ou plus et deux facteurs de gravite mineurs
-  deux-facteurs-de-gravite-mineurs:
+  symptomes-deux-facteurs-de-gravite-mineurs:
     priority: 3
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).  Si vous n'arrive pas à joindre un médecin, appelez le [15](tel:15)."
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Si vous n'arrivez pas à joindre un médecin, appelez le [15](tel:15)."
     notification: "is-danger"
     condition-1:
       facteurs-gravite-mineurs: 2
       facteurs-pronostique: 1
-  un-seul-facteur-de-gravite-mineure-ou-autres-variables:
+      fièvre: 1
+    condition-2:
+      facteurs-gravite-mineurs: 2
+      facteurs-pronostique: 1
+      toux: 1
+      mal-de-gorge: 1
+    condition-3:
+      facteurs-gravite-mineurs: 2
+      facteurs-pronostique: 1
+      toux: 1
+      mal-de-gorge: 1
+    condition-4:
+      facteurs-gravite-mineurs: 2
+      facteurs-pronostique: 1
+      toux: 1
+      anosmie: 1
+    condition-5:
+      facteurs-gravite-mineurs: 2
+      facteurs-pronostique: 1
+      fievre: 1
+      diarrhees: 1
+    condition-6:
+      fievre: 1
+      toux: 1
+      facteurs-pronostique: 1
+      facteurs-gravite-mineurs: 2
+  symptomes-moins-de-deux-facteurs-de-gravite-mineurs-un-facteur-pronotisque:
     priority: 4
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Si vous n'arrivez pas à joindre un médecin, appelez le [15](tel:15)."
     notification: "is-warning"
-    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le [15](tel:15) si un gêne respiratoire ou des difficultés importantes pour s'alimenter ou boire pendant plus de 24 heures apparaissent."
+    condition-1:
+      facteurs-pronostique: 1
+      fièvre: 1
+    condition-2:
+      facteurs-pronostique: 1
+      toux: 1
+      mal-de-gorge: 1
+    condition-3:
+      facteurs-pronostique: 1
+      toux: 1
+      mal-de-gorge: 1
+    condition-4:
+      facteurs-pronostique: 1
+      toux: 1
+      anosmie: 1
+    condition-5:
+      facteurs-pronostique: 1
+      fievre: 1
+      diarrhees: 1
+    condition-5:
+      fievre: 1
+      toux: 1
+  un-seul-facteur-de-gravite-mineure-ou-autres-variables:
+    priority: 5
+    notification: "is-warning"
+    message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Appelez le [15](tel:15) si un gêne respiratoire ou des difficultés importantes pour s'alimenter ou boire pendant plus de 24 heures apparaissent."
     # Sans facteur de gravité & 50-60 ans
     condition-1:
       plus50ans: 1
@@ -147,10 +199,28 @@ conditional-score-outputs:
     condition-3:
       facteurs-pronostique: 1
     condition-4: 
-  un-symptome-avec-facteur-de-gravite-ou-pronostique:
-    priority: 5
+  symptomes-sans-facteur-pronotisque:
+    priority: 6
+    message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d'apparition de nouveaux symptômes.<br/>Vous pourrez aussi utiliser à nouveau l'application pour réévaluer vos symptômes."
     notification: "is-warning"
-    message: "Votre situation ne relève probablement pas du Covid-19.  **Un avis médical est recommandé**. Au moindre doute, appelez le [15](tel:15)."
+    condition-1:
+      fièvre: 1
+    condition-2:
+      toux: 1
+      mal-de-gorge: 1
+    condition-3:
+      toux: 1
+      mal-de-gorge: 1
+    condition-4:
+      toux: 1
+      anosmie: 1
+    condition-5:
+      fievre: 1
+      diarrhees: 1
+  un-symptome-avec-facteur-de-gravite-ou-pronostique:
+    priority: 7
+    notification: "is-warning"
+    message: "Votre situation ne relève probablement pas du Covid-19.<br/>**Un avis médical est recommandé**. Au moindre doute, appelez le [15](tel:15)."
     condition-1:
       toux: 1
       facteurs-gravite-mineurs: 1
@@ -168,9 +238,9 @@ conditional-score-outputs:
       facteurs-pronostique: 1
     condition-6:
       anosmie: 1
-      facteurs-gravite-mineurs: 1
+      facteurs-pronostique: 1
   un-symptome-sans-facteur-de-gravite-ou-pronostique:
-    priority: 6
+    priority: 8
     notification: "is-info"
     message: "Votre situation ne relève probablement pas du Covid-19. Si de nouveaux symptômes apparaissent, refaites le test."
     condition-1:
@@ -180,9 +250,9 @@ conditional-score-outputs:
     condition-3:
       anosmie: 1
   pas-de-symptom-pas-de-facteur-gravite-ou-pronostique:
-    priority: 5
+    priority: 9
     notification: "is-success"
-    message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."
+    message: "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute.<br/>Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation.<br/>Pour toute information concernant le Covid-19, composer le 0 800 130 000."
     condition-1:
       toux: 0
       fievre: 0
@@ -346,7 +416,7 @@ tree:
 
   - node:    "1.8"
     progress:   "[10 23]"
-    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?"
+    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
     choices:
     - answer:  "Oui"
       score:
