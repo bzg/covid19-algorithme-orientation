@@ -12,11 +12,12 @@
   (let [parsed-config             (yaml/parse-string (slurp "config.yml"))
         tree                      (remove-deep (:tree parsed-config) [:color])
         score-variables           (remove-deep (:score-variables parsed-config) [:display])
-        conditional-score-outputs (:conditional-score-outputs parsed-config)]
+        conditional-score-outputs (remove-deep (:conditional-score-outputs parsed-config)
+                                               [:notification])]
     (spit
      "config.json"
      (json/generate-string
-      {:arbre-de-decision   (map
+      {:questions           (map
                              (fn [n] (select-keys n [:node :text :choices]))
                              (remove #(= (:home-page %) true) tree))
        :variables           score-variables
