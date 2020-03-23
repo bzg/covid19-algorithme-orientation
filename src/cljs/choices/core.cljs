@@ -174,8 +174,10 @@
      (for [s row-score]
        ^{:key (random-uuid)}
        [:div.tile.is-parent
-        [:div.tile.is-child.box
-         (str (:display (val s)) ": " (:value (val s)))]])]))
+        (let [v     (val s)
+              value (:value v)]
+          [:div.tile.is-child.box
+           (str (:display v) ": " value)])])]))
 
 (defn score-top-result [scores]
   (let [final-scores  (sort-map-by-score-values scores)
