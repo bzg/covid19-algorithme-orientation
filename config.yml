@@ -235,7 +235,7 @@ conditional-score-outputs:
 # Mandatory configuration option
 # FIXME: complete documentation
 tree:
-  - name:       "0"
+  - node:       "0"
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
@@ -245,7 +245,7 @@ tree:
       goto:   "1.1"
       color:  "is-info"
 
-  - name:       "1.1"
+  - node:       "1.1"
     progress:   "[1 24]"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
     start-page: true
@@ -266,7 +266,7 @@ tree:
         fievre:
           value: 1
 
-  - name:       "1.1.1"
+  - node:       "1.1.1"
     progress:   "[2 25]"
     text:       "Quelle est votre température ?"
     choices:
@@ -292,7 +292,7 @@ tree:
       goto:    "1.2"
       color:   "is-danger"
 
-  - name:    "1.2"
+  - node:    "1.2"
     progress:   "[3 24]"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
     choices:
@@ -306,7 +306,7 @@ tree:
       goto:    "1.3"
       color:   "is-success"
 
-  - name:      "1.3"
+  - node:      "1.3"
     progress:   "[4 24]"
     text:      "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
     choices:
@@ -317,7 +317,7 @@ tree:
       goto:    "1.4"
       color:   "is-success"
 
-  - name:    "1.4"
+  - node:    "1.4"
     progress:   "[5 24]"
     text:    "Avez-vous un mal de gorge apparu ces derniers jours ?"
     choices:
@@ -331,7 +331,7 @@ tree:
       goto:    "1.5"
       color:   "is-success"
 
-  - name:    "1.5"
+  - node:    "1.5"
     progress:   "[6 24]"
     text:    "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
     choices:
@@ -345,7 +345,7 @@ tree:
       goto:    "1.6"
       color:   "is-success"
 
-  - name:    "1.6"
+  - node:    "1.6"
     progress:   "[7 24]"
     text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
     choices:
@@ -356,7 +356,7 @@ tree:
       goto:    "1.7"
       color:   "is-success"
 
-  - name:    "1.6.1"
+  - node:    "1.6.1"
     progress:   "[8 24]"
     text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
     choices:
@@ -370,7 +370,7 @@ tree:
       goto:    "1.7"
       color:   "is-warning"
 
-  - name:    "1.7"
+  - node:    "1.7"
     progress:   "[9 24]"
     text:    "Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ?"
     choices:
@@ -384,7 +384,7 @@ tree:
       goto:    "1.8"
       color:   "is-success"
 
-  - name:    "1.8"
+  - node:    "1.8"
     progress:   "[10 24]"
     text:    "Êtes-vous essoufflé lorsque vous parlez ou faites un petit effort ?"
     choices:
@@ -398,7 +398,7 @@ tree:
       goto:    "2.1"
       color:   "is-success"
 
-  - name:    "2.1"
+  - node:    "2.1"
     progress:   "[11 24]"
     text:    "Quel est votre âge ?"
     choices:
@@ -426,7 +426,7 @@ tree:
         plus50ans:
           value: 1
 
-  - name:    "2.2"
+  - node:    "2.2"
     progress:   "[12 24]"
     text:    "Quel est votre poids en kilogrammes ?"
     choices:
@@ -467,7 +467,7 @@ tree:
         poids:
           value: 110
 
-  - name:    "2.3"
+  - node:    "2.3"
     progress:   "[13 24]"
     text:    "Quelle est votre taille en mètre ?"
     choices:
@@ -508,7 +508,7 @@ tree:
         taille:
           value: 1.90
 
-  - name:    "2.4"
+  - node:    "2.4"
     progress:   "[14 24]"
     text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
     choices:
@@ -528,7 +528,7 @@ tree:
         facteur-pronostique:
           value: 1
 
-  - name:    "2.5"
+  - node:    "2.5"
     progress:   "[15 24]"
     text:    "Êtes-vous diabétique ?"
     choices:
@@ -542,7 +542,7 @@ tree:
       goto:    "2.6"
       color:   "is-success"
 
-  - name:    "2.6"
+  - node:    "2.6"
     progress:   "[16 24]"
     text:    "Avez-vous ou avez-vous eu un cancer ?"
     choices:
@@ -556,7 +556,7 @@ tree:
       goto:    "2.7"
       color:   "is-success"
 
-  - name:    "2.7"
+  - node:    "2.7"
     progress:   "[17 24]"
     text:    "Avez-vous une sensation générale de malaise ?"
     choices:
@@ -570,7 +570,7 @@ tree:
       goto:    "2.8"
       color:   "is-success"
 
-  - name:    "2.8"
+  - node:    "2.8"
     progress:   "[18 24]"
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
     choices:
@@ -584,7 +584,7 @@ tree:
       goto:    "2.9"
       color:   "is-success"
 
-  - name:    "2.9"
+  - node:    "2.9"
     progress:   "[19 24]"
     text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
     choices:
@@ -598,7 +598,7 @@ tree:
       goto:    "2.10"
       color:   "is-success"
 
-  - name:    "2.10"
+  - node:    "2.10"
     progress:   "[20 24]"
     text:    "Avez-vous une maladie chronique du foie ?"
     choices:
@@ -612,7 +612,7 @@ tree:
       goto:    "2.11"
       color:   "is-success"
 
-  - name:    "2.11"
+  - node:    "2.11"
     progress:   "[21 24]"
     text:    "Êtes-vous enceinte ?"
     choices:
@@ -629,7 +629,7 @@ tree:
       goto:    "2.12"
       color:   "is-info"
 
-  - name:    "2.12"
+  - node:    "2.12"
     progress:   "[22 24]"
     text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
     choices:
@@ -649,7 +649,7 @@ tree:
         facteur-pronostique:
           value: 1
 
-  - name:    "2.13"
+  - node:    "2.13"
     progress:   "[23 24]"
     text:    "Prenez-vous un traitement immunosuppresseur ?"
     help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
@@ -670,11 +670,11 @@ tree:
         facteur-pronostique:
           value: 1
 
-  - name: "fin-moins15ans"
+  - node: "fin-moins15ans"
     text: "Vous avez moins de quinze ans."
     done: true
 
-  - name: "fin"
+  - node: "fin"
     text: "Merci d'avoir parcouru l'algorithme d'orientation COVID-19"
     help: "Algorithme potentiellement modifiable après étude de cas et veille scientifique."
     done: true

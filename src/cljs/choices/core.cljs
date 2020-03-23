@@ -34,10 +34,10 @@
 
 ;; home-page and start-page
 (def home-page
-  (first (remove nil? (map #(when (:home-page %) (keyword (:name %)))
+  (first (remove nil? (map #(when (:home-page %) (keyword (:node %)))
                            (:tree config)))))
 (def start-page
-  (first (remove nil? (map #(when (:start-page %) (keyword (:name %)))
+  (first (remove nil? (map #(when (:start-page %) (keyword (:node %)))
                            (:tree config)))))
 
 (defn md-to-string [^string s]
@@ -94,7 +94,7 @@
 
 ;; Create routes
 (def routes
-  (into [] (for [n (:tree config)] [(:name n) (keyword (:name n))])))
+  (into [] (for [n (:tree config)] [(:node n) (keyword (:node n))])))
 
 ;; Define multimethod for later use in `create-page-contents`
 (defmulti page-contents identity)
@@ -285,9 +285,9 @@
         "📩"]))])
 
 ;; Create all the pages
-(defn create-page-contents [{:keys [done name text help no-summary
+(defn create-page-contents [{:keys [done node text help no-summary
                                     progress force-help choices]}]
-  (defmethod page-contents (keyword name) []
+  (defmethod page-contents (keyword node) []
     [:div
      (when (not-empty (:header config))
        (header))
