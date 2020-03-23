@@ -111,9 +111,9 @@ score-variables:
 # (3) anything else is a "condition", which lists variables and their minimal
 # values for the condition to be met.
 conditional-score-outputs:
-  pronostic-gravite-symptoms:
+  moins-15-ans:
     priority: 1
-    message: "Cette application n'est pas l'instant pas adaptée aux personnes de moins de 15 ans."
+    message: "Cette application n'est pas pour l'instant pas adaptée aux personnes de moins de 15 ans."
     notification: "is-danger"
     condition-1:
       moins15ans: 1
