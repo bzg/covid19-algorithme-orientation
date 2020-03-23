@@ -8,6 +8,7 @@ ui-strings:
   # mail-to-message:      "Send by email"
   # mail-subject:         "Results"
   # mail-body:            "Hi,\n%s\nThanks."
+  # mail-body-default:    "Here is my feedback:\n"
   # redo:                 "Redo"
   # ok:                   "Okay"
   contact-intro:        "Vos remarques : bastien.guerry@data.gouv.fr"
@@ -113,13 +114,13 @@ score-variables:
 conditional-score-outputs:
   moins-15-ans:
     priority: 1
-    message: "Cette application n'est pas pour l'instant pas adaptée aux personnes de moins de 15 ans."
+    message: "Cette application n'est pas pour l'instant pas adaptée aux personnes de moins de 15 ans.<br/>Prenez contact avec votre médecin généraliste au moindre doute. En cas d’urgence, appeler le [15](tel:15)."
     notification: "is-danger"
     condition-1:
       moins15ans: 1
   pronostic-gravite-symptoms:
     priority: 2
-    message: "Appel du 15"
+    message: "Appelez le [15](tel:15)"
     notification: "is-danger"
     condition-1:
       facteurs-gravite-majeurs: 1
@@ -402,7 +403,6 @@ tree:
     text:    "Quel est votre âge ?"
     choices:
     - answer:  "Moins de 15 ans"
-      summary: "Prenez contact avec votre médecin généraliste au moindre doute. En cas d’urgence, appeler le [15](tel:15)."
       goto:    "fin-moins15ans"
       score:
         moins15ans:
