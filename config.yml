@@ -289,7 +289,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "Ce site a pour but d'exposer l'algorithme d'orientation COVID-19"
+    help:       "Ce site est un site de **démonstration** pour exposer l'algorithme d'orientation COVID-19."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"
@@ -482,8 +482,9 @@ tree:
   - node:    "2.2"
     progress:   "[12 23]"
     text:    "Quel est votre poids en kilogrammes ?"
+    help: "**Note aux développeurs:** demandez la saisie du poids exact."
     choices:
-    - answer:  "Moins de 60"
+    - answer:  "<60"
       goto:    "2.3"
       color:   "is-info"
       score:
@@ -513,7 +514,7 @@ tree:
       score:
         poids:
           value: 100
-    - answer:  "Plus de 100"
+    - answer:  ">100"
       goto:    "2.3"
       color:   "is-info"
       score:
@@ -523,8 +524,9 @@ tree:
   - node:    "2.3"
     progress:   "[13 23]"
     text:    "Quelle est votre taille en mètres ?"
+    help: "**Note aux développeurs:** demandez la saisie de la taille exacte."
     choices:
-    - answer:  "Moins de 1m50"
+    - answer:  "<1m50"
       goto:    "2.4"
       color:   "is-info"
       score:
@@ -554,7 +556,7 @@ tree:
       score:
         taille:
           value: 1.80
-    - answer:  "Plus de 1m90"
+    - answer:  ">1m90"
       goto:    "2.4"
       color:   "is-info"
       score:
@@ -601,7 +603,7 @@ tree:
     choices:
     - answer:  "Oui"
       goto:    "2.7"
-      color:   "is-danger"
+      color:   "is-warning"
       score:
         facteurs-pronostique:
           value: 1

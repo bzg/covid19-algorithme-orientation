@@ -206,15 +206,17 @@
     (doseq [c0   @conditions
             :let [c  (dissoc c0 :msg :not :pri)
                   ks (keys c)]]
-      (when (all-vals-compare? >= (select-keys scores ks) c)
+      (when (all-vals-compare?
+             (fn [a b] (if (zero? a) (= a b) (>= a b)))
+             (select-keys scores ks) c)
         (swap! matching conj c0)))
     (let [match (first (sort-by :pri @matching))]
       (reset! output (:msg match))
       (reset! notify (:not match)))
     [:div.tile.is-parent
-     [:p {:class (str "tile is-child "
-                      (or (not-empty @notify) "is-info")
-                      " notification subtitle")}
+     [:p.is-size-4 {:class (str "tile is-child "
+                                (or (not-empty @notify) "is-info")
+                                " notification subtitle")}
       (md-to-string @output)]]))
 
 (defn scores-result [scores]
