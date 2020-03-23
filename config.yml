@@ -716,6 +716,6 @@ tree:
     done: true
 
   - node: "fin"
-    text: "Merci d'avoir parcouru l'algorithme d'orientation COVID-19"
-    help: "Algorithme potentiellement modifiable après étude de cas et veille scientifique."
+    text: "Merci d'avoir utilisé l'algorithme d'orientation COVID-19"
+    help: "Cet algorithme est potentiellement modifiable après étude de cas et veille scientifique."
     done: true
