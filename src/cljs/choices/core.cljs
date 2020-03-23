@@ -117,6 +117,22 @@
          [:h2.subtitle
           (md-to-string (:subtitle (:header config)))]])]]]]) 
 
+(defn modal [show-modal]
+  [:div {:class (str "modal " (when @show-modal "is-active"))}
+   [:div.modal-background]
+   [:div.modal-content
+    [:div.box
+     [:div.title (i18n [:attention])]
+     [:p @modal-message]
+     [:br]
+     [:div.has-text-centered
+      [:a.button.is-medium.is-warning
+       {:on-click #(reset! show-modal false)}
+       (i18n [:ok])]]]]
+   [:button.modal-close.is-large
+    {:aria-label "close"
+     :on-click   #(reset! show-modal false)}]])
+
 (defn footer []
   [:section.footer
    [:div.content.has-text-centered
@@ -176,6 +192,69 @@
                       " notification subtitle")}
       @output]]))
 
+(defn scores-result [scores]
+  (let [imc-val (imc (:value (:poids scores))
+                     (:value (:taille scores)))
+        imc-map {:imc {:display "IMC" :value imc-val}}
+        scores  (merge scores imc-map)
+        scores  (update-in scores [:facteur-pronostique :value]
+                           #(if (> imc-val 30) (inc %) %))]
+    [:div
+     (when (:display-score config)
+       [:div.is-6
+        ;; Optional, mainly for debugging purpose
+        (when (:display-score-details config)
+          (score-details scores))
+        ;; Only when no score-results
+        (when (and (not conditional-score-outputs)
+                   (:display-score-top-result config))
+          (score-top-result scores))
+        ;; Only when score-results is defined
+        (when conditional-score-outputs
+          (conditional-score-output scores))])
+     [:br]]))
+
+(defn summary [history]
+  (for [o (if @show-summary-answers
+            (reverse (:answers (peek @history)))
+            (reverse (:questions (peek @history))))]
+    ^{:key (pr-str o)}
+    (cond
+      (and (string? o) (not-empty o))
+      [:div.tile.is-parent
+       [:div.title.is-child.notification
+        [:div.subtitle (md-to-string o)]]]
+      (not-empty (butlast o))
+      [:div.tile.is-parent.is-horizontal.notification
+       (for [n (butlast o)]
+         ^{:key n}
+         (when (not-empty n)
+           [:div.tile.is-child.subtitle (md-to-string n)]))
+       (when-let [a (not-empty (peek o))]
+         [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
+          (md-to-string a)])])))
+
+(defn restart-button []
+  [:div.level-right
+   [:a.button.level-item
+    {:style bigger
+     :title (i18n [:redo])
+     :href  (rfe/href start-page)} "🔃"]
+   (when (not-empty (:mail-to config))
+     [:a.button.level-item
+      {:style bigger
+       :title (i18n [:mail-to-message])
+       :href  (str "mailto:" (:mail-to config)
+                   "?subject=" (i18n [:mail-subject])
+                   "&body="
+                   (string/replace
+                    (fmt/format (i18n [:mail-body])
+                                (string/join "%0D%0A%0D%0A"
+                                             (map strip-html-tags
+                                                  (flatten (:answers (peek @history))))))
+                    #"[\n\t]" "%0D%0A%0D%0A"))}
+      "📩"])])
+
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
                                     progress force-help choices]}]
@@ -184,20 +263,7 @@
      (when (not-empty (:header config))
        (header))
      [:div.container
-      [:div {:class (str "modal " (when @show-modal "is-active"))}
-       [:div.modal-background]
-       [:div.modal-content
-        [:div.box
-         [:div.title (i18n [:attention])]
-         [:p @modal-message]
-         [:br]
-         [:div.has-text-centered
-          [:a.button.is-medium.is-warning
-           {:on-click #(reset! show-modal false)}
-           (i18n [:ok])]]]]
-       [:button.modal-close.is-large
-        {:aria-label "close"
-         :on-click   #(reset! show-modal false)}]]
+      (modal show-modal)
       [:div.section
        (if-let [[v m] (cljs.reader/read-string progress)]
          [:div [:progress.progress.is-primary {:value v :max m}] [:br]])
@@ -260,66 +326,12 @@
            [:div.tile.is-parent.is-vertical.is-12
             ;; Display score
             (if-let [scores (:score (peek @history))]
-              (let [imc-val (imc (:value (:poids scores))
-                                 (:value (:taille scores)))
-                    imc-map {:imc {:display "IMC" :value imc-val}}
-                    scores  (merge scores imc-map)
-                    scores  (update-in scores [:facteur-pronostique :value]
-                                       #(if (> imc-val 30) (inc %) %))]
-                [:div
-                 (when (:display-score config)
-                   [:div.is-6
-                    ;; Optional, mainly for debugging purpose
-                    (when (:display-score-details config)
-                      (score-details scores))
-                    ;; Only when no score-results
-                    (when (and (not conditional-score-outputs)
-                               (:display-score-top-result config))
-                      (score-top-result scores))
-                    ;; Only when score-results is defined
-                    (when conditional-score-outputs
-                      (conditional-score-output scores))])
-                 [:br]])
+              (scores-result scores)
               [:br])
             ;; Display answers
             (when  show-summary
-              (for [o (if @show-summary-answers
-                        (reverse (:answers (peek @history)))
-                        (reverse (:questions (peek @history))))]
-                ^{:key (pr-str o)}
-                (cond
-                  (and (string? o) (not-empty o))
-                  [:div.tile.is-parent
-                   [:div.title.is-child.notification
-                    [:div.subtitle (md-to-string o)]]]
-                  (not-empty (butlast o))
-                  [:div.tile.is-parent.is-horizontal.notification
-                   (for [n (butlast o)]
-                     ^{:key n}
-                     (when (not-empty n)
-                       [:div.tile.is-child.subtitle (md-to-string n)]))
-                   (when-let [a (not-empty (peek o))]
-                     [:div.tile.is-child.subtitle.has-text-centered.has-text-weight-bold.is-size-4
-                      (md-to-string a)])])))]]
-          [:div.level-right
-           [:a.button.level-item
-            {:style bigger
-             :title (i18n [:redo])
-             :href  (rfe/href start-page)} "🔃"]
-           (when (not-empty (:mail-to config))
-             [:a.button.level-item
-              {:style bigger
-               :title (i18n [:mail-to-message])
-               :href  (str "mailto:" (:mail-to config)
-                           "?subject=" (i18n [:mail-subject])
-                           "&body="
-                           (string/replace
-                            (fmt/format (i18n [:mail-body])
-                                        (string/join "%0D%0A%0D%0A"
-                                                     (map strip-html-tags
-                                                          (flatten (:answers (peek @history))))))
-                            #"[\n\t]" "%0D%0A%0D%0A"))}
-              "📩"])]])]]
+              (summary history))]]
+          (restart-button)])]]
      (when (not-empty (:footer config))
        (footer))]))
 
