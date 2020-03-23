@@ -145,24 +145,36 @@
          [:p.tile.is-child.box.is-warning.notification
           (:as-top-result-display s)]]))))
 
+(defn all-vals-compare? [f m1 m2]
+  (every? true? (for [[k v] m1] (f v (k m2)))))
+
 (defn conditional-score-output [scores]
-  (let [scores (apply merge (map (fn [[k v]] {k (:value v)}) scores))
-        output (atom "")
-        notify (atom "")]
-    (do (doseq [hypothese conditional-score-outputs
-                :let      [cas (last hypothese)
-                           notification (:notification cas)
-                           message (:message cas)
-                           conditions (dissoc cas :message :notification)]]
-          (doseq [cnd conditions :let [c (val cnd)]]
-            (when (every? true? (map (fn [[k v]] (>= (k scores) v)) c))
-              (reset! output message)
-              (reset! notify notification))))
-        [:div.tile.is-parent
-         [:p {:class (str "tile is-child "
-                          (or (not-empty @notify) "is-info")
-                          " notification subtitle")}
-          @output]])))
+  (let [scores     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
+        conditions (atom nil)
+        matching   (atom nil)
+        output     (atom "")
+        notify     (atom "")]
+    (doseq [[_ cas] conditional-score-outputs
+            :let    [not (:notification cas)
+                     msg (:message cas)
+                     pri (:priority cas)
+                     cds (dissoc cas :message :notification :priority)]]
+      (doseq [condition cds]
+        (swap! conditions conj
+               (merge (val condition) {:msg msg :not not :pri pri}))))
+    (doseq [c0   @conditions
+            :let [c  (dissoc c0 :msg :not :pri)
+                  ks (keys c)]]
+      (when (all-vals-compare? >= (select-keys scores ks) c)
+        (swap! matching conj c0)))
+    (let [match (first (sort-by :pri @matching))]
+      (reset! output (:msg match))
+      (reset! notify (:not match)))
+    [:div.tile.is-parent
+     [:p {:class (str "tile is-child "
+                      (or (not-empty @notify) "is-info")
+                      " notification subtitle")}
+      @output]]))
 
 ;; Create all the pages
 (defn create-page-contents [{:keys [done name text help no-summary
