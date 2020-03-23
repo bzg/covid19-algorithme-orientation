@@ -18,6 +18,7 @@
   org.clojure/clojurescript       {:mvn/version "1.10.597"}
   org.clojure/core.rrb-vector     {:mvn/version "0.1.1"}
   org.clojure/math.numeric-tower  {:mvn/version "0.0.4"}
+  org.clojure/test.check          {:mvn/version "1.0.0"}
   org.flatland/ordered            {:mvn/version "1.5.7"}
   reagent                         {:mvn/version "0.10.0"}
   reagent-utils                   {:mvn/version "0.3.3"}
