@@ -142,7 +142,7 @@
     [:h1.level-item (md-to-string text)]]
    (if-not done
      ;; Not done: display the help button
-     (when (and (or force-help @show-help-global)
+     (when (and (not force-help) @show-help-global
                 (not-empty help))
        [:div.level-right
         [:a.level-item.button.is-text
