@@ -86,8 +86,11 @@
                               [(:value (get m k1)) k1])))
         m))
 
-(defn imc [^number p ^number t]
+(defn compute-imc [^number p ^number t]
   (.toFixed (/ p (Math/pow t 2)) 2))
+
+(defn all-vals-compare? [f m1 m2]
+  (every? true? (for [[k v] m1] (f v (k m2)))))
 
 ;; Create routes
 (def routes
@@ -133,6 +136,29 @@
     {:aria-label "close"
      :on-click   #(reset! show-modal false)}]])
 
+(defn help-clipboard [done text force-help help]
+  [:div.level
+   [:div.level-left
+    [:h1.level-item (md-to-string text)]]
+   (if-not done
+     ;; Not done: display the help button
+     (when (and (or force-help @show-help-global)
+                (not-empty help))
+       [:div.level-right
+        [:a.level-item.button.is-text
+         {:style    bigger
+          :title    (i18n [:display-help])
+          :on-click #(swap! show-help not)}
+         "💬"]])
+     ;; Done: display the copy-to-clipboard button
+     [:div.level-right
+      [:div.level-item
+       [:a.button.is-text
+        {:style    bigger
+         :title    (i18n [:toggle-summary-style])
+         :on-click #(swap! show-summary-answers not)} "🔗"]
+       [clipboard-button "📋" "#copy-this"]]])])
+
 (defn footer []
   [:section.footer
    [:div.content.has-text-centered
@@ -160,9 +186,6 @@
         [:div.tile.is-parent.is-6
          [:p.tile.is-child.box.is-warning.notification
           (:as-top-result-display s)]]))))
-
-(defn all-vals-compare? [f m1 m2]
-  (every? true? (for [[k v] m1] (f v (k m2)))))
 
 (defn conditional-score-output [scores]
   (let [scores     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
@@ -193,8 +216,8 @@
       @output]]))
 
 (defn scores-result [scores]
-  (let [imc-val (imc (:value (:poids scores))
-                     (:value (:taille scores)))
+  (let [imc-val (compute-imc (:value (:poids scores))
+                             (:value (:taille scores)))
         imc-map {:imc {:display "IMC" :value imc-val}}
         scores  (merge scores imc-map)
         scores  (update-in scores [:facteur-pronostique :value]
@@ -216,8 +239,8 @@
 
 (defn summary [history]
   (for [o (if @show-summary-answers
-            (reverse (:answers (peek @history)))
-            (reverse (:questions (peek @history))))]
+            (remove nil? (reverse (:answers (peek @history))))
+            (remove nil? (reverse (:questions (peek @history)))))]
     ^{:key (pr-str o)}
     (cond
       (and (string? o) (not-empty o))
@@ -227,7 +250,7 @@
       (not-empty (butlast o))
       [:div.tile.is-parent.is-horizontal.notification
        (for [n (butlast o)]
-         ^{:key n}
+         ^{:key (pr-str n)}
          (when (not-empty n)
            [:div.tile.is-child.subtitle (md-to-string n)]))
        (when-let [a (not-empty (peek o))]
@@ -267,27 +290,7 @@
       [:div.section
        (if-let [[v m] (cljs.reader/read-string progress)]
          [:div [:progress.progress.is-primary {:value v :max m}] [:br]])
-       [:div.level
-        [:div.level-left
-         [:h1.level-item (md-to-string text)]]
-        (if-not done
-          ;; Not done: display the help button
-          (when (and (or force-help @show-help-global)
-                     (not-empty help))
-            [:div.level-right
-             [:a.level-item.button.is-text
-              {:style    bigger
-               :title    (i18n [:display-help])
-               :on-click #(swap! show-help not)}
-              "💬"]])
-          ;; Done: display the copy-to-clipboard button
-          [:div.level-right
-           [:div.level-item
-            [:a.button.is-text
-             {:style    bigger
-              :title    (i18n [:toggle-summary-style])
-              :on-click #(swap! show-summary-answers not)} "🔗"]
-            [clipboard-button "📋" "#copy-this"]]])]
+       (help-clipboard done text force-help help)
        (when (and (or force-help @show-help) (not-empty help))
          [:div.notification.is-size-5 (md-to-string help)])
        (if-not done
