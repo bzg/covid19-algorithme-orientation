@@ -245,6 +245,7 @@
     (cond
       (and (string? o) (not-empty o))
       [:div.tile.is-parent
+       {:key "summary"}
        [:div.title.is-child.notification
         [:div.subtitle (md-to-string o)]]]
       (not-empty (butlast o))
