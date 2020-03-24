@@ -24,10 +24,10 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
   - Vous =DEVEZ= notamment implémenter la saisie du code postal.
   - Vous =DEVEZ= implémenter la saisie exacte du poids et de la taille.
 - Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][json]]).
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les conclusions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][json]]).
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][l'arbre de décision officiel]].
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][la formule standard pour le calcul de l'indice de masse corporelle]].
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#questionnaire][les questions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#conclusions-possibles][les conclusions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#arbre-de-décision][l'arbre de décision officiel]].
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#formules][la formule standard pour le calcul de l'indice de masse corporelle]].
 
 * Conseils pour l'implémentation de l'algorithme
 
