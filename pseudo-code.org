@@ -84,47 +84,35 @@ sur les symptômes.
 
 * Arbre de décision
 
-: SI moins de 15 ans
-:    FIN1
-: 
-: SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
-:    SI 0 facteur pronostique
-:       SI 0 facteur de gravité mineur
-:       	 SI moins de 50 ans
-: 	    FIN2
-: 	    SINON FIN3
-: 	 SINON FIN3
-: 
-:    SI 1 OU plus facteurs pronostique
-:       SI 0 OU 1 facteur de gravité mineur
-:       	 FIN3
-:       SI au moins 2 facteurs de gravité mineurs
-:       	 FIN4
-: 
-:    SI un facteur de gravité majeur
-:       FIN5
-: 
-: SI fièvre ET toux
-:    SI 0 facteur pronostique
-:       SI 0 OU 1 facteur de gravité mineur
-:       	 FIN6
-:    SI 1 OU plus facteur pronostique
-:       SI 0 OU 1 facteur de gravité
-:       	 FIN6
-:       SI au moins 2 facteurs de gravité mineurs
-:       	 FIN4
-: 
-: SI 1 OU plus facteur de gravité majeur
-:    FIN5
-: 
-: SI toux OU mal de gorge OU anosmie
-:    SI 0 facteur de gravité mineur
-:       FIN7
-:    SI au moins un facteur de gravité mineur OU un facteur pronostique
-:       FIN8
-:    
-: SI NI toux NI mal de gorge NI anosmie NI fièvre
-:    FIN9
+:  1 SI moins de 15 ans => FIN1
+:  2
+:  3 SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+:  4    SI 0 facteur pronostique
+:  5       SI 0 facteur de gravité mineur
+:  6          SI moins de 50 ans => FIN2
+:  7          SINON => FIN3
+:  8       SINON => FIN3
+:  9
+: 10    SI 1 OU plus facteurs pronostique
+: 11       SI 0 OU 1 facteur de gravité mineur => FIN3
+: 12       SI au moins 2 facteurs de gravité mineurs => FIN4
+: 13
+: 14    SI un facteur de gravité majeur => FIN5
+: 15
+: 16  SI fièvre ET toux
+: 17     SI 0 facteur pronostique
+: 18        SI 0 OU 1 facteur de gravité mineurs => FIN6
+: 19     SI 1 OU plus facteur pronostique
+: 20        SI 0 OU 1 facteur de gravité mineurs => FIN6
+: 21        SI au moins 2 facteurs de gravité mineurs => FIN4
+: 22
+: 23  SI 1 OU plus facteur de gravité majeur => FIN5
+: 24
+: 25  SI toux OU mal de gorge OU anosmie
+: 26     SI 0 facteur de gravité mineur => FIN7
+: 27     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
+: 28
+: 29  SI NI toux NI mal de gorge NI anosmie NI fièvre => FIN9
 
 * Conclusions possibles
 
