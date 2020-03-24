@@ -3,7 +3,7 @@
 * Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
-le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
+le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
 
 * Prérequis pour être référencé par le ministère de la santé
 
@@ -12,14 +12,14 @@ le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/c
   - Vous =DEVEZ= notamment implémenter la saisie du code postal.
   - Vous =DEVEZ= implémenter la saisie exacte du poids et de la taille.
 - Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][json]]).
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les conclusions officielles]] ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les conclusions officielles]] ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][json]]).
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org][l'arbre de décision officiel]].
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org][la formule standard pour le calcul de l'indice de masse corporelle]].
 
 * Conseils pour l'implémentation
 
-- Vous =POUVEZ= utiliser les noms de variables officiels ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/variables.json][json]]).
+- Vous =POUVEZ= utiliser les noms de variables officiels ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/variables.json][json]]).
 - Vous =POUVEZ= utiliser des /codes couleur pour les réponses/.
 - Vous =POUVEZ= proposer des [[*Tests à faire sur l'implémentation de votre algorithme][tests]].
 
@@ -32,6 +32,6 @@ le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/c
 * Exemple de site interactif
 
 Un exemple de site interactif permettant de tester l'algorithme
-d'orientation COVID19 est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
+d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
 
 * COMMENT Exemples d'implémentation dans des langages de programmation
