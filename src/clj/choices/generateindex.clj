@@ -23,8 +23,8 @@
    [:meta {:property "og:image", :content (:image-url website)}]
    [:meta {:name "twitter:card", :content "summary_large_image"}]
    [:meta {:name "twitter:title", :content (:index-title website)}]
-   [:meta {:name "twitter:site", :content "@Etalab"}]
-   [:meta {:name "twitter:creator", :content "@Etalab"}]
+   [:meta {:name "twitter:site", :content ""}]
+   [:meta {:name "twitter:creator", :content ""}]
    (h/include-css "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")
    (h/include-css "/css/style.css")
    ;; [:script {:type "text/javascript" :async true} "var _paq = window._paq || [];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u=\"//stats.data.gouv.fr/\";_paq.push(['setTrackerUrl', u+'piwik.php']);_paq.push(['setSiteId', '???']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();"]
@@ -36,13 +36,13 @@
    [:div.content
     [:div.columns
      [:div.column.is-offset-2.is-4
-      [:img {:src "/images/etalab.svg" :width "240px"}]
+      ;; [:img {:src "/images/???.svg" :width "240px"}]
       [:ul.footer__social
-       [:li [:a {:href "https://twitter.com/etalab", :title "Twitter"}
+       [:li [:a {:href "https://twitter.com/???", :title "Twitter"}
              [:svg.icon.icon-twitter [:use {:xlink:href "#twitter"}]]]]
-       [:li [:a {:href "https://github.com/etalab", :title "Github"}
+       [:li [:a {:href "https://github.com/???", :title "Github"}
              [:svg.icon.icon-github [:use {:xlink:href "#github"}]]]]
-       [:li [:a {:href "https://www.facebook.com/etalab", :title "Facebook"}
+       [:li [:a {:href "https://www.facebook.com/???", :title "Facebook"}
              [:svg.icon.icon-fb [:use {:xlink:href "#facebook"}]]]]
        [:li [:a {:href (str "mailto:" (:email website)), :title "Contacter par email"}
              [:svg.icon.icon-mail [:use {:xlink:href "#envelope"}]]]]]]
@@ -64,12 +64,13 @@
       (icons)
       [:nav.navbar {:role "navigation" :aria-label "main navigation"}
        [:div.navbar-brand
-        [:a.navbar-item {:href "https://sill.etalab.gouv.fr"}
+        [:a.navbar-item {:href (:url website)}
          [:img {:src    "/images/logo-marianne.svg"
                 :alt    "Logo Marianne"
                 :width  "120"
                 :height "100"}
-          "sill.etalab.gouv.fr (alpha)"]]]
+          (:url website) ;;FIXME
+          ]]]
        [:div.navbar-end
         [:div.navbar-menu
          [:a.navbar-item
