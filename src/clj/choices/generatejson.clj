@@ -20,14 +20,17 @@
         conditional-score-outputs
         (remove-deep (:conditional-score-outputs parsed-config)
                      [:notification])]
-    (spit
-     "docs/config.json"
-     (json/generate-string
-      {:questions    (map
-                      (fn [n] (select-keys n [:node :text :choices]))
-                      (remove #(= (:home-page %) true) tree))
-       :variables    score-variables
-       :alternatives conditional-score-outputs}))
+    (spit "docs/json/variables.json"
+          (json/generate-string
+           {:variables score-variables}))
+    (spit "docs/json/questions.json"
+          (json/generate-string
+           {:questions (map
+                        (fn [n] (select-keys n [:node :text :choices]))
+                        (remove #(= (:home-page %) true) tree))}))
+    (spit "docs/json/conclusions.json"
+          (json/generate-string
+           {:conclusions conditional-score-outputs}))
     (println "File config.json generated")))
 
 ;; (-main)
