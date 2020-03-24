@@ -3,7 +3,7 @@
 * Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
-le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
+le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
 
 * Questionnaire
 
@@ -130,3 +130,6 @@ sur les symptômes.
 - FIN8 :: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.
 - FIN9 :: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.
 
+* Implémentation
+
+Vous trouvez les recommandations d'implémentation sur [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org][cette page]].

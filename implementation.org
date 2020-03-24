@@ -5,6 +5,10 @@
 Le document officiel de l'algorithme d'orientation COVID19 publié par
 le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
 
+* Pseudo code
+
+Une version lisible en pseudo code est [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org][proposée ici]].
+
 * Prérequis pour être référencé par le ministère de la santé
 
 - Vous =DEVEZ= publier le code source de votre implémentation.
