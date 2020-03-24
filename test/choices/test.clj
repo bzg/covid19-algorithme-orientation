@@ -1,7 +1,6 @@
 (ns choices.test
   (:require
    [clojure.test :refer :all]
-   [clojure.test.check.generators :as gen]
    [clojure.spec.alpha :as s]
    [choices.macros :refer [inline-yaml-resource]]))
 
@@ -89,4 +88,3 @@
 (deftest tree
   (testing "Testing the options tree format"
     (is (s/valid? ::tree (:tree config)))))
-
