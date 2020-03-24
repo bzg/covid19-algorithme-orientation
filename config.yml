@@ -54,11 +54,11 @@ display-score-top-result: true
 # (3) "as-top-result-display": what to display when the variable is
 #      the one with the highest score when the user is done.
 score-variables:
-  moins15ans:
+  moins-de-15-ans:
     doc: "Si la personne a moins de 15 ans."
     display: "Moins de 15 ans"
     value: 0
-  plus50ans:
+  plus-de-50-ans:
     doc: "Si la personne a plus de 50 ans."
     display: "Plus de 50 ans"
     value: 0
@@ -113,12 +113,12 @@ score-variables:
 # values for the condition to be met.
 conditional-score-outputs:
   # Patient de moins de 15 ans, court-circuiter le questionnaire.
-  moins-15-ans:
+  moins-de-15-ans:
     priority: 1
     message: "Cette application n'est pas pour l'instant pas adaptée aux personnes de moins de 15 ans.<br/>Prenez contact avec votre médecin généraliste au moindre doute. En cas d’urgence, appeler le [15](tel:15)."
     notification: "is-danger"
     condition-1:
-      moins15ans: 1
+      moins-de-15-ans: 1
   # Tout patient avec au moins un facteur de gravité majeur
   un-facteur-de-gravite-majeur:
     priority: 2
@@ -127,7 +127,7 @@ conditional-score-outputs:
     condition-1:
       facteurs-gravite-majeurs: 1
   # Tout patient avec un facteur pronostic ou plus et deux facteurs de gravite mineurs
-  symptomes-facteur-pronostique-deux-facteurs-gravite-mineurs:
+  symptomes-un-facteur-pronostique-deux-facteurs-gravite-mineurs:
     priority: 3
     message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Appelez le [15](tel:15).  Si vous n'arrivez pas à joindre un médecin, appelez le [15](tel:15).<br/>Si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire pendant plus de 24 heures apparaissent, appelez le [15](15)."
     notification: "is-danger"
@@ -160,10 +160,10 @@ conditional-score-outputs:
     notification: "is-warning"
     message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Appelez le [15](tel:15) si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire pendant plus de 24 heures apparaissent."
     condition-1:
-      plus50ans: 1
+      plus-de-50-ans: 1
       facteurs-gravite-mineurs: 0
     condition-2:
-      plus50ans: 1
+      plus-de-50-ans: 1
       facteurs-gravite-mineurs: 1
     condition-3:
       facteurs-pronostique: 1
@@ -200,22 +200,22 @@ conditional-score-outputs:
     condition-1:
       fievre: 1
       facteurs-gravite-mineurs: 0
-      plus50ans: 0
+      plus-de-50-ans: 0
     condition-2:
       toux: 1
       mal-de-gorge: 1
       facteurs-gravite-mineurs: 0
-      plus50ans: 0
+      plus-de-50-ans: 0
     condition-3:
       toux: 1
       anosmie: 1
       facteurs-gravite-mineurs: 0
-      plus50ans: 0
+      plus-de-50-ans: 0
     condition-4:
       fievre: 1
       diarrhees: 1
       facteurs-gravite-mineurs: 0
-      plus50ans: 0
+      plus-de-50-ans: 0
   un-symptome-avec-facteur-de-gravite-ou-pronostique:
     priority: 7
     notification: "is-warning"
@@ -456,9 +456,9 @@ tree:
     text:    "Quel est votre âge ?"
     choices:
     - answer:  "Moins de 15 ans"
-      goto:    "fin-moins15ans"
+      goto:    "fin-moins-de-15-ans"
       score:
-        moins15ans:
+        moins-de-15-ans:
           value: 1
       color:   "is-warning"
     - answer:  "Entre 15 et 50 ans"
@@ -466,7 +466,7 @@ tree:
       color:   "is-success"
     - answer:  "Entre 50 et 69 ans"
       score:
-        plus50ans:
+        plus-de-50-ans:
           value: 1
       goto:    "2.2"
       color:   "is-info"
@@ -476,7 +476,7 @@ tree:
       score:
         facteurs-pronostique:
           value: 1
-        plus50ans:
+        plus-de-50-ans:
           value: 1
 
   - node:    "2.2"
@@ -711,7 +711,7 @@ tree:
         facteurs-pronostique:
           value: 1
 
-  - node: "fin-moins15ans"
+  - node: "fin-moins-de-15-ans"
     text: "Vous avez moins de quinze ans."
     done: true
 
