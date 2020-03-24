@@ -2,7 +2,7 @@
 
 * Table des matières
 
-- [[*Document officiel][Document officiel]]
+- [[#document-officiel][Document officiel]]
 
 * Document officiel
 
