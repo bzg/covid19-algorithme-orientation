@@ -5,11 +5,26 @@
 Le document officiel de l'algorithme d'orientation COVID19 publié par
 le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
 
-* Exemple interactif
+* Prérequis pour être référencé par le ministère de la santé
+
+- Vous =DEVEZ= publier le code source de votre implémentation.
+- Vous =DEVEZ= mettre en forme les données collectées en suivant un schéma de données (TBD).
+  - Vous =DEVEZ= notamment implémenter la saisie du code postal.
+  - Vous =DEVEZ= implémenter la saisie exacte du poids et de la taille.
+- Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] (json).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les alternatives de conclusion officielles]] (json).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][l'arbre de décision officiel]].
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][la formule standard pour le calcul de l'indice de masse corporelle]].
+
+* Conseils pour l'implémentation
+
+- Vous =POUVEZ= proposer des /tests/.
+- Vous =POUVEZ= utiliser des /codes couleur pour les réponses/.
+
+* Exemple de site interactif
 
 Un exemple de site interactif permettant de tester l'algorithme
 d'orientation COVID19 est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
 
-* Exemples d'implémentation
-
-** En Clojure
+* COMMENT Exemples d'implémentation dans des langages de programmation
