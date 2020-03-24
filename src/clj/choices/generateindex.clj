@@ -26,7 +26,7 @@
    [:meta {:name "twitter:site", :content ""}]
    [:meta {:name "twitter:creator", :content ""}]
    (h/include-css "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")
-   (h/include-css "/css/style.css")
+   (h/include-css "css/style.css")
    ;; [:script {:type "text/javascript" :async true} "var _paq = window._paq || [];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u=\"//stats.data.gouv.fr/\";_paq.push(['setTrackerUrl', u+'piwik.php']);_paq.push(['setSiteId', '???']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();"]
    ;; [:noscript [:p [:img {:src "//stats.data.gouv.fr/piwik.php?idsite=???&rec=1" :alt "" :style "border:0;"}]]]
    ])
@@ -36,7 +36,7 @@
    [:div.content
     [:div.columns
      [:div.column.is-offset-2.is-4
-      ;; [:img {:src "/images/???.svg" :width "240px"}]
+      ;; [:img {:src "images/???.svg" :width "240px"}]
       [:ul.footer__social
        [:li [:a {:href "https://twitter.com/???", :title "Twitter"}
              [:svg.icon.icon-twitter [:use {:xlink:href "#twitter"}]]]]
@@ -65,7 +65,7 @@
       [:nav.navbar {:role "navigation" :aria-label "main navigation"}
        [:div.navbar-brand
         [:a.navbar-item {:href (:url website)}
-         [:img {:src    "/images/logo-marianne.svg"
+         [:img {:src    "images/logo-marianne.svg"
                 :alt    "Logo Marianne"
                 :width  "120"
                 :height "100"}
