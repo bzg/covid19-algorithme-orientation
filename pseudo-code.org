@@ -1,0 +1,127 @@
+#+title: Présentation de l'algorithme d'orientation COVID19
+
+* Questionnaire
+
+** Questions sur les symptômes
+
+1. "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
+   1. "Quelle est votre température ?"
+2. "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
+3. "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
+4. "Avez-vous un mal de gorge apparu ces derniers jours ?"
+5. "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
+6. "Avez-vous une fatigue inhabituelle ces derniers jours ?"
+   1. "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
+7. "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
+8. "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
+
+** Questions sur les facteurs pronostiques défavorables au terrain
+
+1. "Quel est votre âge ?"
+2. "Quel est votre poids en kilogrammes ?"
+3. "Quelle est votre taille en mètres ?"
+4. "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+5. "Êtes-vous diabétique ?"
+6. "Avez-vous ou avez-vous eu un cancer ?"
+7. "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
+8. "Avez-vous une insuffisance rénale chronique dialysée ?"
+9. "Avez-vous une maladie chronique du foie ?"
+10. "Êtes-vous enceinte ?"
+11. "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
+12. "Prenez-vous un traitement immunosuppresseur ?"
+
+** Question supplémentaire
+
+1. Code postal
+
+* Facteurs
+
+** Facteur pronostique défavorable lié au terrain
+
+- Si son âge est supérieur ou égal à 70 ans
+- Si son indice de masse corporelle est supérieur à 30 kg/m²
+- Si =OUI= ou =Ne sait pas= à la question sur l'hypertension
+- Si =OUI= pour diabétique
+- Si =OUI= pour a ou a eu un cancer
+- Si =OUI= pour maladie respiratoire ou suivi pneumologique
+- Si =OUI= pour insuffisance rénale
+- Si =OUI= pour maladie chronique du foie
+- Si =OUI= pour enceinte
+- Si =OUI= pour maladie qui diminue les défenses immunitaires
+- Si =OUI= pour traitement immunosuppresseur
+
+** Facteurs de gravité
+
+Les facteurs de gravité sont définis en réponse aux questions portant
+sur les symptômes.
+
+- Facteur de gravité *mineurs* :
+  - Fièvre >= 39°C
+  - A indiqué de la fièvre sans renseigner de la température
+  - Fatigue : alitement > 50% du temps diurne
+
+- Facteur de gravité *majeurs* :
+  - Gêne respiratoire
+  - Difficultés importantes pour s'alimenter ou boire depuis plus de 24h
+
+* Formules
+
+- IMC (indice de masse corporelle) :: le POIDS en kilogrammes divisé par le carré de la TAILLE en mètres.
+
+* Algorithme en pseudo code
+
+** Arbre de décision
+
+: SI moins de 15 ans
+:    FIN1
+: 
+: SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+:    SI 0 facteur pronostique
+:       SI 0 facteur de gravité mineur
+:       	 SI moins de 50 ans
+: 	    FIN2
+: 	    SINON FIN3
+: 	 SINON FIN3
+: 
+:    SI 1 OU plus facteurs pronostique
+:       SI 0 OU 1 facteur de gravité mineur
+:       	 FIN3
+:       SI au moins 2 facteurs de gravité mineurs
+:       	 FIN4
+: 
+:    SI un facteur de gravité majeur
+:       FIN5
+: 
+: SI fièvre ET toux
+:    SI 0 facteur pronostique
+:       SI 0 OU 1 facteur de gravité mineur
+:       	 FIN6
+:    SI 1 OU plus facteur pronostique
+:       SI 0 OU 1 facteur de gravité
+:       	 FIN6
+:       SI au moins 2 facteurs de gravité mineurs
+:       	 FIN4
+: 
+: SI 1 OU plus facteur de gravité majeur
+:    FIN5
+: 
+: SI toux OU mal de gorge OU anosmie
+:    SI 0 facteur de gravité mineur
+:       FIN7
+:    SI au moins un facteur de gravité mineur OU un facteur pronostique
+:       FIN8
+:    
+: SI NI toux NI mal de gorge NI anosmie NI fièvre
+:    FIN9
+** Conclusions possibles
+
+- FIN1 :: Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
+- FIN2 :: Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.
+- FIN3 :: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).  Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.
+- FIN4 :: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Si pas possible de le joindre ou téléCS : faite le 15.
+- FIN5 :: Appel du 15.
+- FIN6 :: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).
+- FIN7 :: Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptomes apparaissent, refaites le test.
+- FIN8 :: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.
+- FIN9 :: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.
+
