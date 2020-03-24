@@ -302,32 +302,38 @@ conditional-score-outputs:
     condition-1:
       toux: 1
       mal-de-gorge: 0
+      fievre: 0
       anosmie: 0
       facteurs-gravite-mineurs: 1
     condition-2:
       mal-de-gorge: 1
       toux: 0
       anosmie: 0
+      fievre: 0
       facteurs-gravite-mineurs: 1
     condition-3:
       anosmie: 1
       mal-de-gorge: 0
       toux: 0
+      fievre: 0
       facteurs-gravite-mineurs: 1
     condition-4:
       toux: 1
       anosmie: 0
       mal-de-gorge: 0
+      fievre: 0
       facteurs-pronostique: 1
     condition-5:
       toux: 0
       anosmie: 0
       mal-de-gorge: 1
+      fievre: 0
       facteurs-pronostique: 1
     condition-6:
       anosmie: 1
       toux: 0
       mal-de-gorge: 0
+      fievre: 0
       facteurs-pronostique: 1
   un-symptome-sans-facteur-de-gravite:
     # FIN7
@@ -338,16 +344,19 @@ conditional-score-outputs:
       toux: 1
       anosmie: 0
       mal-de-gorge: 0
+      fievre: 0
       facteurs-gravite-mineurs: 0
     condition-2:
       mal-de-gorge: 1
       toux: 0
       anosmie: 0
+      fievre: 0
       facteurs-gravite-mineurs: 0
     condition-3:
       anosmie: 1
       toux: 0
       mal-de-gorge: 0
+      fievre: 0
       facteurs-gravite-mineurs: 0
   pas-de-symptome-pas-de-facteur-gravite-pas-de-facteur-pronostique:
     # FIN9
