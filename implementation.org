@@ -1,5 +1,9 @@
 #+title: Documentation sur l'implémentation de l'algorithme d'orientation COVID19
 
+* Table des matières
+
+- [[*Document officiel][Document officiel]]
+
 * Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
