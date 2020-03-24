@@ -10,7 +10,9 @@
 (def website-meta (inline-yaml-resource "website-meta.yml"))
 
 (def bulma-class-replacements
-  {:h1 :h1.title})
+  {:h1 :h1.title
+   :ul :ul.list
+   :li :li.list-item})
 
 (def website-contents (walk/prewalk-replace
                        bulma-class-replacements
