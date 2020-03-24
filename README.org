@@ -1,5 +1,7 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
+Voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/]]
+
 * Déployer l'application
 
 1. Configurez =config.yml=
