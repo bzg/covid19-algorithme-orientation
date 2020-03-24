@@ -1,5 +1,14 @@
 #+title: Présentation de l'algorithme d'orientation COVID19
 
+* Table des matières
+
+- [[#document-officiel][Document officiel]]
+- [[#!questionnaire][Questionnaire]]
+- [[#!facteurs][Facteurs]]
+- [[#!formules][Formules]]
+- [[#arbre-de-décision][Arbre de décision]]
+- [[#conclusions-possibles][Conclusions possibles]]
+
 * Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
@@ -73,9 +82,7 @@ sur les symptômes.
 
 - IMC (indice de masse corporelle) :: le POIDS en kilogrammes divisé par le carré de la TAILLE en mètres.
 
-* Algorithme en pseudo code
-
-** Arbre de décision
+* Arbre de décision
 
 : SI moins de 15 ans
 :    FIN1
@@ -118,7 +125,8 @@ sur les symptômes.
 :    
 : SI NI toux NI mal de gorge NI anosmie NI fièvre
 :    FIN9
-** Conclusions possibles
+
+* Conclusions possibles
 
 - FIN1 :: Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
 - FIN2 :: Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.
