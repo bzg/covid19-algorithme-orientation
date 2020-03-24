@@ -12,15 +12,22 @@ le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/c
   - Vous =DEVEZ= notamment implémenter la saisie du code postal.
   - Vous =DEVEZ= implémenter la saisie exacte du poids et de la taille.
 - Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] (json).
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les alternatives de conclusion officielles]] (json).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les questions officielles]] ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org][les conclusions officielles]] ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][json]]).
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org][l'arbre de décision officiel]].
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org][la formule standard pour le calcul de l'indice de masse corporelle]].
 
 * Conseils pour l'implémentation
 
-- Vous =POUVEZ= proposer des /tests/.
+- Vous =POUVEZ= utiliser les noms de variables officiels ([[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/variables.json][json]]).
 - Vous =POUVEZ= utiliser des /codes couleur pour les réponses/.
+- Vous =POUVEZ= proposer des [[*Tests à faire sur l'implémentation de votre algorithme][tests]].
+
+** Tests à faire sur l'implémentation de votre algorithme
+
+- Toutes les questions sont celles du json officiel.
+- Toutes les alternatives de conclusion sont celles du json officiel.
+- La formule de l'indice de masse corporelle est correct.
 
 * Exemple de site interactif
 
