@@ -1,5 +1,10 @@
 #+title: Présentation de l'algorithme d'orientation COVID19
 
+* Document officiel
+
+Le document officiel de l'algorithme d'orientation COVID19 publié par
+le ministère de la santé est [[file:/delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
+
 * Questionnaire
 
 ** Questions sur les symptômes
