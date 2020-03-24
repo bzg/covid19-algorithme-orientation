@@ -19,7 +19,7 @@
         score-variables (remove-deep (:score-variables parsed-config) [:display])
         conditional-score-outputs
         (remove-deep (:conditional-score-outputs parsed-config)
-                     [:notification])]
+                     [:notification :priority])]
     (spit "docs/json/variables.json"
           (json/generate-string
            {:variables score-variables}))
