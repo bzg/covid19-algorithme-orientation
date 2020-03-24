@@ -103,6 +103,17 @@ score-variables:
     display: "Facteur pronostic"
     value: 0
 
+# Sync with pseudo-code.org:
+# Priority 1 -> FIN1
+# Priority 6 -> FIN2
+# Priority 4 -> FIN3
+# Priority 3 -> FIN4
+# Priority 2 -> FIN5
+# Priority 5 -> FIN6
+# Priority 8 -> FIN7
+# Priority 7 -> FIN8
+# Priority 9 -> FIN9
+#
 # Set conditional output depending on scores.
 # Each entry is composed of the name of the condition (you can pick up
 # any yaml-acceptable name), then:
