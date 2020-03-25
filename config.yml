@@ -258,8 +258,7 @@ conditional-score-outputs:
     condition-1:
       fievre: 1
       toux: 1
-  autres-symptomes-sans-facteur-pronotisque-sans-facteur-de-gravite:
-    # FIN2
+  FIN2:
     priority: 6
     message: "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d'apparition de nouveaux symptômes.<br/>Vous pourrez aussi utiliser à nouveau l'application pour réévaluer vos symptômes."
     notification: "is-warning"
