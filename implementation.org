@@ -7,6 +7,7 @@
 - [[#prérequis-pour-être-référencé-par-le-ministère-de-la-santé][Prérequis pour être référencé par le ministère de la santé]]
 - [[#conseils-pour-l'implémentation-de-l'algorithme][Conseils pour l'implémentation de l'algorithme]]
 - [[#exemple-de-site-interactif][Exemple de site interactif]]
+- [[#exemples-dimplémentation-dans-des-langages-de-programmation][Exemples d'implémentation dans des langages de programmation]]
 
 * Document officiel
 
@@ -49,58 +50,5 @@ d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covi
 
 * Exemples d'implémentation dans des langages de programmation
 
-** Clojure
+- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.clj][Clojure]]
 
-:  0  (defn conditional-score-result [resultats conclusions]
-:  1    (let [{:keys [moins-de-15-ans plus-de-50-ans poids taille
-:  2                  fievre toux anosmie mal-de-gorge diarrhees
-:  3                  facteurs-gravite-mineurs facteurs-gravite-majeurs
-:  4                  facteurs-pronostique]}                         resultats
-:  5          ;; Set the possible conclusions
-:  6          {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]} conclusions
-:  7          ;; Set the final conclusion to one of the FIN*
-:  8          conclusion
-:  9          (cond
-: 10
-: 11             ;; Branche 1
-: 12             (= (:moins-de-15-ans resultats) 1) FIN1
-: 13
-: 14             ;; Branche 2
-: 15             (or (> fievre 0)
-: 16                 (and (> toux 0) (> mal-de-gorge 0))
-: 17                 (and (> toux 0) (> anosmie 0))
-: 18                 (and (> fievre 0) (> diarrhees 0)))
-: 19
-: 20             (cond (= facteurs-pronostique 0)
-: 21                   (if (= facteurs-gravite-mineurs 0)
-: 22                     (if (= plus-de-50-ans 0) FIN2
-: 23                         FIN3)
-: 24                     FIN3)
-: 25
-: 26                   (>= facteurs-pronostique 1)
-: 27                   (cond (< facteurs-gravite-mineurs 2)  FIN3 ;; Sure?
-: 28                         (>= facteurs-gravite-mineurs 2) FIN4)
-: 29
-: 30                   (>= facteurs-gravite-majeurs 1) FIN5)
-: 31
-: 32             ;; Branche 3
-: 33             (>= facteurs-gravite-majeurs 1) FIN5
-: 34
-: 35             ;; Branche 4
-: 36             (and (> fievre 0) (> toux 0))
-: 37
-: 38             (if (= facteurs-pronostique 0)
-: 39               (when (> facteurs-gravite-mineurs 0) FIN6)
-: 40               (if (>= facteurs-pronostique 1)
-: 41                 (cond (>= facteurs-gravite-mineurs 0) FIN6
-: 42                       (>= facteurs-gravite-mineurs 2) FIN4)))
-: 43
-: 44             ;; Branche 5
-: 45             (and (< fievre 0)
-: 46                  (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
-: 47
-: 48             (cond (= facteurs-gravite-mineurs 0)                                   FIN7
-: 49                   (or (>= facteurs-gravite-mineurs 1) (>= facteurs-pronostique 1)) FIN8)
-: 50
-: 51             ;; Branche 6
-: 52             (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0)) FIN9)]
