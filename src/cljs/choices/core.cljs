@@ -124,7 +124,7 @@
    [:div.modal-content
     [:div.box
      [:div.title (i18n [:attention])]
-     [:p @modal-message]
+     @modal-message
      [:br]
      [:div.has-text-centered
       [:a.button.is-medium.is-warning
@@ -238,7 +238,7 @@
                      scores conditional-score-outputs))]
               (when (not-empty output)
                 [:div.tile.is-parent
-                 [:div.is-size-4.tile.is-child
+                 [:div.tile.is-size-4.is-child
                   {:class (str (or (not-empty notification) "is-info")
                                " notification subtitle")}
                   (md-to-string output)]]))))])
@@ -251,9 +251,9 @@
     ^{:key (random-uuid)}
     (cond
       (and (string? o) (not-empty o))
-      [:div.tile.is-parent
+      [:div.tile.is-parent.is-horizontal.notification
        {:key (random-uuid)}
-       [:div.title.is-child.notification
+       [:div.title.is-child
         [:div.subtitle (md-to-string o)]]]
       (not-empty (butlast o))
       [:div.tile.is-parent.is-horizontal.notification
@@ -311,34 +311,35 @@
        (if-not done
          ;; Not done: display the choices
          [:div.tile.is-ancestor
-          (for [{:keys [answer goto explain color summary score] :as c} choices]
-            ^{:key (random-uuid)}
-            [:div.tile.is-parent
-             [:a.tile.is-child
-              {:style {:text-decoration "none"}
-               :href  (rfe/href (keyword goto))
-               :on-click
-               #(do (when (vector? summary)
-                      (reset! show-modal true)
-                      (reset! modal-message (md-to-string (peek summary))))
-                    (reset! hist-to-add
-                            (merge
-                             {:score
-                              (merge-with
-                               (fn [a b] {:display               (:display a)
-                                          :as-top-result-display (:as-top-result-display a)
-                                          :value                 (+ (:value a) (:value b))})
-                               (:score (peek @history))
-                               score)}
-                             {:questions (when-not no-summary [text answer])}
-                             {:answers summary})))}
-              [:div.card-content.tile.is-parent.is-vertical
-               [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
-                {:class color}
-                (md-to-string answer)]
-               (when (and explain @show-help)
-                 [:div.tile.is-child.subtitle
-                  (md-to-string explain)])]]])]
+          (doall
+           (for [{:keys [answer goto explain color summary score] :as c} choices]
+             ^{:key (random-uuid)}
+             [:div.tile.is-parent
+              [:a.tile.is-child
+               {:style {:text-decoration "none"}
+                :href  (rfe/href (keyword goto))
+                :on-click
+                #(do (when (vector? summary)
+                       (reset! show-modal true)
+                       (reset! modal-message (md-to-string (peek summary))))
+                     (reset! hist-to-add
+                             (merge
+                              {:score
+                               (merge-with
+                                (fn [a b] {:display               (:display a)
+                                           :as-top-result-display (:as-top-result-display a)
+                                           :value                 (+ (:value a) (:value b))})
+                                (:score (peek @history))
+                                score)}
+                              {:questions (when-not no-summary [text answer])}
+                              {:answers summary})))}
+               [:div.card-content.tile.is-parent.is-vertical
+                [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
+                 {:class color}
+                 (md-to-string answer)]
+                (when (and explain @show-help)
+                  [:div.tile.is-child.subtitle
+                   (md-to-string explain)])]]]))]
          ;; Done: display the final summary-answers
          [:div
           [:div.tile.is-ancestor {:id "copy-this"}
