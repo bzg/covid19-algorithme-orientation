@@ -61,6 +61,9 @@
                 (>= facteurs-gravite-majeurs 1) FIN5)
 
           ;; Branche 3
+          (>= facteurs-gravite-majeurs 1) FIN5
+
+          ;; Branche 4
           (and (> fievre 0) (> toux 0))
 
           (if (= facteurs-pronostique 0)
