@@ -15,7 +15,7 @@
        node))
    data))
 
-(defn -main []
+(defn generate-json-files []
   (let [parsed-config   (yaml/parse-string (slurp "config.yml"))
         tree            (map
                          (fn [branch]
@@ -41,6 +41,5 @@
     (spit "docs/json/conclusions-with-priority.json"
           (json/generate-string
            {:conclusions-with-priority (:conditional-score-outputs parsed-config)}))
-    (println "File config.json generated")))
+    (println "Files docs/json/*.json generated")))
 
-;; (-main)

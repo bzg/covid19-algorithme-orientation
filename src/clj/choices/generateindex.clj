@@ -100,8 +100,9 @@
         website-contents]]
       (footer)])))
 
-(defn generate-website []
-  (spit "docs/index.html" (default)))
+(defn generate-website-index []
+  (spit "docs/index.html" (default))
+  (println "File docs/index.html generated"))
 
 ;; (generate-website)
 
