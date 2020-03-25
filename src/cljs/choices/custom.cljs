@@ -1,9 +1,15 @@
 (ns choices.custom)
 
-;; This file can contain two defns:
+;; This file can contain at least two defns:
 ;;
 ;; (defn preprocess-scores [scores] ...)
 ;; (defn conditional-score-result [scores conditional-score-outputs] ...)
+;;
+;; You cannot use other names than those.
+;; You can add utility functions.
+
+(defn compute-imc [^number p ^number t]
+  (.toFixed (/ p (Math/pow t 2)) 2))
 
 (defn preprocess-scores [scores]
   (let [imc-val (compute-imc (:value (:poids scores))
@@ -72,16 +78,15 @@
               (cond (>= facteurs-gravite-mineurs 0) FIN6
                     (>= facteurs-gravite-mineurs 2) FIN4)))
 
-          ;; Branche 4
+          ;; Branche 5
           (and (< fievre 0)
                (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
 
           (cond (= facteurs-gravite-mineurs 0)                                   FIN7
                 (or (>= facteurs-gravite-mineurs 1) (>= facteurs-pronostique 1)) FIN8)
 
-          ;; Branche 5
-          (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0))
-          FIN9)]
+          ;; Branche 6
+          (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0)) FIN9)]
     
     ;; Return the expected map:
     {:notification (get conclusion :notification)

@@ -87,9 +87,6 @@
                               [(:value (get m k1)) k1])))
         m))
 
-(defn compute-imc [^number p ^number t]
-  (.toFixed (/ p (Math/pow t 2)) 2))
-
 (defn all-vals-compare? [f m1 m2]
   (every? true? (for [[k v] m1] (f v (k m2)))))
 
@@ -190,12 +187,12 @@
          [:p.tile.is-child.box.is-warning.notification
           (:as-top-result-display s)]]))))
 
-(defn conditional-score-result [scores]
+(defn conditional-score-result [scores conclusions]
   (let [conditions   (atom nil)
         matching     (atom nil)
         output       (atom "")
         notification (atom "")]
-    (doseq [[_ cas] conditional-score-outputs
+    (doseq [[_ cas] conclusions
             :let    [not (:notification cas)
                      msg (:message cas)
                      pri (:priority cas)
