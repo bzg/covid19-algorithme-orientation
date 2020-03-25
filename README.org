@@ -1,34 +1,45 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
-Voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/]]
+Ce dépôt contient une présentation de l'algorithme d'orientation
+COVID19 officiellement publié par le ministère de la santé.
 
-* Déployer l'application
+Voir le [[\[\[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/\]\]][site d'information générale]] produit à partir de ce dépôt.
 
-1. Configurez =config.yml=
-2. Testez avec =clj -A:test=
-3. Compilez avec =clj -A:js=
-4. Vos fichiers statiques sont dans =resources/public/=
+Vous trouvez ici :
 
-* Développement
+- une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]]
+- des recommandations sur [[file:implementation.org][son implémentation]]
+- une [[file:z3/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion
+- des explications sur comment se servir de ce dépôt
+
+* Mettre à jour le site
+
+- Éditez les fichiers [[file:website-contents.md][website-contents.md]] et [[file:website-meta.yml]].
+- Lancez la commande =./build.sh=
+- Committez, pushez.
+
+* Mettre à jour l'algorithme d'exemple en Clojure
+
+- Éditez le fichier [[file:config.yml]]
+- Lancez la commande =./build.sh=
+- Committez, pushez.
+
+* Développer l'application
+
+Pour développer :
 
 1. Configurez =config.yml=
 2. Testez avec =clj -A:test=
 3. Compilez avec =clj -A:fig=
 4. Allez à http://localhost:9500
-   
+
 * Contributions
 
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
 requests/.
 
-* Soutenir l'écosystème Clojure(script)
-
-Si vous aimez Clojure(script), vous pouvez soutenir les mainteneurs de
-bibliothèques sous licence libre en faisant un don à
-[[https://www.clojuriststogether.org][clojuriststogether.org]].
-
 * Licence
 
-2020 DGOS, Bastien Guerry.
+2020 DGOS, Bastien Guerry et les contributeurs du dépôt.
 
 Le code source de cette application est publié sous licence [[file:LICENSE][EPL 2.0]].
