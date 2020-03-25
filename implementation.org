@@ -35,13 +35,15 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 - Vous =POUVEZ= utiliser les noms de variables officiels ([[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/variables.json][json]]).
 - Vous =POUVEZ= utiliser des codes couleur pour les réponses.
 - Vous =POUVEZ= afficher une barre de progression.
-- Vous =POUVEZ= proposer des tests.
+- Vous =POUVEZ= proposer des [[#tests-à-faire-sur-limplémentation-de-votre-algorithme][tests]].
 
 ** Tests à faire sur l'implémentation de votre algorithme
 
-- Toutes les questions sont celles du json officiel.
-- Toutes les alternatives de conclusion sont celles du json officiel.
-- La formule de l'indice de masse corporelle est correct.
+- La formule de l'indice de masse corporelle est-elle correct ?
+- Toutes les [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/variables.json][variables du json de référence]] sont-elles prises en compte ?
+- Toutes les [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/questions.json][questions du json de référence]] sont-elles posées ?
+- Toutes les [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][conclusions du json de référence]] sont-elles présentes ?
+- Mon implémentation aboutit-elle à au moins une conclusion ?
 
 * Exemple de site interactif
 
