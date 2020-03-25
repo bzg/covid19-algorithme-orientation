@@ -84,20 +84,20 @@ sur les symptômes.
 
 * Arbre de décision
 
-:  1 SI moins de 15 ans => FIN1
+:  1  SI moins de 15 ans => FIN1
 :  2
-:  3 SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
-:  4    SI 0 facteur pronostique
-:  5       SI 0 facteur de gravité mineur
-:  6          SI moins de 50 ans => FIN2
-:  7          SINON => FIN3
-:  8       SINON => FIN3
+:  3  SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+:  4     SI 0 facteur pronostique
+:  5        SI 0 facteur de gravité mineur
+:  6           SI moins de 50 ans => FIN2
+:  7           SINON => FIN3
+:  8        SINON => FIN3
 :  9
-: 10    SI 1 OU plus facteurs pronostique
-: 11       SI 0 OU 1 facteur de gravité mineur => FIN3
-: 12       SI au moins 2 facteurs de gravité mineurs => FIN4
+: 10     SI 1 OU plus facteurs pronostique
+: 11        SI 0 OU 1 facteur de gravité mineur => FIN3
+: 12        SI au moins 2 facteurs de gravité mineurs => FIN4
 : 13
-: 14    SI un facteur de gravité majeur => FIN5
+: 14     SI un facteur de gravité majeur => FIN5
 : 15
 : 16  SI fièvre ET toux
 : 17     SI 0 facteur pronostique
