@@ -11,6 +11,7 @@
             [reitit.frontend :as rf]
             [reitit.frontend.easy :as rfe]
             [choices.i18n :as i18n]
+            [choices.custom :as custom]
             [cljsjs.clipboard]
             [clojure.string :as string]
             [goog.string :as gstring]
@@ -189,12 +190,11 @@
          [:p.tile.is-child.box.is-warning.notification
           (:as-top-result-display s)]]))))
 
-(defn conditional-score-output [scores]
-  (let [scores     (apply merge (map (fn [[k v]] {k (:value v)}) scores))
-        conditions (atom nil)
-        matching   (atom nil)
-        output     (atom "")
-        notify     (atom "")]
+(defn conditional-score-result [scores]
+  (let [conditions   (atom nil)
+        matching     (atom nil)
+        output       (atom "")
+        notification (atom "")]
     (doseq [[_ cas] conditional-score-outputs
             :let    [not (:notification cas)
                      msg (:message cas)
@@ -212,20 +212,14 @@
         (swap! matching conj c0)))
     (let [match (first (sort-by :pri @matching))]
       (reset! output (:msg match))
-      (reset! notify (:not match)))
-    [:div.tile.is-parent
-     [:div.is-size-4.tile.is-child
-      {:class (str (or (not-empty @notify) "is-info")
-                   " notification subtitle")}
-      (md-to-string @output)]]))
+      (reset! notification (:not match)))
+    ;; Return the expected map:
+    {:notification @notification :output @output}))
 
 (defn scores-result [scores]
-  (let [imc-val (compute-imc (:value (:poids scores))
-                             (:value (:taille scores)))
-        imc-map {:imc {:display "IMC" :value imc-val}}
-        scores  (merge scores imc-map)
-        scores  (update-in scores [:facteurs-pronostique :value]
-                           #(if (> imc-val 30) (inc %) %))]
+  (let [scores (if (resolve 'custom/preprocess-scores)
+                 (custom/preprocess-scores scores)
+                 scores)]
     [:div
      (when (:display-score config)
        [:div.is-6
@@ -237,8 +231,20 @@
                    (:display-score-top-result config))
           (score-top-result scores))
         ;; Only when score-results is defined
-        (when conditional-score-outputs
-          (conditional-score-output scores))])
+        (let [scores (apply merge (map (fn [[k v]] {k (:value v)}) scores))]
+          (when conditional-score-outputs
+            (let [{:keys [notification output]}
+                  (if (resolve 'custom/conditional-score-result)
+                    (custom/conditional-score-result
+                     scores conditional-score-outputs)
+                    (conditional-score-result
+                     scores conditional-score-outputs))]
+              (when (not-empty output)
+                [:div.tile.is-parent
+                 [:div.is-size-4.tile.is-child
+                  {:class (str (or (not-empty notification) "is-info")
+                               " notification subtitle")}
+                  (md-to-string output)]]))))])
      [:br]]))
 
 (defn summary []
