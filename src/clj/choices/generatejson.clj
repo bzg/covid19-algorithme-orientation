@@ -1,15 +1,16 @@
 (ns choices.generatejson
   (:require [yaml.core :as yaml]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            [clojure.walk :as walk]))
 
 (defn remove-deep [data keys & [re]]
-  (clojure.walk/prewalk
+  (walk/prewalk
    (fn [node]
      (if (map? node)
        (let [node (if re
                     (into
                      {}
-                     (filter (fn [[k v]] (not (re-matches re (name k)))) node))
+                     (filter (fn [[k _]] (not (re-matches re (name k)))) node))
                     node)]
          (apply dissoc node keys))
        node))

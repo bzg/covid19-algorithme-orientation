@@ -35,7 +35,7 @@
 ;; facteurs-gravite-majeurs
 ;; facteurs-pronostique
 (defn conditional-score-result [resultats conclusions]
-  (let [{:keys [moins-de-15-ans plus-de-50-ans poids taille
+  (let [{:keys [moins-de-15-ans plus-de-50-ans
                 fievre toux anosmie mal-de-gorge diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
                 facteurs-pronostique]}                         resultats
@@ -46,7 +46,7 @@
         (cond
 
           ;; Branche 1
-          (= (:moins-de-15-ans resultats) 1) FIN1
+          (= moins-de-15-ans 1) FIN1
 
           ;; Branche 2
           (or (> fievre 0)
@@ -74,7 +74,7 @@
 
           (if (= facteurs-pronostique 0)
             (when (> facteurs-gravite-mineurs 0) FIN6)
-            (if (>= facteurs-pronostique 1)
+            (when (>= facteurs-pronostique 1)
               (cond (>= facteurs-gravite-mineurs 0) FIN6
                     (>= facteurs-gravite-mineurs 2) FIN4)))
 

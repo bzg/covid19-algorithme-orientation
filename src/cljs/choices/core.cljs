@@ -13,8 +13,8 @@
             [choices.i18n :as i18n]
             [choices.custom :as custom]
             [cljsjs.clipboard]
+            [cljs.reader]
             [clojure.string :as string]
-            [goog.string :as gstring]
             [markdown-to-hiccup.core :as md]
             [taoensso.tempura :refer [tr]]))
 
@@ -312,7 +312,7 @@
          ;; Not done: display the choices
          [:div.tile.is-ancestor
           (doall
-           (for [{:keys [answer goto explain color summary score] :as c} choices]
+           (for [{:keys [answer goto explain color summary score]} choices]
              ^{:key (random-uuid)}
              [:div.tile.is-parent
               [:a.tile.is-child
