@@ -7,6 +7,7 @@
 - [[#!facteurs][Facteurs]]
 - [[#!formules][Formules]]
 - [[#arbre-de-décision][Arbre de décision]]
+- [[#script-de-vérification-formelle-de-lalgorithme][Script de vérification formelle de l'algorithme]]
 - [[#conclusions-possibles][Conclusions possibles]]
 
 * Document officiel
@@ -125,6 +126,11 @@ sur les symptômes.
 - FIN7 :: Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptomes apparaissent, refaites le test.
 - FIN8 :: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.
 - FIN9 :: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.
+
+* Script de vérification formelle de l'algorithme
+
+Le [[z3/][dossier "z3"]] propose une vérification formelle de l'algorithme avec
+la bibliothèque =z3= (Python).
 
 * Implémentation
 
