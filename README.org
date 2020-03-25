@@ -3,7 +3,7 @@
 Ce dépôt contient une présentation de l'algorithme d'orientation
 COVID19 officiellement publié par le ministère de la santé.
 
-Voir le [[\[\[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/\]\]][site d'information générale]] produit à partir de ce dépôt.
+Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
 Vous trouvez ici :
 
