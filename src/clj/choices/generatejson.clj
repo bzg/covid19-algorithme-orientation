@@ -26,10 +26,7 @@
         score-variables (remove-deep (:score-variables parsed-config) [:display])
         conditional-score-outputs1
         (remove-deep (:conditional-score-outputs parsed-config)
-                     [:notification :priority] #"condition-\d+")
-        conditional-score-outputs2
-        (remove-deep (:conditional-score-outputs parsed-config)
-                     [:notification])]
+                     [:priority] #"condition-\d+")]
     (spit "docs/json/variables.json"
           (json/generate-string
            {:variables score-variables}))
@@ -43,7 +40,7 @@
            {:conclusions conditional-score-outputs1}))
     (spit "docs/json/conclusions-with-priority.json"
           (json/generate-string
-           {:conclusions-with-priority conditional-score-outputs2}))
+           {:conclusions-with-priority (:conditional-score-outputs parsed-config)}))
     (println "File config.json generated")))
 
 ;; (-main)
