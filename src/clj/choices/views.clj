@@ -92,7 +92,7 @@
     print_length: 100,
     beautify_strings: true,
     codemirror_options_in: {
-        indentUnit: 8,
+        indentUnit: 2,
         lineWrapping: true,
         lineNumbers: true,
         autoCloseBrackets: true
