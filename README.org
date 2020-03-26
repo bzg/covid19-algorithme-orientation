@@ -48,7 +48,7 @@ L'algorithme est implémenté par [[maladiecoronavirus.fr][le site maladiecorona
 
 Toutes les applications d'information, d'orientation et de triage qui réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère des Solidarité et de la Santé]]
 
-Si vous implémentez cet algorithme, écrivez-nous à l'adresse mobilisation-covid@sante.gouv.fr pour que votre initiative soit 
+Si vous implémentez cet algorithme, écrivez-nous à l'adresse mobilisation-covid@sante.gouv.fr ou renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]] pour que votre initiative soit 
 référencée.
 
 * Licence
