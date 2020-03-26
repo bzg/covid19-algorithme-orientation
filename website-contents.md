@@ -16,6 +16,6 @@ L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-n
 
 # Contact
 
-Pour toute questions, contactez XXX.
+Pour toute questions, contactez mobilisation-covid@sante.gouv.fr.
 
 
