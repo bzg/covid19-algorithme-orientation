@@ -42,8 +42,19 @@
 :facteurs-gravite-mineurs 1
 :facteurs-gravite-majeurs 0}")
 
+(def conclusions
+  {:FIN1 "Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15."
+   :FIN2 "Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes."
+   :FIN3 "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent."
+   :FIN4 "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Si pas possible de le joindre ou téléCS : faite le 15."
+   :FIN5 "Appel du 15."
+   :FIN6 "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins)."
+   :FIN7 "Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptomes apparaissent, refaites le test."
+   :FIN8 "Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15."
+   :FIN9 "Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000."})
+
 (def resultat ";; Vous pouvez modifier cette fonction pour la tester.
-  (defn resultat [reponse]
+(defn resultat [reponse]
   (let [reponse
         ;; Calcul du facteur âge, de l'IMC et de son impact sur les
         ;; facteurs de pronostique défavorable
@@ -63,7 +74,7 @@
       ;; Branche 1
       (= moins-de-15-ans 1)
       (do (println \"Branche: 1 (moins de 15 ans)\")
-          (println \"FIN1: Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.\"))
+          (println \"FIN1\"))
       ;; Branche 2
       (or (and (> fievre 0) (= toux 0))
           (and (> toux 0) (> mal-de-gorge 0))
@@ -71,18 +82,18 @@
           (and (> fievre 0) (> diarrhees 0)))
       (do (println \"   Branche: 2 (fièvre ou autres symptômes)\")
           (cond (>= facteurs-gravite-majeurs 1)
-                (println \"FIN5: Appel du 15.\")
+                (println \"FIN5\")
                 (= facteurs-pronostique 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (= plus-de-50-ans 0)
-                    (println \"FIN2: Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.\")
-                    (println \"FIN3: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.\"))
-                  (println \"FIN3: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.\"))
+                    (println \"FIN2\")
+                    (println \"FIN3\"))
+                  (println \"FIN3\"))
                 (>= facteurs-pronostique 1)
                 (cond (< facteurs-gravite-mineurs 2)
-                      (println \"FIN3: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.\")
+                      (println \"FIN3\")
                       (>= facteurs-gravite-mineurs 2)
-                      (println \"FIN4: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Si pas possible de le joindre ou téléCS : faite le 15.\"))))
+                      (println \"FIN4\"))))
       ;; Branche 3
       (>= facteurs-gravite-majeurs 1)
       (do (println \"Branche: 3 (Un facteur majeur de gravité)\")
@@ -92,24 +103,24 @@
       (do (println \"Branche: 4 (Fièvre et toux)\")
           (if (= facteurs-pronostique 0)
             (when (> facteurs-gravite-mineurs 0)
-              (println \"FIN6: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).\"))
+              (println \"FIN6\"))
             (when (>= facteurs-pronostique 1)
               (cond (>= facteurs-gravite-mineurs 0)
-                    (println \"FIN6: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).\")
+                    (println \"FIN6\")
                     (>= facteurs-gravite-mineurs 2)
-                    (println \"FIN4: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Si pas possible de le joindre ou téléCS : faite le 15.\")))))
+                    (println \"FIN4\")))))
       ;; Branche 5
       (and (= fievre 0)
            (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
       (do (println \"Branche: 5 (Pas de fièvre et un autre symptôme\")
           (cond (= facteurs-gravite-mineurs 0)
-                (println \"FIN7: Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptomes apparaissent, refaites le test.\")
+                (println \"FIN7\")
                 (or (>= facteurs-gravite-mineurs 1) (>= facteurs-pronostique 1))
-                (println \"FIN8: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.\")))
+                (println \"FIN8\")))
       ;; Branche 6
       (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0))
       (do (println \"Branche: 6 (Pas de symptôme)\")
-          (println \"FIN9: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.\")))))")
+          (println \"FIN9\")))))  ")
 
 (def repl-fr-contents
   [:section
@@ -135,4 +146,13 @@
     [:br]
     [:h1.title "Essayez vous-même"]
     [:p.subtitle "Changez l'exemple de réponse ci-dessus et voyez le résultat."]
-    [:pre.language-klipse "(resultat exemple-de-reponse)"]]])
+    [:pre.language-klipse "(resultat exemple-de-reponse)"]]
+
+   [:div.container
+    [:br]
+    [:h1.title "Réponses possibles"]
+    [:ul.list
+     (for [[k v] conclusions]
+       ^{:key (pr-str v)}
+       [:li.list-item
+        [:span [:b (name k)] ": " v]])]]])
