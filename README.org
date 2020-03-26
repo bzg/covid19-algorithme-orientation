@@ -37,14 +37,31 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
+
 * Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]] depuis ce dépôt
 
-Pour développer :
+Pour développer le démonstrateur :
 
 1. Configurez =config.yml=
-2. Testez avec =clj -A:test=
+2. Testez avec =clj -A:test-config=
 3. Compilez avec =clj -A:fig=
 4. Allez à http://localhost:9500
+5. Éditer [[file:src/cljs/choices/core.cljs][core.cljs]]
+
+Vous pouvez aussi lancer des exemples d'utilisation de l'algorithme :
+
+: ~$ clj -m choices.algo
+
+pour avoir un exemple ou 
+
+: ~$ clj -m choices.algo 10
+
+pour en avoir 10.
+
+Les données affichées sont les paramètres des résultats d'une réponse
+au questionnaire ainsi que la conclusion déduite de ces résultats.
+
+Vous pouvez [[file:test/choices/algo.clj][lire le code]] avec lequel fonctionne ce test.
 
 * Contribuer
 
