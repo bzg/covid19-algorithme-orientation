@@ -118,9 +118,12 @@ sur les symptômes.
 
 * Diagramme de l'arbre de décision
 
+[[file:diagramme-algorithme-orientation-covid19.png]]
+
+Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de ce code source :
+
 #+begin_src plantuml :file diagramme-algorithme-orientation-covid19.png
 @startuml
-'scale max 1024 width
 title Algorithme d'orientation COVID19
 
 start
@@ -206,9 +209,6 @@ endif
 
 @enduml
 #+end_src
-
-#+RESULTS:
-[[file:diagramme-algorithme-orientation-covid19.png]]
 
 * Conclusions possibles
 

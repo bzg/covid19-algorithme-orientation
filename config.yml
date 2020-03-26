@@ -11,7 +11,7 @@ ui-strings:
   # mail-body-default:    "Here is my feedback:\n"
   # redo:                 "Redo"
   # ok:                   "Okay"
-  contact-intro:        "Vos remarques : bastien.guerry@data.gouv.fr"
+  contact-intro:        "Vos remarques : mobilisation-covid@sante.gouv.fr"
   # toggle-summary-style: "Toggle summary style"
   # attention:            "Attention"
 
@@ -28,7 +28,7 @@ footer:
  contact:  ""
 
 # Allow users to send you emails with the summary?
-mail-to: "bastien.guerry@data.gouv.fr"
+mail-to: "mobilisation-covid@sante.gouv.fr"
 
 # Display help along with questions by default?
 display-help: true
