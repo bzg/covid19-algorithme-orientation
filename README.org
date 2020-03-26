@@ -1,7 +1,7 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
 Ce dépôt contient une présentation de l'algorithme d'orientation
-COVID19 officiellement publié par le ministère de la santé.
+COVID19 officiellement publié par le ministère des Solidarités et de la Santé.
 
 L'algorithme est défini par un comité scientifique, appelé CovidTélé, réunissant des médecins et piloté par l'Institut Pasteur.
 
