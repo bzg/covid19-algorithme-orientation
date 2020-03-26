@@ -1,5 +1,7 @@
 # Document officiel
 
+Le ministère des Solidarités et de la Santé publie un algorithme d'orientation pour les personnes présentant des symptômes du Covid19.
+
 L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf).
 
 <br/>
