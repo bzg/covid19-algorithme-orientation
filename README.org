@@ -1,6 +1,6 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
-* Introduction et contexte
+** Introduction et contexte
 
 Ce dépôt contient une présentation de l'algorithme d'orientation
 COVID19 officiellement publié par le ministère des Solidarités et de
@@ -17,7 +17,7 @@ algorithme.
 
 Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
-* Ce que contient ce dépôt
+** Ce que contient ce dépôt
 
 - une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] ;
 - des recommandations sur [[file:implementation.org][son implémentation]] ;
@@ -25,19 +25,19 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 - le code source de la page statique de présentation de l'algorithme ;
 - le code source d'un démonstrateur interactif de l'algorithme.
 
-* Mettre à jour la [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][page statique de présentation]]
+** Mettre à jour la [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][page statique de présentation]]
 
 - Éditez les fichiers [[file:website-contents.md][website-contents.md]] et [[file:website-meta.yml]].
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-* Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]]
+** Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]]
 
 - Éditez le fichier [[file:config.yml]]
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-* Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]] depuis ce dépôt
+** Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]] depuis ce dépôt
 
 Pour développer le démonstrateur :
 
@@ -62,18 +62,18 @@ au questionnaire ainsi que la conclusion déduite de ces résultats.
 
 Vous pouvez [[file:test/choices/algo.clj][lire le code]] avec lequel fonctionne ce test.
 
-* Déployer les fichiers statiques depuis ce dépôt
+** Déployer les fichiers statiques depuis ce dépôt
 
 Une seule commande :
 
 : ./build.sh
 
-* Contribuer
+** Contribuer
 
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
 requests/.
 
-* Réutilisations
+** Réutilisations
 
 L'algorithme est implémenté par [[maladiecoronavirus.fr][le site maladiecoronavirus.fr]].
 
@@ -85,7 +85,7 @@ Si vous implémentez cet algorithme, écrivez-nous à l'adresse
 =mobilisation-covid@sante.gouv.fr= ou renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]]
 pour que votre initiative soit référencée.
 
-* Licence
+** Licence
 
 2020 Délégation ministérielle du numérique en santé et les contributeurs du dépôt.
 

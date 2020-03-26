@@ -1,13 +1,13 @@
 #+title: Présentation de l'algorithme d'orientation COVID19
 
-* Document officiel
+** Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
 le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf][téléchargeable ici]].
 
-* Questionnaire
+** Questionnaire
 
-** Questions sur les symptômes
+*** Questions sur les symptômes
 
 1. "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
    1. "Quelle est votre température ?"
@@ -20,7 +20,7 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
 7. "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
 8. "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
 
-** Questions sur les facteurs pronostiques défavorables au terrain
+*** Questions sur les facteurs pronostiques défavorables au terrain
 
 1. "Quel est votre âge ?"
 2. "Quel est votre poids en kilogrammes ?"
@@ -35,13 +35,13 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
 11. "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
 12. "Prenez-vous un traitement immunosuppresseur ?"
 
-** Question supplémentaire
+*** Question supplémentaire
 
 1. Code postal
 
-* Facteurs
+** Facteurs
 
-** Facteur pronostique défavorable lié au terrain
+*** Facteur pronostique défavorable lié au terrain
 
 - Si son âge est supérieur ou égal à 70 ans
 - Si son indice de masse corporelle est supérieur à 30 kg/m²
@@ -55,7 +55,7 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
 - Si =OUI= pour maladie qui diminue les défenses immunitaires
 - Si =OUI= pour traitement immunosuppresseur
 
-** Facteurs de gravité mineurs et majeurs
+*** Facteurs de gravité mineurs et majeurs
 
 Les facteurs de gravité sont définis en réponse aux questions portant
 sur les symptômes.
@@ -69,11 +69,11 @@ sur les symptômes.
   - Gêne respiratoire
   - Difficultés importantes pour s'alimenter ou boire depuis plus de 24h
 
-* Formule auxiliaire
+** Formule auxiliaire
 
 - IMC (indice de masse corporelle) :: le POIDS en kilogrammes divisé par le carré de la TAILLE en mètres.
 
-* Arbre de décision
+** Arbre de décision
 
 L'arbre de décision doit être parcouru de façon *séquentielle*.
 
@@ -107,13 +107,13 @@ L'arbre de décision doit être parcouru de façon *séquentielle*.
 : 28
 : 29  SI NI toux NI mal de gorge NI anosmie NI fièvre => FIN9
 
-* Diagramme de l'arbre de décision
+** Diagramme de l'arbre de décision
 
 [[file:diagramme-algorithme-orientation-covid19.png]]
 
 Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de ce code source :
 
-* Conclusions possibles
+** Conclusions possibles
 
 - FIN1 :: Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
 - FIN2 :: Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.
@@ -125,11 +125,11 @@ Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de ce
 - FIN8 :: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.
 - FIN9 :: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.
 
-* Script de vérification formelle de l'algorithme
+** Script de vérification formelle de l'algorithme
 
 Le [[preuve-formelle/][dossier "preuve-formelle"]] propose une vérification formelle de
 l'algorithme avec la bibliothèque =z3= (Python).
 
-* Implémentation
+** Recommandations d'implémentation
 
 Vous trouvez les recommandations d'implémentation sur [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org][cette page]].
