@@ -56,6 +56,6 @@ Un exemple d'API Web permettant de tester l'algorithme d'orientation COVID19 est
 
 * Exemples d'implémentation dans des langages de programmation
 
-- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/elixir][Elixir]]
-- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.clj][Clojure]]
+- [[https://github.com/Delegation-numerique-en-sante/covid-19-orientation-elixir][Elixir]]
+- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.txt][Clojure]]
 
