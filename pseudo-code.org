@@ -132,7 +132,7 @@ if (SI moins de 15 ans) then
    :FIN1;
    stop
 
-elseif (SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)) then
+elseif (SI (fièvre et PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)) then
         if (SI un facteur de gravité majeur) then
            :FIN5;
            stop
@@ -209,6 +209,9 @@ endif
 
 @enduml
 #+end_src
+
+#+RESULTS:
+[[file:diagramme-algorithme-orientation-covid19.png]]
 
 * Conclusions possibles
 

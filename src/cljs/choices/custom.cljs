@@ -49,7 +49,7 @@
           (= moins-de-15-ans 1) FIN1
 
           ;; Branche 2
-          (or (> fievre 0)
+          (or (and (> fievre 0) (= toux 0))
               (and (> toux 0) (> mal-de-gorge 0))
               (and (> toux 0) (> anosmie 0))
               (and (> fievre 0) (> diarrhees 0)))
