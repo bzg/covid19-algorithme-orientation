@@ -43,17 +43,21 @@
                          :facteurs-gravite-majeurs 0})
 
 (def resultat "(defn resultat [reponse]
-  (let [{:keys [fievre diarrhees toux mal-de-gorge anosmie
-                age poids taille
+  (let [reponse
+        ;; Calcul du facteur âge, de l'IMC et de son impact sur les
+        ;; facteurs de pronostique défavorable
+        (merge reponse
+               {:imc             (compute-imc (:poids reponse)
+                                              (:taille reponse))
+                :moins-de-15-ans (< (:age reponse) 15)
+                :plus-de-50-ans  (> (:age reponse) 50)})
+        {:keys [fievre diarrhees toux mal-de-gorge anosmie
+                imc taille moins-de-15-ans plus-de-50-ans
                 facteurs-gravite-mineurs
                 facteurs-gravite-majeurs
                 facteurs-pronostique]} reponse
-        ;; Calcule IMC et facteur âge
-        reponse
-        (merge reponse
-               {:imc             (compute-imc poids taille)
-                :moins-de-15-ans (< age 15)
-                :plus-de-50-ans  (> age 50)})]
+        facteurs-pronostique
+        (if (> imc 30) (inc facteurs-pronostique) facteurs-pronostique)]
     (cond
       ;; Branche 1
       (= moins-de-15-ans 1)
