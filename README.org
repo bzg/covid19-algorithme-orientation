@@ -31,13 +31,13 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-** Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]]
+** Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur de l'algorithme]]
 
 - Éditez le fichier [[file:config.yml]]
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-** Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]] depuis ce dépôt
+** Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur de l'algorithme]] depuis ce dépôt
 
 Pour développer le démonstrateur :
 

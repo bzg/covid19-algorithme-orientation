@@ -41,7 +41,7 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 ** Exemple interactif
 
 Un exemple de site interactif permettant de tester l'algorithme
-d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
+d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][testable ici]].
 
 ** Exemple d'API Web pour tester l'algorithme
 
