@@ -136,7 +136,7 @@ implies_done(And(Not(toux), Not(mal_de_gorge), Not(anosmie), Not(fievre)), 9)
 def check_and_print():
     c = s.check()
     if c == sat:
-        print("Théorème faux, contre-exemple :")
+        print("Exemple :")
         print("  Valeur des variables :")
         variables_evaluated = ["    {}: {}".format(
             v, s.model().evaluate(v, model_completion=True)) for v in variables]
@@ -179,3 +179,12 @@ for j in range(0, 9):
         s.add(Not(cond))
 check_and_print()
 s.pop()
+
+print("Théorème: chaque sortie est atteignable")
+for i in range(0,9):
+    print("Atteindre la sortie FIN{} ?".format(i+1))
+    s.push()
+    cond = done[i]
+    s.add(cond)
+    check_and_print()
+    s.pop()
