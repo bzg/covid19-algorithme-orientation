@@ -54,7 +54,8 @@
               (and (> toux 0) (> anosmie 0))
               (and (> fievre 0) (> diarrhees 0)))
 
-          (cond (= facteurs-pronostique 0)
+          (cond (>= facteurs-gravite-majeurs 1) FIN5
+                (= facteurs-pronostique 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (= plus-de-50-ans 0) FIN2
                       FIN3)
@@ -62,9 +63,7 @@
 
                 (>= facteurs-pronostique 1)
                 (cond (< facteurs-gravite-mineurs 2)  FIN3 ;; Sure?
-                      (>= facteurs-gravite-mineurs 2) FIN4)
-
-                (>= facteurs-gravite-majeurs 1) FIN5)
+                      (>= facteurs-gravite-mineurs 2) FIN4))
 
           ;; Branche 3
           (>= facteurs-gravite-majeurs 1) FIN5
