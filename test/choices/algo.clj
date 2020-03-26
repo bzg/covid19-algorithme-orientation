@@ -91,7 +91,7 @@
                   (cond (>= facteurs-gravite-mineurs 0) FIN6
                         (>= facteurs-gravite-mineurs 2) FIN4))))
           ;; Branche 5
-          (and (< fievre 0)
+          (and (= fievre 0)
                (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
           (do (println "   Branche: 5 (Pas de fièvre et un autre symptôme")
               (cond (= facteurs-gravite-mineurs 0)                                   FIN7

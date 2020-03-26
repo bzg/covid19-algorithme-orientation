@@ -78,7 +78,7 @@
                     (>= facteurs-gravite-mineurs 2) FIN4)))
 
           ;; Branche 5
-          (and (< fievre 0)
+          (and (= fievre 0)
                (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
 
           (cond (= facteurs-gravite-mineurs 0)                                   FIN7
