@@ -1,0 +1,92 @@
+#+begin_src plantuml :file algorithme-orientation-covid19.png
+@startuml
+'scale max 1024 width
+title Algorithme d'orientation COVID19
+
+start
+
+if (SI moins de 15 ans) then
+   :FIN1;
+   stop
+
+elseif (SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)) then
+        if (SI un facteur de gravité majeur) then
+           :FIN5;
+           stop
+        elseif (SI 0 facteur pronostique) then
+               if (0 facteur de gravité mineur) then
+                  if (SI moins de 50 ans) then
+                     :FIN2;
+                     stop
+                  else
+                    :FIN3;
+                    stop
+                  endif
+               else
+                 :FIN3;
+                 stop
+               endif
+        else 
+            if (SI 1 OU plus facteurs pronostique) then
+               if (SI 0 OU 1 facteur de gravité mineur) then 
+                  :FIN3;
+                  stop
+               else 
+                  if (SI au moins 2 facteurs de gravité mineurs) then 
+                     :FIN4; 
+                     stop
+                  endif
+               endif
+             endif
+        endif
+
+elseif (SI fièvre ET toux) then
+       if (SI 0 facteur pronostique) then
+          if (SI 0 OU 1 facteur de gravité mineurs) then
+             :FIN6;
+             stop
+          endif
+       else
+           if (SI 1 OU plus facteur pronostique)
+              if (SI 0 OU 1 facteur de gravité mineurs) then
+                 :FIN6;
+                 stop
+              else
+                 if (SI au moins 2 facteurs de gravité mineurs) then
+                     :FIN4;
+                     stop
+                 endif
+              endif
+           endif
+       endif
+
+elseif (SI 1 OU plus facteur de gravité majeur) then
+       :FIN5;
+       stop
+
+elseif (SI pas de fièvre et (toux OU mal de gorge OU anosmie)) then
+       if (0 facteur de gravité mineur) then
+          :FIN7; 
+          stop
+       else
+          if (SI au moins un facteur de gravité mineur OU un facteur pronostique) then
+             :FIN8;
+             stop
+          endif
+       endif
+
+else
+       if (SI NI toux NI mal de gorge NI anosmie NI fièvre) then
+         :FIN9;
+         stop
+       endif
+endif
+
+:FIN9;
+
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:algorithme-orientation-covid19.png]]
+
