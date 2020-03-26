@@ -65,6 +65,6 @@ pour que votre initiative soit référencée.
 
 * Licence
 
-2020 Délégation ministérielle du numérique en santé, Bastien Guerry et les contributeurs du dépôt.
+2020 Délégation ministérielle du numérique en santé et les contributeurs du dépôt.
 
 Le code source de cette application est publié sous licence [[file:LICENSE][EPL 2.0]].
