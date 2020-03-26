@@ -62,6 +62,12 @@ au questionnaire ainsi que la conclusion déduite de ces résultats.
 
 Vous pouvez [[file:test/choices/algo.clj][lire le code]] avec lequel fonctionne ce test.
 
+* Déployer les fichiers statiques depuis ce dépôt
+
+Une seule commande :
+
+: ./build.sh
+
 * Contribuer
 
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull

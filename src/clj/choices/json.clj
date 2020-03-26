@@ -1,4 +1,4 @@
-(ns choices.generatejson
+(ns choices.json
   (:require [yaml.core :as yaml]
             [cheshire.core :as json]
             [clojure.walk :as walk]))
@@ -16,7 +16,7 @@
        node))
    data))
 
-(defn generate-json-files []
+(defn -main []
   (let [parsed-config   (yaml/parse-string (slurp "config.yml"))
         tree            (map
                          (fn [branch]
