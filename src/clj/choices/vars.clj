@@ -1,6 +1,7 @@
-(ns choices.index
+(ns choices.vars
   (:require [clojure.walk :as walk]
             [choices.views :as views]
+            [hiccup.page :as h]
             [markdown-to-hiccup.core :as md]
             [choices.macros :refer [inline-yaml-resource]]))
 
@@ -18,9 +19,7 @@
                         bulma-class-replacements
                         (md-to-string (slurp "website/fr/index-contents.md"))))
 
-(defn -main []
-  (spit "docs/index.html" (views/default index-fr-meta index-fr-contents))
-  (println "File docs/index.html generated")
-  ;; (spit "docs/interactive.html" (default index-meta index-fr-contents))
-  ;; (println "File docs/interactive.html generated")
-  )
+(def repl-fr-meta (inline-yaml-resource "website/fr/repl-meta.yml"))
+
+(def repl-fr-contents
+  [:div.language-klipse "(+ 1 2)"])

@@ -11,6 +11,6 @@ fi
 # Build json files
 clj -m choices.json
 
-# Build index.html
-clj -m choices.index
+# Build *.html
+clj -m choices.build
 
