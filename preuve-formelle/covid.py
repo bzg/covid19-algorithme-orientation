@@ -120,11 +120,11 @@ implies_done(facteurs_gravite_majeur > 0, 5)
 cond8_alt1 = Or(toux, mal_de_gorge, And(anosmie, Not(fievre)))
 cond8_alt2 = And(Or(toux, mal_de_gorge, anosmie), Not(fievre))
 cond8 = cond8_alt1
-#     SI 0 facteur de gravité mineur => FIN7
-implies_done(And(cond8, facteurs_gravite_mineur == 0), 7)
 #     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
 implies_done(
     And(cond8, Or(facteurs_gravite_mineur > 0, facteurs_pronostiques > 0)), 8)
+#     SI 0 facteur de gravité mineur => FIN7
+implies_done(And(cond8, facteurs_gravite_mineur == 0), 7)
 #
 #  SI NI toux NI mal de gorge NI anosmie NI fièvre => FIN9
 implies_done(And(Not(toux), Not(mal_de_gorge), Not(anosmie), Not(fievre)), 9)
@@ -166,23 +166,9 @@ s.add(Not(cond))
 check_and_print()
 s.pop()
 
-print("Théorème: les conditions de sortie sont mutuellement exclusives")
-s.push()
-# Ici, il s'agit de vérifier qu'il n'existe pas de manière de quitter l'algorithme
-# avec plusieurs cas de terminaison déclenchés. Cette propriété est triviale
-# pour un pseudo-code séquentiel (quand on termine, on arrête d'exécute),
-# donc ici ce théorème sert surtout à montrer que la manière dont on a émulé
-# le comportement séquentiel à Z3 est bien cohérente.
-for j in range(0, 9):
-    for i in range(0, j):
-        cond = Not(And(done[i], done[j]))
-        s.add(Not(cond))
-check_and_print()
-s.pop()
-
 print("Théorème: chaque sortie est atteignable")
-for i in range(0,9):
-    print("Atteindre la sortie FIN{} ?".format(i+1))
+for i in range(0, 9):
+    print("Atteindre la sortie FIN{} ?".format(i + 1))
     s.push()
     cond = done[i]
     s.add(cond)
