@@ -13,19 +13,19 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 
 - Vous =DEVEZ= indiquer quelle version de l'algorithme vous utilisez.
 - Vous =DEVEZ= publier le code source de votre implémentation.
-- Vous =DEVEZ= mettre en forme les données collectées en suivant [ce schéma de données](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi.json).
+- Vous =DEVEZ= mettre en forme les données collectées en suivant [ce schéma de données](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json).
   - Vous =DEVEZ= notamment implémenter la saisie du code postal.
   - Vous =DEVEZ= implémenter la saisie exacte du poids et de la taille.
 - Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org#questionnaire][les questions officielles]] ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi.json][json]]).
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org#conclusions-possibles][les conclusions officielles]] ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#questionnaire][les questions officielles]] ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][json]]).
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#conclusions-possibles][les conclusions officielles]] ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][json]]).
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org#arbre-de-décision][l'arbre de décision officiel]].
 - Vous =DEVEZ= utiliser [[file:pseudo-code.org#formules][la formule standard pour le calcul de l'indice de masse corporelle]].
 
 ** Conseils pour l'implémentation de l'algorithme
 
 - Vous =POUVEZ= pointer l'indication de version vers le commit de /release/ correspondant sur ce dépôt
-- Vous =POUVEZ= utiliser les noms de variables officiels ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi.json][json]]).
+- Vous =POUVEZ= utiliser les noms de variables officiels ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][json]]).
 - Vous =POUVEZ= utiliser des codes couleur pour les réponses.
 - Vous =POUVEZ= afficher une barre de progression.
 - Vous =POUVEZ= proposer des [[#tests-à-faire-sur-limplémentation-de-votre-algorithme][tests]].
@@ -43,13 +43,13 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 Un exemple de site interactif permettant de tester l'algorithme
 d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
 
-** Exemple d'API Web implémentant l'algorithme
+** Exemple d'API Web pour tester l'algorithme
 
 Un exemple d'API Web permettant de tester l'algorithme d'orientation
-COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][testable ici]].
+COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]].
 
 ** Exemples d'implémentation dans des langages de programmation
 
-- [[https://github.com/Delegation-numerique-en-sante/covid-19-orientation-elixir][Elixir]]
+- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir][Elixir]]
 - [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.txt][Clojure]]
 
