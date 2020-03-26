@@ -48,8 +48,8 @@
        [:li [:a {:href (str "mailto:" (:email meta)), :title "Contacter par email"}
              [:svg.icon.icon-mail [:use {:xlink:href "#envelope"}]]]]]]
      [:div.column.is-offset-1.is-4
-      [:h1 "url"]
-      [:p "Site développé en collaboration avec le département [Etalab](https://www.etalab.gouv.fr/) de la [Direction interministérielle du numérique](https://www.numerique.gouv.fr/)."
+      [:h1 "Algorithme d'orientation COVID19"]
+      [:p (md-to-string "Site développé en collaboration avec le département [Etalab](https://www.etalab.gouv.fr/) de la [Direction interministérielle du numérique](https://www.numerique.gouv.fr/).")
        [:a {:href "https://github.com/etalab/"}
         ]]]
      ]]])
