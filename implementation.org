@@ -6,7 +6,8 @@
 - [[#pseudo-code][Pseudo code]]
 - [[#prérequis-pour-être-référencé-par-le-ministère-de-la-santé][Prérequis pour être référencé par le ministère de la santé]]
 - [[#conseils-pour-l'implémentation-de-l'algorithme][Conseils pour l'implémentation de l'algorithme]]
-- [[#exemple-de-site-interactif][Exemple de site interactif]]
+- [[#exemple-de-site-interactif][Exemple interactif]]
+- [[#exemple-dapi-web][Exemple d'API Web]]
 - [[#exemples-dimplémentation-dans-des-langages-de-programmation][Exemples d'implémentation dans des langages de programmation]]
 
 * Document officiel
@@ -45,14 +46,15 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 - Toutes les [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/json/conclusions.json][conclusions du json de référence]] sont-elles présentes ?
 - Mon implémentation aboutit-elle à au moins une conclusion ?
 
-* Exemple de site interactif
+* Exemple interactif
 
 Un exemple de site interactif permettant de tester l'algorithme
 d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][testable ici]].
 
 * Exemple d'API Web
 
-Un exemple d'API Web permettant de tester l'algorithme d'orientation COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][testable ici]].
+Un exemple d'API Web permettant de tester l'algorithme d'orientation
+COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][testable ici]].
 
 * Exemples d'implémentation dans des langages de programmation
 
