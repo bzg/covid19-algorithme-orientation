@@ -11,10 +11,10 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 
 Vous trouvez ici :
 
-- une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]]
-- des recommandations sur [[file:implementation.org][son implémentation]]
-- une [[file:z3/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion
-- des explications sur comment se servir de ce dépôt
+- une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] ;
+- des recommandations sur [[file:implementation.org][son implémentation]] ;
+- une [[file:z3/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
+- des explications sur comment se servir de ce dépôt.
 
 * Mettre à jour le site
 

@@ -129,8 +129,8 @@ sur les symptômes.
 
 * Script de vérification formelle de l'algorithme
 
-Le [[z3/][dossier z3]] propose une vérification formelle de l'algorithme avec
-la bibliothèque =z3= (Python).
+Le [[preuve-formelle/][dossier "preuve-formelle"]] propose une vérification formelle de
+l'algorithme avec la bibliothèque =z3= (Python).
 
 * Implémentation
 
