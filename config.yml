@@ -18,7 +18,7 @@ ui-strings:
 # Website header
 header:
  title:    "Démonstrateur de l'algorithme d'orientation COVID19"
- logo:     ""
+ logo:     "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg?1569914611"
  color:    "is-primary"
  subtitle: "Ce site sert de documentation pour l'implémentation de l'algorithme d'orientation COVID19.  Pour plus d'informations, reportez-vous à la [page principale](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/)."
 
