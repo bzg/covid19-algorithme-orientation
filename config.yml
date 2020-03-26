@@ -759,7 +759,7 @@ tree:
       goto:    "2.12"
       color:   "is-success"
     - answer:  "Je ne sais pas"
-      goto:    "2.13"
+      goto:    "2.12"
       color:   "is-warning"
       score:
         facteurs-pronostique:
