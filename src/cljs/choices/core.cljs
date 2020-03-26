@@ -106,7 +106,7 @@
         (when (not-empty logo)
           [:div.column
            [:figure.media-left
-            [:p.image.is-128x128
+            [:p.image.is-256x256
              [:a {:href (rfe/href home-page)}
               [:img {:src logo}]]]]])
         [:div.column

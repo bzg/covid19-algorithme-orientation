@@ -5,5 +5,6 @@ keywords:    "Algorithme COVID19 DGOS DINUM"
 description: "Documentation de l'algorithme d'orientation COVID19"
 
 email:       "mobilisation-covid@sante.gouv.fr"
-base-url:    "https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/"
+main-url:    "https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses"
+# base-url:    "https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/"
 og-image-url: "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
