@@ -109,7 +109,7 @@ sur les symptômes.
 : 22
 : 23  SI 1 OU plus facteur de gravité majeur => FIN5
 : 24
-: 25  SI toux OU mal de gorge OU anosmie ET pas de fièvre
+: 25  SI pas de fièvre et (toux OU mal de gorge OU anosmie)
 : 26     SI 0 facteur de gravité mineur => FIN7
 : 27     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
 : 28

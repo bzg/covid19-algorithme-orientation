@@ -17,14 +17,14 @@ ui-strings:
 
 # Website header
 header:
- title:    "COVID19: Algorithme d'orientation"
+ title:    "Démonstrateur de l'algorithme d'orientation COVID19"
  logo:     ""
  color:    "is-primary"
- subtitle: "En cas de doute, consultez un médecin ou appelez le 15."
+ subtitle: "Ce site sert de documentation pour l'implémentation de l'algorithme d'orientation COVID19.  Pour plus d'informations, reportez-vous à la [page principale](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/)."
 
 # Website footer
 footer:
- text:    "Site de démonstration de l'algorithme d'orientation pour le COVID-19"
+ text:    "Démonstration de l'algorithme d'orientation COVID-19."
  contact:  ""
 
 # Allow users to send you emails with the summary?
@@ -364,7 +364,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "Ce site est un site de **démonstration** pour exposer l'algorithme d'orientation COVID-19."
+    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19.  Aucune donnée n'est collectée."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"
