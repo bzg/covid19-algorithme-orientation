@@ -1,8 +1,7 @@
 (ns choices.test
   (:require
-   [clojure.test :refer :all]
+   [clojure.test :refer [deftest is testing]]
    [clojure.spec.alpha :as s]
-   [clojure.spec.gen.alpha :as gen]
    [choices.macros :refer [inline-yaml-resource]]))
 
 (def config (inline-yaml-resource "config.yml"))

@@ -1,6 +1,5 @@
 (ns choices.algo
   (:require
-   [clojure.test :refer :all]
    [clojure.spec.alpha :as s]
    [clojure.spec.gen.alpha :as gen]
    [choices.macros :refer [inline-yaml-resource]]))
