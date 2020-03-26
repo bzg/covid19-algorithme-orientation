@@ -86,6 +86,8 @@ sur les symptômes.
 
 * Arbre de décision
 
+L'arbre de décision doit être parcouru de façon séquentielle.
+
 :  1  SI moins de 15 ans => FIN1
 :  2
 :  3  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
