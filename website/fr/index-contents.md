@@ -11,7 +11,7 @@ L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-n
 - Présentation de l'algorithme [en pseudo code](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#arbre-de-d%C3%A9cision).
 - Présentation de l'algorithme [en diagramme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#diagramme-de-larbre-de-d%C3%A9cision).
 - Recommandations pour [l'implémentation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org).
-- [Exemple d'API Web](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemple-dapi-web).
+- Exemple d'API Web pour [tester l'algorithme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemple-dapi-web-pour-tester-lalgorithme).
 - Exemples d'[implémentation dans des langages de programmation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemples-dimpl%C3%A9mentation-dans-des-langages-de-programmation).
 - Page pour [tester une impémentation (Clojure) de façon interactive](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html).
 - Exemple de [site interactif](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html).
