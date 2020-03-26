@@ -68,7 +68,7 @@
      ;;    (i/i lang [:source-code-available]) (i/i lang [:here]) "."]]]
      ]]])
 
-(defn default [contents meta]
+(defn default [meta contents]
   (let [title    (:index-title meta)
         subtitle (:index-subtitle meta)]
     (h/html5
