@@ -1,4 +1,4 @@
-# Script de vérification formelle de l'algorithme d'orientation COVID19
+# Programme de vérification formelle de l'algorithme d'orientation COVID19
 
 Cet outil nécessite python >= 3.6 et le paquet pip `z3-solver`.
 
