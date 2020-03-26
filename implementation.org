@@ -1,15 +1,5 @@
 #+title: Documentation sur l'implémentation de l'algorithme d'orientation COVID19
 
-* Table des matières
-
-- [[#document-officiel][Document officiel]]
-- [[#pseudo-code][Pseudo code]]
-- [[#prérequis-pour-être-référencé-par-le-ministère-de-la-santé][Prérequis pour être référencé par le ministère de la santé]]
-- [[#conseils-pour-l'implémentation-de-l'algorithme][Conseils pour l'implémentation de l'algorithme]]
-- [[#exemple-de-site-interactif][Exemple interactif]]
-- [[#exemple-dapi-web][Exemple d'API Web]]
-- [[#exemples-dimplémentation-dans-des-langages-de-programmation][Exemples d'implémentation dans des langages de programmation]]
-
 * Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
