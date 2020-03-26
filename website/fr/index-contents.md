@@ -2,6 +2,10 @@
 
 Le ministère des Solidarités et de la Santé publie un algorithme d'orientation pour les personnes présentant des symptômes du Covid19.
 
+Cet algorithme est défini par un comité scientifique, appelé CovidTélé, réunissant des médecins et co-piloté par l'AP-HP et l'Institut Pasteur.
+
+Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille la réutilisation de cet algorithme.
+
 L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf).
 
 <br/>
