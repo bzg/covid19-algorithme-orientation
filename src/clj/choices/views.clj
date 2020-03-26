@@ -85,9 +85,23 @@
         contents]]
       (footer meta)
       (when klipse?
-        [:script {:type "text/javascript" :async false}
-         "window.klipse_settings = { selector: '.language-klipse' };"]
-        [:script {:type "text/javascript" :async false
-                  :src  "https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"}])])))
+        [:div
+         [:script {:type "text/javascript" :async false}
+          "window.klipse_settings = {
+    selector: '.language-klipse',
+    print_length: 100,
+    beautify_strings: true,
+    codemirror_options_in: {
+        indentUnit: 8,
+        lineWrapping: true,
+        lineNumbers: true,
+        autoCloseBrackets: true
+    },
+    codemirror_options_out: {
+        lineWrapping: true,
+        lineNumbers: true
+    }}"]
+         [:script {:type "text/javascript" :async false
+                   :src  "https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"}]])])))
 
 
