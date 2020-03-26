@@ -1,3 +1,3 @@
 [submodule "exemples/elixir"]
 	path = exemples/elixir
-	url = git@github.com:Delegation-numerique-en-sante/covid-19-orientation-elixir.git
+	url = git@github.com:Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir.git
