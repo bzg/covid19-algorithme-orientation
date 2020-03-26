@@ -1,34 +1,43 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
+* Introduction et contexte
+
 Ce dépôt contient une présentation de l'algorithme d'orientation
-COVID19 officiellement publié par le ministère des Solidarités et de la Santé.
+COVID19 officiellement publié par le ministère des Solidarités et de
+la Santé.
 
-L'algorithme est défini par un comité scientifique, appelé CovidTélé, réunissant des médecins et co-piloté par l'AP-HP et l'Institut Pasteur.
+L'algorithme est défini par un comité scientifique, appelé CovidTélé,
+réunissant des médecins et co-piloté par l'AP-HP et l'Institut
+Pasteur.
 
-Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille la réutilisation de cet algorithme.
+Afin que toutes les initiatives qui participent à la gestion de la
+crise sanitaire s'appuient sur les mêmes recommendations, le ministère
+des Solidarités et de la Santé conseille la réutilisation de cet
+algorithme.
 
 Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
-Vous trouvez ici :
+* Ce que contient ce dépôt
 
 - une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] ;
 - des recommandations sur [[file:implementation.org][son implémentation]] ;
-- une [[file:z3/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
-- des explications sur comment se servir de ce dépôt.
+- une [[file:preuve-formelle/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
+- le code source de la page statique de présentation de l'algorithme ;
+- le code source d'un démonstrateur interactif de l'algorithme.
 
-* Mettre à jour le site
+* Mettre à jour la [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][page statique de présentation]]
 
 - Éditez les fichiers [[file:website-contents.md][website-contents.md]] et [[file:website-meta.yml]].
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-* Mettre à jour l'algorithme d'exemple en Clojure
+* Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]]
 
 - Éditez le fichier [[file:config.yml]]
 - Lancez la commande =./build.sh=
 - Committez, pushez.
 
-* Développer l'application
+* Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html][démonstrateur de l'algorithme]] depuis ce dépôt
 
 Pour développer :
 
@@ -37,7 +46,7 @@ Pour développer :
 3. Compilez avec =clj -A:fig=
 4. Allez à http://localhost:9500
 
-* Contributions
+* Contribuer
 
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
 requests/.
@@ -46,10 +55,13 @@ requests/.
 
 L'algorithme est implémenté par [[maladiecoronavirus.fr][le site maladiecoronavirus.fr]].
 
-Toutes les applications d'information, d'orientation et de triage qui réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère des Solidarité et de la Santé]]
+Toutes les applications d'information, d'orientation et de triage qui
+réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère
+des Solidarité et de la Santé]].
 
-Si vous implémentez cet algorithme, écrivez-nous à l'adresse mobilisation-covid@sante.gouv.fr ou renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]] pour que votre initiative soit 
-référencée.
+Si vous implémentez cet algorithme, écrivez-nous à l'adresse
+=mobilisation-covid@sante.gouv.fr= ou renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]]
+pour que votre initiative soit référencée.
 
 * Licence
 
