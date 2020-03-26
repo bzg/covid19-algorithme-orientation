@@ -2,6 +2,7 @@
   (:require
    [clojure.test :refer :all]
    [clojure.spec.alpha :as s]
+   [clojure.spec.gen.alpha :as gen]
    [choices.macros :refer [inline-yaml-resource]]))
 
 (def config (inline-yaml-resource "config.yml"))
@@ -61,7 +62,7 @@
 (s/def ::email (s/or :empty nil? :with-arobase #(re-matches email-regex %)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Define tests
+;; Testing config.yml
 
 (deftest ui
   (testing "Testing UI variables"
@@ -88,3 +89,4 @@
 (deftest tree
   (testing "Testing the options tree format"
     (is (s/valid? ::tree (:tree config)))))
+
