@@ -29,20 +29,21 @@
 
 (def repl-fr-meta (inline-yaml-resource "website/fr/repl-meta.yml"))
 
-(def exemple-de-reponse {
-                         :fievre                   1,
-                         :diarrhees                0,
-                         :toux                     1,
-                         :mal-de-gorge             0,
-                         :anosmie                  0,
-                         :age                      62,
-                         :poids                    63,
-                         :taille                   167,
-                         :facteurs-pronostique     2,
-                         :facteurs-gravite-mineurs 1,
-                         :facteurs-gravite-majeurs 0})
+(def exemple-de-reponse ";; Vous pouvez modifier les valeurs ci-dessous
+{:fievre                   1
+:diarrhees                0
+:toux                     1
+:mal-de-gorge             0
+:anosmie                  0
+:age                      62
+:poids                    63
+:taille                   167
+:facteurs-pronostique     2
+:facteurs-gravite-mineurs 1
+:facteurs-gravite-majeurs 0}")
 
-(def resultat "(defn resultat [reponse]
+(def resultat ";; Vous pouvez modifier cette fonction pour la tester.
+(defn resultat [reponse]
   (let [reponse
         ;; Calcul du facteur âge, de l'IMC et de son impact sur les
         ;; facteurs de pronostique défavorable
@@ -115,7 +116,8 @@
     [:br]
     [:h1.title "Code de l'indice de masse corporelle"]
     [:pre.language-klipse
-     "(defn compute-imc [p t] (/ p (Math/pow (/ t 100.0) 2)))"]]
+     ";; La taille est ici indiquée en centimètre
+(defn compute-imc [poids taille] (/ poids (Math/pow (/ taille 100.0) 2)))"]]
 
    [:div.container
     [:br]
@@ -126,7 +128,7 @@
     [:br]
     [:h1.title "Variable avec un exemple de réponse"]
     [:pre.language-klipse
-     (str "(def exemple-de-reponse " (pr-str exemple-de-reponse) ")")]]
+     (str "(def exemple-de-reponse " exemple-de-reponse ")")]]
 
    [:div.container
     [:br]
