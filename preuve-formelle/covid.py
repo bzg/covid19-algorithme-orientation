@@ -72,8 +72,8 @@ implies_done_acc = False
 #  SI moins de 15 ans => FIN1
 implies_done(age <= 15, 1)
 #
-#  SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
-cond1 = Or(fievre, And(toux, mal_de_gorge), And(
+#  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+cond1 = Or(And(fievre, Not(toux)), And(toux, mal_de_gorge), And(
     toux, anosmie), And(fievre, diarrhee))
 #     SI 0 facteur pronostique
 cond2 = (facteurs_pronostiques == 0)
