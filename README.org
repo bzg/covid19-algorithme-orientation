@@ -3,6 +3,10 @@
 Ce dépôt contient une présentation de l'algorithme d'orientation
 COVID19 officiellement publié par le ministère de la santé.
 
+L'algorithme est défini par un comité scientifique, appelé CovidTélé, réunissant des médecins et piloté par l'Institut Pasteur.
+
+Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille de s'appuie sur cet algorithme.
+
 Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
 Vous trouvez ici :
@@ -38,8 +42,17 @@ Pour développer :
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
 requests/.
 
+* Réutilisations
+
+L'algorithme est implémenté par [[maladiecoronavirus.fr][le site maladiecoronavirus.fr]].
+
+Toutes les applications d'information, d'orientation et de triage qui réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère des Solidarité et de la Santé]]
+
+Si vous implémentez cet algorithme, écrivez-nous à l'adresse mobilisation-covid@sante.gouv.fr pour que votre initiative soit 
+référencée.
+
 * Licence
 
-2020 DGOS, Bastien Guerry et les contributeurs du dépôt.
+2020 Délégation ministérielle du numérique en santé, Bastien Guerry et les contributeurs du dépôt.
 
 Le code source de cette application est publié sous licence [[file:LICENSE][EPL 2.0]].
