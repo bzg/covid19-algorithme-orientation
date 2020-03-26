@@ -20,7 +20,9 @@ L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-n
 
 [Ce démonstrateur](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html) vous permet de parcourir le questionnaire pour vous faire une idée.
 
-![Capture d'écran du démonstrateur de l'algorithme d'orientation COVID19](https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/demonstrateur.png "Capture d'écran du démonstrateur de l'algorithme d'orientation COVID19")
+<br/>
+
+<a href="https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemple-interactif.html"><img class="image" src="https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/demonstrateur.png" alt="Capture d'écran du démonstrateur de l'algorithme d'orientation COVID19"/></a>
 
 <br/>
 
