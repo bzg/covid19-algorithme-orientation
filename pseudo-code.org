@@ -87,7 +87,7 @@ sur les symptômes.
 
 :  1  SI moins de 15 ans => FIN1
 :  2
-:  3  SI fièvre OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+:  3  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
 :  4     SI un facteur de gravité majeur => FIN5
 :  5 
 :  6     SI 0 facteur pronostique
