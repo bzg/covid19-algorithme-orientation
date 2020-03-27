@@ -447,7 +447,7 @@ tree:
 
   - node:    "1.4"
     progress:   "[5 23]"
-    text:    "Avez-vous un mal de gorge apparu ces derniers jours ?"
+    text:    "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles apparus ces derniers jours ?"
     choices:
     - answer:  "Oui"
       score:
