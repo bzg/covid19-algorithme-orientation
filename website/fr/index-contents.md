@@ -1,10 +1,6 @@
-# Document officiel
+# Présentation
 
-Le ministère des Solidarités et de la Santé publie un algorithme d'orientation pour les personnes présentant des symptômes du Covid19.
-
-<br/>
-
-Cet algorithme est défini par un comité scientifique, appelé CovidTélé, réunissant des médecins et co-piloté par l'AP-HP et l'Institut Pasteur.
+Le ministère des Solidarités et de la Santé publie un **algorithme d'orientation** pour les personnes se demandant si elles présentent des symptômes du COVID19.  Cet algorithme est défini par un comité scientifique composé de médecins, appelé CovidTélé, co-piloté par l'AP-HP et l'Institut Pasteur.
 
 <br/>
 
