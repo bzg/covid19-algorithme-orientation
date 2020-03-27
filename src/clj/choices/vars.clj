@@ -5,8 +5,9 @@
 
 (def bulma-class-replacements
   {:h1 :h1.title
-   :ul :ul.list
-   :li :li.list-item})
+   :ul :ul.list.is-size-5
+   :li :li.list-item
+   :p  :p.is-size-5})
 
 (defn md-to-string [s]
   (-> s (md/md->hiccup) (md/component)))
