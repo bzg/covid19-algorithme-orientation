@@ -58,8 +58,10 @@ def implies_done_base(cond, number, done, implies_done_acc):
 
 # Encodage du pseudo-code dans Z3
 
-# VERSION b782eb0a6a1c - samedi 28 mars 15 h
+
 def algo_b782eb0a6a1c():
+    # VERSION b782eb0a6a1c - samedi 28 mars 15 h
+
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
     # L'algotithme définit 10 cas de terminaison que l'on stockera dans cette liste
@@ -89,7 +91,7 @@ def algo_b782eb0a6a1c():
     #     SI diarrhée OU douleurs OU anosmie
     cond4 = Or(diarrhee, douleurs, anosmie)
     #        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond1, cond4, cond3),4)
+    implies_done(And(cond1, cond4, cond3), 4)
     #        SI >= 50 ans OU >=1 facteur de gravité mineur => FIN3
     cond5 = Or(age >= 50, facteurs_gravite_mineur >= 1)
     implies_done(And(cond1, cond4, cond5), 3)
@@ -99,7 +101,7 @@ def algo_b782eb0a6a1c():
     #  SI toux OU douleurs OU anosmie
     cond6 = Or(toux, douleurs, anosmie)
     #     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-    cond7 = Or(facteurs_gravite_mineur >=1, facteurs_pronostiques >= 1)
+    cond7 = Or(facteurs_gravite_mineur >= 1, facteurs_pronostiques >= 1)
     implies_done(And(cond6, cond7), 8)
     #     SINON => FIN7
     implies_done(And(cond6, Not(cond7)), 7)
@@ -109,8 +111,9 @@ def algo_b782eb0a6a1c():
     return done
 
 
-# VERSION 7c34d5814273 - samedi 28 mars 13 h 15
 def algo_7c34d581427():
+    # VERSION 7c34d5814273 - samedi 28 mars 13 h 15
+
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
     # L'algotithme définit 10 cas de terminaison que l'on stockera dans cette liste
@@ -123,7 +126,7 @@ def algo_7c34d581427():
             cond, number, done, implies_done_acc)
 
     #  SI < 15 ans => FIN1
-    implies_done(age <= 15, 1)
+    implies_done(age < 15, 1)
     #
     #  SI >=1 facteur de gravité majeur => FIN5
     implies_done(facteurs_gravite_majeur >= 1, 5)
@@ -164,8 +167,10 @@ def algo_7c34d581427():
     implies_done(And(Not(toux), Not(douleurs), Not(anosmie)), 9)
     return done
 
-# VERSION bba3d6b27c5 - jeudi 26 mars 14 h 00
+
 def algo_bba3d6b27c5():
+    # VERSION bba3d6b27c5 - jeudi 26 mars 14 h 00
+
     implies_done_acc = BoolVal(False)
     done = [BoolVal(False) for i in range(1, 10)]
 
@@ -175,7 +180,7 @@ def algo_bba3d6b27c5():
             cond, number, done, implies_done_acc)
 
     #  SI moins de 15 ans => FIN1
-    implies_done(age <= 15, 1)
+    implies_done(age < 15, 1)
     #
     #  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
     cond1 = Or(And(fievre, Not(toux)), And(toux, douleurs), And(
@@ -187,7 +192,7 @@ def algo_bba3d6b27c5():
     #           SI moins de 50 ans => FIN2
     implies_done(And(cond1, cond2, cond3, age < 50), 2)
     #           SINON => FIN3
-    implies_done(And(cond1, cond2, cond3, Not(age > 50)), 3)
+    implies_done(And(cond1, cond2, cond3, Not(age < 50)), 3)
     #        SINON => FIN3
     implies_done(And(cond1, cond2), 3)
     #
@@ -283,13 +288,15 @@ def check_all_cases_ending(done, msg):
     # alors le théorème est prouvé.
     cond = Or(done)
     s.add(Not(cond))
-    check_and_print([(done, msg)], "OK !", "Trouvé un cas de non-terminaison !")
+    check_and_print([(done, msg)], "OK !",
+                    "Trouvé un cas de non-terminaison !")
     s.pop()
 
 
 check_all_cases_ending(done1, done1_msg)
 check_all_cases_ending(done2, done2_msg)
 check_all_cases_ending(done3, done3_msg)
+
 
 def check_every_exit_reached(done, msg):
     print("Théorème: pour l'algorithme {} chaque sortie est atteignable".format(msg))
@@ -298,10 +305,13 @@ def check_every_exit_reached(done, msg):
         s.push()
         cond = done[i]
         s.add(cond)
-        check_and_print([(done, msg)], "Sortie jamais atteinte !", "Valeur d'atteinte:")
+        check_and_print(
+            [(done, msg)], "Sortie jamais atteinte !", "Valeur d'atteinte:")
         s.pop()
 
+
 check_every_exit_reached(done3, done3_msg)
+
 
 def check_same(done1, msg1, done2, msg2):
     print(">>> Théorème: deux algorithmes ({} et {}) donnent les mêmes réponses".format(
@@ -317,6 +327,6 @@ def check_same(done1, msg1, done2, msg2):
     print("")
 
 
-check_same(done1, done1_msg, done2, done2_msg)
 check_same(done3, done3_msg, done2, done2_msg)
+check_same(done1, done1_msg, done2, done2_msg)
 check_same(done1, done1_msg, done3, done3_msg)
