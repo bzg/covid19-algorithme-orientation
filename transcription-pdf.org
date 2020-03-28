@@ -3,14 +3,16 @@ services numériques d’orientation des personnes mis en œuvre dans le
 cadre de la crise sanitaire liée au Covid19.
 
 Il a été élaboré par un comité d’experts, appelé CovidTélé, co-porté
-par l’Institut Pasteur et l’Assistance publique des Hôpitaux de
-Paris. Son contenu a été validé par le Ministère des Solidarités et de
-la Santé.
+par l’Institut Pasteur et l’Assistance publique des Hôpitaux de Paris.
+Son contenu a été validé par le Ministère des Solidarités et de la
+Santé.
 
 Si vous réutilisez cet algorithme dans le cadre d’un service
 d’information, d’orientation ou de triage, et que vous souhaitez que
 votre initiative soit référencée par les pouvoirs publics, remplissez
 ce formulaire.
+
+FIXME: Lien à venir.
 
 * Présentation de l’algorithme
 
