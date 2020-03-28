@@ -241,7 +241,12 @@
                  [:div.tile.is-size-4.is-child
                   {:class (str (or (not-empty notification) "is-info")
                                " notification subtitle")}
-                  (md-to-string output)]]))))])
+                  (md-to-string output)]]))))
+        ;; Always display display-unconditionally when not empty
+        (when-let [sticky (:display-unconditionally config)]
+          [:div.tile.is-parent
+           [:div.tile.is-size-4.is-child.notification.subtitle
+            (md-to-string sticky)]])])
      [:br]]))
 
 (defn summary []

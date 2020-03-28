@@ -45,6 +45,9 @@ display-score-details: true
 # Only the score with the highest value?
 display-score-top-result: true
 
+# Some text message to always display after the score results
+display-unconditionally: "Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert: 0 800 130 000."
+
 # Set initial variables to register scores.  Each entry of
 # score-variables start with the name of the variable (you can pick
 # up any yaml-acceptable name), then:
