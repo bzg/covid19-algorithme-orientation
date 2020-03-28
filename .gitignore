@@ -18,3 +18,5 @@ pom.xml
 .cpcache/
 config.json
 scratch.clj
+*odt
+*docx
