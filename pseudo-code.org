@@ -74,37 +74,31 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 ** Arbre de décision
 
-L'arbre de décision doit être parcouru de façon *séquentielle*.
+Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
-:  1  SI <15 ans => FIN1
-:  2
-:  3  SI (fièvre ET PAS toux) OU (toux ET douleurs) OU (toux ET anosmie) OU (fièvre ET diarrhée)
-:  4     SI un facteur de gravité majeur => FIN5
-:  5 
-:  6     SI 0 facteur pronostique
-:  7        SI 0 facteur de gravité mineur
-:  8           SI >=15 et <50 ans => FIN2
-:  9           SINON => FIN3
-: 10        SINON => FIN3
-: 11
-: 12     SI 1 OU plus facteurs pronostique
-: 13        SI 0 OU 1 facteur de gravité mineur => FIN3
-: 14        SI au moins 2 facteurs de gravité mineurs => FIN4
-: 15
-: 16  SI fièvre ET toux
-: 17     SI 0 facteur pronostique
-: 18        SI 0 OU 1 facteur de gravité mineurs => FIN6
-: 19     SI 1 OU plus facteur pronostique
-: 20        SI 0 OU 1 facteur de gravité mineurs => FIN6
-: 21        SI au moins 2 facteurs de gravité mineurs => FIN4
-: 22
-: 23  SI 1 OU plus facteur de gravité majeur => FIN5
-: 24
-: 25  SI pas de fièvre et (toux OU douleurs OU anosmie)
-: 26     SI 0 facteur de gravité mineur => FIN7
-: 27     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
-: 28
-: 29  SI NI toux NI douleurs NI anosmie NI fièvre => FIN9
+:     SI <15 ans => FIN1
+:
+:     SI 1 OU plus facteur(s) de gravité majeur => FIN5
+:
+:     SI fièvre ET toux
+:        SI au moins 1 facteur pronostique
+:           SI au moins 2 facteurs de gravité mineurs => FIN4
+:           SINON => FIN6
+:        SINON FIN6
+:
+:     SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
+:        SI au moins 1 facteur pronostique
+:           SI au moins 2 facteurs de gravité mineurs => FIN4
+:           SINON => FIN3
+:        SI 0 facteur pronostique
+:           SI >= 50 ans ou au moins 1 facteur de gravité mineur => FIN3
+:           SINON => FIN2
+:
+:     SI pas de fièvre ET (toux OU douleurs OU anosmie)
+:        SI au moins 1 facteur de gravité mineur OU 1 facteur pronostique => FIN8
+:        SINON => FIN7
+:
+:     SI NI toux NI douleurs NI anosmie NI fièvre => FIN9
 
 ** Diagramme de l'arbre de décision
 

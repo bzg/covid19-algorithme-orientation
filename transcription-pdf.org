@@ -53,7 +53,7 @@ FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur 
 ** Facteur pronostique défavorable lié au terrain
 
 - /Quel est votre âge ?/
-  - < 15 ans : STOP : Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
+  - < 15 ans
   - >= 15 et < 50 ans
   - >= 50 et < 70 ans
   - *>= 70 ans*
@@ -100,44 +100,44 @@ L'indice de masse corporelle est égal au =POIDS= en kilogrammes divisé par le 
 
 * Arbre de décision
 
-** Patient avec fièvre, ou toux + mal de gorge, ou toux + trouble odorat ou fièvre + diarrhée :
- 
+** Patient de moins de 15 ans
+
+=Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.=
+
+** Tout patient avec au moins un facteur de gravité majeur
+
+=Appelez le 15.=
+
+** Tout patient avec fièvre et toux
+
 *** Tout patient sans facteur pronostique
 
-- Sans facteur de gravité et <50 ans : =Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.=
-- Sans facteur de gravité et 50-69 ans, ou avec au moins un facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc).=
+=Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc.).=
  
 *** Tout patient avec un facteur pronostique ou plus
 
-- Aucun facteur de gravité : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- Un seul facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- les deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
+- Avec deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
+
+- Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile.=
  
-** Tout patient avec ou sans facteur pronostique avec au moins un facteur de gravité majeur : Appel 15.
+** Tout patient avec fièvre ou diarrhée ou (toux et douleurs) ou (toux et anosmie)
  
+*** Tout patient avec un facteur pronostique ou plus
+
+- Si au moins deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
+- Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile.=
+
 /Pour tout patient orienté vers une téléconsultation ou médecin généraliste : préciser "appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24 heures apparaissent.”/
  
-*** Tout patient avec fièvre et toux :
+*** Tout patient sans facteur pronostique
 
-*** Tout patient sans facteur pronostique :
-
-- Sans facteur de gravité ou au moins 1 facteur de gravité mineur sans facteur de gravité majeur : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc.).=
- 
-*** Tout patient avec un facteur pronostique ou plus :
-
-- Aucun facteur de gravité : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- Un seul facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- Les deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
- 
-** Tout patient avec ou sans facteur pronostique avec au moins un facteur de gravité majeur : Appel 15.
+- Si patient de 50-69 ans ou au moins un facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc).=
+- Sinon : =Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.=
  
 ** Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, trouble de l’odorat
 
-- Pas de facteur de gravité :
-  - =Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptômes apparaissent, refaites le test.=
-
-- Au moins un facteur de gravité ou un facteur pronostique :
-  - =Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.=
+- Pas de facteur de gravité mineur : =Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptômes apparaissent, refaites le test.=
+- Au moins un facteur de gravité mineur ou un facteur pronostique : =Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.=
  
 ** Tout patient avec aucun symptôme
 
