@@ -524,7 +524,7 @@ tree:
     text:    "Quel est votre âge ?"
     choices:
     - answer:  "Moins de 15 ans"
-      goto:    "fin-moins-de-15-ans"
+      goto:    "2.2"
       score:
         moins-de-15-ans:
           value: 1
