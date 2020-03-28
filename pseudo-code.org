@@ -76,27 +76,27 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
-:     SI < 15 ans => FIN1
-:
-:     SI >=1 facteur de gravité majeur => FIN5
-:
-:     SI fièvre ET toux
-:        SI >=1 facteur pronostique et >=2 facteurs de gravité mineurs => FIN4
-:        SINON => FIN6
-:
-:     SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
-:        SI >=1 facteur pronostique
-:           SI >=2 facteurs de gravité mineurs => FIN4
-:           SINON => FIN3
-:        SINON
-:           SI >= 50 ans ou >=1 facteur de gravité mineur => FIN3
-:           SINON => FIN2
-:
-:     SI pas de fièvre ET (toux OU douleurs OU anosmie)
-:        SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-:        SINON => FIN7
-:
-:     SI NI toux NI douleurs NI anosmie => FIN9
+:  1  SI < 15 ans => FIN1
+:  2
+:  3  SI >=1 facteur de gravité majeur => FIN5
+:  4
+:  5  SI fièvre ET toux
+:  6     SI >=1 facteur pronostique et >=2 facteurs de gravité mineurs => FIN4
+:  7     SINON => FIN6
+:  8
+:  9  SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
+: 10     SI >=1 facteur pronostique
+: 11        SI >=2 facteurs de gravité mineurs => FIN4
+: 12        SINON => FIN3
+: 13     SINON
+: 14        SI >= 50 ans ou >=1 facteur de gravité mineur => FIN3
+: 15        SINON => FIN2
+: 16
+: 17  SI pas de fièvre ET (toux OU douleurs OU anosmie)
+: 18     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
+: 19     SINON => FIN7
+: 20
+: 21  SI NI toux NI douleurs NI anosmie => FIN9
 
 ** Diagramme de l'arbre de décision
 
