@@ -23,7 +23,7 @@
 
 ;; Available variables:
 ;; moins-de-15-ans
-;; plus-de-50-ans
+;; plus-de-49-ans
 ;; poids
 ;; taille
 ;; fievre
@@ -35,7 +35,7 @@
 ;; facteurs-gravite-majeurs
 ;; facteurs-pronostique
 (defn conditional-score-result [resultats conclusions]
-  (let [{:keys [moins-de-15-ans plus-de-50-ans
+  (let [{:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie mal-de-gorge diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
                 facteurs-pronostique]}                         resultats
@@ -58,7 +58,7 @@
                 (= facteurs-pronostique 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (and (not= moins-de-15-ans 1)
-                           (not= plus-de-50-ans 1)) FIN2
+                           (not= plus-de-49-ans 1)) FIN2
                       FIN3)
                   FIN3)
 

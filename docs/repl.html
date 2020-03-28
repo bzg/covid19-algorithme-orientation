@@ -12,9 +12,9 @@
                {:imc             (compute-imc (:poids reponse)
                                               (:taille reponse))
                 :moins-de-15-ans (if (< (:age reponse) 15) 1 0)
-                :plus-de-50-ans  (if (> (:age reponse) 50) 1 0)})
+                :plus-de-49-ans  (if (> (:age reponse) 50) 1 0)})
         {:keys [fievre diarrhees toux mal-de-gorge anosmie
-                imc moins-de-15-ans plus-de-50-ans
+                imc moins-de-15-ans plus-de-49-ans
                 facteurs-gravite-mineurs
                 facteurs-gravite-majeurs
                 facteurs-pronostique]} reponse
@@ -38,7 +38,7 @@
                 (= facteurs-pronostique 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (and (not= moins-de-15-ans 1)
-                           (not= plus-de-50-ans 1))
+                           (not= plus-de-49-ans 1))
                     (println "FIN2")
                     (println "FIN3"))
                   (println "FIN3"))

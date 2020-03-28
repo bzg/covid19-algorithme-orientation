@@ -9,7 +9,7 @@
 (def conditional-score-outputs (:conditional-score-outputs config))
 
 (s/def ::moins-de-15-ans (s/int-in 0 2))
-(s/def ::plus-de-50-ans (s/int-in 0 2))
+(s/def ::plus-de-49-ans (s/int-in 0 2))
 (s/def ::poids (s/int-in 40 200)) ;; kgs
 (s/def ::taille (s/int-in 120 240)) ;; cm
 (s/def ::toux (s/int-in 0 2))
@@ -24,7 +24,7 @@
 (defn compute-imc [p t] (/ p (Math/pow (/ t 100.0) 2)))
 
 (s/def ::reponse (s/keys :req-un [::moins-de-15-ans
-                                  ::plus-de-50-ans
+                                  ::plus-de-49-ans
                                   ::poids
                                   ::taille
                                   ::fievre
@@ -51,7 +51,7 @@
         conditional-score-outputs
         resultats
         (preprocess-scores resultats)
-        {:keys [moins-de-15-ans plus-de-50-ans
+        {:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie mal-de-gorge diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
                 facteurs-pronostique]}                         resultats
@@ -73,7 +73,7 @@
                     (= facteurs-pronostique 0)
                     (if (= facteurs-gravite-mineurs 0)
                       (if (and (not= moins-de-15-ans 1)
-                               (not= plus-de-50-ans 1)) FIN2
+                               (not= plus-de-49-ans 1)) FIN2
                           FIN3)
                       FIN3)
                     (>= facteurs-pronostique 1)
