@@ -102,7 +102,7 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 
 [[file:diagramme-algorithme-orientation-covid19.png]]
 
-Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de ce code source :
+Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de [[file:diagramme.org][ce code source]].
 
 ** Conclusions possibles
 
