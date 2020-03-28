@@ -73,13 +73,13 @@ facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
 ** Facteur pronostique défavorable lié au terrain
 
 - Quel est votre âge ?
-  - < 50 ans
-  - 50-69 ans
+  - < 15 ans : STOP : Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
+  - >= 15 et < 50 ans
+  - >= 50 et < 70 ans
   - >= 70 ans
-  - STOP si < 15 ans : Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.
 
 - Quel est votre poids ? Quelle est votre taille ?
-  - IMC > ou = 30 kg/m2 ou < 30 kg/m2
+  - IMC >= 30 kg/m2 ou < 30 kg/m2
 
 - Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ? OUI / NON / Ne sait pas (= OUI).
 
