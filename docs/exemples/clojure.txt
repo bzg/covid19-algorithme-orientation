@@ -72,7 +72,7 @@
           (and (> fievre 0) (> toux 0))
 
           (if (= facteurs-pronostique 0)
-            (when (> facteurs-gravite-mineurs 0) FIN6)
+            (when (>= facteurs-gravite-mineurs 0) FIN6)
             (when (>= facteurs-pronostique 1)
               (cond (>= facteurs-gravite-mineurs 0) FIN6
                     (>= facteurs-gravite-mineurs 2) FIN4)))
