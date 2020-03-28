@@ -22,9 +22,7 @@ facteurs_gravite_majeur = Int("facteurs_gravite_majeur")
 s.add(age >= 0)
 s.add(facteurs_pronostiques >= 0)
 s.add(facteurs_gravite_mineur >= 0)
-s.add(facteurs_gravite_mineur <= 2)
 s.add(facteurs_gravite_majeur >= 0)
-s.add(facteurs_gravite_majeur <= 2)
 
 # Contraintes sur la définition des facteurs gravité mineurs : la fièvre en
 # fait partie.
