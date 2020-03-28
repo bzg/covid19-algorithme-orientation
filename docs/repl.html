@@ -64,17 +64,17 @@
           (println "FIN9")))))
 </pre></div><div class="container"><br><h1 class="title">Variable avec un exemple de réponse</h1><pre class="language-klipse">;; Vous pouvez modifier les valeurs ci-dessous.
 (def exemple-de-reponse
-  {:fievre                   1   ;; 0 (pas de fièvre) ou 1 (fièvre)
-   :diarrhees                0   ;; Idem
-   :toux                     1   ;; Idem
-   :douleurs                 0   ;; Idem
-   :anosmie                  0   ;; Idem
-   :age                      62  ;; Valeur normale
-   :poids                    63  ;; En kgs
-   :taille                   167 ;; En centimètres
-   :facteurs-pronostique     2   ;; Voir première série de questions
-   :facteurs-gravite-mineurs 1   ;; Fièvre >= 39°C ou alitement >= 50% temps diurne
-   :facteurs-gravite-majeurs 0   ;; Gêne respiratoire ou difficulté manger/boire
+  {:fievre                   1   ; 0 (pas de fièvre) ou 1 (fièvre)
+   :diarrhees                0   ; Idem
+   :toux                     1   ; Idem
+   :douleurs                 0   ; Idem
+   :anosmie                  0   ; Idem
+   :age                      62  ; Valeur normale
+   :poids                    63  ; En kgs
+   :taille                   167 ; En centimètres
+   :facteurs-pronostique     2   ; Voir première série de questions
+   :facteurs-gravite-mineurs 1   ; Fièvre >= 39°C ou alitement >= 50% temps diurne
+   :facteurs-gravite-majeurs 0   ; Gêne respiratoire ou difficulté manger/boire
    })
 </pre></div><div class="container"><br><h1 class="title">Essayez vous-même</h1><p class="subtitle">Changez l'exemple de réponse ci-dessus et voyez le résultat.</p><pre class="language-klipse">(resultat exemple-de-reponse)</pre></div><div class="container"><br><h1 class="title">Réponses possibles</h1><ul class="list"><li class="list-item"><span><b>FIN1</b>: Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.</span></li><li class="list-item"><span><b>FIN8</b>: Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.</span></li><li class="list-item"><span><b>FIN7</b>: Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptomes apparaissent, refaites le test.</span></li><li class="list-item"><span><b>FIN3</b>: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.</span></li><li class="list-item"><span><b>FIN4</b>: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Si pas possible de le joindre ou téléCS : faite le 15.</span></li><li class="list-item"><span><b>FIN5</b>: Appel du 15.</span></li><li class="list-item"><span><b>FIN9</b>: Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.</span></li><li class="list-item"><span><b>FIN6</b>: Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).</span></li><li class="list-item"><span><b>FIN2</b>: Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.</span></li></ul></div></section></div></section><footer class="footer"><div class="content"><div class="columns"><div class="column is-offset-2 is-4"><ul class="footer__social"><li><a href="https://twitter.com/MinSoliSante" title="Twitter"><svg class="icon icon-twitter"><use xlink:href="#twitter"></use></svg></a></li><li><a href="https://github.com/delegation-numerique-en-sante" title="Github"><svg class="icon icon-github"><use xlink:href="#github"></use></svg></a></li><li><a href="mailto:mobilisation-covid@sante.gouv.fr" title="Contacter par email"><svg class="icon icon-mail"><use xlink:href="#envelope"></use></svg></a></li></ul></div><div class="column is-offset-1 is-4"><h1>Algorithme d'orientation COVID19</h1><p><div><p>Site développé en collaboration avec la <a href="https://www.numerique.gouv.fr/">Direction interministérielle du numérique</a>.</p></div></p></div></div></div></footer><div><script type="text/javascript">window.klipse_settings = {
     selector: '.language-klipse',
