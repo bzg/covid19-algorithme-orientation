@@ -50,13 +50,13 @@
           ;; Branche 2
           (>= facteurs-gravite-majeurs 1)
           FIN5
-          ;; Branche 4
+          ;; Branche 3
           (and (> fievre 0) (> toux 0))
           (if (and (>= facteurs-pronostique 1)
                    (>= facteurs-gravite-mineurs 2))
             FIN4
             FIN6)
-          ;; Branche 3
+          ;; Branche 4
           (or (> fievre 0)
               (> diarrhees 0)
               (and (> toux 0) (> douleurs 0))

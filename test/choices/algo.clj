@@ -62,15 +62,15 @@
         (cond
           ;; Branche 1
           (= moins-de-15-ans 1)
-          (do (println "Branche: 1 (moins de 15 ans)")
+          (do (println "Branche 1: moins de 15 ans")
               FIN1)
           ;; Branche 2
           (>= facteurs-gravite-majeurs 1)
-          (do (println "Branche: 3 (Un facteur majeur de gravité)")
+          (do (println "Branche 2: un facteur majeur de gravité")
               FIN5)
           ;; Branche 4
           (and (> fievre 0) (> toux 0))
-          (do (println "Branche: 4 (Fièvre et toux)")
+          (do (println "Branche 3: fièvre et toux")
               (if (and (>= facteurs-pronostique 1) (>= facteurs-gravite-mineurs 2))
                 FIN4
                 FIN6))
@@ -79,7 +79,7 @@
               (> diarrhees 0)
               (and (> toux 0) (> douleurs 0))
               (and (> toux 0) (> anosmie 0)))
-          (do (println "Branche: 2 (fièvre ou autres symptômes)")
+          (do (println "Branche 4: fièvre ou combinaison d'autres symptômes")
               (if (>= facteurs-pronostique 1)
                 (if (>= facteurs-gravite-mineurs 2)
                   FIN4
@@ -89,23 +89,22 @@
                   FIN2)))
           ;; Branche 5
           (and (= fievre 0) (or (> toux 0) (> douleurs 0) (> anosmie 0)))
-          (do (println "Branche: 5 (Pas de fièvre et un autre symptôme)")
+          (do (println "Branche 5: un autre symptôme")
               (if (or (>= facteurs-gravite-mineurs 1)
                       (>= facteurs-pronostique 1))
                 FIN8
                 FIN7))
           ;; Branche 6
           (and (= toux 0) (= douleurs 0) (= anosmie 0))
-          (do (println "Branche: 6 (Pas de symptôme)")
+          (do (println "Branche 6: pas de symptôme")
               FIN9))]
     ;; Return the expected map:
     {:res resultats
      :msg (get conclusion :message)}))
 
 (defn -main [& [n]]
-  (doseq [exemple (gen/sample (s/gen ::reponse) (or (Integer. n) 1))]
+  (doseq [exemple (gen/sample (s/gen ::reponse)
+                              (or (and (not-empty n) (Integer. n)) 1))]
     (let [{:keys [res msg]} (conditional-score-result exemple)]
-      (println "  Réponses: " res)
+      (println "Réponses: " res)
       (println "Conclusion: " msg))))
-
-
