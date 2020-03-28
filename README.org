@@ -1,5 +1,7 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
+Version: 20200328 (beta)
+
 ** Introduction et contexte
 
 Ce dépôt contient une présentation de l'algorithme d'orientation
