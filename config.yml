@@ -779,9 +779,6 @@ tree:
     - answer:  "Je ne sais pas"
       goto:    "fin"
       color:   "is-info"
-      score:
-        facteurs-pronostique:
-          value: 1
 
   - node: "fin-moins-de-15-ans"
     text: "Vous avez moins de quinze ans."
