@@ -14,7 +14,7 @@ elseif (SI (fièvre et PAS toux) OU (toux ET douleurs) OU (toux ET anosmie) OU (
            stop
         elseif (SI 0 facteur pronostique) then
                if (0 facteur de gravité mineur) then
-                  if (SI moins de 50 ans) then
+                  if (NI moins de 15 ans NI plus de 49 ans) then
                      :FIN2;
                      stop
                   else
