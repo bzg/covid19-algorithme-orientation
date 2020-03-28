@@ -62,43 +62,41 @@
         (cond
           ;; Branche 1
           (= moins-de-15-ans 1)
-          (do (println "   Branche: 1 (moins de 15 ans)") FIN1)
+          (do (println "Branche: 1 (moins de 15 ans)")
+              FIN1)
           ;; Branche 2
-          (or (and (> fievre 0) (= toux 0))
-              (and (> toux 0) (> douleurs 0))
-              (and (> toux 0) (> anosmie 0))
-              (and (> fievre 0) (> diarrhees 0)))
-          (do (println "   Branche: 2 (fièvre ou autres symptômes)")
-              (cond (>= facteurs-gravite-majeurs 1) FIN5
-                    (= facteurs-pronostique 0)
-                    (if (= facteurs-gravite-mineurs 0)
-                      (if (and (not= moins-de-15-ans 1)
-                               (not= plus-de-49-ans 1)) FIN2
-                          FIN3)
-                      FIN3)
-                    (>= facteurs-pronostique 1)
-                    (cond (< facteurs-gravite-mineurs 2)  FIN3 ;; Sure?
-                          (>= facteurs-gravite-mineurs 2) FIN4)))
-          ;; Branche 3
           (>= facteurs-gravite-majeurs 1)
-          (do (println "   Branche: 3 (Un facteur majeur de gravité)") FIN5)
+          (do (println "Branche: 3 (Un facteur majeur de gravité)")
+              FIN5)
           ;; Branche 4
           (and (> fievre 0) (> toux 0))
-          (do (println "   Branche: 4 (Fièvre et toux)")
-              (if (= facteurs-pronostique 0)
-                (when (>= facteurs-gravite-mineurs 0) FIN6)
-                (when (>= facteurs-pronostique 1)
-                  (cond (>= facteurs-gravite-mineurs 0) FIN6
-                        (>= facteurs-gravite-mineurs 2) FIN4))))
+          (do (println "Branche: 4 (Fièvre et toux)")
+              (if (and (>= facteurs-pronostique 1) (>= facteurs-gravite-mineurs 2))
+                FIN4
+                FIN6))
+          ;; Branche 3
+          (or (> fievre 0)
+              (> diarrhees 0)
+              (and (> toux 0) (> douleurs 0))
+              (and (> toux 0) (> anosmie 0)))
+          (do (println "Branche: 2 (fièvre ou autres symptômes)")
+              (if (>= facteurs-pronostique 1)
+                (if (>= facteurs-gravite-mineurs 2)
+                  FIN4
+                  FIN3)
+                (if (or (= plus-de-49-ans 1) (>= facteurs-gravite-mineurs 1))
+                  FIN3
+                  FIN2)))
           ;; Branche 5
-          (and (= fievre 0)
-               (or (> toux 0) (> douleurs 0) (> anosmie 0)))
-          (do (println "   Branche: 5 (Pas de fièvre et un autre symptôme")
-              (cond (= facteurs-gravite-mineurs 0)                                   FIN7
-                    (or (>= facteurs-gravite-mineurs 1) (>= facteurs-pronostique 1)) FIN8))
+          (and (= fievre 0) (or (> toux 0) (> douleurs 0) (> anosmie 0)))
+          (do (println "Branche: 5 (Pas de fièvre et un autre symptôme)")
+              (if (or (>= facteurs-gravite-mineurs 1)
+                      (>= facteurs-pronostique 1))
+                FIN8
+                FIN7))
           ;; Branche 6
           (and (= fievre 0) (= toux 0) (= douleurs 0) (= anosmie 0))
-          (do (println "   Branche: 6 (Pas de symptôme)")
+          (do (println "Branche: 6 (Pas de symptôme)")
               FIN9))]
     ;; Return the expected map:
     {:res resultats
