@@ -1,3 +1,5 @@
+Version du document : =20200328=
+
 Le présent algorithme a vocation à être utilisé par l’ensemble des
 services numériques d’orientation des personnes mis en œuvre dans le
 cadre de la crise sanitaire liée au Covid19.
