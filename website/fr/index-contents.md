@@ -8,7 +8,7 @@ Afin que toutes les initiatives qui participent à la gestion de la crise sanita
 
 <br/>
 
-L'algorithme d'orientation COVID19 est [publié en PDF ici](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/documents/algorithme-orientation-COVID19-23032020.pdf).
+L'algorithme d'orientation COVID19 est [publié en PDF ici](https://esante.gouv.fr/reponse-maladiecoronavirus).
 
 <br/>
 
