@@ -117,7 +117,6 @@ L'indice de masse corporelle est égal au =POIDS= en kilogrammes divisé par le 
 *** Tout patient avec un facteur pronostique ou plus
 
 - Avec deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
-
 - Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile.=
  
 ** Tout patient avec fièvre ou diarrhée ou (toux et douleurs) ou (toux et anosmie)
