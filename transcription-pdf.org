@@ -26,7 +26,7 @@ Les réponses au questionnaire constituent un ensemble de données utiles à des
 
 FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
 
-- /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/ =OUI / NON / Ne sait pas=
+- /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/ =OUI / NON / Je ne sais pas=
 - /Si oui : quelle est votre température ?/
   - 35,5 - 37,7°C
   - 37,8 – 38,9°C = seuil retenu =FIXME: effacer "seuil retenu" ?=
@@ -51,15 +51,15 @@ FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur 
 - /Quel est votre poids ? Quelle est votre taille ?/
   - Indice de masse corporelle < 30 kg/m2
   - *Indice de masse corporelle >= 30 kg/m2*
-- /Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?/ =OUI / NON / Ne sait pas (=OUI).=
+- /Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?/ =OUI / NON / Je ne sais pas (=OUI)=
 - /Êtes-vous diabétique ?/ =OUI / NON=
 - /Avez-vous ou avez-vous eu un cancer ?/ =OUI / NON=
 - /Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?/ =OUI / NON=
 - /Avez-vous une insuffisance rénale chronique dialysée ?/ =OUI / NON=
 - /Avez-vous une maladie chronique du foie ?/ =OUI / NON=
 - /Êtes-vous enceinte ?/ =OUI / NON / Non applicable=
-- /Avez-vous une maladie connue pour diminuer vos défenses immunitaires/ =OUI / NON / Ne sait pas (NON)=
-- /Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.  Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)./ =OUI / NON / Ne sait pas (=NON)=
+- /Avez-vous une maladie connue pour diminuer vos défenses immunitaires/ =OUI / NON / Je ne sais pas (=NON)=
+- /Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.  Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)./ =OUI / NON / Je ne sais pas (=NON)=
 - /Quel est votre code postal ?/
 
 Le facteur pronostique est considéré positif si au moins une réponse OUI est donnée ou si l'âge est supérieur à 70 ans ou si l'indice de masse corporelle est supérieur à 30.
