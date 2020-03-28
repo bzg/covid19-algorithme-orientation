@@ -76,26 +76,33 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
-:  1  SI < 15 ans => FIN1
-:  2
-:  3  SI >=1 facteur de gravité majeur => FIN5
-:  4
-:  5  SI fièvre
-:  6     SI toux
-:  7        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
-:  8        SINON => FIN6
-:  9     SI diarrhée OU douleurs OU anosmie
-: 10        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
-: 11        SI >= 50 ans OU >=1 facteur de gravité mineur => FIN3
-: 12        SINON => FIN2
-: 13
-: 14  SI toux OU douleurs OU anosmie
-: 15     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-: 16     SINON => FIN7
-: 17
-: 18  SINON => FIN9
+:  0: SI moins de 15 ans => FIN1
+:  1: 
+:  2: SI fièvre ET toux
+:  3:    SI >= 1 facteurs de gravité majeurs => FIN5
+:  4:    SI 0 facteur pronostique
+:  5:       SI 0 OU 1 facteur de gravité mineur => FIN6
+:  6:    SI >= 1 facteurs pronostiques
+:  7:       SI 0 OU 1 facteur de gravité mineur => FIN6
+:  8:       SI >= 2 facteurs de gravité mineurs => FIN4
+:  9: 
+: 10: SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
+: 11:    SI >= 1 facteurs de gravité majeurs => FIN5
+: 12:    SI 0 facteur pronostique
+: 13:       SI 0 facteur de gravité mineur
+: 14:          SI moins de 50 ans => FIN2
+: 15:             SINON => FIN3
+: 17:    SI >= 1 facteurs pronostiques
+: 18:       SI 0 OU 1 facteur de gravité mineur => FIN3
+: 19:       SI au moins 2 facteurs de gravité mineurs => FIN4
+: 20: 
+: 21: SI pas de fièvre et (toux OU douleurs OU anosmie)
+: 22:    SI >= 1 facteurs de gravité mineurs OU 1 facteur pronostique => FIN8
+: 23:    SI 0 facteur de gravité mineur => FIN7
+: 24: 
+: 25: SI NI fièvre NI toux NI douleurs NI anosmie => FIN9
 
-** Diagramme de l'arbre de décision
+*** Diagramme de l'arbre de décision
 
 [[file:diagramme-algorithme-orientation-covid19.png]]
 

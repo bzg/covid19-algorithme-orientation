@@ -27,27 +27,18 @@ Les réponses au questionnaire constituent un ensemble de données utiles à des
 FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
 
 - /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/ =OUI / NON / Ne sait pas=
-
 - /Si oui : quelle est votre température ?/
   - 35,5 - 37,7°C
   - 37,8 – 38,9°C = seuil retenu =FIXME: effacer "seuil retenu" ?=
   - >= 39°C ou <= 35,4°C => Facteur de gravité
   - Non renseignée & OUI à question précédente = fièvre présente.
-
 - /Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?/ =OUI / NON=
-
 - /Avez-vous noté une forte diminution de votre gout ou de l’odorat ces derniers jours ?/ =OUI / NON=
-
 - /Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles apparus ces derniers jours ?/ =OUI / NON=
-
 - /Avez-vous de la diarrhée ces dernièrs 24 heures (au moins 3 selles molles) ?/ =OUI / NON=
-
 - /Avez-vous une fatigue inhabituelle ces derniers jours ?/ =OUI / NON=
-
 - /Si oui cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?/ =OUI / NON => Facteur de gravité.=
-
 - /Êtes-vous dans l'impossibilité de vous alimenter ou de boire DEPUIS 24 HEURES OU PLUS ?/  =OUI / NON => Facteur de gravité.=
-
 - /Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?/ =OUI / NON => Facteur de gravité.=
 
 ** Facteur pronostique défavorable lié au terrain
@@ -57,29 +48,18 @@ FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur 
   - >= 15 et < 50 ans
   - >= 50 et < 70 ans
   - *>= 70 ans*
-
 - /Quel est votre poids ? Quelle est votre taille ?/
   - Indice de masse corporelle < 30 kg/m2
   - *Indice de masse corporelle >= 30 kg/m2*
-
 - /Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?/ =OUI / NON / Ne sait pas (=OUI).=
-
 - /Êtes-vous diabétique ?/ =OUI / NON=
-
 - /Avez-vous ou avez-vous eu un cancer ?/ =OUI / NON=
-
 - /Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?/ =OUI / NON=
-
 - /Avez-vous une insuffisance rénale chronique dialysée ?/ =OUI / NON=
-
 - /Avez-vous une maladie chronique du foie ?/ =OUI / NON=
-
 - /Êtes-vous enceinte ?/ =OUI / NON / Non applicable=
-
 - /Avez-vous une maladie connue pour diminuer vos défenses immunitaires/ =OUI / NON / Ne sait pas (NON)=
-
 - /Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.  Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)./ =OUI / NON / Ne sait pas (=NON)=
-
 - /Quel est votre code postal ?/
 
 Le facteur pronostique est considéré positif si au moins une réponse OUI est donnée ou si l'âge est supérieur à 70 ans ou si l'indice de masse corporelle est supérieur à 30.
@@ -100,46 +80,52 @@ L'indice de masse corporelle est égal au =POIDS= en kilogrammes divisé par le 
 
 * Arbre de décision
 
+Pour tous : /Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000./
+
 ** Patient de moins de 15 ans
 
 =Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15.=
 
-** Tout patient avec au moins un facteur de gravité majeur
+** Tout patient avec fièvre et toux
+
+*** Tout patient avec au moins un facteur de gravité majeur
 
 =Appelez le 15.=
 
-** Tout patient avec fièvre et toux
-
 *** Tout patient sans facteur pronostique
 
-=Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc.).=
+Si un ou deux facteurs de gravité mineurs : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc.).=
  
 *** Tout patient avec un facteur pronostique ou plus
 
-- Avec deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
-- Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile.=
+- Si un ou deux facteurs de gravité mineurs : =Téléconsultation ou médecin généraliste ou visite à domicile.=
+- Avec au moins deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
  
 ** Tout patient avec fièvre ou diarrhée ou (toux et douleurs) ou (toux et anosmie)
  
+*** Tout patient avec au moins un facteur de gravité majeur
+
+=Appelez le 15.=
+
+*** Tout patient sans facteur pronostique
+
+- Si pas de facteur de gravité mineur et moins de 50 ans : =Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.=
+  - Si moins de 50 ans : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc).=
+  - Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.=
+ 
 *** Tout patient avec un facteur pronostique ou plus
 
+- Si zéro ou un facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile.=
 - Si au moins deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
-- Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile.=
 
 /Pour tout patient orienté vers une téléconsultation ou médecin généraliste : préciser "appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24 heures apparaissent.”/
  
-*** Tout patient sans facteur pronostique
+** Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
-- Si patient de 50-69 ans ou au moins un facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc).=
-- Sinon : =Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.=
- 
-** Tout patient avec un seul symptôme parmi fièvre, toux, mal de gorge, trouble de l’odorat
-
-- Pas de facteur de gravité mineur : =Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptômes apparaissent, refaites le test.=
 - Au moins un facteur de gravité mineur ou un facteur pronostique : =Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.=
+- Pas de facteur de gravité mineur : =Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptômes apparaissent, refaites le test.=
  
-** Tout patient avec aucun symptôme
+** Tout patient sans fièvre ni aucun autre symptôme
 
 =Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.=
  
-Pour tous : /Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000./

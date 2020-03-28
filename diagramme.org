@@ -4,59 +4,72 @@ title Algorithme d'orientation COVID19
 
 start
 
-if (SI moins de 15 ans) then
+if (SI moins de 15 ans) then (moins de 15 ans)
    :FIN1;
    stop
 
-elseif (SI 1 OU plus facteur de gravité majeur) then (oui)
-       :FIN5;
-       stop
-
 elseif (SI fièvre ET toux) then (oui)
-       if (SI >=1 facteur pronostique et >= 2 facteurs de gravité mineurs) then
-          :FIN4;
+       if (SI >=1 facteurs de gravité majeurs) then (oui)
+          :FIN5;
           stop
+       elseif (SI 0 facteur pronostique) then (oui)
+          if (SI 0 OU 1 facteur de gravité mineur) then (oui)
+             :FIN6;
+             stop
+          endif
        else (non)
-          :FIN6;
-          stop
+          if (SI 0 OU 1 facteur de gravité mineur) then (oui)
+             :FIN6;
+             stop
+          else (non)
+             :FIN4;
+             stop
+          endif
        endif
 
 elseif (SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)) then (oui)
-        if (SI >= 1 facteur pronostique) then
-           if (SI >=2 facteurs de gravité mineurs) then (oui)
-              :FIN4;
-               stop
+       if (SI >=1 facteur de gravité majeurs) then (oui)
+          :FIN5;
+          stop
+       elseif (SI 0 facteur pronostique) then (oui)
+           if (SI 0 facteur de gravité mineur) then (oui)
+              if (SI moins de 50 ans) then (oui)
+                 :FIN2;
+                 stop;
+              else (non)
+                 :FIN3;
+                 stop;
+              endif
            else (non)
               :FIN3;
+              stop;
+           endif
+        else (non)
+           if (SI 0 OU 1 facteur de gravité mineur) then (oui)
+              :FIN3;
+              stop
+           else (non)
+              :FIN4;
               stop
            endif
-        else 
-            if (SI >= 50 ans ou >=1 facteur pronostique) then (oui)
-               :FIN3;
-               stop
-            else (non)
-               :FIN2; 
-               stop
-            endif
         endif
 
 elseif (SI pas de fièvre ET (toux OU douleurs OU anosmie)) then (oui)
-       if (SI >=1 facteur de gravité mineur OU >=1 facteur pronostique) then (oui)
-          :FIN8; 
+       if (SI >=1 facteurs de gravité mineurs OU >=1 facteur pronostique) then (oui)
+          :FIN8;
           stop
        else (non)
           :FIN7;
           stop
        endif
 
-else
-       if (SI NI toux NI douleurs NI anosmie) then (oui)
-         :FIN9;
-         stop
-       endif
+else (Aucun symptôme)
+     :FIN9;
+     stop
 endif
 
 :FIN9;
+stop
 
 @enduml
 #+end_src
