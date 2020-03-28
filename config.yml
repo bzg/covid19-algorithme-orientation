@@ -490,7 +490,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        facteurs-gravite-majeurs:
+        facteurs-gravite-mineurs:
           value: 1
       goto:    "1.7"
       color:   "is-info"
