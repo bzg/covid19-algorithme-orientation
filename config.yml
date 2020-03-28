@@ -82,9 +82,9 @@ score-variables:
     doc: "Si la personne a indiqué un trouble du goût ou de l'odorat."
     display: "Trouble goût/odorat"
     value: 0
-  mal-de-gorge:
-    doc: "Si la personne a indiqué avoir eu mal à la gorge."
-    display: "Mal de gorge"
+  douleurs:
+    doc: "Si la personne a indiqué avoir eu mal à la gorge ou des douleurs musculaires ou des courbatures."
+    display: "Douleurs"
     value: 0
   diarrhees:
     doc: "Si la personne a indiqué des diarrhées."
@@ -147,7 +147,7 @@ conditional-score-outputs:
       facteurs-gravite-mineurs: 2
       facteurs-pronostique: 1
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
     condition-3:
       facteurs-gravite-mineurs: 2
       facteurs-pronostique: 1
@@ -180,23 +180,23 @@ conditional-score-outputs:
       facteurs-gravite-mineurs: 1
       facteurs-pronostique: 0
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
     condition-6:
       plus-de-50-ans: 1
       facteurs-gravite-mineurs: 1
       facteurs-pronostique: 1
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
     condition-7:
       facteurs-gravite-mineurs: 0
       facteurs-pronostique: 1
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
     condition-8:
       facteurs-gravite-mineurs: 1
       facteurs-pronostique: 0
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
     condition-9:
       plus-de-50-ans: 1
       facteurs-gravite-mineurs: 1
@@ -259,7 +259,7 @@ conditional-score-outputs:
       plus-de-50-ans: 0
     condition-2:
       toux: 1
-      mal-de-gorge: 1
+      douleurs: 1
       facteurs-gravite-mineurs: 0
       facteurs-pronostique: 0
       plus-de-50-ans: 0
@@ -281,38 +281,38 @@ conditional-score-outputs:
     message: "Votre situation ne relève probablement pas du Covid-19.<br/>Un avis médical est recommandé. Au moindre doute, appelez le [15](tel:15)."
     condition-1:
       toux: 1
-      mal-de-gorge: 0
+      douleurs: 0
       fievre: 0
       anosmie: 0
       facteurs-gravite-mineurs: 1
     condition-2:
-      mal-de-gorge: 1
+      douleurs: 1
       toux: 0
       anosmie: 0
       fievre: 0
       facteurs-gravite-mineurs: 1
     condition-3:
       anosmie: 1
-      mal-de-gorge: 0
+      douleurs: 0
       toux: 0
       fievre: 0
       facteurs-gravite-mineurs: 1
     condition-4:
       toux: 1
       anosmie: 0
-      mal-de-gorge: 0
+      douleurs: 0
       fievre: 0
       facteurs-pronostique: 1
     condition-5:
       toux: 0
       anosmie: 0
-      mal-de-gorge: 1
+      douleurs: 1
       fievre: 0
       facteurs-pronostique: 1
     condition-6:
       anosmie: 1
       toux: 0
-      mal-de-gorge: 0
+      douleurs: 0
       fievre: 0
       facteurs-pronostique: 1
   FIN7:
@@ -322,11 +322,11 @@ conditional-score-outputs:
     condition-1:
       toux: 1
       anosmie: 0
-      mal-de-gorge: 0
+      douleurs: 0
       fievre: 0
       facteurs-gravite-mineurs: 0
     condition-2:
-      mal-de-gorge: 1
+      douleurs: 1
       toux: 0
       anosmie: 0
       fievre: 0
@@ -334,7 +334,7 @@ conditional-score-outputs:
     condition-3:
       anosmie: 1
       toux: 0
-      mal-de-gorge: 0
+      douleurs: 0
       fievre: 0
       facteurs-gravite-mineurs: 0
   FIN9:
@@ -344,7 +344,7 @@ conditional-score-outputs:
     condition-1:
       toux: 0
       fievre: 0
-      mal-de-gorge: 0
+      douleurs: 0
       anosmie: 0
 
 # Mandatory configuration option
@@ -441,7 +441,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        mal-de-gorge:
+        douleurs:
           value: 1
       goto:    "1.5"
       color:   "is-info"

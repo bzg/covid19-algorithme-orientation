@@ -29,14 +29,14 @@
 ;; fievre
 ;; toux
 ;; anosmie
-;; mal-de-gorge
+;; douleurs
 ;; diarrhees
 ;; facteurs-gravite-mineurs
 ;; facteurs-gravite-majeurs
 ;; facteurs-pronostique
 (defn conditional-score-result [resultats conclusions]
   (let [{:keys [moins-de-15-ans plus-de-49-ans
-                fievre toux anosmie mal-de-gorge diarrhees
+                fievre toux anosmie douleurs diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
                 facteurs-pronostique]}                         resultats
         ;; Set the possible conclusions
@@ -50,7 +50,7 @@
 
           ;; Branche 2
           (or (and (> fievre 0) (= toux 0))
-              (and (> toux 0) (> mal-de-gorge 0))
+              (and (> toux 0) (> douleurs 0))
               (and (> toux 0) (> anosmie 0))
               (and (> fievre 0) (> diarrhees 0)))
 
@@ -80,13 +80,13 @@
 
           ;; Branche 5
           (and (= fievre 0)
-               (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
+               (or (> toux 0) (> douleurs 0) (> anosmie 0)))
 
           (cond (= facteurs-gravite-mineurs 0)                                   FIN7
                 (or (>= facteurs-gravite-mineurs 1) (>= facteurs-pronostique 1)) FIN8)
 
           ;; Branche 6
-          (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0)) FIN9)]
+          (and (= fievre 0) (= toux 0) (= douleurs 0) (= anosmie 0)) FIN9)]
     
     ;; Return the expected map:
     {:notification (get conclusion :notification)

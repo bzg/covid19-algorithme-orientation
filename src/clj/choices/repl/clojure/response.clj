@@ -3,7 +3,7 @@
   {:fievre                   1   ;; 0 (pas de fièvre) ou 1 (fièvre)
    :diarrhees                0   ;; Idem
    :toux                     1   ;; Idem
-   :mal-de-gorge             0   ;; Idem
+   :douleurs                 0   ;; Idem
    :anosmie                  0   ;; Idem
    :age                      62  ;; Valeur normale
    :poids                    63  ;; En kgs

@@ -8,7 +8,7 @@ if (SI moins de 15 ans) then
    :FIN1;
    stop
 
-elseif (SI (fièvre et PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)) then
+elseif (SI (fièvre et PAS toux) OU (toux ET douleurs) OU (toux ET anosmie) OU (fièvre ET diarrhée)) then
         if (SI un facteur de gravité majeur) then
            :FIN5;
            stop
@@ -63,7 +63,7 @@ elseif (SI 1 OU plus facteur de gravité majeur) then
        :FIN5;
        stop
 
-elseif (SI pas de fièvre et (toux OU mal de gorge OU anosmie)) then
+elseif (SI pas de fièvre et (toux OU douleurs OU anosmie)) then
        if (0 facteur de gravité mineur) then
           :FIN7; 
           stop
@@ -75,7 +75,7 @@ elseif (SI pas de fièvre et (toux OU mal de gorge OU anosmie)) then
        endif
 
 else
-       if (SI NI toux NI mal de gorge NI anosmie NI fièvre) then
+       if (SI NI toux NI douleurs NI anosmie NI fièvre) then
          :FIN9;
          stop
        endif

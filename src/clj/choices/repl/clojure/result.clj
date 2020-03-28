@@ -12,7 +12,7 @@
                                               (:taille reponse))
                 :moins-de-15-ans (if (< (:age reponse) 15) 1 0)
                 :plus-de-49-ans  (if (> (:age reponse) 50) 1 0)})
-        {:keys [fievre diarrhees toux mal-de-gorge anosmie
+        {:keys [fievre diarrhees toux douleurs anosmie
                 imc moins-de-15-ans plus-de-49-ans
                 facteurs-gravite-mineurs
                 facteurs-gravite-majeurs
@@ -28,7 +28,7 @@
           (println "FIN1"))
       ;; Branche 2
       (or (and (> fievre 0) (= toux 0))
-          (and (> toux 0) (> mal-de-gorge 0))
+          (and (> toux 0) (> douleurs 0))
           (and (> toux 0) (> anosmie 0))
           (and (> fievre 0) (> diarrhees 0)))
       (do (println "Branche: 2 (fièvre ou autres symptômes)")
@@ -63,7 +63,7 @@
                     (println "FIN4")))))
       ;; Branche 5
       (and (= fievre 0)
-           (or (> toux 0) (> mal-de-gorge 0) (> anosmie 0)))
+           (or (> toux 0) (> douleurs 0) (> anosmie 0)))
       (do (println "Branche: 5 (Pas de fièvre et un autre symptôme)")
           (cond (= facteurs-gravite-mineurs 0)
                 (println "FIN7")
@@ -71,6 +71,6 @@
                     (>= facteurs-pronostique 1))
                 (println "FIN8")))
       ;; Branche 6
-      (and (= fievre 0) (= toux 0) (= mal-de-gorge 0) (= anosmie 0))
+      (and (= fievre 0) (= toux 0) (= douleurs 0) (= anosmie 0))
       (do (println "Branche: 6 (Pas de symptôme)")
           (println "FIN9")))))

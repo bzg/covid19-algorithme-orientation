@@ -13,19 +13,19 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
    1. "Quelle est votre température ?"
 2. "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
 3. "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
-4. "Avez-vous un mal de gorge apparu ces derniers jours ?"
+4. "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles apparus ces derniers jours ?"
 5. "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
 6. "Avez-vous une fatigue inhabituelle ces derniers jours ?"
    1. "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
 7. "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
-8. "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
+8. "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?"
 
 *** Questions sur les facteurs pronostiques défavorables au terrain
 
 1. "Quel est votre âge ?"
 2. "Quel est votre poids en kilogrammes ?"
 3. "Quelle est votre taille en mètres ?"
-4. "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+4. "Avez-vous une tension artérielle mal équilibrée ? Ou une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?"
 5. "Êtes-vous diabétique ?"
 6. "Avez-vous ou avez-vous eu un cancer ?"
 7. "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
@@ -57,8 +57,7 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
 
 *** Facteurs de gravité mineurs et majeurs
 
-Les facteurs de gravité sont définis en réponse aux questions portant
-sur les symptômes.
+Les facteurs de gravité sont définis en réponse aux questions portant sur les symptômes.
 
 - Facteur de gravité *mineurs* :
   - Fièvre >= 39°C
@@ -79,7 +78,7 @@ L'arbre de décision doit être parcouru de façon *séquentielle*.
 
 :  1  SI <15 ans => FIN1
 :  2
-:  3  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
+:  3  SI (fièvre ET PAS toux) OU (toux ET douleurs) OU (toux ET anosmie) OU (fièvre ET diarrhée)
 :  4     SI un facteur de gravité majeur => FIN5
 :  5 
 :  6     SI 0 facteur pronostique
@@ -101,11 +100,11 @@ L'arbre de décision doit être parcouru de façon *séquentielle*.
 : 22
 : 23  SI 1 OU plus facteur de gravité majeur => FIN5
 : 24
-: 25  SI pas de fièvre et (toux OU mal de gorge OU anosmie)
+: 25  SI pas de fièvre et (toux OU douleurs OU anosmie)
 : 26     SI 0 facteur de gravité mineur => FIN7
 : 27     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
 : 28
-: 29  SI NI toux NI mal de gorge NI anosmie NI fièvre => FIN9
+: 29  SI NI toux NI douleurs NI anosmie NI fièvre => FIN9
 
 ** Diagramme de l'arbre de décision
 
