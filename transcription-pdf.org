@@ -34,6 +34,9 @@ l'ordre.).
 
 ** Symptômes
 
+FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un
+facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
+
 - Pensez-vous avoir eu de la fièvre ces derniers jours (frissons,
   sueurs) ? OUI / NON / Ne sait pas
 
