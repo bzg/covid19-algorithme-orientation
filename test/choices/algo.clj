@@ -42,7 +42,7 @@
         imc-map {:imc imc-val}
         scores  (merge scores imc-map)
         scores  (update-in scores [:facteurs-pronostique]
-                           #(if (> imc-val 30) (inc %) %))]
+                           #(if (>= imc-val 30) (inc %) %))]
     ;; Returned preprocessed scores:
     scores))
 

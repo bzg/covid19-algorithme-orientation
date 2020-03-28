@@ -44,7 +44,7 @@ le ministère de la santé est [[https://delegation-numerique-en-sante.github.io
 *** Facteur pronostique défavorable lié au terrain
 
 - Si son âge est supérieur ou égal à 70 ans
-- Si son indice de masse corporelle est supérieur à 30 kg/m²
+- Si son indice de masse corporelle est supérieur ou égal à 30 kg/m²
 - Si =OUI= ou =Ne sait pas= à la question sur l'hypertension
 - Si =OUI= pour diabétique
 - Si =OUI= pour a ou a eu un cancer
@@ -71,7 +71,7 @@ sur les symptômes.
 
 ** Formule auxiliaire
 
-- IMC (indice de masse corporelle) :: le POIDS en kilogrammes divisé par le carré de la TAILLE en mètres.
+- IMC (indice de masse corporelle) :: le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
 
 ** Arbre de décision
 

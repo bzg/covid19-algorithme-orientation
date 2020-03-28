@@ -18,7 +18,7 @@
                 facteurs-gravite-majeurs
                 facteurs-pronostique]} reponse
         facteurs-pronostique
-        (if (> imc 30)
+        (if (>= imc 30)
           (inc facteurs-pronostique)
           facteurs-pronostique)]
     (cond
