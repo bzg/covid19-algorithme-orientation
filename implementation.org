@@ -24,7 +24,8 @@ Une version lisible en pseudo code est [[https://github.com/Delegation-numerique
 
 ** Conseils pour l'implémentation de l'algorithme
 
-- Vous =POUVEZ= pointer l'indication de version vers le commit de /release/ correspondant sur ce dépôt
+- Vous =POUVEZ= pointer la version de cette documentation et/ou le commit taggé avec ce numéro de version.
+- Vous =POUVEZ= demander de saisir la taille en centimètres plutôt qu'en mètres.
 - Vous =POUVEZ= utiliser les noms de variables officiels ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][json]]).
 - Vous =POUVEZ= afficher une barre de progression.
 - Vous =POUVEZ= proposer des [[#tests-à-faire-sur-limplémentation-de-votre-algorithme][tests]].
