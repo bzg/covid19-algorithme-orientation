@@ -80,23 +80,20 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 :  2
 :  3  SI >=1 facteur de gravité majeur => FIN5
 :  4
-:  5  SI fièvre ET toux
-:  6     SI >=1 facteur pronostique et >=2 facteurs de gravité mineurs => FIN4
-:  7     SINON => FIN6
-:  8
-:  9  SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
-: 10     SI >=1 facteur pronostique
-: 11        SI >=2 facteurs de gravité mineurs => FIN4
-: 12        SINON => FIN3
-: 13     SINON
-: 14        SI >= 50 ans ou >=1 facteur de gravité mineur => FIN3
-: 15        SINON => FIN2
-: 16
-: 17  SI pas de fièvre ET (toux OU douleurs OU anosmie)
-: 18     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-: 19     SINON => FIN7
-: 20
-: 21  SI NI toux NI douleurs NI anosmie => FIN9
+:  5  SI fièvre
+:  6     SI toux
+:  7        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
+:  8        SINON => FIN6
+:  9     SI diarrhée OU douleurs OU anosmie
+: 10        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
+: 11        SI >= 50 ans OU >=1 facteur de gravité mineur => FIN3
+: 12        SINON => FIN2
+: 13
+: 14  SI toux OU douleurs OU anosmie
+: 15     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
+: 16     SINON => FIN7
+: 17
+: 18  SINON => FIN9
 
 ** Diagramme de l'arbre de décision
 

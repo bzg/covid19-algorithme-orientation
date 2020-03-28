@@ -45,37 +45,32 @@
         conclusion
         (cond
           ;; Branche 1
-          (= moins-de-15-ans 1)
-          FIN1
+          (= moins-de-15-ans 1)           FIN1
           ;; Branche 2
-          (>= facteurs-gravite-majeurs 1)
-          FIN5
+          (>= facteurs-gravite-majeurs 1) FIN5
           ;; Branche 3
-          (and (> fievre 0) (> toux 0))
-          (if (and (>= facteurs-pronostique 1)
-                   (>= facteurs-gravite-mineurs 2))
-            FIN4
-            FIN6)
+          (> fievre 0)
+          (cond (> toux 0)
+                (if (and (>= facteurs-pronostique 1)
+                         (>= facteurs-gravite-mineurs 2))
+                  FIN4
+                  FIN6)
+                (or (= diarrhees 0) (= douleurs 0) (= anosmie 0))
+                (if (and (>= facteurs-pronostique 1)
+                         (>= facteurs-gravite-mineurs 2))
+                  FIN4
+                  (if (or (= plus-de-49-ans 1)
+                          (>= facteurs-gravite-mineurs 1))
+                    FIN3
+                    FIN2)))
           ;; Branche 4
-          (or (> fievre 0)
-              (> diarrhees 0)
-              (and (> toux 0) (> douleurs 0))
-              (and (> toux 0) (> anosmie 0)))
-          (if (>= facteurs-pronostique 1)
-            (if (>= facteurs-gravite-mineurs 2)
-              FIN4
-              FIN3)
-            (if (or (= plus-de-49-ans 1) (>= facteurs-gravite-mineurs 1))
-              FIN3
-              FIN2))
-          ;; Branche 5
-          (and (= fievre 0) (or (> toux 0) (> douleurs 0) (> anosmie 0)))
-          (if (or (>= facteurs-gravite-mineurs 1)
-                  (>= facteurs-pronostique 1))
+          (or (> toux 0) (> douleurs 0) (> anosmie 0))
+          (if (or (>= facteurs-pronostique 1)
+                  (>= facteurs-gravite-mineurs 1))
             FIN8
             FIN7)
           ;; Branche 6
-          (and (= toux 0) (= douleurs 0) (= anosmie 0))
+          :else
           FIN9)]
     ;; Return the expected map:
     {:notification (get conclusion :notification)

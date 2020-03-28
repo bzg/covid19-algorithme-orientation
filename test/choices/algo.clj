@@ -68,35 +68,34 @@
           (>= facteurs-gravite-majeurs 1)
           (do (println "Branche 2: un facteur majeur de gravité")
               FIN5)
-          ;; Branche 4
-          (and (> fievre 0) (> toux 0))
-          (do (println "Branche 3: fièvre et toux")
-              (if (and (>= facteurs-pronostique 1) (>= facteurs-gravite-mineurs 2))
-                FIN4
-                FIN6))
           ;; Branche 3
-          (or (> fievre 0)
-              (> diarrhees 0)
-              (and (> toux 0) (> douleurs 0))
-              (and (> toux 0) (> anosmie 0)))
-          (do (println "Branche 4: fièvre ou combinaison d'autres symptômes")
-              (if (>= facteurs-pronostique 1)
-                (if (>= facteurs-gravite-mineurs 2)
-                  FIN4
-                  FIN3)
-                (if (or (= plus-de-49-ans 1) (>= facteurs-gravite-mineurs 1))
-                  FIN3
-                  FIN2)))
-          ;; Branche 5
-          (and (= fievre 0) (or (> toux 0) (> douleurs 0) (> anosmie 0)))
-          (do (println "Branche 5: un autre symptôme")
-              (if (or (>= facteurs-gravite-mineurs 1)
-                      (>= facteurs-pronostique 1))
+          (> fievre 0)
+          (do (println "Branche 3: fièvre et autre symptôme")
+              (cond (> toux 0)
+                    (if (and (>= facteurs-pronostique 1)
+                             (>= facteurs-gravite-mineurs 2))
+
+                      FIN4
+                      FIN6)
+
+                    (or (= diarrhees 0) (= douleurs 0) (= anosmie 0))
+                    (if (and (>= facteurs-pronostique 1)
+                             (>= facteurs-gravite-mineurs 2))
+                      FIN4
+                      (if (or (= plus-de-49-ans 1)
+                              (>= facteurs-gravite-mineurs 1))
+                        FIN3
+                        FIN2))))
+          ;; Branche 4
+          (or (> toux 0) (> douleurs 0) (> anosmie 0))
+          (do (println "Branche 4: un autre symptôme sans fièvre")
+              (if (or (>= facteurs-pronostique 1)
+                      (>= facteurs-gravite-mineurs 1))
                 FIN8
                 FIN7))
           ;; Branche 6
-          (and (= toux 0) (= douleurs 0) (= anosmie 0))
-          (do (println "Branche 6: pas de symptôme")
+          :else
+          (do (println "Branche 6: Pas de symptôme")
               FIN9))]
     ;; Return the expected map:
     {:res resultats
