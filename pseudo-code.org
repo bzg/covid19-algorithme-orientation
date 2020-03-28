@@ -96,7 +96,7 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 :        SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
 :        SINON => FIN7
 :
-:     SI NI toux NI douleurs NI anosmie NI fièvre => FIN9
+:     SI NI toux NI douleurs NI anosmie => FIN9
 
 ** Diagramme de l'arbre de décision
 

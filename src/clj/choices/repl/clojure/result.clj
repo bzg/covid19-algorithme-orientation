@@ -58,6 +58,6 @@
             (println "FIN8")
             (println "FIN7")))
       ;; Branche 6
-      (and (= fievre 0) (= toux 0) (= douleurs 0) (= anosmie 0))
+      (and (= toux 0) (= douleurs 0) (= anosmie 0))
       (do (println "Branche: 6 (Pas de symptôme)")
           (println "FIN9")))))

@@ -75,7 +75,7 @@
             FIN8
             FIN7)
           ;; Branche 6
-          (and (= fievre 0) (= toux 0) (= douleurs 0) (= anosmie 0))
+          (and (= toux 0) (= douleurs 0) (= anosmie 0))
           FIN9)]
     ;; Return the expected map:
     {:notification (get conclusion :notification)
