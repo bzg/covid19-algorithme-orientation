@@ -85,7 +85,7 @@ facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
   - >= 70 ans
 
 - Quel est votre poids ? Quelle est votre taille ?
-  - IMC >= 30 kg/m2 ou < 30 kg/m2
+  - Indice de masse corporelle >= 30 kg/m2 ou < 30 kg/m2
 
 - Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous
   une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à
@@ -120,6 +120,11 @@ Considéré positif si au moins 1 item OUI ou en gras (âge, IMC).
 - Facteurs de gravité majeurs :
   - Gêne respiratoire
   - Difficultés importantes pour s’alimenter ou boire depuis plus de 24h
+
+** Calcul de l'indice de masse corporelle (IMC)
+
+L'indice de masse corporelle est égal au =POIDS= en kilogrammes divisé
+par le carré de la =TAILLE= en mètres.
 
 * Arbre de décision
 
