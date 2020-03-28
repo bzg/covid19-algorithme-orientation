@@ -77,14 +77,14 @@ sur les symptômes.
 
 L'arbre de décision doit être parcouru de façon *séquentielle*.
 
-:  1  SI moins de 15 ans => FIN1
+:  1  SI <15 ans => FIN1
 :  2
 :  3  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
 :  4     SI un facteur de gravité majeur => FIN5
 :  5 
 :  6     SI 0 facteur pronostique
 :  7        SI 0 facteur de gravité mineur
-:  8           SI moins de 50 ans => FIN2
+:  8           SI >=15 et <50 ans => FIN2
 :  9           SINON => FIN3
 : 10        SINON => FIN3
 : 11

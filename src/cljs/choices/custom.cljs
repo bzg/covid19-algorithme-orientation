@@ -57,7 +57,8 @@
           (cond (>= facteurs-gravite-majeurs 1) FIN5
                 (= facteurs-pronostique 0)
                 (if (= facteurs-gravite-mineurs 0)
-                  (if (= plus-de-50-ans 0) FIN2
+                  (if (and (not= moins-de-15-ans 1)
+                           (not= plus-de-50-ans 1)) FIN2
                       FIN3)
                   FIN3)
 

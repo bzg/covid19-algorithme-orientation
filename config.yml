@@ -55,12 +55,12 @@ display-score-top-result: true
 #      the one with the highest score when the user is done.
 score-variables:
   moins-de-15-ans:
-    doc: "Si la personne a moins de 15 ans."
+    doc: "Si la personne a strictement moins de 15 ans."
     display: "Moins de 15 ans"
     value: 0
   plus-de-50-ans:
-    doc: "Si la personne a plus de 50 ans."
-    display: "Plus de 50 ans"
+    doc: "Si la personne a strictement plus de 49 ans."
+    display: "Plus de 49 ans"
     value: 0
   poids:
     doc: "Le poids en kilogrammes."
@@ -536,7 +536,7 @@ tree:
         moins-de-15-ans:
           value: 1
       color:   "is-info"
-    - answer:  "Entre 15 et 50 ans"
+    - answer:  "Entre 15 et 49 ans"
       goto:    "2.2"
       color:   "is-info"
     - answer:  "Entre 50 et 69 ans"
