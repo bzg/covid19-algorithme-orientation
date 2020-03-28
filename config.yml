@@ -761,9 +761,6 @@ tree:
     - answer:  "Je ne sais pas"
       goto:    "2.12"
       color:   "is-info"
-      score:
-        facteurs-pronostique:
-          value: 1
 
   - node:    "2.12"
     progress:   "[22 23]"
