@@ -45,7 +45,7 @@ Pour développer le démonstrateur :
 2. Testez avec =clj -A:test-config=
 3. Compilez avec =clj -A:fig=
 4. Allez à [[http://localhost:9500]]
-5. Éditer [[file:src/cljs/choices/core.cljs][core.cljs]]
+5. Éditez [[file:src/cljs/choices/core.cljs][core.cljs]]
 
 Vous pouvez aussi lancer des exemples d'utilisation de l'algorithme :
 
