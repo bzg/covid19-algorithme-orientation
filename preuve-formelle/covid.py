@@ -58,9 +58,58 @@ def implies_done_base(cond, number, done, implies_done_acc):
 
 # Encodage du pseudo-code dans Z3
 
+# VERSION b782eb0a6a1c - samedi 28 mars 15 h
+def algo_b782eb0a6a1c():
+    # L'accumulateur est initialisé à False car c'est une série de ou logiques.
+    implies_done_acc = BoolVal(False)
+    # L'algotithme définit 10 cas de terminaison que l'on stockera dans cette liste
+    # "done"
+    done = [BoolVal(False) for i in range(1, 10)]
+
+    def implies_done(cond, number):
+        nonlocal implies_done_acc
+        implies_done_acc = implies_done_base(
+            cond, number, done, implies_done_acc)
+
+    #  SI < 15 ans => FIN1
+    implies_done(age < 15, 1)
+    #
+    #  SI >=1 facteur de gravité majeur => FIN5
+    implies_done(facteurs_gravite_majeur >= 1, 5)
+    #
+    #  SI fièvre
+    cond1 = fievre
+    #     SI toux
+    cond2 = toux
+    #        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
+    cond3 = And(facteurs_pronostiques >= 1, facteurs_gravite_mineur >= 2)
+    implies_done(And(cond1, cond2, cond3), 4)
+    #        SINON => FIN6
+    implies_done(And(cond1, cond2, Not(cond3)), 6)
+    #     SI diarrhée OU douleurs OU anosmie
+    cond4 = Or(diarrhee, douleurs, anosmie)
+    #        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
+    implies_done(And(cond1, cond4, cond3),4)
+    #        SI >= 50 ans OU >=1 facteur de gravité mineur => FIN3
+    cond5 = Or(age >= 50, facteurs_gravite_mineur >= 1)
+    implies_done(And(cond1, cond4, cond5), 3)
+    #        SINON => FIN2
+    implies_done(And(cond1, cond4, Not(cond5)), 2)
+    #
+    #  SI toux OU douleurs OU anosmie
+    cond6 = Or(toux, douleurs, anosmie)
+    #     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
+    cond7 = Or(facteurs_gravite_mineur >=1, facteurs_pronostiques >= 1)
+    implies_done(And(cond6, cond7), 8)
+    #     SINON => FIN7
+    implies_done(And(cond6, Not(cond7)), 7)
+    #
+    #  SINON => FIN9
+    implies_done(BoolVal(True), 9)
+    return done
+
+
 # VERSION 7c34d5814273 - samedi 28 mars 13 h 15
-
-
 def algo_7c34d581427():
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
@@ -116,8 +165,6 @@ def algo_7c34d581427():
     return done
 
 # VERSION bba3d6b27c5 - jeudi 26 mars 14 h 00
-
-
 def algo_bba3d6b27c5():
     implies_done_acc = BoolVal(False)
     done = [BoolVal(False) for i in range(1, 10)]
@@ -209,12 +256,17 @@ def check_and_print(done_arrays, msg_unsat, msg_sat):
                 i + 1, msg), s.model().evaluate(d, model_completion=True)) for (i, d) in enumerate(done)]
             done_evaluated = [a for (a, b) in done_evaluated if b]
             print(*done_evaluated, sep="\n")
+        print("")
     elif c == unsat:
         print(msg_unsat, "\n")
 
 
 done1 = algo_7c34d581427()
+done1_msg = "samedi 28 mars 13h15"
 done2 = algo_bba3d6b27c5()
+done2_msg = "jeudi 26 mars 14h"
+done3 = algo_b782eb0a6a1c()
+done3_msg = "samedi 28 mars 15h"
 
 
 def check_all_cases_ending(done, msg):
@@ -231,22 +283,25 @@ def check_all_cases_ending(done, msg):
     # alors le théorème est prouvé.
     cond = Or(done)
     s.add(Not(cond))
-    check_and_print(done, "OK !", "Trouvé un cas de non-terminaison !")
+    check_and_print([(done, msg)], "OK !", "Trouvé un cas de non-terminaison !")
     s.pop()
 
 
-check_all_cases_ending(done1, "nouveau")
-check_all_cases_ending(done2, "ancien")
+check_all_cases_ending(done1, done1_msg)
+check_all_cases_ending(done2, done2_msg)
+check_all_cases_ending(done3, done3_msg)
 
-# print("Théorème: chaque sortie est atteignable")
-# for i in range(0, 9):
-#     print("Atteindre la sortie FIN{} ?".format(i + 1))
-#     s.push()
-#     cond = done_new[i]
-#     s.add(cond)
-#     check_and_print("new")
-#     s.pop()
+def check_every_exit_reached(done, msg):
+    print("Théorème: pour l'algorithme {} chaque sortie est atteignable".format(msg))
+    for i in range(0, 9):
+        print("Atteindre la sortie FIN{} ?".format(i + 1))
+        s.push()
+        cond = done[i]
+        s.add(cond)
+        check_and_print([(done, msg)], "Sortie jamais atteinte !", "Valeur d'atteinte:")
+        s.pop()
 
+check_every_exit_reached(done3, done3_msg)
 
 def check_same(done1, msg1, done2, msg2):
     print(">>> Théorème: deux algorithmes ({} et {}) donnent les mêmes réponses".format(
@@ -259,6 +314,9 @@ def check_same(done1, msg1, done2, msg2):
         check_and_print([(done1, msg1), (done2, msg2)],
                         "Les deux algorithmes sont toujours d'accord sur cette sortie !", "Trouvé une valeur de discorde:")
         s.pop()
+    print("")
 
 
-check_same(done1, "nouveau", done2, "ancien")
+check_same(done1, done1_msg, done2, done2_msg)
+check_same(done3, done3_msg, done2, done2_msg)
+check_same(done1, done1_msg, done3, done3_msg)
