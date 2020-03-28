@@ -76,26 +76,24 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
-:     SI <15 ans => FIN1
+:     SI < 15 ans => FIN1
 :
-:     SI 1 OU plus facteur(s) de gravité majeur => FIN5
+:     SI >=1 facteur de gravité majeur => FIN5
 :
 :     SI fièvre ET toux
-:        SI au moins 1 facteur pronostique
-:           SI au moins 2 facteurs de gravité mineurs => FIN4
-:           SINON => FIN6
-:        SINON FIN6
+:        SI >=1 facteur pronostique et >=2 facteurs de gravité mineurs => FIN4
+:        SINON => FIN6
 :
 :     SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
-:        SI au moins 1 facteur pronostique
-:           SI au moins 2 facteurs de gravité mineurs => FIN4
+:        SI >=1 facteur pronostique
+:           SI >=2 facteurs de gravité mineurs => FIN4
 :           SINON => FIN3
-:        SI 0 facteur pronostique
-:           SI >= 50 ans ou au moins 1 facteur de gravité mineur => FIN3
+:        SINON
+:           SI >= 50 ans ou >=1 facteur de gravité mineur => FIN3
 :           SINON => FIN2
 :
 :     SI pas de fièvre ET (toux OU douleurs OU anosmie)
-:        SI au moins 1 facteur de gravité mineur OU 1 facteur pronostique => FIN8
+:        SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
 :        SINON => FIN7
 :
 :     SI NI toux NI douleurs NI anosmie NI fièvre => FIN9
