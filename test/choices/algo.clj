@@ -17,7 +17,7 @@
 (s/def ::anosmie (s/int-in 0 2))
 (s/def ::douleurs (s/int-in 0 2))
 (s/def ::diarrhees (s/int-in 0 2))
-(s/def ::facteurs-pronostique (s/int-in 0 12))
+(s/def ::facteurs-pronostiques (s/int-in 0 12))
 (s/def ::facteurs-gravite-mineurs (s/int-in 0 4))
 (s/def ::facteurs-gravite-majeurs (s/int-in 0 4))
 
@@ -32,7 +32,7 @@
                                   ::anosmie
                                   ::douleurs
                                   ::diarrhees
-                                  ::facteurs-pronostique
+                                  ::facteurs-pronostiques
                                   ::facteurs-gravite-mineurs
                                   ::facteurs-gravite-majeurs]))
 
@@ -41,7 +41,7 @@
                              (:taille scores))
         imc-map {:imc imc-val}
         scores  (merge scores imc-map)
-        scores  (update-in scores [:facteurs-pronostique]
+        scores  (update-in scores [:facteurs-pronostiques]
                            #(if (>= imc-val 30) (inc %) %))]
     ;; Returned preprocessed scores:
     scores))
@@ -54,7 +54,7 @@
         {:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie douleurs diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
-                facteurs-pronostique]}                         resultats
+                facteurs-pronostiques]}                        resultats
         ;; Set the possible conclusions
         {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]} conclusions
         ;; Set the final conclusion to one of the FIN*
@@ -69,7 +69,7 @@
           (do (println "Branche 2: fièvre et toux")
               (cond (>= facteurs-gravite-majeurs 1)
                     FIN5
-                    (and (= facteurs-pronostique 0)
+                    (and (= facteurs-pronostiques 0)
                          (< facteurs-gravite-mineurs 2))
                     FIN6
                     :else ; >= 1 facteurs pronostiques
@@ -83,7 +83,7 @@
           (do (println "Branche 3: fièvre ou autres symptômes")
               (cond (>= facteurs-gravite-majeurs 1)
                     FIN5
-                    (and (= facteurs-pronostique 0)
+                    (and (= facteurs-pronostiques 0)
                          (= facteurs-gravite-mineurs 0))
                     (if (not= plus-de-49-ans 1)
                       FIN2
@@ -97,7 +97,7 @@
                (or (= toux 1) (= douleurs 1) (= anosmie 1)))
           (do (println "Branche 4: pas de fièvre et autres symptômes")
               (if (or (>= facteurs-gravite-mineurs 1)
-                      (= facteurs-pronostique 1))
+                      (= facteurs-pronostiques 1))
                 FIN8
                 FIN7))
           ;; Branche 5

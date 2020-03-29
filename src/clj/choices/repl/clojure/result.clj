@@ -16,11 +16,11 @@
                 imc moins-de-15-ans plus-de-49-ans
                 facteurs-gravite-mineurs
                 facteurs-gravite-majeurs
-                facteurs-pronostique]} reponse
-        facteurs-pronostique
+                facteurs-pronostiques]} reponse
+        facteurs-pronostiques
         (if (>= imc 30)
-          (inc facteurs-pronostique)
-          facteurs-pronostique)]
+          (inc facteurs-pronostiques)
+          facteurs-pronostiques)]
     ;; L'algorithme COVID19 proprement dit.
     (cond
       ;; Branche 1
@@ -32,7 +32,7 @@
       (do (println "Branche 2: fièvre et toux")
           (cond (>= facteurs-gravite-majeurs 1)
                 (println "FIN5")
-                (and (= facteurs-pronostique 0)
+                (and (= facteurs-pronostiques 0)
                      (< facteurs-gravite-mineurs 2))
                 (println "FIN6")
                 :else ; >= 1 facteurs pronostiques
@@ -46,7 +46,7 @@
       (do (println "Branche 3: fièvre ou autres symptômes")
           (cond (>= facteurs-gravite-majeurs 1)
                 (println "FIN5")
-                (and (= facteurs-pronostique 0)
+                (and (= facteurs-pronostiques 0)
                      (= facteurs-gravite-mineurs 0))
                 (if (not= plus-de-49-ans 1)
                   (println "FIN2")
@@ -60,7 +60,7 @@
            (or (= toux 1) (= douleurs 1) (= anosmie 1)))
       (do (println "Branche 4: pas de fièvre et autres symptômes")
           (if (or (>= facteurs-gravite-mineurs 1)
-                  (= facteurs-pronostique 1))
+                  (= facteurs-pronostiques 1))
             (println "FIN8")
             (println "FIN7")))
       ;; Branche 5

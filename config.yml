@@ -101,7 +101,7 @@ score-variables:
     doc: "Facteurs de gravité majeurs."
     display: "Facteurs de gravité majeurs"
     value: 0
-  facteurs-pronostique:
+  facteurs-pronostiques:
     doc: "Facteur pronostique."
     display: "Facteur pronostic"
     value: 0
@@ -145,20 +145,20 @@ conditional-score-outputs:
     notification: "is-danger"
     condition-1:
       facteurs-gravite-mineurs: 2
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       fievre: 1
     condition-2:
       facteurs-gravite-mineurs: 2
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       diarrhees: 1
     condition-3:
       facteurs-gravite-mineurs: 2
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       toux: 1
       douleurs: 1
     condition-4:
       facteurs-gravite-mineurs: 2
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       toux: 1
       anosmie: 1
   FIN3:
@@ -167,61 +167,61 @@ conditional-score-outputs:
     message: "Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins).<br/>Appelez le [15](tel:15) si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire pendant plus de 24 heures apparaissent."
     condition-1:
       fievre: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 0
     condition-2:
       diarrhees: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 0
     condition-3:
       toux: 1
       douleurs: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 0
     condition-4:
       toux: 1
       anosmie: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 0
     condition-5:
       fievre: 1
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       facteurs-gravite-mineurs: 0
       plus-de-50-ans: 1
     condition-6:
       diarrhees: 1
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       facteurs-gravite-mineurs: 0
       plus-de-50-ans: 1
     condition-7:
       toux: 1
       douleurs: 1
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       facteurs-gravite-mineurs: 0
       plus-de-50-ans: 1
     condition-8:
       toux: 1
       anosmie: 1
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       facteurs-gravite-mineurs: 0
       plus-de-50-ans: 1
     condition-9:
       fievre: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 1
     condition-10:
       diarrhees: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 1
     condition-11:
       toux: 1
       douleurs: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 1
     condition-12:
       toux: 1
       anosmie: 1
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
       facteurs-gravite-mineurs: 1
   FIN6:
     priority: 5
@@ -237,24 +237,24 @@ conditional-score-outputs:
     condition-1:
       fievre: 1
       facteurs-gravite-mineurs: 0
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       plus-de-50-ans: 0
     condition-2:
       diarrhees: 1
       facteurs-gravite-mineurs: 0
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       plus-de-50-ans: 0
     condition-3:
       toux: 1
       douleurs: 1
       facteurs-gravite-mineurs: 0
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       plus-de-50-ans: 0
     condition-4:
       toux: 1
       anosmie: 1
       facteurs-gravite-mineurs: 0
-      facteurs-pronostique: 0
+      facteurs-pronostiques: 0
       plus-de-50-ans: 0
   FIN8:
     priority: 7
@@ -283,19 +283,19 @@ conditional-score-outputs:
       anosmie: 0
       douleurs: 0
       fievre: 0
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
     condition-5:
       toux: 0
       anosmie: 0
       douleurs: 1
       fievre: 0
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
     condition-6:
       anosmie: 1
       toux: 0
       douleurs: 0
       fievre: 0
-      facteurs-pronostique: 1
+      facteurs-pronostiques: 1
   FIN7:
     priority: 8
     notification: "is-info"
@@ -520,7 +520,7 @@ tree:
       goto:    "2.2"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
         plus-de-50-ans:
           value: 1
@@ -617,7 +617,7 @@ tree:
       goto:    "2.5"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.5"
@@ -626,7 +626,7 @@ tree:
       goto:    "2.5"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
 
   - node:    "2.5"
@@ -637,7 +637,7 @@ tree:
       goto:    "2.6"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.6"
@@ -651,7 +651,7 @@ tree:
       goto:    "2.7"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.7"
@@ -665,7 +665,7 @@ tree:
       goto:    "2.8"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.8"
@@ -679,7 +679,7 @@ tree:
       goto:    "2.9"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.9"
@@ -693,7 +693,7 @@ tree:
       goto:    "2.10"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.10"
@@ -707,7 +707,7 @@ tree:
       goto:    "2.11"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.11"
@@ -724,7 +724,7 @@ tree:
       goto:    "2.12"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "2.12"
@@ -742,7 +742,7 @@ tree:
       goto:    "fin"
       color:   "is-info"
       score:
-        facteurs-pronostique:
+        facteurs-pronostiques:
           value: 1
     - answer:  "Non"
       goto:    "fin"

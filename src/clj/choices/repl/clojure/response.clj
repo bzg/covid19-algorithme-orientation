@@ -8,7 +8,7 @@
    :age                      62  ; Valeur normale
    :poids                    63  ; En kgs
    :taille                   167 ; En centimètres
-   :facteurs-pronostique     2   ; Voir première série de questions
+   :facteurs-pronostiques    2   ; Voir première série de questions
    :facteurs-gravite-mineurs 1   ; Fièvre >= 39°C ou alitement >= 50% temps diurne
    :facteurs-gravite-majeurs 0   ; Gêne respiratoire ou difficulté manger/boire
    })
