@@ -75,6 +75,8 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
+FIXME: Warning, the decision tree is NOT TERMINATING.
+
 :  0: SI moins de 15 ans => FIN1
 :  1: 
 :  2: SI fièvre ET toux
