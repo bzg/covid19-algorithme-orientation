@@ -294,6 +294,24 @@
                      (string/replace body #"[\n\t]" "%0D%0A%0D%0A"))}
         "📩"]))])
 
+(defn get-target-node [goto new-score]
+  (cond (string? goto)
+        (keyword goto)
+        (map? goto)
+        (let [score (apply merge (map (fn [[k v]] {k (:value v)}) new-score))
+              matches
+              (doall
+               (for [[cnd-name value-node]
+                     goto
+                     :let [kname (keyword cnd-name)
+                           cnd-val  (:value value-node)
+                           cnd-node (:node value-node)]]
+                 (when (and (= cnd-val (get score kname))
+                            (string? cnd-node))
+                   cnd-node)))]
+          (keyword (or (first (remove nil? matches))
+                       (get goto :default))))))
+
 ;; Create all the pages
 (defn create-page-contents [{:keys [done node text help no-summary
                                     progress force-help choices]}]
@@ -322,22 +340,24 @@
              [:div.tile.is-parent
               [:a.tile.is-child
                {:style {:text-decoration "none"}
-                :href  (rfe/href (keyword goto))
                 :on-click
                 #(do (when (vector? summary)
                        (reset! show-modal true)
                        (reset! modal-message (md-to-string (peek summary))))
-                     (reset! hist-to-add
-                             (merge
-                              {:score
-                               (merge-with
-                                (fn [a b] {:display               (:display a)
-                                           :as-top-result-display (:as-top-result-display a)
-                                           :value                 (+ (:value a) (:value b))})
-                                (:score (peek @history))
-                                score)}
-                              {:questions (when-not no-summary [text answer])}
-                              {:answers summary})))}
+                     (let [new-score
+                           (merge-with
+                            (fn [a b] {:display               (:display a)
+                                       :as-top-result-display (:as-top-result-display a)
+                                       :value                 (+ (:value a) (:value b))})
+                            (:score (peek @history))
+                            score)]
+                       (reset! hist-to-add
+                               (merge
+                                {:score new-score}
+                                {:questions (when-not no-summary [text answer])}
+                                {:answers summary}))
+                       (rfe/push-state
+                        (get-target-node goto new-score))))}
                [:div.card-content.tile.is-parent.is-vertical
                 [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
                  {:class color}
