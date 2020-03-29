@@ -45,6 +45,10 @@ display-score-details: true
 # Only the score with the highest value?
 display-score-top-result: true
 
+# In a branch of the tree, should the target node be set depending on
+# the updated value of conditional-score-outputs?
+conditional-navigation: false
+
 # Some text message to always display after the score results
 display-unconditionally: "Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert: 0 800 130 000."
 
@@ -116,12 +120,14 @@ score-variables:
 conditional-score-outputs:
   FIN1:
     priority: 1
+    node: "fin-moins-de-15-ans"
     message: "Prenez contact avec votre médecin généraliste au moindre doute.<br/>Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.<br/>En cas d’urgence, appeler le [15](tel:15)."
     notification: "is-danger"
     condition-1:
       moins-de-15-ans: 1
   FIN5:
     priority: 2
+    node: "fin"
     message: "Appelez le [15](tel:15)."
     notification: "is-danger"
     condition-1:
@@ -465,7 +471,9 @@ tree:
       score:
         facteurs-gravite-majeurs:
           value: 1
-      goto:    "1.8"
+      goto:
+        conditional-score-outputs: true
+        default: "1.8"
       color:   "is-info"
     - answer:  "Non"
       goto:    "1.8"
@@ -479,7 +487,9 @@ tree:
       score:
         facteurs-gravite-majeurs:
           value: 1
-      goto:    "2.1"
+      goto:
+        conditional-score-outputs: true
+        default: "2.1"
       color:   "is-info"
     - answer:  "Non"
       goto:    "2.1"
@@ -490,7 +500,9 @@ tree:
     text:    "Quel est votre âge ?"
     choices:
     - answer:  "Moins de 15 ans"
-      goto:    "2.2"
+      goto:
+        conditional-score-outputs: true
+        default: "2.2"
       score:
         moins-de-15-ans:
           value: 1

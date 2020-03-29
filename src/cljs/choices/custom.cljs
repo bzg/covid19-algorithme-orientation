@@ -37,7 +37,8 @@
 (defn conditional-score-result [resultats conclusions]
   (let [{:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie douleurs diarrhees
-                facteurs-gravite-mineurs facteurs-gravite-majeurs
+                facteurs-gravite-mineurs
+                facteurs-gravite-majeurs
                 facteurs-pronostiques]}                        resultats
         ;; Set the possible conclusions
         {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]} conclusions
@@ -86,4 +87,5 @@
           FIN9)]
     ;; Return the expected map:
     {:notification (get conclusion :notification)
+     :node         (get conclusion :node)
      :output       (get conclusion :message)}))
