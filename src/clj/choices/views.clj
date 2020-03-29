@@ -30,6 +30,7 @@
      (h/include-css "https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"))
    (h/include-css "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")
    (h/include-css "css/style.css")
+   (h/include-css "css/custom.css")
    [:script {:type "text/javascript" :async true} "var _paq = window._paq || [];_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function(){var u=\"//stats.data.gouv.fr/\";_paq.push(['setTrackerUrl', u+'piwik.php']);_paq.push(['setSiteId', '122']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();"]
    [:noscript [:p [:img {:src "//stats.data.gouv.fr/piwik.php?idsite=122&rec=1" :alt "" :style "border:0;"}]]]])
 
