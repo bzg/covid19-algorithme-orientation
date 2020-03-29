@@ -57,8 +57,8 @@ def implies_done_base(cond, number, done, implies_done_acc):
 # Encodage du pseudo-code dans Z3
 
 
-def algo_b782eb0a6a1c():
-    # VERSION b782eb0a6a1c - samedi 28 mars 15 h
+def algo_475af58():
+    # VERSION 475af58
 
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
@@ -71,173 +71,55 @@ def algo_b782eb0a6a1c():
         implies_done_acc = implies_done_base(
             cond, number, done, implies_done_acc)
 
-    #  SI < 15 ans => FIN1
+    # SI moins de 15 ans => FIN1
     implies_done(age < 15, 1)
     #
-    #  SI >=1 facteur de gravité majeur => FIN5
-    implies_done(facteurs_gravite_majeur >= 1, 5)
-    #
-    #  SI fièvre
-    cond1 = fievre
-    #     SI toux
-    cond2 = toux
-    #        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
-    cond3 = And(facteurs_pronostiques >= 1, facteurs_gravite_mineur >= 2)
-    implies_done(And(cond1, cond2, cond3), 4)
-    #        SINON => FIN6
-    implies_done(And(cond1, cond2, Not(cond3)), 6)
-    #     SI diarrhée OU douleurs OU anosmie
-    cond4 = Or(diarrhee, douleurs, anosmie)
-    #        SI >=1 facteur pronostique ET >=2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond1, cond4, cond3), 4)
-    #        SI >= 50 ans OU >=1 facteur de gravité mineur => FIN3
-    cond5 = Or(age >= 50, facteurs_gravite_mineur >= 1)
-    implies_done(And(cond1, cond4, cond5), 3)
-    #        SINON => FIN2
-    implies_done(And(cond1, cond4, Not(cond5)), 2)
-    #
-    #  SI toux OU douleurs OU anosmie
-    cond6 = Or(toux, douleurs, anosmie)
-    #     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-    cond7 = Or(facteurs_gravite_mineur >= 1, facteurs_pronostiques >= 1)
-    implies_done(And(cond6, cond7), 8)
-    #     SINON => FIN7
-    implies_done(And(cond6, Not(cond7)), 7)
-    #
-    #  SINON => FIN9
-    implies_done(BoolVal(True), 9)
-    return done
-
-
-def algo_7c34d581427():
-    # VERSION 7c34d5814273 - samedi 28 mars 13 h 15
-
-    # L'accumulateur est initialisé à False car c'est une série de ou logiques.
-    implies_done_acc = BoolVal(False)
-    # L'algotithme définit 10 cas de terminaison que l'on stockera dans cette liste
-    # "done"
-    done = [BoolVal(False) for i in range(1, 10)]
-
-    def implies_done(cond, number):
-        nonlocal implies_done_acc
-        implies_done_acc = implies_done_base(
-            cond, number, done, implies_done_acc)
-
-    #  SI < 15 ans => FIN1
-    implies_done(age < 15, 1)
-    #
-    #  SI >=1 facteur de gravité majeur => FIN5
-    implies_done(facteurs_gravite_majeur >= 1, 5)
-    #
-    #  SI fièvre ET toux
+    # SI fièvre ET toux
     cond1 = And(fievre, toux)
-    #     SI >=1 facteur pronostique et >=2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond1, facteurs_pronostiques >=
-                     1, facteurs_gravite_mineur >= 2), 4)
-    #     SINON => FIN6
-    implies_done(And(cond1, Not(
-        And(facteurs_pronostiques >= 1, facteurs_gravite_mineur >= 2))), 6)
-    #
-    #  SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
-    cond2 = Or(fievre, diarrhee, And(toux, douleurs), And(toux, anosmie))
-    #     SI >=1 facteur pronostique
-    cond3 = (facteurs_pronostiques >= 1)
-    #        SI >=2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond2, cond3, facteurs_gravite_mineur >= 2), 4)
-    #        SINON => FIN3
-    implies_done(And(cond2, cond3, facteurs_gravite_mineur < 2), 3)
-    #     SINON
-    #        SI >= 50 ans ou >=1 facteur de gravité mineur => FIN3
-    cond4 = Or(age >= 50, facteurs_gravite_mineur >= 1)
-    implies_done(And(cond2, Not(cond3), cond4), 3)
-    #        SINON => FIN2
-    implies_done(And(cond2, Not(cond3), Not(cond4)), 2)
-    #
-    #  SI pas de fièvre ET (toux OU douleurs OU anosmie)
-    cond5 = And(Not(fievre), Or(toux, douleurs, anosmie))
-    #     SI >=1 facteur de gravité mineur OU >=1 facteur pronostique => FIN8
-    cond6 = Or(facteurs_gravite_mineur >= 1, facteurs_pronostiques >= 1)
-    implies_done(And(cond5, cond6), 8)
-    #     SINON => FIN7
-    implies_done(And(cond5, Not(cond6)), 7)
-    #
-    #  SI NI toux NI douleurs NI anosmie => FIN9
-    implies_done(And(Not(toux), Not(douleurs), Not(anosmie)), 9)
-    return done
-
-
-def algo_bba3d6b27c5():
-    # VERSION bba3d6b27c5 - jeudi 26 mars 14 h 00
-
-    implies_done_acc = BoolVal(False)
-    done = [BoolVal(False) for i in range(1, 10)]
-
-    def implies_done(cond, number):
-        nonlocal implies_done_acc
-        implies_done_acc = implies_done_base(
-            cond, number, done, implies_done_acc)
-
-    #  SI moins de 15 ans => FIN1
-    implies_done(age < 15, 1)
-    #
-    #  SI (fièvre ET PAS toux) OU (toux ET mal de gorge) OU (toux ET anosmie) OU (fièvre ET diarrhée)
-    cond1 = Or(And(fievre, Not(toux)), And(toux, douleurs), And(
-        toux, anosmie), And(fievre, diarrhee))
-    #     SI 0 facteur pronostique
+    #    SI >= 1 facteurs de gravité majeurs => FIN5
+    implies_done(And(cond1, facteurs_gravite_majeur >= 1), 5)
+    #    SI 0 facteur pronostique
     cond2 = (facteurs_pronostiques == 0)
-    #        SI 0 facteur de gravité mineur
-    cond3 = (facteurs_gravite_mineur == 0)
-    #           SI moins de 50 ans => FIN2
-    implies_done(And(cond1, cond2, cond3, age < 50), 2)
-    #           SINON => FIN3
-    implies_done(And(cond1, cond2, cond3, Not(age < 50)), 3)
-    #        SINON => FIN3
-    implies_done(And(cond1, cond2), 3)
+    #       SI 0 OU 1 facteur de gravité mineur => FIN6
+    implies_done(And(cond1, cond2, facteurs_gravite_mineur <= 1), 6)
+    #    SI >= 1 facteurs pronostiques
+    cond3 = (facteurs_pronostiques >= 1)
+    #       SI 0 OU 1 facteur de gravité mineur => FIN6
+    implies_done(And(cond1, cond3, facteurs_gravite_mineur <= 1), 6)
+    #       SI >= 2 facteurs de gravité mineurs => FIN4
+    implies_done(And(cond1, cond3, facteurs_gravite_mineur >= 2),4 )
     #
-    #     SI 1 OU plus facteurs pronostique
-    cond4 = (facteurs_pronostiques > 0)
-    #        SI 0 OU 1 facteur de gravité mineur => FIN3
-    implies_done(And(cond1, cond4, Or(facteurs_gravite_mineur ==
-                                      0, facteurs_gravite_mineur == 1)), 3)
-    #        SI au moins 2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond1, cond4, facteurs_gravite_mineur > 1), 4)
+    # SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
+    cond4 = Or(fievre, diarrhee, And(toux, douleurs), And(toux, anosmie))
+    #    SI >= 1 facteurs de gravité majeurs => FIN5
+    implies_done(And(cond4, facteurs_gravite_majeur >= 1), 5)
+    #    SI 0 facteur pronostique
+    cond5 = (facteurs_pronostiques == 0)
+    #       SI 0 facteur de gravité mineur
+    cond6 = (facteurs_gravite_mineur == 0)
+    #          SI moins de 50 ans => FIN2
+    implies_done(And(cond4, cond5, cond6, age < 50), 2)
+    #             SINON => FIN3
+    implies_done(And(cond4, cond5, cond6), 3)
+    #    SI >= 1 facteurs pronostiques
+    cond7 = (facteurs_pronostiques >= 1)
+    #       SI 0 OU 1 facteur de gravité mineur => FIN3
+    implies_done(And(cond4, cond7, facteurs_gravite_mineur <= 1), 3)
+    #       SI au moins 2 facteurs de gravité mineurs => FIN4
+    implies_done(And(cond4, cond7, facteurs_gravite_mineur >= 2), 4)
     #
-    #     SI un facteur de gravité majeur => FIN5
-    implies_done(And(cond1, facteurs_gravite_majeur > 0), 5)
+    # SI pas de fièvre et (toux OU douleurs OU anosmie)
+    cond8 = And(Not(fievre), Or(toux, douleurs, anosmie))
+    #    SI >= 1 facteurs de gravité mineurs OU 1 facteur pronostique => FIN8
+    cond9 = Or(facteurs_gravite_mineur >= 1, facteurs_pronostiques >= 1)
+    implies_done(And(cond8, cond9), 8)
+    #    SI 0 facteur de gravité mineur => FIN7
+    implies_done(And(cond8, facteurs_gravite_mineur ==0), 7)
     #
-    #  SI fièvre ET toux
-    cond5 = And(fievre, toux)
-    #     SI 0 facteur pronostique
-    cond6 = (facteurs_pronostiques == 0)
-    #        SI 0 OU 1 facteur de gravité mineurs => FIN6
-    implies_done(And(cond5, cond6, Or(facteurs_gravite_mineur ==
-                                      0, facteurs_gravite_mineur == 1)), 6)
-    #     SI 1 OU plus facteur pronostique
-    cond7 = (facteurs_pronostiques > 0)
-    #        SI 0 OU 1 facteur de gravité mineurs => FIN6
-    implies_done(And(cond5, cond7, Or(facteurs_gravite_mineur ==
-                                      0, facteurs_gravite_mineur == 1)), 6)
-    #        SI au moins 2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond5, cond7, facteurs_gravite_mineur > 1), 4)
-    #
-    #  SI 1 OU plus facteur de gravité majeur => FIN5
-    implies_done(facteurs_gravite_majeur > 0, 5)
-    #
-    #  SI toux OU mal de gorge OU anosmie ET pas de fièvre
-    # (ici doute sur la manière de parser le dernier ET)
-    cond8_alt1 = Or(toux, douleurs, And(anosmie, Not(fievre)))
-    cond8_alt2 = And(Or(toux, douleurs, anosmie), Not(fievre))
-    cond8 = cond8_alt1
-    #     SI au moins un facteur de gravité mineur OU un facteur pronostique => FIN8
-    implies_done(
-        And(cond8, Or(facteurs_gravite_mineur > 0, facteurs_pronostiques > 0)), 8)
-    #     SI 0 facteur de gravité mineur => FIN7
-    implies_done(And(cond8, facteurs_gravite_mineur == 0), 7)
-    #
-    #  SI NI toux NI mal de gorge NI anosmie NI fièvre => FIN9
-    implies_done(And(Not(toux), Not(douleurs),
-                     Not(anosmie), Not(fievre)), 9)
+    # SI NI fièvre NI toux NI douleurs NI anosmie => FIN9
+    implies_done(And(Not(fievre), Not(toux), Not(douleurs), Not(anosmie)), 9)
     return done
+
 
 # Maintenant que l'algorithme est encodé dans Z3, on peut essayer de prouver
 # les théorèmes. Cette fonction wrappe la fonction "check" de Z3 avec une
@@ -264,12 +146,8 @@ def check_and_print(done_arrays, msg_unsat, msg_sat):
         print(msg_unsat, "\n")
 
 
-done1 = algo_7c34d581427()
-done1_msg = "samedi 28 mars 13h15"
-done2 = algo_bba3d6b27c5()
-done2_msg = "jeudi 26 mars 14h"
-done3 = algo_b782eb0a6a1c()
-done3_msg = "samedi 28 mars 15h"
+done = algo_475af58()
+done_msg = "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-arbre-de-decision/blob/7f32d2154565bd3647487c72d16143c6bf3bd4d0/covid19-orientation-arbre-de-decision.txt"
 
 
 def check_all_cases_ending(done, msg):
@@ -291,13 +169,11 @@ def check_all_cases_ending(done, msg):
     s.pop()
 
 
-check_all_cases_ending(done1, done1_msg)
-check_all_cases_ending(done2, done2_msg)
-check_all_cases_ending(done3, done3_msg)
+check_all_cases_ending(done, done_msg)
 
 
 def check_every_exit_reached(done, msg):
-    print("Théorème: pour l'algorithme {} chaque sortie est atteignable".format(msg))
+    print(">>> Théorème: pour l'algorithme {} chaque sortie est atteignable".format(msg))
     for i in range(0, 9):
         print("Atteindre la sortie FIN{} ?".format(i + 1))
         s.push()
@@ -308,7 +184,7 @@ def check_every_exit_reached(done, msg):
         s.pop()
 
 
-check_every_exit_reached(done3, done3_msg)
+check_every_exit_reached(done, done_msg)
 
 
 def check_same(done1, msg1, done2, msg2):
@@ -323,8 +199,3 @@ def check_same(done1, msg1, done2, msg2):
                         "Les deux algorithmes sont toujours d'accord sur cette sortie !", "Trouvé une valeur de discorde:")
         s.pop()
     print("")
-
-
-check_same(done3, done3_msg, done2, done2_msg)
-check_same(done1, done1_msg, done2, done2_msg)
-check_same(done1, done1_msg, done3, done3_msg)
