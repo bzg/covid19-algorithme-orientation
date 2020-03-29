@@ -566,18 +566,27 @@ tree:
     help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
     choices:
     - answer:  "Oui"
-      goto:    "fin"
+      goto:    "3.1"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
     - answer:  "Non"
-      goto:    "fin"
+      goto:    "3.1"
       color:   "is-info"
     - answer:  "Je ne sais pas"
-      goto:    "fin"
+      goto:    "3.1"
       color:   "is-info"
 
+  - node:    "3.1"
+    progress:   "[23 23]"
+    text:    "Quel est votre code postal ?"
+    help: "**Note aux développeurs:** la saisie de cette information doit être facultative."
+    choices:
+    - answer:  "[Code postal]"
+      goto:    "fin"
+      color:   "is-info"
+      
   - node: "fin-moins-de-15-ans"
     text: "Vous avez moins de quinze ans."
     done: true

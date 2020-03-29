@@ -99,8 +99,8 @@ FIXME: Warning, the decision tree is NOT TERMINATING.
 : 19:       SI au moins 2 facteurs de gravité mineurs => FIN4
 : 20: 
 : 21: SI toux OU douleurs OU anosmie
-: 22:    SI 0 facteur de gravité mineur => FIN2
-: 23:    SI >= 1 facteur de gravité mineur => FIN7
+: 22:    SI 0 facteur pronostique => FIN2
+: 23:    SI >= 1 facteur pronostique => FIN7
 : 24: 
 : 25: SI NI toux NI douleurs NI anosmie => FIN8
 

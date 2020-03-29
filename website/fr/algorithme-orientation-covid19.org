@@ -1,6 +1,6 @@
 Version du document : =20200328=
 
-Le présent algorithme a vocation à être utilisé par l’ensemble des services numériques d’orientation des personnes mis en œuvre dans le cadre de la crise sanitaire liée au Covid19.
+Le présent algorithme a vocation à être utilisé par l’ensemble des services numériques d’orientation des personnes mis en œuvre dans le cadre de la crise sanitaire liée au COVID 19.
 
 Il a été élaboré par un comité d’experts, appelé CovidTélé, co-porté par l’Institut Pasteur et l’Assistance publique des Hôpitaux de Paris.  Son contenu a été validé par le Ministère des Solidarités et de la Santé.
 

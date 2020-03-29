@@ -59,7 +59,7 @@
       ;; Branche 4
       (or (= toux 1) (= douleurs 1) (= anosmie 1))
       (do (println "Branche 4: pas de fièvre et un autre symptôme")
-          (if (= facteurs-gravite-mineurs 0)
+          (if (= facteurs-pronostiques 0)
             (println "FIN2")
             (println "FIN7")))
       ;; Branche 5

@@ -17,7 +17,7 @@ elseif (SI fièvre ET toux) then (oui)
              :FIN6;
              stop
           endif
-       else (non)
+       else (Plus de facteurs pronostiques)
           if (SI 0 OU 1 facteur de gravité mineur) then (oui)
              :FIN6;
              stop
@@ -54,9 +54,9 @@ elseif (SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)) then
            endif
         endif
 
-elseif (SI pas de fièvre ET (toux OU douleurs OU anosmie)) then (oui)
-       if (SI >=1 facteurs de gravité mineurs OU >=1 facteur pronostique) then (oui)
-          :FIN8;
+elseif (SI toux OU douleurs OU anosmie) then (oui)
+       if (SI 0 facteur pronostique) then (oui)
+          :FIN2;
           stop
        else (non)
           :FIN7;
@@ -64,11 +64,11 @@ elseif (SI pas de fièvre ET (toux OU douleurs OU anosmie)) then (oui)
        endif
 
 else (Aucun symptôme)
-     :FIN9;
+     :FIN8;
      stop
 endif
 
-:FIN9;
+:FIN8;
 stop
 
 @enduml
