@@ -560,7 +560,7 @@ tree:
       score:
         poids:
           value: 100
-    - answer:  ">100"
+    - answer:  "Plus de 100"
       goto:    "2.3"
       color:   "is-info"
       score:
@@ -602,7 +602,7 @@ tree:
       score:
         taille:
           value: 1.80
-    - answer:  ">1m90"
+    - answer:  "Plus de 1m90"
       goto:    "2.4"
       color:   "is-info"
       score:
