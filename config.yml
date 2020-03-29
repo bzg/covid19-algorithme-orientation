@@ -58,52 +58,40 @@ display-unconditionally: "Restez chez vous au maximum en attendant que les sympt
 #      the one with the highest score when the user is done.
 score-variables:
   moins-de-15-ans:
-    doc: "Si la personne a strictement moins de 15 ans."
     display: "Moins de 15 ans"
     value: 0
   plus-de-50-ans:
-    doc: "Si la personne a strictement plus de 49 ans."
     display: "Plus de 49 ans"
     value: 0
   poids:
-    doc: "Le poids en kilogrammes."
-    display: "Poids"
+    display: "Poids (kgs)"
     value: 0
   taille:
-    doc: "La taille en mètre."
-    display: "Taille"
+    display: "Taille (mètres)"
     value: 0
   fievre:
-    doc: "Indicateur de fièvre."
     display: "Fièvre"
     value: 0
   toux:
-    doc: "Indicateur de toux."
     display: "Toux"
     value: 0
   anosmie:
-    doc: "Si la personne a indiqué un trouble du goût ou de l'odorat."
     display: "Trouble goût/odorat"
     value: 0
   douleurs:
-    doc: "Si la personne a indiqué avoir eu mal à la gorge ou des douleurs musculaires ou des courbatures."
     display: "Douleurs"
     value: 0
   diarrhees:
-    doc: "Si la personne a indiqué des diarrhées."
     display: "Diarrhées"
     value: 0
   facteurs-gravite-mineurs:
-    doc: "Facteurs de gravité mineurs."
     display: "Facteurs de gravité mineurs"
     value: 0
   facteurs-gravite-majeurs:
-    doc: "Facteurs de gravité majeurs."
     display: "Facteurs de gravité majeurs"
     value: 0
   facteurs-pronostiques:
-    doc: "Facteur pronostique."
-    display: "Facteur pronostic"
+    display: "Facteurs pronostiques"
     value: 0
 
 # Sync with pseudo-code.org:
