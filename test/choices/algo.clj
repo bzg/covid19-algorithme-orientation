@@ -72,7 +72,7 @@
                     (and (= facteurs-pronostiques 0)
                          (< facteurs-gravite-mineurs 2))
                     FIN6
-                    :else ; >= 1 facteurs pronostiques
+                    (>= facteurs-pronostiques 1) ;; FIXME
                     (if (< facteurs-gravite-mineurs 2)
                       FIN6
                       FIN4)))
@@ -83,28 +83,26 @@
           (do (println "Branche 3: fièvre ou autres symptômes")
               (cond (>= facteurs-gravite-majeurs 1)
                     FIN5
-                    (and (= facteurs-pronostiques 0)
-                         (= facteurs-gravite-mineurs 0))
-                    (if (not= plus-de-49-ans 1)
-                      FIN2
+                    (= facteurs-pronostiques 0)
+                    (if (= facteurs-gravite-mineurs 0)
+                      (if (not= plus-de-49-ans 1)
+                        FIN2
+                        FIN3)
                       FIN3)
-                    :else ; >= 1 facteurs pronostiques
+                    (>= facteurs-pronostiques 1)
                     (if (< facteurs-gravite-mineurs 2)
                       FIN3
                       FIN4)))
           ;; Branche 4
-          (and (= fievre 0)
-               (or (= toux 1) (= douleurs 1) (= anosmie 1)))
-          (do (println "Branche 4: pas de fièvre et autres symptômes")
-              (if (or (>= facteurs-gravite-mineurs 1)
-                      (= facteurs-pronostiques 1))
-                FIN8
+          (or (= toux 1) (= douleurs 1) (= anosmie 1))
+          (do (println "Branche 4: pas de fièvre et un autre symptôme")
+              (if (= facteurs-gravite-mineurs 0)
+                FIN2
                 FIN7))
           ;; Branche 5
-          (and (= fievre 0) (= toux 0)
-               (= douleurs 0) (> anosmie 0))
+          (and (= toux 0) (= douleurs 0) (> anosmie 0))
           (do (println "Branche 5: pas de symptômes")
-              FIN9))]
+              FIN8))]
     ;; Return the expected map:
     {:res resultats
      :msg (get conclusion :message)}))
