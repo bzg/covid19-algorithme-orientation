@@ -4,7 +4,7 @@ Le ministère des Solidarités et de la Santé publie un **algorithme d'orientat
 
 Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille la réutilisation de cet algorithme.
 
-L'algorithme d'orientation COVID19 [lisible en ligne](algorithme-orientation-covid19.html) et [publié en PDF ici](https://esante.gouv.fr/algorithme-orientation).
+L'algorithme d'orientation COVID19 est [lisible en ligne](algorithme-orientation-covid19.html) et [publié en PDF ici](https://esante.gouv.fr/algorithme-orientation).
 
 # Documentation
 
