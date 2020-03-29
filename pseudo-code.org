@@ -9,35 +9,34 @@ le ministère de la santé est [[https://esante.gouv.fr/algorithme-orientation][
 
 *** Questions sur les symptômes
 
-1. "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
-   1. "Quelle est votre température ?"
-2. "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
-3. "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
-4. "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles apparus ces derniers jours ?"
-5. "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
-6. "Avez-vous une fatigue inhabituelle ces derniers jours ?"
-   1. "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
-7. "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
-8. "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?"
+1. /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/ 
+   - Si =OUI= : /Quelle a été votre température la plus élevée ces dernières 48h ?/
+2. /Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?/
+3. /Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?/
+4. /Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?/
+5. /Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?/
+6. /Avez-vous une fatigue inhabituelle ces derniers jours ?/
+   - Si =OUI= : /Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?/
+7. /Êtes-vous dans l'impossibilité de vous alimenter ou de boire DEPUIS 24 HEURES OU PLUS ?/
+8. /Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?/
 
 *** Questions sur les facteurs pronostiques défavorables au terrain
 
-1. "Quel est votre âge ?"
-2. "Quel est votre poids en kilogrammes ?"
-3. "Quelle est votre taille en mètres ?"
-4. "Avez-vous une tension artérielle mal équilibrée ? Ou une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?"
-5. "Êtes-vous diabétique ?"
-6. "Avez-vous ou avez-vous eu un cancer ?"
-7. "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
-8. "Avez-vous une insuffisance rénale chronique dialysée ?"
-9. "Avez-vous une maladie chronique du foie ?"
-10. "Êtes-vous enceinte ?"
-11. "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
-12. "Prenez-vous un traitement immunosuppresseur ?"
+1. /Quel est votre âge ?/
+2. /Quel est votre poids ? Quelle est votre taille ?/
+3. /Avez-vous de l’hypertension artérielle mal équilibrée ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?/
+4. /Êtes-vous diabétique ?/
+5. /Avez-vous ou avez-vous eu un cancer dans les 3 dernières années ?/
+6. /Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?/
+7. /Avez-vous une insuffisance rénale chronique dialysée ?/
+8. /Avez-vous une maladie chronique du foie ?/
+9. /Êtes-vous enceinte ?/
+10. /Avez-vous une maladie connue pour diminuer vos défenses immunitaires/
+11. /Prenez-vous un traitement immunosuppresseur ? C’est un traitement qui diminue vos défenses contre les infections.  Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)./ =OUI / NON / Je ne sais pas (=NON)=
 
 *** Question supplémentaire
 
-1. Code postal
+- /Quel est votre code postal ?/
 
 ** Facteurs
 
@@ -45,9 +44,9 @@ le ministère de la santé est [[https://esante.gouv.fr/algorithme-orientation][
 
 - Si son âge est supérieur ou égal à 70 ans
 - Si son indice de masse corporelle est supérieur ou égal à 30 kg/m²
-- Si =OUI= ou =Ne sait pas= à la question sur l'hypertension
+- Si =OUI= ou =Je ne sais pas= à la question sur l'hypertension
 - Si =OUI= pour diabétique
-- Si =OUI= pour a ou a eu un cancer
+- Si =OUI= pour a ou a eu un cancer dans les trois dernières années
 - Si =OUI= pour maladie respiratoire ou suivi pneumologique
 - Si =OUI= pour insuffisance rénale
 - Si =OUI= pour maladie chronique du foie
@@ -66,9 +65,9 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 - Facteur de gravité *majeurs* :
   - Gêne respiratoire
-  - Difficultés importantes pour s'alimenter ou boire depuis plus de 24h
+  - Difficultés importantes pour s'alimenter ou boire depuis plus de 24 heures
 
-** Formule auxiliaire
+** Formule de l'indice de masse corporelle
 
 - IMC (indice de masse corporelle) :: le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
 

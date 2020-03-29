@@ -358,7 +358,7 @@ tree:
 
   - node:       "1.1.1"
     progress:   "[2 23]"
-    text:       "Quelle est votre température ?"
+    text:       "Quelle a été votre température la plus élevée ces dernières 48 heures ?"
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       goto:    "1.2"
@@ -398,7 +398,7 @@ tree:
 
   - node:      "1.3"
     progress:   "[4 23]"
-    text:      "Avez-vous noté une forte diminution de votre goût ou de l'odorat ces derniers jours ?"
+    text:      "Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?"
     choices:
     - answer:  "Oui"
       goto:    "1.4"
@@ -412,7 +412,7 @@ tree:
 
   - node:    "1.4"
     progress:   "[5 23]"
-    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles apparus ces derniers jours ?"
+    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles ces derniers jours ?"
     choices:
     - answer:  "Oui"
       score:
@@ -645,7 +645,7 @@ tree:
 
   - node:    "2.6"
     progress:   "[16 23]"
-    text:    "Avez-vous ou avez-vous eu un cancer ?"
+    text:    "Avez-vous ou avez-vous eu un cancer dans les 3 dernières années ?"
     choices:
     - answer:  "Oui"
       goto:    "2.7"
