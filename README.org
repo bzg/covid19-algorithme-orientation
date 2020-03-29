@@ -1,6 +1,6 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
-Version: 20200328 (beta)
+Version: 20200330 (beta)
 
 ** Introduction et contexte
 

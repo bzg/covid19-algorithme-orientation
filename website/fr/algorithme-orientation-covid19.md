@@ -15,7 +15,7 @@
     -   [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orgd2000ef)
     -   [Tout patient sans fièvre ni aucun autre symptôme](#org982729f)
 
-Version du document : `20200328`
+Version du document : `20200330`
 
 
 <a id="orgc48c775"></a>
