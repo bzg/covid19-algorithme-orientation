@@ -49,6 +49,7 @@ display-score-top-result: true
 # the updated value of conditional-score-outputs?
 conditional-navigation: false
 
+# FIXME: rappel des mesures d'hygiène
 # Some text message to always display after the score results
 display-unconditionally: "Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert: 0 800 130 000."
 
