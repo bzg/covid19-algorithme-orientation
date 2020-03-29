@@ -97,14 +97,14 @@ Pour tous : /Restez chez vous au maximum en attendant que les symptômes dispara
 
 *** Tout patient sans facteur pronostique
 
-Si un ou deux facteurs de gravité mineurs : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc.).=
+Si un ou deux facteurs de gravité mineurs : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)=
  
 *** Tout patient avec un facteur pronostique ou plus
 
-- Si un ou deux facteurs de gravité mineurs : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- Avec au moins deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
+- Si un ou deux facteurs de gravité mineurs : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)=
+- Avec au moins deux facteurs de gravité mineurs : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Si vous n'arrivez pas à obtenir de consultation, appelez le 15.=
  
-** Tout patient avec fièvre ou diarrhée ou (toux et douleurs) ou (toux et anosmie)
+** Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))
  
 *** Tout patient avec au moins un facteur de gravité majeur
 
@@ -112,23 +112,24 @@ Si un ou deux facteurs de gravité mineurs : =Téléconsultation ou médecin gé
 
 *** Tout patient sans facteur pronostique
 
-- Si pas de facteur de gravité mineur et moins de 50 ans : =Nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes.=
-  - Si moins de 50 ans : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins, etc).=
-  - Sinon : =Téléconsultation ou médecin généraliste ou visite à domicile (SOS médecins). Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent.=
- 
+- Si pas de facteur de gravité mineur : =Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.=
+  - Si moins de 50 ans : =Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.=
+  - Sinon : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.=
+- Sinon : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.=
+
 *** Tout patient avec un facteur pronostique ou plus
 
-- Si zéro ou un facteur de gravité mineur : =Téléconsultation ou médecin généraliste ou visite à domicile.=
-- Si au moins deux facteurs de gravité mineurs : =Consultation médecin généraliste ou téléconsultation et si pas possible de joindre un médecin ou d'obtenir une téléconsultation : faite le 15.=
+- Si zéro ou un facteur de gravité mineur : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.=
+- Si au moins deux facteurs de gravité mineurs : =Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Si vous n'arrivez pas à obtenir de consultation, appelez le 15.=
 
-/Pour tout patient orienté vers une téléconsultation ou médecin généraliste : préciser "appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24 heures apparaissent.”/
+# Pour tout patient orienté vers une téléconsultation ou médecin généraliste : préciser "appelez le 15 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24 heures apparaissent".
  
 ** Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
-- Au moins un facteur de gravité mineur ou un facteur pronostique : =Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 15.=
-- Pas de facteur de gravité mineur : =Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute. Si de nouveaux symptômes apparaissent, refaites le test.=
+- Au moins un facteur de gravité mineur : =Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile.=
+- Pas de facteur de gravité mineur : =Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.=
  
 ** Tout patient sans fièvre ni aucun autre symptôme
 
-=Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le Covid-19, composer le 0 800 130 000.=
+=Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000.=
  

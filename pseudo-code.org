@@ -98,7 +98,7 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 : 20: 
 : 21: SI toux OU douleurs OU anosmie
 : 22:    SI 0 facteur de gravité mineur => FIN2
-: 23:    SI >= facteur de gravité mineur => FIN7
+: 23:    SI >= 1 facteur de gravité mineur => FIN7
 : 24: 
 : 25: SI NI toux NI douleurs NI anosmie => FIN8
 
