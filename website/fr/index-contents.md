@@ -2,15 +2,9 @@
 
 Le ministère des Solidarités et de la Santé publie un **algorithme d'orientation** pour les personnes se demandant si elles présentent des symptômes du COVID19.  Cet algorithme est défini par un comité scientifique composé de médecins, appelé CovidTélé, co-piloté par l'AP-HP et l'Institut Pasteur.
 
-<br/>
-
 Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille la réutilisation de cet algorithme.
 
-<br/>
-
 L'algorithme d'orientation COVID19 [lisible en ligne](algorithme-orientation-covid19.html) et [publié en PDF ici](https://esante.gouv.fr/algorithme-orientation).
-
-<br/>
 
 # Documentation
 
@@ -20,17 +14,11 @@ L'algorithme d'orientation COVID19 [lisible en ligne](algorithme-orientation-cov
 - Exemples d'[implémentation dans des langages de programmation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemples-dimpl%C3%A9mentation-dans-des-langages-de-programmation) et page pour [tester une implémentation](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html) de façon interactive.
 - Programme de [vérification formelle de l'algorithme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/tree/master/preuve-formelle).
 
-<br/>
-
 # Tester le démonstrateur
 
 [Ce démonstrateur](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html) vous permet de parcourir le questionnaire pour vous faire une idée.
 
-<br/>
-
 <a href="https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html"><img class="image" src="https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/demonstrateur.png" alt="Capture d'écran du démonstrateur de l'algorithme d'orientation COVID19"/></a>
-
-<br/>
 
 # Contact
 
