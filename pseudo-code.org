@@ -69,7 +69,7 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 ** Formule de l'indice de masse corporelle
 
-- IMC (indice de masse corporelle) :: le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
+- IMC (indice de masse corporelle) :: Le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
 
 ** Arbre de décision
 
