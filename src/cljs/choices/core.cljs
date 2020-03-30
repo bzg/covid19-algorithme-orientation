@@ -376,7 +376,7 @@
                         (get-target-node goto current-score))))}
                [:div.card-content.tile.is-parent.is-vertical
                 [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
-                 {:class color}
+                 {:class (or (not-empty color) "is-info")}
                  (md-to-string answer)]
                 (when (and explain @show-help)
                   [:div.tile.is-child.subtitle
