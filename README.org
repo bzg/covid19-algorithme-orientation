@@ -67,20 +67,25 @@ l'option où les données ne sont pas collectées) :
 4. Allez à [[http://localhost:9500]]
 5. Éditez [[file:src/cljs/choices/corenav.cljs][corenav.cljs]]
 
-Vous pouvez aussi lancer des exemples d'utilisation de l'algorithme :
+** Tester l'algorithme
+
+Vous pouvez un exemple montrant les paramètres liés aux réponses du
+questionnaire et la conclusion déduite par l'algorithme :
 
 : ~$ clj -m choices.algo
 
-pour avoir un exemple ou 
+Pour avoir plusieurs exemples :
 
 : ~$ clj -m choices.algo 10
 
-pour en avoir 10.
+Vous pouvez aussi tester les aspects logiques de l'algorithme :
 
-Les données affichées sont les paramètres des résultats d'une réponse
-au questionnaire ainsi que la conclusion déduite de ces résultats.
+: ~$ clj -m choices.algo logic
 
-Vous pouvez [[file:test/choices/algo.clj][lire le code]] avec lequel fonctionne ce test.
+Si les deux tests réussissent, cela signifie que toutes les
+possibilités de saisie du questionnaire aboutissent à une conclusion
+et que chaque conclusion est atteinte au moins par une possibilité de
+réponse.
 
 ** Déployer les fichiers statiques depuis ce dépôt
 

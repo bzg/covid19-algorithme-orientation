@@ -2,14 +2,16 @@
   (:require
    [clojure.spec.alpha :as s]
    [clojure.spec.gen.alpha :as gen]
+   [clojure.core.logic :as logic]
+   [clojure.core.logic.fd :as fd]
+   [clojure.test :refer [deftest is testing run-tests]]
    [choices.macros :refer [inline-yaml-resource]]))
 
 ;; General configuration
 (def config (inline-yaml-resource "config.yml"))
 (def conditional-score-outputs (:conditional-score-outputs config))
 
-(s/def ::moins-de-15-ans (s/int-in 0 2))
-(s/def ::plus-de-49-ans (s/int-in 0 2))
+(s/def ::age (s/int-in 14 120))
 (s/def ::poids (s/int-in 40 200)) ;; kgs
 (s/def ::taille (s/int-in 120 240)) ;; cm
 (s/def ::toux (s/int-in 0 2))
@@ -23,8 +25,7 @@
 
 (defn compute-imc [p t] (/ p (Math/pow (/ t 100.0) 2)))
 
-(s/def ::reponse (s/keys :req-un [::moins-de-15-ans
-                                  ::plus-de-49-ans
+(s/def ::reponse (s/keys :req-un [::age
                                   ::poids
                                   ::taille
                                   ::fievre
@@ -40,17 +41,35 @@
   (let [imc-val (compute-imc (:poids scores)
                              (:taille scores))
         imc-map {:imc imc-val}
+        scores  (merge scores
+                       {:plus-de-49-ans  (if (> (:age scores) 49) 1 0)
+                        :moins-de-15-ans (if (< (:age scores) 15) 1 0)})
         scores  (merge scores imc-map)
         scores  (update-in scores [:facteurs-pronostiques]
-                           #(if (>= imc-val 30) (inc %) %))]
+                           #(if (>= imc-val 30) (inc %) %))
+        scores  (dissoc scores :poids :taille :age)]
     ;; Returned preprocessed scores:
     scores))
 
-(defn conditional-score-result [resultats]
+(defn preprocess-scores-no-println [scores]
+  (let [scores (merge scores
+                      {:plus-de-49-ans  (if (> (:age scores) 49) 1 0)
+                       :moins-de-15-ans (if (< (:age scores) 15) 1 0)})
+        scores (update-in scores [:facteurs-pronostiques]
+                          #(if (>= (:imc scores) 30) (inc %) %))
+        scores (update-in scores [:facteurs-pronostiques]
+                          #(if (>= (:age scores) 70) (inc %) %))
+        scores (dissoc scores :poids :taille :age)]
+    ;; Returned preprocessed scores:
+    scores))
+
+(defn conditional-score-result [resultats & [println?]]
   (let [conclusions
         conditional-score-outputs
         resultats
-        (preprocess-scores resultats)
+        (if println?
+          (preprocess-scores resultats)
+          (preprocess-scores-no-println resultats))
         {:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie douleurs diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
@@ -62,15 +81,15 @@
         (cond
           ;; Branche 1
           (= moins-de-15-ans 1)
-          (do (println "Branche 1: moins de 15 ans")
+          (do (when println? (println "Branche 1: moins de 15 ans"))
               FIN1)
           ;; Branche 2
           (>= facteurs-gravite-majeurs 1)
-          (do (println "Branche 2: au moins un facteur de gravité majeur")
+          (do (when println? (println "Branche 2: au moins un facteur de gravité majeur"))
               FIN5)
           ;; Branche 3
           (and (= fievre 1) (= toux 1))
-          (do (println "Branche 2: fièvre et toux")
+          (do (when println? (println "Branche 2: fièvre et toux"))
               (cond (= facteurs-pronostiques 0)
                     FIN6
                     (>= facteurs-pronostiques 1)
@@ -81,7 +100,7 @@
           (or (= fievre 1) (= diarrhees 1)
               (and (= toux 1) (= douleurs 1))
               (and (= toux 1) (= anosmie 1)))
-          (do (println "Branche 4: fièvre ou autres symptômes")
+          (do (when println? (println "Branche 4: fièvre ou autres symptômes"))
               (cond (= facteurs-pronostiques 0)
                     (if (= facteurs-gravite-mineurs 0)
                       (if (not= plus-de-49-ans 1)
@@ -94,23 +113,67 @@
                       FIN4)))
           ;; Branche 5
           (or (= toux 1) (= douleurs 1) (= anosmie 1))
-          (do (println "Branche 4: pas de fièvre et un autre symptôme")
+          (do (when println? (println "Branche 4: pas de fièvre et un autre symptôme"))
               (if (= facteurs-pronostiques 0)
                 FIN2
                 FIN7))
           ;; Branche 6
           (and (= toux 0) (= douleurs 0) (= anosmie 0))
-          (do (println "Branche 5: pas de symptômes")
+          (do (when println? (println "Branche 5: pas de symptômes"))
               FIN8))]
     ;; Return the expected map:
     {:res resultats
      :msg (get conclusion :message)}))
 
-(defn -main [& [n]]
-  (let [samples
-        (gen/sample (s/gen ::reponse)
-                    (or (and (not-empty n) (Integer. n)) 1))]
-    (doseq [sample samples]
-      (let [{:keys [res msg]} (conditional-score-result sample)]
-        (println "Réponses: " res)
-        (println "Conclusion: " msg)))))
+(def all-inputs
+  (logic/run* [q]
+    (logic/fresh [fievre toux anosmie
+                  douleurs diarrhees
+                  facteurs-pronostiques
+                  facteurs-gravite-mineurs
+                  facteurs-gravite-majeurs
+                  age imc
+                  resultats conclusions]
+      (fd/in fievre (fd/interval 0 1))
+      (fd/in toux (fd/interval 0 1))
+      (fd/in anosmie (fd/interval 0 1))
+      (fd/in douleurs (fd/interval 0 1))
+      (fd/in diarrhees (fd/interval 0 1))
+      (fd/in facteurs-pronostiques (fd/interval 0 10))
+      (fd/in facteurs-gravite-mineurs (fd/interval 0 2))
+      (fd/in facteurs-gravite-majeurs (fd/interval 0 2))
+      (fd/in age (fd/interval 14 70))
+      (fd/in imc (fd/interval 0 2))
+      (logic/== resultats {:fievre                   fievre
+                           :toux                     toux
+                           :anosmie                  anosmie
+                           :age                      age
+                           :douleurs                 douleurs
+                           :diarrhees                diarrhees
+                           :imc                      imc
+                           :facteurs-pronostiques    facteurs-pronostiques
+                           :facteurs-gravite-mineurs facteurs-gravite-mineurs
+                           :facteurs-gravite-majeurs facteurs-gravite-majeurs})
+      (logic/== q resultats))))
+
+(def all-results (map conditional-score-result all-inputs))
+(def all-results-no-nil (remove nil? all-results))
+
+(deftest conclusion?
+  (testing "Is each input reaching a conclusion?"
+    (is (= (count all-results) (count all-results-no-nil)))))
+
+(deftest all-conclusions?
+  (testing "Is each conclusion reached at least once?"
+    (is (= (count (distinct (map :msg all-results))) 8))))
+
+(defn -main [& [arg]]
+  (let [samples (gen/sample
+                 (s/gen ::reponse)
+                 (or (and (not= "logic" arg) (not-empty arg) (Integer. arg)) 1))]
+    (if (= arg "logic")
+      (run-tests 'choices.algo)
+      (doseq [sample samples]
+        (let [{:keys [res msg]} (conditional-score-result sample true)]
+          (println "Réponses: " res)
+          (println "Conclusion: " msg))))))

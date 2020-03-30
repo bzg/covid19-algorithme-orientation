@@ -59,6 +59,7 @@ le ministère de la santé est [[https://esante.gouv.fr/algorithme-orientation][
 Les facteurs de gravité sont définis en réponse aux questions portant sur les symptômes.
 
 - Facteur de gravité *mineurs* :
+  - Fièvre < 35,5°C
   - Fièvre >= 39°C
   - A indiqué de la fièvre sans renseigner de la température
   - Fatigue : alitement > 50% du temps diurne
