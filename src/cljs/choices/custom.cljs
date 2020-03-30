@@ -54,8 +54,8 @@
                 FIN5
                 (and (= facteurs-pronostiques 0)
                      (< facteurs-gravite-mineurs 2))
-                FIN6
-                (>= facteurs-pronostiques 1) ;; FIXME
+                FIN6 ;; FIXME
+                (>= facteurs-pronostiques 1)
                 (if (< facteurs-gravite-mineurs 2)
                   FIN6
                   FIN4))

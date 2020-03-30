@@ -1,24 +1,24 @@
 
 # Table des matières
 
-1.  [Présentation générale](#orgc48c775)
-2.  [Questionnaire d’auto-évaluation](#orgb7f28e1)
-    -   [Symptômes](#orgdb9586b)
-    -   [Facteur pronostique défavorable lié au terrain](#orgee0e70c)
-    -   [Autre question](#orgebd12d9)
-    -   [Définition des facteurs de gravité](#orgab103a8)
-    -   [Calcul de l'indice de masse corporelle (IMC)](#org8736961)
-3.  [Définition de l'arbre de décision](#orgb95d88b)
-    -   [Patient de moins de 15 ans](#org55254ab)
-    -   [Tout patient avec fièvre et toux](#orgb62b083)
-    -   [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#org621f464)
-    -   [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orgd2000ef)
-    -   [Tout patient sans fièvre ni aucun autre symptôme](#org982729f)
+1.  [Présentation générale](#org363662f)
+2.  [Questionnaire d’auto-évaluation](#orgfddb167)
+    -   [Symptômes](#orgb533935)
+    -   [Facteur pronostique défavorable lié au terrain](#org1589795)
+    -   [Autre question](#orgeea531b)
+    -   [Définition des facteurs de gravité](#orgbcf41e9)
+    -   [Calcul de l'indice de masse corporelle (IMC)](#org31a06a8)
+3.  [Définition de l'arbre de décision](#orgcc0d0ac)
+    -   [Patient de moins de 15 ans](#org0449924)
+    -   [Tout patient avec fièvre et toux](#orgddf12b7)
+    -   [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#org985736a)
+    -   [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orgd395ab8)
+    -   [Tout patient sans fièvre ni aucun autre symptôme](#orgb18e567)
 
 Version du document : `20200330`
 
 
-<a id="orgc48c775"></a>
+<a id="org363662f"></a>
 
 # Présentation générale
 
@@ -31,21 +31,19 @@ Pour l'algorithme : il se présente comme un arbre de décision qui doit être p
 **Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.**
 
 
-<a id="orgb7f28e1"></a>
+<a id="orgfddb167"></a>
 
 # Questionnaire d’auto-évaluation
 
 
-<a id="orgdb9586b"></a>
+<a id="orgb533935"></a>
 
 ## Symptômes
-
-FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur de gravité mineur ?  Oui ci-dessous, non un peu plus bas.
 
 -   *Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?* `OUI / NON / Je ne sais pas`
     -   *Quelle a été votre température la plus élevée ces dernières 48h ?*
         -   35,5 - 37,7°C
-        -   37,8 – 38,9°C = seuil retenu `FIXME: effacer "seuil retenu" ?`
+        -   37,8 – 38,9°C = seuil retenu
         -   >= 39°C ou <= 35,4°C => Facteur de gravité mineur
         -   Non renseignée & OUI à question précédente = fièvre présente.
 -   *Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?* `OUI / NON`
@@ -58,7 +56,7 @@ FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur 
 -   *Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?* `OUI / NON => Facteur de gravité majeur.`
 
 
-<a id="orgee0e70c"></a>
+<a id="org1589795"></a>
 
 ## Facteur pronostique défavorable lié au terrain
 
@@ -83,14 +81,14 @@ FIXME: est-ce qu'une fièvre <= 35,4°C doit être considéré comme un facteur 
 Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** ou en gras (âge supérieur ou égal à 70 ans, indice de masse corporelle supérieur à 30 kg/m²).
 
 
-<a id="orgebd12d9"></a>
+<a id="orgeea531b"></a>
 
 ## Autre question
 
 -   *Quel est votre code postal ?*
 
 
-<a id="orgab103a8"></a>
+<a id="orgbcf41e9"></a>
 
 ## Définition des facteurs de gravité
 
@@ -103,14 +101,14 @@ Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** 
     -   Difficultés importantes pour s’alimenter ou boire depuis plus de 24 heures
 
 
-<a id="org8736961"></a>
+<a id="org31a06a8"></a>
 
 ## Calcul de l'indice de masse corporelle (IMC)
 
 L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le carré de la `TAILLE` en mètres.
 
 
-<a id="orgb95d88b"></a>
+<a id="orgcc0d0ac"></a>
 
 # Définition de l'arbre de décision
 
@@ -119,16 +117,16 @@ L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le 
 Pour tous : *Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000.*
 
 
-<a id="org55254ab"></a>
+<a id="org0449924"></a>
 
 ## Patient de moins de 15 ans
 
-    Prenez contact avec votre médecin généraliste au moindre doute. 
-    Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. 
+    Prenez contact avec votre médecin généraliste au moindre doute.
+    Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.
     En cas d’urgence, appeler le 15.
 
 
-<a id="orgb62b083"></a>
+<a id="orgddf12b7"></a>
 
 ## Tout patient avec fièvre et toux
 
@@ -143,7 +141,7 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
 
 #### Si un ou deux facteurs de gravité mineurs
 
-    Votre situation peut relever d’un COVID 19. 
+    Votre situation peut relever d’un COVID 19.
     Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)
 
 
@@ -152,18 +150,18 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
 
 #### Si un ou deux facteurs de gravité mineurs
 
-    Votre situation peut relever d’un COVID 19. 
+    Votre situation peut relever d’un COVID 19.
     Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)
 
 
 #### Avec au moins deux facteurs de gravité mineurs
 
-    Votre situation peut relever d’un COVID 19. 
-    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. 
+    Votre situation peut relever d’un COVID 19.
+    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile.
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="org621f464"></a>
+<a id="org985736a"></a>
 
 ## Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))
 
@@ -178,27 +176,27 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
 
 #### Si pas de facteur de gravité mineur
 
-    Votre situation peut relever d’un COVID 19 qu’il faut surveiller. 
-    Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. 
+    Votre situation peut relever d’un COVID 19 qu’il faut surveiller.
+    Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin.
     Nous vous conseillons de rester à votre domicile.
 
 Si moins de 50 ans :
 
-    Votre situation peut relever d’un COVID 19 qu’il faut surveiller. 
+    Votre situation peut relever d’un COVID 19 qu’il faut surveiller.
     Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin.
     Nous vous conseillons de rester à votre domicile.
 
 Sinon :
 
     Votre situation peut relever d’un COVID 19.
-    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. 
+    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile.
     Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.
 
 
 #### Sinon (1 ou plusieurs facteurs de gravité mineurs)
 
-    Votre situation peut relever d’un COVID 19. 
-    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. 
+    Votre situation peut relever d’un COVID 19.
+    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile.
     Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.
 
 
@@ -207,42 +205,42 @@ Sinon :
 
 #### Si zéro ou un facteur de gravité mineur
 
-    Votre situation peut relever d’un COVID 19. 
-    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. 
+    Votre situation peut relever d’un COVID 19.
+    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile.
     Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.
 
 
 #### Si au moins deux facteurs de gravité mineurs
 
-    Votre situation peut relever d’un COVID 19. 
-    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. 
+    Votre situation peut relever d’un COVID 19.
+    Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile.
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="orgd2000ef"></a>
+<a id="orgd395ab8"></a>
 
 ## Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
 
 ### Au moins un facteur de gravité mineur
 
-    Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. 
+    Votre situation peut relever d’un COVID 19. Un avis médical est recommandé.
     Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile.
 
 
 ### Pas de facteur de gravité mineur
 
-    Votre situation peut relever d’un COVID 19 qu’il faut surveiller. 
-    Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. 
+    Votre situation peut relever d’un COVID 19 qu’il faut surveiller.
+    Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin.
     Nous vous conseillons de rester à votre domicile.
 
 
-<a id="org982729f"></a>
+<a id="orgb18e567"></a>
 
 ## Tout patient sans fièvre ni aucun autre symptôme
 
-    Votre situation ne relève probablement pas du COVID 19. 
-    N’hésitez pas à contacter votre médecin en cas de doute. 
-    Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. 
+    Votre situation ne relève probablement pas du COVID 19.
+    N’hésitez pas à contacter votre médecin en cas de doute.
+    Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation.
     Pour toute information concernant le COVID 19, composer le 0 800 130 000.
 
