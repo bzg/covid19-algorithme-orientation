@@ -12,11 +12,9 @@ elseif (SI fièvre ET toux) then (oui)
        if (SI >=1 facteurs de gravité majeurs) then (oui)
           :FIN5;
           stop
-       elseif (SI 0 facteur pronostique) then (oui)
-          if (SI 0 OU 1 facteur de gravité mineur) then (oui)
-             :FIN6;
-             stop
-          endif
+       elseif (SI 0 facteur pronostique) then 
+          :FIN6;
+          stop
        else (Plus de facteurs pronostiques)
           if (SI 0 OU 1 facteur de gravité mineur) then (oui)
              :FIN6;
