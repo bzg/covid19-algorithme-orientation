@@ -188,6 +188,9 @@ tree:
     text:       "Quelle a été votre température la plus élevée ces dernières 48 heures ?"
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
+      score:
+        facteurs-gravite-mineurs:
+          value: 1
       goto:    "1.2"
     - answer:  "Entre 35,5 et 37,7°C"
       goto:    "1.2"

@@ -49,22 +49,21 @@
           (= moins-de-15-ans 1)
           FIN1
           ;; Branche 2
+          (>= facteurs-gravite-majeurs 1)
+          FIN5
+          ;; Branche 3
           (and (= fievre 1) (= toux 1))
-          (cond (>= facteurs-gravite-majeurs 1)
-                FIN5
-                (= facteurs-pronostiques 0)
+          (cond (= facteurs-pronostiques 0)
                 FIN6
                 (>= facteurs-pronostiques 1)
                 (if (< facteurs-gravite-mineurs 2)
                   FIN6
                   FIN4))
-          ;; Branche 3
+          ;; Branche 4
           (or (= fievre 1) (= diarrhees 1)
               (and (= toux 1) (= douleurs 1))
               (and (= toux 1) (= anosmie 1)))
-          (cond (>= facteurs-gravite-majeurs 1)
-                FIN5
-                (= facteurs-pronostiques 0)
+          (cond (= facteurs-pronostiques 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (not= plus-de-49-ans 1)
                     FIN2
@@ -74,12 +73,12 @@
                 (if (< facteurs-gravite-mineurs 2)
                   FIN3
                   FIN4))
-          ;; Branche 4
+          ;; Branche 5
           (or (= toux 1) (= douleurs 1) (= anosmie 1))
           (if (= facteurs-pronostiques 0)
             FIN2
             FIN7)
-          ;; Branche 5
+          ;; Branche 6
           (and (= toux 0) (= douleurs 0) (= anosmie 0))
           FIN8)]
     ;; Return the expected map:

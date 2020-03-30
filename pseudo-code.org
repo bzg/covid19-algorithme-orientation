@@ -9,7 +9,7 @@ le ministère de la santé est [[https://esante.gouv.fr/algorithme-orientation][
 
 *** Questions sur les symptômes
 
-1. /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/ 
+1. /Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?/
    - Si =OUI= : /Quelle a été votre température la plus élevée ces dernières 48h ?/
 2. /Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?/
 3. /Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?/
@@ -75,19 +75,17 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
 
 Cet arbre de décision doit être parcouru de façon *séquentielle* en testant la première clause, puis la seconde, etc.
 
-FIXME: Warning, the decision tree is NOT TERMINATING.
-
 :  0: SI moins de 15 ans => FIN1
-:  1: 
-:  2: SI fièvre ET toux
-:  3:    SI >= 1 facteurs de gravité majeurs => FIN5
-:  4:    SI 0 facteur pronostique => FIN6
-:  5:    SI >= 1 facteurs pronostiques
-:  6:       SI 0 OU 1 facteur de gravité mineur => FIN6
-:  7:       SI >= 2 facteurs de gravité mineurs => FIN4
-:  8: 
-:  9: SI fièvre OU (pas de fièvre et (diarrhée OU (toux ET douleurs) OU (toux ET anosmie))
-: 10:    SI >= 1 facteurs de gravité majeurs => FIN5
+:  1:
+:  2: SI >= 1 facteurs de gravité majeurs => FIN5
+:  3:
+:  4: SI fièvre ET toux
+:  5:    SI 0 facteur pronostique => FIN6
+:  6:    SI >= 1 facteurs pronostiques
+:  7:       SI 0 OU 1 facteur de gravité mineur => FIN6
+:  8:       SI >= 2 facteurs de gravité mineurs => FIN4
+:  9:
+: 10: SI fièvre OU (pas de fièvre et (diarrhée OU (toux ET douleurs) OU (toux ET anosmie))
 : 11:    SI 0 facteur pronostique
 : 12:       SI 0 facteur de gravité mineur
 : 13:          SI moins de 50 ans => FIN2
@@ -96,11 +94,11 @@ FIXME: Warning, the decision tree is NOT TERMINATING.
 : 16:    SI >= 1 facteurs pronostiques
 : 17:       SI 0 OU 1 facteur de gravité mineur => FIN3
 : 18:       SI au moins 2 facteurs de gravité mineurs => FIN4
-: 19: 
+: 19:
 : 20: SI toux OU douleurs OU anosmie
 : 21:    SI 0 facteur pronostique => FIN2
 : 22:    SI >= 1 facteur pronostique => FIN7
-: 23: 
+: 23:
 : 24: SI NI toux NI douleurs NI anosmie => FIN8
 
 *** Diagramme de l'arbre de décision

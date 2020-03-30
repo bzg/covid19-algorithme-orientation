@@ -28,24 +28,24 @@
       (do (println "Branche 1: moins de 15 ans")
           (println "FIN1"))
       ;; Branche 2
+      (>= facteurs-gravite-majeurs 1)
+      (do (println "Branche 2: au moins un facteur de gravité majeur")
+          (println "FIN5"))
+      ;; Branche 3
       (and (= fievre 1) (= toux 1))
       (do (println "Branche 2: fièvre et toux")
-          (cond (>= facteurs-gravite-majeurs 1)
-                (println "FIN5")
-                (= facteurs-pronostiques 0)
+          (cond (= facteurs-pronostiques 0)
                 (println "FIN6")
-                (>= facteurs-pronostiques 1) 
+                (>= facteurs-pronostiques 1)
                 (if (< facteurs-gravite-mineurs 2)
                   (println "FIN6")
                   (println "FIN4"))))
-      ;; Branche 3
+      ;; Branche 4
       (or (= fievre 1) (= diarrhees 1)
           (and (= toux 1) (= douleurs 1))
           (and (= toux 1) (= anosmie 1)))
-      (do (println "Branche 3: fièvre ou autres symptômes")
-          (cond (>= facteurs-gravite-majeurs 1)
-                (println "FIN5")
-                (= facteurs-pronostiques 0)
+      (do (println "Branche 4: fièvre ou autres symptômes")
+          (cond (= facteurs-pronostiques 0)
                 (if (= facteurs-gravite-mineurs 0)
                   (if (not= plus-de-49-ans 1)
                     (println "FIN2")
@@ -55,13 +55,13 @@
                 (if (< facteurs-gravite-mineurs 2)
                   (println "FIN3")
                   (println "FIN4"))))
-      ;; Branche 4
+      ;; Branche 5
       (or (= toux 1) (= douleurs 1) (= anosmie 1))
       (do (println "Branche 4: pas de fièvre et un autre symptôme")
           (if (= facteurs-pronostiques 0)
             (println "FIN2")
             (println "FIN7")))
-      ;; Branche 5
+      ;; Branche 6
       (and (= toux 0) (= douleurs 0) (= anosmie 0))
       (do (println "Branche 5: pas de symptômes")
           (println "FIN8")))))
