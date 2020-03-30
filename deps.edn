@@ -39,6 +39,12 @@
   :js {:main-opts   ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]
        :extra-paths ["src/cljs"]}
 
+  :fig-nav {:main-opts   ["-m" "figwheel.main" "-b" "dev-nav" "-r"]
+            :extra-paths ["src/cljs"]}
+
+  :js-nav {:main-opts   ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev-nav"]
+           :extra-paths ["src/cljs"]}
+
   :test-config {:extra-paths ["test"]
                 :extra-deps  {com.cognitect/test-runner
                               {:git/url "https://github.com/cognitect-labs/test-runner.git"
