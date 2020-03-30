@@ -105,9 +105,9 @@ score-variables:
 # Priority 4 -> FIN3
 # Priority 3 -> FIN4
 # Priority 2 -> FIN5
-# Priority 5 -> FIN6
-# Priority 8 -> FIN7
-# Priority 7 -> FIN8
+# Priority 7 -> FIN6
+# Priority 5 -> FIN7
+# Priority 8 -> FIN8
 #
 # Set conditional output depending on scores.
 # Each entry is composed of the name of the condition (you can pick up
@@ -121,7 +121,7 @@ conditional-score-outputs:
   FIN1:
     priority: 1
     node: "fin-moins-de-15-ans"
-    message: "Prenez contact avec votre médecin généraliste au moindre doute.<br/>Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.<br/>En cas d’urgence, appeler le [15](tel:15)."
+    message: "Prenez contact avec votre médecin généraliste au moindre doute.<br/>Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.<br/>En cas d’urgence, appelez le [15](tel:15)."
     notification: "is-danger"
   FIN5:
     priority: 2
@@ -136,18 +136,22 @@ conditional-score-outputs:
     priority: 4
     notification: "is-warning"
     message: "Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le [15](tel:15) si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures."
+  FIN7:
+    priority: 5
+    notification: "is-warning"
+    message: "Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le [15](tel:15). Nous vous conseillons de rester à votre domicile."
   FIN2:
     priority: 6
     message: "Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile."
     notification: "is-warning"
-  FIN8:
+  FIN6:
     priority: 7
     notification: "is-warning"
-    message: "Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000."
-  FIN7:
+    message: "Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)."
+  FIN8:
     priority: 8
     notification: "is-success"
-    message: "Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile."
+    message: "Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000."
 
 # Mandatory configuration option
 # FIXME: complete documentation
