@@ -328,6 +328,10 @@
             (keyword (or (first (remove nil? matches))
                          (get goto :default)))))))
 
+;; (get-target-node {:conditional-score-outputs true :goto "1.1"}
+;;                  '({:moins-de-15-ans {:display "rien" :value 1}})
+;;                  )
+
 ;; Create all the pages
 (defn create-page-contents [{:keys [done node text help no-summary
                                     progress force-help choices]}]

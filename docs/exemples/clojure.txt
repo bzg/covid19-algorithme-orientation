@@ -14,6 +14,8 @@
 (defn preprocess-scores [scores]
   (let [imc-val (compute-imc (:value (:poids scores))
                              (:value (:taille scores)))
+        ;; imc-map {:imc {:display "IMC"
+        ;;                :value   (if (string? imc-val) 0 imc-val)}}
         imc-map {:imc {:display "IMC" :value imc-val}}
         scores  (merge scores imc-map)
         scores  (update-in scores [:facteurs-pronostiques :value]
