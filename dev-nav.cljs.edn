@@ -2,7 +2,7 @@
   :css-dirs     ["resources/public/css"]
   :open-url     "http://localhost:9500/index-nav.html"
   :auto-testing false}
-{:main       choices.core
+{:main       choices.corenav
  :output-to  "resources/public/js/choices-nav.js"
- :output-dir "resources/public/js/dev"
+ :output-dir "resources/public/js/dev-nav"
  :externs    ["externs.js"]}

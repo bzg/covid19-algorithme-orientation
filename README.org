@@ -24,30 +24,48 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 - une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] ;
 - des recommandations sur [[file:implementation.org][son implémentation]] ;
 - une [[file:preuve-formelle/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
-- le code source de la page statique de présentation de l'algorithme ;
-- le code source d'un démonstrateur interactif de l'algorithme.
+- le code source du démonstrateur de l'algorithme ;
+- le code source d'une page web pour tester l'algorithme interactivement.
 
-** Mettre à jour la [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][page statique de présentation]]
+** Mettre à jour les contenus web
 
-- Éditez les fichiers [[file:website-contents.md][website-contents.md]] et [[file:website-meta.yml]].
-- Lancez la commande =./build.sh=
-- Committez, pushez.
+- Éditez les fichiers du répertoire [[file:website/][website]].
+- Lancez la commande =./build.sh web=
+- Vérifiez, committez, pushez.
 
-** Mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur de l'algorithme]]
+** Mettre à jour le démonstrateur de l'algorithme
+
+Le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] avec le parcours entier du questionnaire (option où
+les données sont collectées) :
 
 - Éditez le fichier [[file:config.yml]]
-- Lancez la commande =./build.sh=
+- Lancez la commande =./build.sh js=
 - Committez, pushez.
 
-** Développer le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur de l'algorithme]] depuis ce dépôt
+Le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur-nav.html][démonstrateur]] avec un parcours optimisé du questionnaire (option où
+les données du répondant ne sont pas collectées) :
 
-Pour développer le démonstrateur :
+- Éditez le fichier [[file:config-nav.yml]]
+- Lancez la commande =./build.sh js-nav=
+- Committez, pushez.
+
+** Développer l'un des démonstrateurs
+
+Pour développer le démonstrateur standard :
 
 1. Configurez =config.yml=
 2. Testez avec =clj -A:test-config=
 3. Compilez avec =clj -A:fig=
 4. Allez à [[http://localhost:9500]]
 5. Éditez [[file:src/cljs/choices/core.cljs][core.cljs]]
+
+Pour développer le démonstrateur avec parcours raccourci (dans
+l'option où les données ne sont pas collectées) :
+
+1. Configurez =config-nav.yml=
+3. Compilez avec =clj -A:fig-nav=
+4. Allez à [[http://localhost:9500]]
+5. Éditez [[file:src/cljs/choices/corenav.cljs][corenav.cljs]]
 
 Vous pouvez aussi lancer des exemples d'utilisation de l'algorithme :
 
