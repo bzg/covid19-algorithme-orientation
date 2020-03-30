@@ -107,8 +107,10 @@
      :msg (get conclusion :message)}))
 
 (defn -main [& [n]]
-  (doseq [exemple (gen/sample (s/gen ::reponse)
-                              (or (and (not-empty n) (Integer. n)) 1))]
-    (let [{:keys [res msg]} (conditional-score-result exemple)]
-      (println "Réponses: " res)
-      (println "Conclusion: " msg))))
+  (let [samples
+        (gen/sample (s/gen ::reponse)
+                    (or (and (not-empty n) (Integer. n)) 1))]
+    (doseq [sample samples]
+      (let [{:keys [res msg]} (conditional-score-result sample)]
+        (println "Réponses: " res)
+        (println "Conclusion: " msg)))))
