@@ -62,6 +62,6 @@
             (println "FIN2")
             (println "FIN7")))
       ;; Branche 5
-      (and (= toux 0) (= douleurs 0) (> anosmie 0))
+      (and (= toux 0) (= douleurs 0) (= anosmie 0))
       (do (println "Branche 5: pas de symptômes")
           (println "FIN8")))))
