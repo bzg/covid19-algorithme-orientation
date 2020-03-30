@@ -81,28 +81,27 @@ FIXME: Warning, the decision tree is NOT TERMINATING.
 :  1: 
 :  2: SI fièvre ET toux
 :  3:    SI >= 1 facteurs de gravité majeurs => FIN5
-:  4:    SI 0 facteur pronostique
-:  5:       SI 0 OU 1 facteur de gravité mineur => FIN6
-:  6:    SI >= 1 facteurs pronostiques
-:  7:       SI 0 OU 1 facteur de gravité mineur => FIN6
-:  8:       SI >= 2 facteurs de gravité mineurs => FIN4
-:  9: 
-: 10: SI fièvre OU (pas de fièvre et (diarrhée OU (toux ET douleurs) OU (toux ET anosmie))
-: 11:    SI >= 1 facteurs de gravité majeurs => FIN5
-: 12:    SI 0 facteur pronostique
-: 13:       SI 0 facteur de gravité mineur
-: 14:          SI moins de 50 ans => FIN2
-: 15:             SINON => FIN3
+:  4:    SI 0 facteur pronostique => FIN6
+:  5:    SI >= 1 facteurs pronostiques
+:  6:       SI 0 OU 1 facteur de gravité mineur => FIN6
+:  7:       SI >= 2 facteurs de gravité mineurs => FIN4
+:  8: 
+:  9: SI fièvre OU (pas de fièvre et (diarrhée OU (toux ET douleurs) OU (toux ET anosmie))
+: 10:    SI >= 1 facteurs de gravité majeurs => FIN5
+: 11:    SI 0 facteur pronostique
+: 12:       SI 0 facteur de gravité mineur
+: 13:          SI moins de 50 ans => FIN2
+: 14:             SINON => FIN3
 : 15:          SINON => FIN3
-: 17:    SI >= 1 facteurs pronostiques
-: 18:       SI 0 OU 1 facteur de gravité mineur => FIN3
-: 19:       SI au moins 2 facteurs de gravité mineurs => FIN4
-: 20: 
-: 21: SI toux OU douleurs OU anosmie
-: 22:    SI 0 facteur pronostique => FIN2
-: 23:    SI >= 1 facteur pronostique => FIN7
-: 24: 
-: 25: SI NI toux NI douleurs NI anosmie => FIN8
+: 16:    SI >= 1 facteurs pronostiques
+: 17:       SI 0 OU 1 facteur de gravité mineur => FIN3
+: 18:       SI au moins 2 facteurs de gravité mineurs => FIN4
+: 19: 
+: 20: SI toux OU douleurs OU anosmie
+: 21:    SI 0 facteur pronostique => FIN2
+: 22:    SI >= 1 facteur pronostique => FIN7
+: 23: 
+: 24: SI NI toux NI douleurs NI anosmie => FIN8
 
 *** Diagramme de l'arbre de décision
 

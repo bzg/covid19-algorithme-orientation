@@ -32,9 +32,8 @@
       (do (println "Branche 2: fièvre et toux")
           (cond (>= facteurs-gravite-majeurs 1)
                 (println "FIN5")
-                (and (= facteurs-pronostiques 0)
-                     (< facteurs-gravite-mineurs 2))
-                (println "FIN6") ;; FIXME
+                (= facteurs-pronostiques 0)
+                (println "FIN6")
                 (>= facteurs-pronostiques 1) 
                 (if (< facteurs-gravite-mineurs 2)
                   (println "FIN6")

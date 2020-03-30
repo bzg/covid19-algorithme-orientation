@@ -94,9 +94,7 @@ Pour tous : /Restez chez vous au maximum en attendant que les symptômes dispara
 
 *** Tout patient sans facteur pronostique
 
-**** Si un ou deux facteurs de gravité mineurs
-
-: Votre situation peut relever d’un COVID 19.
+: Votre situation peut relever d’un COVID 19. 
 : Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)
 
 *** Tout patient avec un facteur pronostique ou plus
