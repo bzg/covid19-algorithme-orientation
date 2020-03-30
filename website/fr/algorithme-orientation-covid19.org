@@ -1,6 +1,7 @@
-#+options: toc:2 num:1 H:4
-
-Version du document : =20200330=
+#+title: Algorithme d'orientation COVID 19
+#+author: Ministère des Solidarité et de la Santé
+#+date: 30 mars 2020
+#+options: toc:2 num:2 H:4
 
 * Présentation générale
 
@@ -9,6 +10,8 @@ Ce document présente le questionnaire d'auto-évaluation COVID19 et l'algorithm
 Pour le questionnaire : toutes les questions sont susceptibles de changer la valeur d'au moins une variable.  Pour chaque question, certaines réponses modifient ou non la valeur d'une ou plusieurs variables.
 
 Pour l'algorithme : il se présente comme un arbre de décision qui doit être parcouru de façon séquentielle et en fonction des valeurs finales des variables.
+
+Version du document : =20200330=
 
 *Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.*
 
