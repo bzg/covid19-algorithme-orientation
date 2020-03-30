@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Suppress existing compiled js files
+rm -fr resources/public/js/*
+
 # Update implementation example
 cp src/cljs/choices/custom.cljs docs/exemples/clojure.txt
 
