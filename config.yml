@@ -160,7 +160,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19.  Aucune donnée n'est collectée."
+    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19 **dans le cas où des données sont collectées**."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"

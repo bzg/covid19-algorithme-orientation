@@ -160,10 +160,10 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19.  Aucune donnée n'est collectée."
+    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19 **dans le cas où aucune donnée n'est collectée**."
     choices:
     - answer: "Démarrer"
-      goto:   "1.1"
+      goto:   "2.1"
       color:  "is-info"
 
   - node:    "2.1"
@@ -570,27 +570,18 @@ tree:
     help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
     choices:
     - answer:  "Oui"
-      goto:    "3.1"
+      goto:    "fin"
       color:   "is-info"
       score:
         facteurs-pronostiques:
           value: 1
     - answer:  "Non"
-      goto:    "3.1"
-      color:   "is-info"
-    - answer:  "Je ne sais pas"
-      goto:    "3.1"
-      color:   "is-info"
-
-  - node:    "3.1"
-    progress:   "[23 23]"
-    text:    "Quel est votre code postal ?"
-    help: "**Note aux développeurs:** la saisie de cette information doit être facultative."
-    choices:
-    - answer:  "[Code postal]"
       goto:    "fin"
       color:   "is-info"
-      
+    - answer:  "Je ne sais pas"
+      goto:    "fin"
+      color:   "is-info"
+
   - node: "fin-moins-de-15-ans"
     text: "Vous avez moins de quinze ans."
     done: true
