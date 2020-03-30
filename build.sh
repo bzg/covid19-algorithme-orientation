@@ -37,9 +37,11 @@ if [[ $1 == "json" ]]; then
     clj -m choices.json
 fi
 
-if [[ $1 == "" ]]; then
+if [[ $1 == "all" ]]; then
     compile_upload_js
     compile_upload_js_nav
     clj -m choices.json
     clj -m choices.build
+else
+    echo "Ajoutez une option parmi js, js-nav, web, json, all."
 fi
