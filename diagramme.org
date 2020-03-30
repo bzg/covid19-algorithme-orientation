@@ -8,11 +8,12 @@ if (SI moins de 15 ans) then (moins de 15 ans)
    :FIN1;
    stop
 
+elseif (SI >=1 facteur de gravité majeurs) then (oui)
+   :FIN5;
+   stop
+
 elseif (SI fièvre ET toux) then (oui)
-       if (SI >=1 facteurs de gravité majeurs) then (oui)
-          :FIN5;
-          stop
-       elseif (SI 0 facteur pronostique) then 
+       if (SI 0 facteur pronostique) then 
           :FIN6;
           stop
        else (Plus de facteurs pronostiques)
@@ -26,10 +27,7 @@ elseif (SI fièvre ET toux) then (oui)
        endif
 
 elseif (SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)) then (oui)
-       if (SI >=1 facteur de gravité majeurs) then (oui)
-          :FIN5;
-          stop
-       elseif (SI 0 facteur pronostique) then (oui)
+       if (SI 0 facteur pronostique) then (oui)
            if (SI 0 facteur de gravité mineur) then (oui)
               if (SI moins de 50 ans) then (oui)
                  :FIN2;
