@@ -343,7 +343,7 @@
       (modal show-modal)
       [:div.section
        (if-let [[v m] (cljs.reader/read-string progress)]
-         [:div [:progress.progress.is-primary
+         [:div [:progress.progress.is-success
                 {:value v :max m}]
           [:br]])
        (help-clipboard done text force-help help)
