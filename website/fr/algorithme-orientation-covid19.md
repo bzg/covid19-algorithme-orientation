@@ -1,23 +1,23 @@
 
 # Table des matières
 
-1.  [Présentation générale](#orge3bdc95)
-2.  [Questionnaire d’auto-évaluation](#org8c6a64e)
-    1.  [Symptômes](#org02f4c00)
-    2.  [Facteur pronostique défavorable lié au terrain](#org11cba3f)
-    3.  [Autre question](#org63a073d)
-    4.  [Définition des facteurs de gravité](#org68fe146)
-    5.  [Calcul de l'indice de masse corporelle (IMC)](#org6b625b7)
-3.  [Définition de l'arbre de décision](#org535bdb8)
-    1.  [Patient de moins de 15 ans](#org71f495a)
-    2.  [Tout patient avec fièvre et toux](#org7e36498)
-    3.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#org387fe9f)
-    4.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orga045625)
-    5.  [Tout patient sans fièvre ni aucun autre symptôme](#orgc994ac9)
+1.  [Présentation générale](#orgd8bf8fd)
+2.  [Questionnaire d’auto-évaluation](#org5106b0c)
+    1.  [Symptômes](#org3febb96)
+    2.  [Facteur pronostique défavorable lié au terrain](#org2536a32)
+    3.  [Autre question](#orgb6d9027)
+    4.  [Définition des facteurs de gravité](#orge89d1f6)
+    5.  [Calcul de l'indice de masse corporelle (IMC)](#org5e7f7e6)
+3.  [Définition de l'arbre de décision](#org1b86870)
+    1.  [Patient de moins de 15 ans](#org5f57691)
+    2.  [Tout patient avec fièvre et toux](#orgf371f8e)
+    3.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#org7d17bc8)
+    4.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#org3c95f5f)
+    5.  [Tout patient sans fièvre ni aucun autre symptôme](#org16ecc6d)
 
 
 
-<a id="orge3bdc95"></a>
+<a id="orgd8bf8fd"></a>
 
 # Présentation générale
 
@@ -32,12 +32,12 @@ Version du document : `20200330`
 **Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.**
 
 
-<a id="org8c6a64e"></a>
+<a id="org5106b0c"></a>
 
 # Questionnaire d’auto-évaluation
 
 
-<a id="org02f4c00"></a>
+<a id="org3febb96"></a>
 
 ## Symptômes
 
@@ -57,7 +57,7 @@ Version du document : `20200330`
 -   *Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?* `OUI / NON => Facteur de gravité majeur.`
 
 
-<a id="org11cba3f"></a>
+<a id="org2536a32"></a>
 
 ## Facteur pronostique défavorable lié au terrain
 
@@ -82,14 +82,14 @@ Version du document : `20200330`
 Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** ou en gras (âge supérieur ou égal à 70 ans, indice de masse corporelle supérieur à 30 kg/m²).
 
 
-<a id="org63a073d"></a>
+<a id="orgb6d9027"></a>
 
 ## Autre question
 
 -   *Quel est votre code postal ?*
 
 
-<a id="org68fe146"></a>
+<a id="orge89d1f6"></a>
 
 ## Définition des facteurs de gravité
 
@@ -102,14 +102,14 @@ Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** 
     -   Difficultés importantes pour s’alimenter ou boire depuis plus de 24 heures
 
 
-<a id="org6b625b7"></a>
+<a id="org5e7f7e6"></a>
 
 ## Calcul de l'indice de masse corporelle (IMC)
 
 L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le carré de la `TAILLE` en mètres.
 
 
-<a id="org535bdb8"></a>
+<a id="org1b86870"></a>
 
 # Définition de l'arbre de décision
 
@@ -118,7 +118,7 @@ L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le 
 Pour tous : *Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000.*
 
 
-<a id="org71f495a"></a>
+<a id="org5f57691"></a>
 
 ## Patient de moins de 15 ans
 
@@ -127,7 +127,7 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
     En cas d’urgence, appeler le 15.
 
 
-<a id="org7e36498"></a>
+<a id="orgf371f8e"></a>
 
 ## Tout patient avec fièvre et toux
 
@@ -162,7 +162,7 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="org387fe9f"></a>
+<a id="org7d17bc8"></a>
 
 ## Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))
 
@@ -218,25 +218,25 @@ Sinon :
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="orga045625"></a>
+<a id="org3c95f5f"></a>
 
 ## Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
 
-### Au moins un facteur de gravité mineur
+### Au moins un facteur pronostique
 
     Votre situation peut relever d’un COVID 19. Un avis médical est recommandé.
     Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile.
 
 
-### Pas de facteur de gravité mineur
+### Pas de facteur pronostique
 
     Votre situation peut relever d’un COVID 19 qu’il faut surveiller.
     Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin.
     Nous vous conseillons de rester à votre domicile.
 
 
-<a id="orgc994ac9"></a>
+<a id="org16ecc6d"></a>
 
 ## Tout patient sans fièvre ni aucun autre symptôme
 
