@@ -56,15 +56,16 @@ def implies_done_base(cond, number, done, implies_done_acc):
 
 # Encodage du pseudo-code dans Z3
 
+DONE_LENGTH = 8
 
-def algo_475af58():
-    # VERSION 475af58
+def algo_6e5e17a():
+    # VERSION 6e5e17a
 
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
-    # L'algotithme définit 10 cas de terminaison que l'on stockera dans cette liste
+    # L'algotithme définit DONE_LENGTH cas de terminaison que l'on stockera dans cette liste
     # "done"
-    done = [BoolVal(False) for i in range(1, 10)]
+    done = [BoolVal(False) for i in range(1, DONE_LENGTH + 1)]
 
     def implies_done(cond, number):
         nonlocal implies_done_acc
@@ -74,50 +75,49 @@ def algo_475af58():
     # SI moins de 15 ans => FIN1
     implies_done(age < 15, 1)
     #
+    # SI >= 1 facteurs de gravité majeurs => FIN5
+    implies_done(facteurs_gravite_majeur >= 1, 5)
+    #
     # SI fièvre ET toux
-    cond1 = And(fievre, toux)
-    #    SI >= 1 facteurs de gravité majeurs => FIN5
-    implies_done(And(cond1, facteurs_gravite_majeur >= 1), 5)
-    #    SI 0 facteur pronostique
-    cond2 = (facteurs_pronostiques == 0)
-    #       SI 0 OU 1 facteur de gravité mineur => FIN6
-    implies_done(And(cond1, cond2, facteurs_gravite_mineur <= 1), 6)
+    cond1 = Or(fievre, toux)
+    #    SI 0 facteur pronostique => FIN6
+    implies_done(And(cond1, facteurs_pronostiques == 0), 6)
     #    SI >= 1 facteurs pronostiques
-    cond3 = (facteurs_pronostiques >= 1)
-    #       SI 0 OU 1 facteur de gravité mineur => FIN6
-    implies_done(And(cond1, cond3, facteurs_gravite_mineur <= 1), 6)
+    cond2 = (facteurs_pronostiques >= 1)
+    #       SI < 2 facteur de gravité mineur => FIN6
+    implies_done(And(cond1, cond2, facteurs_gravite_mineur < 2), 6)
     #       SI >= 2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond1, cond3, facteurs_gravite_mineur >= 2),4 )
+    implies_done(And(cond1, cond2, facteurs_gravite_mineur >= 2), 4)
     #
-    # SI fièvre OU diarrhée OU (toux ET douleurs) OU (toux ET anosmie)
-    cond4 = Or(fievre, diarrhee, And(toux, douleurs), And(toux, anosmie))
-    #    SI >= 1 facteurs de gravité majeurs => FIN5
-    implies_done(And(cond4, facteurs_gravite_majeur >= 1), 5)
+    # SI fièvre OU (pas de fièvre et (diarrhée OU (toux ET douleurs) OU (toux ET anosmie))
+    cond3 = Or(fievre, And(Not(fievre), Or(diarrhee, And(toux, douleurs), And(toux, anosmie))))
     #    SI 0 facteur pronostique
-    cond5 = (facteurs_pronostiques == 0)
+    cond4 = (facteurs_pronostiques == 0)
     #       SI 0 facteur de gravité mineur
-    cond6 = (facteurs_gravite_mineur == 0)
+    cond5 = (facteurs_gravite_mineur == 0)
     #          SI moins de 50 ans => FIN2
-    implies_done(And(cond4, cond5, cond6, age < 50), 2)
-    #             SINON => FIN3
-    implies_done(And(cond4, cond5, cond6), 3)
+    implies_done(And(cond3, cond4, cond5, age < 50), 2)
+    #          SINON => FIN3
+    implies_done(And(cond3, cond4, cond5, Not(age < 50)), 3)
+    #       SI >= 1 facteur de gravité mineur => FIN3
+    implies_done(And(cond3, cond4, facteurs_gravite_mineur >= 1), 3)
     #    SI >= 1 facteurs pronostiques
-    cond7 = (facteurs_pronostiques >= 1)
-    #       SI 0 OU 1 facteur de gravité mineur => FIN3
-    implies_done(And(cond4, cond7, facteurs_gravite_mineur <= 1), 3)
-    #       SI au moins 2 facteurs de gravité mineurs => FIN4
-    implies_done(And(cond4, cond7, facteurs_gravite_mineur >= 2), 4)
+    cond6 = (facteurs_pronostiques >= 1)
+    #       SI < 2 facteur de gravité mineur => FIN3
+    implies_done(And(cond3, cond6, facteurs_gravite_mineur < 2), 3)
+    #       SI >= 2 facteurs de gravité mineurs => FIN4
+    implies_done(And(cond3, cond6, facteurs_gravite_mineur >= 2), 4)
     #
-    # SI pas de fièvre et (toux OU douleurs OU anosmie)
-    cond8 = And(Not(fievre), Or(toux, douleurs, anosmie))
-    #    SI >= 1 facteurs de gravité mineurs OU 1 facteur pronostique => FIN8
-    cond9 = Or(facteurs_gravite_mineur >= 1, facteurs_pronostiques >= 1)
-    implies_done(And(cond8, cond9), 8)
-    #    SI 0 facteur de gravité mineur => FIN7
-    implies_done(And(cond8, facteurs_gravite_mineur ==0), 7)
+    # SI toux OU douleurs OU anosmie
+    cond7 = Or(toux, douleurs, anosmie)
+    #    SI 0 facteur pronostique => FIN2
+    implies_done(And(cond7, facteurs_pronostiques == 0), 2)
+    #    SI >= 1 facteur pronostique => FIN7
+    implies_done(And(cond7, facteurs_pronostiques >= 1), 7)
     #
-    # SI NI fièvre NI toux NI douleurs NI anosmie => FIN9
-    implies_done(And(Not(fievre), Not(toux), Not(douleurs), Not(anosmie)), 9)
+    # SI NI toux NI douleurs NI anosmie => FIN8
+    implies_done(And(Not(toux), Not(douleurs), Not(anosmie)), 8)
+
     return done
 
 
@@ -146,8 +146,8 @@ def check_and_print(done_arrays, msg_unsat, msg_sat):
         print(msg_unsat, "\n")
 
 
-done = algo_475af58()
-done_msg = "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-arbre-de-decision/blob/7f32d2154565bd3647487c72d16143c6bf3bd4d0/covid19-orientation-arbre-de-decision.txt"
+done = algo_6e5e17a()
+done_msg = "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-arbre-de-decision/blob/6e5e17a2d546f95327556a78c23ecd97bae619d8/covid19-orientation-arbre-de-decision.txt"
 
 
 def check_all_cases_ending(done, msg):
@@ -174,7 +174,7 @@ check_all_cases_ending(done, done_msg)
 
 def check_every_exit_reached(done, msg):
     print(">>> Théorème: pour l'algorithme {} chaque sortie est atteignable".format(msg))
-    for i in range(0, 9):
+    for i in range(0, DONE_LENGTH):
         print("Atteindre la sortie FIN{} ?".format(i + 1))
         s.push()
         cond = done[i]
@@ -190,7 +190,7 @@ check_every_exit_reached(done, done_msg)
 def check_same(done1, msg1, done2, msg2):
     print(">>> Théorème: deux algorithmes ({} et {}) donnent les mêmes réponses".format(
         msg1, msg2))
-    for i in range(0, 9):
+    for i in range(0, DONE_LENGTH):
         print("Analyse de la sortie FIN{}:".format(i + 1))
         s.push()
         cond = Xor(done1[i], done2[i])
