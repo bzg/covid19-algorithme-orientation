@@ -166,6 +166,36 @@ tree:
       goto:   "1.1"
       color:  "is-info"
 
+  - node:    "2.1"
+    progress:   "[11 23]"
+    text:    "Quel est votre âge ?"
+    choices:
+    - answer:  "Moins de 15 ans"
+      goto:
+        conditional-score-outputs: true
+        default: "1.1"
+      score:
+        moins-de-15-ans:
+          value: 1
+      color:   "is-info"
+    - answer:  "Entre 15 et 49 ans"
+      goto:    "1.1"
+      color:   "is-info"
+    - answer:  "Entre 50 et 69 ans"
+      score:
+        plus-de-50-ans:
+          value: 1
+      goto:    "1.1"
+      color:   "is-info"
+    - answer:  "70 ans ou plus"
+      goto:    "1.1"
+      color:   "is-info"
+      score:
+        facteurs-pronostiques:
+          value: 1
+        plus-de-50-ans:
+          value: 1
+
   - node:       "1.1"
     progress:   "[1 23]"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
@@ -320,41 +350,11 @@ tree:
           value: 1
       goto:
         conditional-score-outputs: true
-        default: "2.1"
+        default: "2.2"
       color:   "is-info"
     - answer:  "Non"
-      goto:    "2.1"
-      color:   "is-info"
-
-  - node:    "2.1"
-    progress:   "[11 23]"
-    text:    "Quel est votre âge ?"
-    choices:
-    - answer:  "Moins de 15 ans"
-      goto:
-        conditional-score-outputs: true
-        default: "2.2"
-      score:
-        moins-de-15-ans:
-          value: 1
-      color:   "is-info"
-    - answer:  "Entre 15 et 49 ans"
       goto:    "2.2"
       color:   "is-info"
-    - answer:  "Entre 50 et 69 ans"
-      score:
-        plus-de-50-ans:
-          value: 1
-      goto:    "2.2"
-      color:   "is-info"
-    - answer:  "70 ans ou plus"
-      goto:    "2.2"
-      color:   "is-info"
-      score:
-        facteurs-pronostiques:
-          value: 1
-        plus-de-50-ans:
-          value: 1
 
   - node:    "2.2"
     progress:   "[12 23]"
