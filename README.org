@@ -100,8 +100,6 @@ requests/.
 
 ** Réutilisations
 
-L'algorithme est implémenté par [[maladiecoronavirus.fr][le site maladiecoronavirus.fr]].
-
 Toutes les applications d'information, d'orientation et de triage qui
 réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère
 des Solidarité et de la Santé]].
