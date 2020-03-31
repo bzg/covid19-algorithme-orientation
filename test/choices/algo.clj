@@ -63,19 +63,18 @@
     ;; Returned preprocessed scores:
     scores))
 
-(defn conditional-score-result [resultats & [println?]]
-  (let [conclusions
+(defn conditional-score-result [response & [println?]]
+  (let [;; Set the possible conclusions
+        {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]}
         conditional-score-outputs
-        resultats
+        response
         (if println?
-          (preprocess-scores resultats)
-          (preprocess-scores-no-println resultats))
+          (preprocess-scores response)
+          (preprocess-scores-no-println response))
         {:keys [moins-de-15-ans plus-de-49-ans
                 fievre toux anosmie douleurs diarrhees
                 facteurs-gravite-mineurs facteurs-gravite-majeurs
-                facteurs-pronostiques]}                        resultats
-        ;; Set the possible conclusions
-        {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]} conclusions
+                facteurs-pronostiques]} response
         ;; Set the final conclusion to one of the FIN*
         conclusion
         (cond
@@ -122,39 +121,41 @@
           (do (when println? (println "Branche 5: pas de symptômes"))
               FIN8))]
     ;; Return the expected map:
-    {:res resultats
+    {:res response
      :msg (get conclusion :message)}))
 
 (def all-inputs
-  (logic/run* [q]
-    (logic/fresh [fievre toux anosmie
-                  douleurs diarrhees
-                  facteurs-pronostiques
-                  facteurs-gravite-mineurs
-                  facteurs-gravite-majeurs
-                  age imc
-                  resultats conclusions]
-      (fd/in fievre (fd/interval 0 1))
-      (fd/in toux (fd/interval 0 1))
-      (fd/in anosmie (fd/interval 0 1))
-      (fd/in douleurs (fd/interval 0 1))
-      (fd/in diarrhees (fd/interval 0 1))
-      (fd/in facteurs-pronostiques (fd/interval 0 10))
-      (fd/in facteurs-gravite-mineurs (fd/interval 0 2))
-      (fd/in facteurs-gravite-majeurs (fd/interval 0 2))
-      (fd/in age (fd/interval 14 70))
-      (fd/in imc (fd/interval 0 2))
-      (logic/== resultats {:fievre                   fievre
-                           :toux                     toux
-                           :anosmie                  anosmie
-                           :age                      age
-                           :douleurs                 douleurs
-                           :diarrhees                diarrhees
-                           :imc                      imc
-                           :facteurs-pronostiques    facteurs-pronostiques
-                           :facteurs-gravite-mineurs facteurs-gravite-mineurs
-                           :facteurs-gravite-majeurs facteurs-gravite-majeurs})
-      (logic/== q resultats))))
+  (let [bin   (fd/interval 0 1)
+        multi (fd/interval 0 2)]
+    (logic/run* [q]
+      (logic/fresh [fievre toux anosmie
+                    douleurs diarrhees
+                    facteurs-pronostiques
+                    facteurs-gravite-mineurs
+                    facteurs-gravite-majeurs
+                    age imc
+                    response]
+        (fd/in age (fd/interval 14 70))
+        (fd/in fievre bin)
+        (fd/in toux bin)
+        (fd/in anosmie bin)
+        (fd/in douleurs bin)
+        (fd/in diarrhees bin)
+        (fd/in facteurs-pronostiques (fd/interval 0 10))
+        (fd/in facteurs-gravite-mineurs multi)
+        (fd/in facteurs-gravite-majeurs multi)
+        (fd/in imc multi)
+        (logic/== response {:fievre                   fievre
+                            :toux                     toux
+                            :anosmie                  anosmie
+                            :age                      age
+                            :douleurs                 douleurs
+                            :diarrhees                diarrhees
+                            :imc                      imc
+                            :facteurs-pronostiques    facteurs-pronostiques
+                            :facteurs-gravite-mineurs facteurs-gravite-mineurs
+                            :facteurs-gravite-majeurs facteurs-gravite-majeurs})
+        (logic/== q response)))))
 
 (def all-results (map conditional-score-result all-inputs))
 (def all-results-no-nil (remove nil? all-results))
