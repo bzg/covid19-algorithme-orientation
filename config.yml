@@ -404,7 +404,7 @@ tree:
 
   - node:    "2.4"
     progress:   "[13 23]"
-    text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+    text:    "Avez-vous une hypertension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
     choices:
     - answer:  "Oui"
       goto:    "2.5"

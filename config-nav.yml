@@ -163,175 +163,151 @@ tree:
     help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19 **dans le cas où aucune donnée n'est collectée**."
     choices:
     - answer: "Démarrer"
-      goto:   "2.1"
+      goto:   "1.1"
 
-  - node:    "2.1"
-    progress:   "[1 22]"
+  - node:    "1.1"
     start-page: true
     text:    "Quel est votre âge ?"
     choices:
     - answer:  "Moins de 15 ans"
-      goto:
-        conditional-score-outputs: true
-        default: "1.1"
       score:
         moins-de-15-ans:
           value: 1
+      goto:
+        conditional-score-outputs: true
+        default: "1.2"
     - answer:  "Entre 15 et 49 ans"
-      goto:    "1.1"
+      goto:    "1.2"
     - answer:  "Entre 50 et 69 ans"
       score:
         plus-de-50-ans:
           value: 1
-      goto:    "1.1"
+      goto:    "1.2"
     - answer:  "70 ans ou plus"
-      goto:    "1.1"
+      goto:    "1.2"
       score:
         facteurs-pronostiques:
           value: 1
         plus-de-50-ans:
           value: 1
 
-  - node:       "1.1"
-    progress:   "[2 22]"
+  - node:    "1.2"
+    start-page: true
+    text:    "Ressentez-vous l'un de ces symptômes ?"
+    choices:
+    - answer:  "Je ne peux plus m'alimenter ou boire depuis plus de 24 heures."
+      score:
+        facteurs-gravite-majeurs:
+          value: 1
+      goto:
+        conditional-score-outputs: true
+        default: "1.3"
+    - answer:  "Dans les dernières 24 heures, j'ai noté un manque de souffle INHABITUEL lorsque je parle ou que je fais un petit effort."
+      score:
+        facteurs-gravite-majeurs:
+          value: 1
+      goto:
+        conditional-score-outputs: true
+        default: "1.3"
+    - answer:  "Je ne ressens aucun de ces symptômes."
+      color: "is-warning"
+      goto:    "1.3"
+
+  - node:       "1.3"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
     choices:
     - answer:  "Oui"
       score:
         fievre:
           value: 1
-      goto:    "1.1.1"
+      goto:    "1.3.1"
     - answer:  "Non"
-      goto:    "1.2"
+      goto:    "1.4"
     - answer:  "Je ne sais pas"
-      goto:    "1.2"
+      goto:    "1.4"
       score:
         fievre:
           value: 1
 
-  - node:       "1.1.1"
-    progress:   "[3 23]"
+  - node:       "1.3.1"
     text:       "Quelle a été votre température la plus élevée ces dernières 48 heures ?"
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
         facteurs-gravite-mineurs:
           value: 1
-      goto:    "1.2"
+      goto:    "1.4"
     - answer:  "Entre 35,5 et 37,7°C"
-      goto:    "1.2"
+      goto:    "1.4"
     - answer:  "Entre 37,8 et 38,9°C"
-      goto:    "1.2"
+      goto:    "1.4"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
         facteurs-gravite-mineurs:
           value: 1
-      goto:    "1.2"
+      goto:    "1.4"
     - answer:  "Je ne sais pas"
       score:
         facteurs-gravite-mineurs:
           value: 1
-      goto:    "1.2"
-
-  - node:    "1.2"
-    progress:   "[3 22]"
-    text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
-    choices:
-    - answer:  "Oui"
-      score:
-        toux:
-          value: 1
-      goto:    "1.3"
-    - answer:  "Non"
-      goto:    "1.3"
-
-  - node:      "1.3"
-    progress:   "[4 22]"
-    text:      "Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "1.4"
-      score:
-        anosmie:
-          value: 1
-    - answer:  "Non"
       goto:    "1.4"
 
   - node:    "1.4"
-    progress:   "[5 22]"
-    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles ces derniers jours ?"
+    text:    "Avez-vous une fatigue inhabituelle ces derniers jours<br/>vous obligeant à vous reposer plus de la moitiée de la journée ?"
     choices:
     - answer:  "Oui"
       score:
-        douleurs:
+        facteurs-gravite-mineurs:
           value: 1
       goto:    "1.5"
     - answer:  "Non"
       goto:    "1.5"
 
   - node:    "1.5"
-    progress:   "[6 22]"
+    text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      score:
+        toux:
+          value: 1
+      goto:    "1.6"
+    - answer:  "Non"
+      goto:    "1.6"
+
+  - node:      "1.6"
+    text:      "Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      goto:    "1.7"
+      score:
+        anosmie:
+          value: 1
+    - answer:  "Non"
+      goto:    "1.7"
+
+  - node:    "1.7"
+    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      score:
+        douleurs:
+          value: 1
+      goto:    "1.8"
+    - answer:  "Non"
+      goto:    "1.8"
+
+  - node:    "1.8"
     text:    "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
     choices:
     - answer:  "Oui"
       score:
         diarrhees:
           value: 1
-      goto:    "1.6"
-    - answer:  "Non"
-      goto:    "1.6"
-
-  - node:    "1.6"
-    progress:   "[7 22]"
-    text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "1.6.1"
-    - answer:  "Non"
-      goto:    "1.7"
-
-  - node:    "1.6.1"
-    progress:   "[8 22]"
-    text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
-    choices:
-    - answer:  "Oui"
-      score:
-        facteurs-gravite-mineurs:
-          value: 1
-      goto:    "1.7"
-    - answer:  "Non"
-      goto:    "1.7"
-
-  - node:    "1.7"
-    progress:   "[9 22]"
-    text:    "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
-    choices:
-    - answer:  "Oui"
-      score:
-        facteurs-gravite-majeurs:
-          value: 1
-      goto:
-        conditional-score-outputs: true
-        default: "1.8"
-    - answer:  "Non"
-      goto:    "1.8"
-
-  - node:    "1.8"
-    progress:   "[10 22]"
-    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
-    choices:
-    - answer:  "Oui"
-      score:
-        facteurs-gravite-majeurs:
-          value: 1
-      goto:
-        conditional-score-outputs: true
-        default: "2.2"
+      goto:    "2.2"
     - answer:  "Non"
       goto:    "2.2"
 
   - node:    "2.2"
-    progress:   "[11 22]"
     text:    "Quel est votre poids en kilogrammes ?"
     help: "**Note aux développeurs:** demandez la saisie du poids exact."
     choices:
@@ -367,7 +343,6 @@ tree:
           value: 110
 
   - node:    "2.3"
-    progress:   "[12 22]"
     text:    "Quelle est votre taille en mètres ?"
     help: "**Note aux développeurs:** demandez la saisie de la taille exacte."
     choices:
@@ -403,123 +378,55 @@ tree:
           value: 1.90
 
   - node:    "2.4"
-    progress:   "[13 22]"
-    text:    "Avez-vous une tension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+    text:    "Cliquez sur le 1er élément de cette liste qui vous correspond."
     choices:
-    - answer:  "Oui"
-      goto:    "2.5"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.5"
-    - answer:  "Je ne sais pas"
-      goto:    "2.5"
-      score:
-        facteurs-pronostiques:
-          value: 1
-
-  - node:    "2.5"
-    progress:   "[14 22]"
-    text:    "Êtes-vous diabétique ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.6"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.6"
-
-  - node:    "2.6"
-    progress:   "[15 22]"
-    text:    "Avez-vous ou avez-vous eu un cancer dans les 3 dernières années ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.7"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.7"
-
-  - node:    "2.7"
-    progress:   "[16 22]"
-    text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.8"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.8"
-
-  - node:    "2.8"
-    progress:   "[17 22]"
-    text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.9"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.9"
-
-  - node:    "2.9"
-    progress:   "[18 22]"
-    text:    "Avez-vous une maladie chronique du foie ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.10"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.10"
-
-  - node:    "2.10"
-    progress:   "[19 22]"
-    text:    "Êtes-vous enceinte ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.11"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.11"
-    - answer:  "Non applicable"
-      goto:    "2.12"
-
-  - node:    "2.11"
-    progress:   "[20 22]"
-    text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
-    choices:
-    - answer:  "Oui"
-      goto:    "2.12"
-      score:
-        facteurs-pronostiques:
-          value: 1
-    - answer:  "Non"
-      goto:    "2.12"
-    - answer:  "Je ne sais pas"
-      goto:    "2.12"
-
-  - node:    "2.12"
-    progress:   "[21 22]"
-    text:    "Prenez-vous un traitement immunosuppresseur ?"
-    help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
-    choices:
-    - answer:  "Oui"
+    - answer:  "Je suis diabétique."
       goto:    "fin"
       score:
         facteurs-pronostiques:
           value: 1
-    - answer:  "Non"
+    - answer:  "Je suis enceinte."
       goto:    "fin"
-    - answer:  "Je ne sais pas"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai une maladie chronique du foie."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "Je prends un traitement immunosuppresseur."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai une insuffisance rénale chronique dialysée."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai une maladie connue pour diminuer mes défenses immunitaires."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai une maladie respiratoire ou je suis suivi par un pneumologue."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai un cancer ou j'ai déjà eu un cancer dans les 3 dernières années."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "J'ai de l'hypertension artérielle mal équilibrée ou une maladie cardiaque ou vasculaire ou je prends un traitement à visée cardiologique."
+      goto:    "fin"
+      score:
+        facteurs-pronostiques:
+          value: 1
+    - answer:  "Aucune de ces situations ne me correspond."
+      color: "is-warning"
       goto:    "fin"
 
   - node: "fin-moins-de-15-ans"
