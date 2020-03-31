@@ -2,7 +2,7 @@
 ;; SPDX-License-Identifier: EPL-2.0
 ;; License-Filename: LICENSES/EPL-2.0.txt
 
-(ns choices.core
+(ns choices.corenav
   (:require-macros [choices.macros :refer [inline-yaml-resource]])
   (:require [reagent.core :as reagent]
             [reagent.dom]
@@ -328,6 +328,43 @@
             (keyword (or (first (remove nil? matches))
                          (get goto :default)))))))
 
+(defn display-choices [choices text no-summary]
+  (for [choices-row (partition-all 4 choices)]
+    ^{:key (random-uuid)}
+    [:div.tile.is-parent.is-horizontal
+     (doall
+      (for [{:keys [answer goto explain color summary score]} choices-row]
+        ^{:key (random-uuid)}
+        [:div.tile.is-child
+         {:class (if (> (count choices) 3) "is-3" "")}
+         [:a.tile
+          {:style {:text-decoration "none"}
+           :on-click
+           #(do (when (vector? summary)
+                  (reset! show-modal true)
+                  (reset! modal-message (md-to-string (peek summary))))
+                (let [current-score
+                      (merge-with
+                       (fn [a b] {:display               (:display a)
+                                  :as-top-result-display (:as-top-result-display a)
+                                  :value                 (+ (:value a) (:value b))})
+                       (:score (peek @history))
+                       score)]
+                  (reset! hist-to-add
+                          (merge
+                           {:score current-score}
+                           {:questions (when-not no-summary [text answer])}
+                           {:answers summary}))
+                  (rfe/push-state
+                   (get-target-node goto current-score))))}
+          [:div.card-content.tile.is-parent.is-vertical
+           [:div.tile.is-child.box.is-size-4.notification.has-text-centered
+            {:class (or (not-empty color) "is-info")}
+            (md-to-string answer)]
+           (when (and explain @show-help)
+             [:div.tile.is-child.subtitle
+              (md-to-string explain)])]]]))]))
+
 ;; Create all the pages
 (defn create-page-contents [{:keys [done node text help no-summary
                                     progress force-help choices]}]
@@ -349,38 +386,8 @@
           (md-to-string help)])
        (if-not done
          ;; Not done: display the choices
-         [:div.tile.is-ancestor
-          (doall
-           (for [{:keys [answer goto explain color summary score]} choices]
-             ^{:key (random-uuid)}
-             [:div.tile.is-parent
-              [:a.tile.is-child
-               {:style {:text-decoration "none"}
-                :on-click
-                #(do (when (vector? summary)
-                       (reset! show-modal true)
-                       (reset! modal-message (md-to-string (peek summary))))
-                     (let [current-score
-                           (merge-with
-                            (fn [a b] {:display               (:display a)
-                                       :as-top-result-display (:as-top-result-display a)
-                                       :value                 (+ (:value a) (:value b))})
-                            (:score (peek @history))
-                            score)]
-                       (reset! hist-to-add
-                               (merge
-                                {:score current-score}
-                                {:questions (when-not no-summary [text answer])}
-                                {:answers summary}))
-                       (rfe/push-state
-                        (get-target-node goto current-score))))}
-               [:div.card-content.tile.is-parent.is-vertical
-                [:div.tile.is-child.box.is-size-4.notification.has-text-centered.has-text-weight-bold
-                 {:class (or (not-empty color) "is-info")}
-                 (md-to-string answer)]
-                (when (and explain @show-help)
-                  [:div.tile.is-child.subtitle
-                   (md-to-string explain)])]]]))]
+         [:div.tile.is-ancestor.is-vertical
+          (display-choices choices text no-summary)]
          ;; Done: display the final summary-answers
          [:div
           [:div.tile.is-ancestor {:id "copy-this"}
