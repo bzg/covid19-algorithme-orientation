@@ -30,26 +30,18 @@ Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-ori
 ** Mettre à jour les contenus web
 
 - Éditez les fichiers du répertoire [[file:website/][website]].
-- Lancez la commande =./build.sh web=
+- Lancez la commande =./build web=
 - Vérifiez, committez, pushez.
 
 ** Mettre à jour le démonstrateur de l'algorithme
 
-Le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] avec le parcours entier du questionnaire (option où
-les données sont collectées) :
+Pour mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] :
 
 - Éditez le fichier [[file:config.yml]]
-- Lancez la commande =./build.sh js=
+- Lancez la commande =./build js=
 - Committez, pushez.
 
-Le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur-nav.html][démonstrateur]] avec un parcours optimisé du questionnaire (option où
-les données du répondant ne sont pas collectées) :
-
-- Éditez le fichier [[file:config-nav.yml]]
-- Lancez la commande =./build.sh js-nav=
-- Committez, pushez.
-
-** Développer l'un des démonstrateurs
+** Développer le démonstrateur
 
 Pour développer le démonstrateur standard :
 
@@ -58,14 +50,6 @@ Pour développer le démonstrateur standard :
 3. Compilez avec =clj -A:fig=
 4. Allez à [[http://localhost:9500]]
 5. Éditez [[file:src/cljs/choices/core.cljs][core.cljs]]
-
-Pour développer le démonstrateur avec parcours raccourci (dans
-l'option où les données ne sont pas collectées) :
-
-1. Configurez =config-nav.yml=
-3. Compilez avec =clj -A:fig-nav=
-4. Allez à [[http://localhost:9500]]
-5. Éditez [[file:src/cljs/choices/corenav.cljs][corenav.cljs]]
 
 ** Tester l'algorithme
 
@@ -91,7 +75,7 @@ réponse.
 
 Une seule commande :
 
-: ./build.sh
+: ./build
 
 ** Contribuer
 
