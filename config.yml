@@ -233,7 +233,7 @@ tree:
 
   - node:    "1.4"
     progress:   "[4 23]"
-    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles ces derniers jours ?"
+    text:    "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
     choices:
     - answer:  "Oui"
       score:
@@ -292,7 +292,7 @@ tree:
 
   - node:    "1.8"
     progress:   "[9 23]"
-    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL<br/>lorsque vous parlez ou faites un petit effort ?"
+    text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?"
     choices:
     - answer:  "Oui"
       score:
@@ -404,7 +404,7 @@ tree:
 
   - node:    "2.4"
     progress:   "[13 23]"
-    text:    "Avez-vous une hypertension artérielle mal équilibrée ?</br>Ou une maladie cardiaque ou vasculaire ?<br/>Ou prenez-vous un traitement à visée cardiologique ?"
+    text:    "Avez-vous une hypertension artérielle mal équilibrée ? Ou une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?"
     choices:
     - answer:  "Oui"
       goto:    "2.5"

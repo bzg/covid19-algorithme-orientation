@@ -224,6 +224,7 @@ tree:
     - answer:  "Non"
       goto:    "1.4"
     - answer:  "Je ne sais pas"
+      color: "is-warning"
       goto:    "1.4"
       score:
         fievre:
@@ -253,7 +254,7 @@ tree:
       goto:    "1.4"
 
   - node:    "1.4"
-    text:    "Avez-vous une fatigue inhabituelle ces derniers jours<br/>vous obligeant à vous reposer plus de la moitiée de la journée ?"
+    text:    "Avez-vous une fatigue inhabituelle ces derniers jours vous obligeant à vous reposer plus de la moitiée de la journée ?"
     choices:
     - answer:  "Oui"
       score:
@@ -286,7 +287,7 @@ tree:
       goto:    "1.7"
 
   - node:    "1.7"
-    text:    "Avez-vous un mal de gorge ou des douleurs musculaires<br/>ou des courbatures inhabituelles ces derniers jours ?"
+    text:    "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
     choices:
     - answer:  "Oui"
       score:

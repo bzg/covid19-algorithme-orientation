@@ -2,7 +2,7 @@
 ;; SPDX-License-Identifier: EPL-2.0
 ;; License-Filename: LICENSES/EPL-2.0.txt
 
-(ns choices.corenav
+(ns choices.core
   (:require-macros [choices.macros :refer [inline-yaml-resource]])
   (:require [reagent.core :as reagent]
             [reagent.dom]
@@ -134,10 +134,12 @@
     {:aria-label "close"
      :on-click   #(reset! show-modal false)}]])
 
-(defn help-clipboard [done text force-help help]
+(defn question-help-clipboard [done question force-help help]
   [:div.level
-   [:div.level-left
-    [:h1.level-item (md-to-string text)]]
+   [:div.is-size-3
+    [:div.columns.is-multiline
+     [:div.column
+      (md-to-string question)]]]
    (if-not done
      ;; Not done: display the help button
      (when (and (not force-help) @show-help-global
@@ -379,7 +381,7 @@
          [:div [:progress.progress.is-success
                 {:value v :max m}]
           [:br]])
-       (help-clipboard done text force-help help)
+       (question-help-clipboard done text force-help help)
        (when (and (or force-help @show-help)
                   (not-empty help))
          [:div.notification.is-size-5
