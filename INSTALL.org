@@ -1,0 +1,68 @@
+#+title: Pour des tests ou développements à partir de ce dépôt
+
+** Prérequis
+
+- Java >=1.8 (=apt-get install default-jre=)
+- clojure CLI (=apt-get install clojure=)
+- Python >= 3.6 pour la [[file:preuve-formelle/][preuve formelle avec Z3]]
+
+** Proposer une implémentation dans un nouveau langage
+
+- Vérifiez que le langage dans lequel vous voulez implémenter l'algorithme n'est pas déjà proposé dans [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/issues?q=is%3Aissue+is%3Aopen+label%3ALangage][les issues]].
+- Ouvrez une issue avec votre proposition, nous vous guiderons.
+
+** Mettre à jour les contenus web
+
+- Éditez les fichiers du répertoire [[file:website/][website]].
+- Lancez la commande =./build web=
+- Vérifiez, committez, pushez.
+
+** Mettre à jour le démonstrateur de l'algorithme
+
+Pour mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] :
+
+- Éditez le fichier [[file:config.yml]]
+- Lancez la commande =./build js=
+- Committez, pushez.
+
+** Développer le démonstrateur
+
+Pour développer le démonstrateur standard :
+
+1. Configurez =config.yml=
+2. Testez avec =clj -A:test-config=
+3. Compilez avec =clj -A:fig=
+4. Allez à [[http://localhost:9500]]
+5. Éditez [[file:src/cljs/choices/core.cljs][core.cljs]]
+
+** Tester l'algorithme
+
+*** Lire des exemples
+
+Vous pouvez un exemple montrant les paramètres liés aux réponses du
+questionnaire et la conclusion déduite par l'algorithme :
+
+: ~$ clj -m choices.algo
+
+Pour avoir plusieurs exemples :
+
+: ~$ clj -m choices.algo 10
+
+*** Tester la cohérence formelle
+
+Vous pouvez aussi tester les aspects logiques de l'algorithme :
+
+: ~$ clj -m choices.algo logic
+
+Si les deux tests réussissent, cela signifie que toutes les
+possibilités de saisie du questionnaire aboutissent à une conclusion
+et que chaque conclusion est atteinte au moins par une possibilité de
+réponse.
+
+Vous pouvez aussi lancer une [[file:preuve-formelle/][preuve formelle avec Z3]].
+
+** Déployer les fichiers statiques depuis ce dépôt
+
+Une seule commande :
+
+: ./build

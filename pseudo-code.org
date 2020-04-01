@@ -1,10 +1,5 @@
 #+title: Présentation de l'algorithme d'orientation COVID19
 
-** Document officiel
-
-Le document officiel de l'algorithme d'orientation COVID19 publié par
-le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/algorithme-orientation-covid19.html][lisible en ligne]] et [[https://esante.gouv.fr/algorithme-orientation][téléchargeable ici]].
-
 ** Questionnaire
 
 *** Questions sur les symptômes
@@ -124,6 +119,6 @@ Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de [[
 Le [[preuve-formelle/][dossier "preuve-formelle"]] propose une vérification formelle de
 l'algorithme avec la bibliothèque =z3= (Python).
 
-** Recommandations d'implémentation
+** Exemples autour de l'implémentation
 
-Vous trouvez les recommandations d'implémentation sur [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org][cette page]].
+Vous trouverez des exmples autour de l'implémentation sur [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org][cette page]].

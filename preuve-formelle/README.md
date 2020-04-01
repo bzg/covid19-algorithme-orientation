@@ -1,8 +1,12 @@
 # Programme de vérification formelle de l'algorithme d'orientation COVID19
 
-Cet outil nécessite python >= 3.6 et le paquet pip `z3-solver`.
+Cet outil nécessite Python >= 3.6 et le paquet pip `z3-solver`.
 
-Il suffit de lancer
+```
+pip3 install z3-solver
+```
+
+Puis il suffit de lancer
 
 ```
 python covid.py

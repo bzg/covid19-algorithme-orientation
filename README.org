@@ -1,6 +1,6 @@
 #+title: Documentation de l'algorithme d'orientation COVID19
 
-Version: 20200330 (beta)
+=Version: 20200330 (beta)=
 
 ** Introduction et contexte
 
@@ -19,78 +19,35 @@ algorithme.
 
 Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
-** Ce que contient ce dépôt
+** Document officiel
 
-- une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] ;
-- des recommandations sur [[file:implementation.org][son implémentation]] ;
-- une [[file:preuve-formelle/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
-- le code source du démonstrateur de l'algorithme ;
-- le code source d'une page web pour tester l'algorithme interactivement.
+Le document officiel de l'algorithme d'orientation COVID19 publié par
+le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/algorithme-orientation-covid19.html][lisible en ligne]] et [[https://esante.gouv.fr/algorithme-orientation][téléchargeable ici]].
 
-** Mettre à jour les contenus web
-
-- Éditez les fichiers du répertoire [[file:website/][website]].
-- Lancez la commande =./build web=
-- Vérifiez, committez, pushez.
-
-** Mettre à jour le démonstrateur de l'algorithme
-
-Pour mettre à jour le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] :
-
-- Éditez le fichier [[file:config.yml]]
-- Lancez la commande =./build js=
-- Committez, pushez.
-
-** Développer le démonstrateur
-
-Pour développer le démonstrateur standard :
-
-1. Configurez =config.yml=
-2. Testez avec =clj -A:test-config=
-3. Compilez avec =clj -A:fig=
-4. Allez à [[http://localhost:9500]]
-5. Éditez [[file:src/cljs/choices/core.cljs][core.cljs]]
-
-** Tester l'algorithme
-
-Vous pouvez un exemple montrant les paramètres liés aux réponses du
-questionnaire et la conclusion déduite par l'algorithme :
-
-: ~$ clj -m choices.algo
-
-Pour avoir plusieurs exemples :
-
-: ~$ clj -m choices.algo 10
-
-Vous pouvez aussi tester les aspects logiques de l'algorithme :
-
-: ~$ clj -m choices.algo logic
-
-Si les deux tests réussissent, cela signifie que toutes les
-possibilités de saisie du questionnaire aboutissent à une conclusion
-et que chaque conclusion est atteinte au moins par une possibilité de
-réponse.
-
-** Déployer les fichiers statiques depuis ce dépôt
-
-Une seule commande :
-
-: ./build
-
-** Contribuer
-
-Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
-requests/.
-
-** Réutilisations
+** Référencement
 
 Toutes les applications d'information, d'orientation et de triage qui
 réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère
 des Solidarité et de la Santé]].
 
-Si vous implémentez cet algorithme, écrivez-nous à l'adresse
-=mobilisation-covid@sante.gouv.fr= ou renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]]
-pour que votre initiative soit référencée.
+Si vous implémentez cet algorithme, renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]]
+ou écrivez-nous à l'adresse =mobilisation-covid@sante.gouv.fr= pour que
+votre initiative soit référencée.
+
+** Ce que contient ce dépôt
+
+- des recommandations pour le [[file:referencement.org][référencement de votre application]] ;
+- une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] à respecter ;
+- des exemples autour de [[file:implementation.org][son implémentation]] ;
+- une [[file:preuve-formelle/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
+- le code source du [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] de l'algorithme ;
+- le code source d'une page web pour [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html][tester l'algorithme interactivement]].
+- les instructions pour [[file:INSTALL.org][installer/développer]] à partir de ce dépôt.
+
+** Contribuer
+
+Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
+requests/.
 
 ** Licence
 

@@ -9,9 +9,9 @@ L'algorithme d'orientation COVID19 est [lisible en ligne](algorithme-orientation
 # Documentation
 
 - Présentation de l'algorithme [en pseudo code](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#arbre-de-d%C3%A9cision) et [en diagramme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#diagramme-de-larbre-de-d%C3%A9cision).
-- Recommandations pour [l'implémentation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org).
-- Exemple d'API Web pour [tester l'algorithme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemple-dapi-web-pour-tester-lalgorithme).
-- Exemples d'[implémentation dans des langages de programmation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org#exemples-dimpl%C3%A9mentation-dans-des-langages-de-programmation) et page pour [tester une implémentation](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html) de façon interactive.
+- Exemples autour de [l'implémentation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org).
+- Exemple d'API Web pour [tester l'algorithme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org#exemple-dapi-web-pour-tester-lalgorithme).
+- Exemples d'[implémentation dans des langages de programmation](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org#exemples-dimpl%C3%A9mentation-dans-des-langages-de-programmation) et page pour [tester une implémentation](https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html) de façon interactive.
 - Programme de [vérification formelle de l'algorithme](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/tree/master/preuve-formelle).
 
 # Tester le démonstrateur

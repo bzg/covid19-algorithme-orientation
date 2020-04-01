@@ -1,0 +1,26 @@
+#+title: Exemples pour l'implémentation de l'algorithme d'orientation COVID19
+
+** Exemple interactif
+
+Un exemple de site interactif permettant de tester l'algorithme
+d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][testable ici]].
+
+** Exemple d'API Web pour tester l'algorithme
+
+Un exemple d'API Web permettant de tester l'algorithme d'orientation
+COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]].
+
+** Exemples d'implémentation dans des langages de programmation
+
+- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir][Elixir]]
+- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.txt][Clojure]]
+
+** Tests à faire sur l'implémentation de votre algorithme
+
+- La formule de l'indice de masse corporelle est-elle correct ?
+- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][variables du schéma de données]] sont-elles prises en compte ?
+- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][questions du schéma de données]] sont-elles posées ?
+- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][conclusions du schéma de données]] sont-elles présentes ?
+- Mon implémentation aboutit-elle à au moins une conclusion ?
+- Chaque conclusion est-elle atteinte au moins par une réponse ?
+
