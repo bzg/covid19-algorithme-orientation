@@ -13,21 +13,9 @@ compile_upload_js () {
     echo "static js generated"
 }
 
-compile_upload_js_nav () {
-    rm -fr resources/public/js/*
-    clj -A:js-nav
-    cp resources/public/js/choices-nav.js docs/js/
-    echo "static js generated for nav"
-}
-
 # Compile js for dev.cljs.edn
 if [[ $1 == "js" ]]; then
     compile_upload_js
-fi
-
-# Compile js only for dev-nav.
-if [[ $1 == "js-nav" ]]; then
-    compile_upload_js_nav
 fi
 
 # Build *.html
@@ -42,9 +30,8 @@ fi
 
 if [[ $1 == "all" ]]; then
     compile_upload_js
-    compile_upload_js_nav
     clj -m choices.json
     clj -m choices.build
 else
-    echo "Ajoutez une option parmi js, js-nav, web, json, all."
+    echo "Ajoutez une option parmi js, web, json, all."
 fi
