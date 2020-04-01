@@ -3,7 +3,7 @@
 ** Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 publié par
-le ministère de la santé est [[https://esante.gouv.fr/algorithme-orientation][téléchargeable ici]].
+le ministère de la santé est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/algorithme-orientation-covid19.html][lisible en ligne]] et [[https://esante.gouv.fr/algorithme-orientation][téléchargeable ici]].
 
 ** Pseudo code
 
