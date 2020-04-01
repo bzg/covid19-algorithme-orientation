@@ -6,11 +6,10 @@ labels: 'Référencement'
 assignees: 'bzg'
 ---
 
-<!-- Nom du porteur de la solution d'orientation -->
+- [ ] Nom du porteur de la solution d'orientation : 
+- [ ] URL de son site principal : 
+- [ ] URL vers son implémentation de l'algorithme :
+- [ ] URL vers le code source de son implémentation :
+- [ ] L'application est en ligne depuis le :
 
-<!-- URL vers son site principal -->
-
-<!-- URL vers son implémentation de l'algorithme d'orientation COVID 19 -->
-
-<!-- URL vers le code source publié de son implémentation -->
-
+Merci de remplir les champs ci-dessus.
