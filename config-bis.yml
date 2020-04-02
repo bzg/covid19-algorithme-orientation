@@ -406,6 +406,7 @@ tree:
     - answer:  "Non"
       goto:    "2.5"
     - answer:  "Je ne sais pas"
+      color: "is-warning"
       goto:    "2.5"
       score:
         facteurs-pronostiques:
@@ -497,6 +498,7 @@ tree:
     - answer:  "Non"
       goto:    "2.12"
     - answer:  "Je ne sais pas"
+      color: "is-warning"
       goto:    "2.12"
 
   - node:    "2.12"
@@ -512,6 +514,7 @@ tree:
     - answer:  "Non"
       goto:    "3.1"
     - answer:  "Je ne sais pas"
+      color: "is-warning"
       goto:    "3.1"
 
   - node:    "3.1"
