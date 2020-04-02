@@ -163,7 +163,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "**Note aux développeurs**: le premier écran doit donner les explications indispensable sur le questionnaire, son usage et ses limites."
+    help:       "**Note pour l'implémentation**: le premier écran doit donner les explications indispensable sur le questionnaire, son usage et ses limites."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"
@@ -171,7 +171,7 @@ tree:
   - node:    "1.1"
     start-page: true
     text:    "Quel est votre âge ?"
-    help: "**Note aux développeurs:** quand l'âge est inférieur à 15 ans, aucune donnée ne doit être collectée et la personne doit être redirigée toute de suite vers un message de sortie."
+    help: "**Note pour l'implémentation:** quand l'âge est inférieur à 15 ans, aucune donnée ne doit être collectée et la personne doit être redirigée toute de suite vers un message de sortie."
     choices:
     - answer:  "Moins de 15 ans"
       score:
@@ -197,9 +197,9 @@ tree:
 
   - node:    "1.2"
     start-page: true
-    progress:   "[1 20]"
+    progress:   "[1 21]"
     text:    "Êtes-vous dans l'impossibilité de vous alimenter ou boire DEPUIS 24 HEURES OU PLUS ?"
-    help: "**Note aux développeurs:** il s'agit ici de tester le premier facteur de gravité majeur."
+    help: "**Note pour l'implémentation:** il s'agit ici de tester le premier facteur de gravité majeur."
     choices:
     - answer:  "Oui"
       score:
@@ -209,18 +209,13 @@ tree:
         conditional-score-outputs: true
         default: "1.2bis"
     - answer:  "Non"
-      score:
-        facteurs-gravite-majeurs:
-          value: 1
-      goto:
-        conditional-score-outputs: true
-        default: "1.2bis"
+      goto: "1.2bis"
 
   - node:    "1.2bis"
     start-page: true
-    progress:   "[2 20]"
+    progress:   "[2 21]"
     text:    "Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?"
-    help: "**Note aux développeurs:** il s'agit ici de tester le deuxième facteur de gravité majeur."
+    help: "**Note pour l'implémentation:** il s'agit ici de tester le deuxième facteur de gravité majeur."
     choices:
     - answer:  "Oui"
       score:
@@ -230,15 +225,28 @@ tree:
         conditional-score-outputs: true
         default: "1.3"
     - answer:  "Non"
-      score:
-        facteurs-gravite-majeurs:
-          value: 1
-      goto:
-        conditional-score-outputs: true
-        default: "1.3"
+      goto: "1.3"
 
-  - node:       "1.3"
-    progress:   "[3 20]"
+  - node:       "1.1"
+    progress:   "[3 21]"
+    text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
+    start-page: true
+    choices:
+    - answer:  "Oui"
+      score:
+        fievre:
+          value: 1
+      goto:    "1.3bis"
+    - answer:  "Non"
+      goto:    "1.4"
+    - answer:  "Je ne sais pas"
+      goto:    "1.4"
+      score:
+        fievre:
+          value: 1
+
+  - node:       "1.3bis"
+    progress:   "[4 21]"
     text:       "Quelle a été votre température la plus élevée ces dernières 48 heures ?"
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
@@ -263,7 +271,7 @@ tree:
       goto:    "1.4"
 
   - node:    "1.4"
-    progress:   "[4 20]"
+    progress:   "[5 21]"
     text:    "Avez-vous une fatigue inhabituelle ces derniers jours vous obligeant à vous reposer plus de la moitiée de la journée ?"
     choices:
     - answer:  "Oui"
@@ -275,7 +283,7 @@ tree:
       goto:    "1.5"
 
   - node:    "1.5"
-    progress:   "[5 20]"
+    progress:   "[6 21]"
     text:    "Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?"
     choices:
     - answer:  "Oui"
@@ -287,7 +295,7 @@ tree:
       goto:    "1.6"
 
   - node:      "1.6"
-    progress:   "[6 20]"
+    progress:   "[7 21]"
     text:      "Avez-vous noté une forte diminution de votre goût ou de votre odorat ces derniers jours ?"
     choices:
     - answer:  "Oui"
@@ -299,7 +307,7 @@ tree:
       goto:    "1.7"
 
   - node:    "1.7"
-    progress:   "[7 20]"
+    progress:   "[8 21]"
     text:    "Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?"
     choices:
     - answer:  "Oui"
@@ -311,7 +319,7 @@ tree:
       goto:    "1.8"
 
   - node:    "1.8"
-    progress:   "[8 20]"
+    progress:   "[9 21]"
     text:    "Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?"
     choices:
     - answer:  "Oui"
@@ -323,9 +331,9 @@ tree:
       goto:    "2.2"
 
   - node:    "2.2"
-    progress:   "[9 20]"
+    progress:   "[10 21]"
     text:    "Quel est votre poids en kilogrammes ?"
-    help: "**Note aux développeurs:** demandez la saisie du poids exact."
+    help: "**Note pour l'implémentation:** demandez la saisie du poids exact."
     choices:
     - answer:  "<60"
       goto:    "2.3"
@@ -359,9 +367,9 @@ tree:
           value: 110
 
   - node:    "2.3"
-    progress:   "[10 20]"
-    text:    "Quelle est votre taille en mètres ?"
-    help: "**Note aux développeurs:** demandez la saisie de la taille exacte."
+    progress:   "[11 21]"
+    text:    "Quelle est votre taille ?"
+    help: "**Note pour l'implémentation:** demandez la saisie de la taille exacte en centimètres."
     choices:
     - answer:  "<1m50"
       goto:    "2.4"
@@ -395,7 +403,8 @@ tree:
           value: 1.90
 
   - node:    "2.4"
-    progress:   "[11 20]"
+    progress:   "[12 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Avez-vous une hypertension artérielle mal équilibrée ? Ou une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?"
     choices:
     - answer:  "Oui"
@@ -413,7 +422,8 @@ tree:
           value: 1
 
   - node:    "2.5"
-    progress:   "[12 20]"
+    progress:   "[13 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Êtes-vous diabétique ?"
     choices:
     - answer:  "Oui"
@@ -425,7 +435,8 @@ tree:
       goto:    "2.6"
 
   - node:    "2.6"
-    progress:   "[13 20]"
+    progress:   "[14 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Avez-vous ou avez-vous eu un cancer dans les 3 dernières années ?"
     choices:
     - answer:  "Oui"
@@ -437,7 +448,8 @@ tree:
       goto:    "2.7"
 
   - node:    "2.7"
-    progress:   "[14 20]"
+    progress:   "[15 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ?"
     choices:
     - answer:  "Oui"
@@ -449,7 +461,8 @@ tree:
       goto:    "2.8"
 
   - node:    "2.8"
-    progress:   "[15 20]"
+    progress:   "[16 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Avez-vous une insuffisance rénale chronique dialysée ?"
     choices:
     - answer:  "Oui"
@@ -461,7 +474,8 @@ tree:
       goto:    "2.9"
 
   - node:    "2.9"
-    progress:   "[16 20]"
+    progress:   "[17 21]"
+    help: "**Note pour l'implémentation:** vous pouvez utiliser une case à cocher."
     text:    "Avez-vous une maladie chronique du foie ?"
     choices:
     - answer:  "Oui"
@@ -473,7 +487,8 @@ tree:
       goto:    "2.10"
 
   - node:    "2.10"
-    progress:   "[17 20]"
+    progress:   "[18 21]"
+    help: "**Note pour l'implémentation:** pas de case à cocher."
     text:    "Êtes-vous enceinte ?"
     choices:
     - answer:  "Oui"
@@ -488,7 +503,8 @@ tree:
       goto:    "2.12"
 
   - node:    "2.11"
-    progress:   "[18 20]"
+    progress:   "[19 21]"
+    help: "**Note pour l'implémentation:** si vous utilisez une case à cocher, ignorez la réponse \"Je ne sais pas\"."
     text:    "Avez-vous une maladie connue pour diminuer vos défenses immunitaires ?"
     choices:
     - answer:  "Oui"
@@ -503,7 +519,8 @@ tree:
       goto:    "2.12"
 
   - node:    "2.12"
-    progress:   "[19 20]"
+    progress:   "[20 21]"
+    help: "**Note pour l'implémentation:** si vous utilisez une case à cocher, ignorez la réponse \"Je ne sais pas\"."
     text:    "Prenez-vous un traitement immunosuppresseur ?"
     help: "C’est un traitement qui diminue vos défenses contre les infections. Voici quelques exemples : corticoïdes, méthotrexate, ciclosporine, tacrolimus, azathioprine, cyclophosphamide (liste non exhaustive)."
     choices:
@@ -519,9 +536,10 @@ tree:
       goto:    "3.1"
 
   - node:    "3.1"
-    progress:   "[20 20]"
+    progress:   "[21 21]"
+
     text:    "Quel est votre code postal ?"
-    help: "**Note aux développeurs:** la saisie de cette information doit être facultative."
+    # help: "**Note pour l'implémentation:** la saisie de cette information doit être facultative."
     choices:
     - answer:  "[Code postal]"
       goto:    "fin"
