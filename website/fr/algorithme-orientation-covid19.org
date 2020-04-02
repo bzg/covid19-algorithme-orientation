@@ -84,9 +84,9 @@ Pour tous : /Restez chez vous au maximum en attendant que les symptômes dispara
 
 ** Patient de moins de 15 ans
 
+: Cette application n’est pas faite pour les personnes de moins de 15 ans.
 : Prenez contact avec votre médecin généraliste au moindre doute.
-: Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.
-: En cas d’urgence, appeler le 15.
+: En cas d’urgence, appelez le 15.
 
 ** Tout patient avec au moins un facteur de gravité majeur
 

@@ -17,14 +17,14 @@ ui-strings:
 
 # Website header
 header:
-  title:    "Démonstrateur de l'algorithme d'orientation COVID19"
+  title:    "Démonstrateur pour l'implémentation de l'algorithme d'orientation COVID-19"
   logo:     "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
   color:    "is-primary"
-  subtitle: "Documentation pour l'implémentation de l'algorithme d'orientation COVID19.<br/>**Cas avec arbre optimisé**.<br/>Retour à la [documentation](covid19-algorithme-orientation/)."
+  subtitle: "Ce site sert de **documentation** et ne doit pas être utilisé pour vous tester.<br/>**Cas avec l'arbre optimisé**.<br/>Retour à la [documentation](/covid19-algorithme-orientation/)."
 
 # Website footer
 footer:
-  text:    "Démonstrateur de l'algorithme d'orientation COVID-19."
+  text:    "Démonstrateur pour l'implémentation de l'algorithme d'orientation COVID-19"
   contact:  "mobilisation-covid@sante.gouv.fr"
 
 # Allow users to send you emails with the summary?
@@ -124,11 +124,11 @@ conditional-score-outputs:
   FIN1:
     priority: 1
     node: "fin-moins-de-15-ans"
-    message: "Prenez contact avec votre médecin généraliste au moindre doute.<br/>Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.<br/>En cas d’urgence, appelez le [15](tel:15)."
+    message: "Cette application n’est pas faite pour les personnes de moins de 15 ans.<br/>Prenez contact avec votre médecin généraliste au moindre doute.<br/>En cas d’urgence, appelez le [15](tel:15)."
     notification: "is-danger"
   FIN5:
     priority: 2
-    sticky-help: "Appelez le [15](tel:15)."
+    sticky-help: "Appelez le [15](tel:15).  Merci de continuer à remplir ce questionnaire si vous pouvez."
     message: "Appelez le [15](tel:15)."
     notification: "is-danger"
   FIN4:
@@ -163,7 +163,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "Ce site est un site de **démonstration** pour l'algorithme d'orientation COVID-19 **dans le cas où aucune donnée n'est collectée**."
+    help:       "**Note aux développeurs**: le premier écran doit donner les explications indispensable sur le questionnaire, son usage et ses limites."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"
@@ -171,7 +171,7 @@ tree:
   - node:    "1.1"
     start-page: true
     text:    "Quel est votre âge ?"
-    help: "**Note aux développeurs:** quand l'âge est inférieur à 15 ans, aucune donnée ne doit être collectée."
+    help: "**Note aux développeurs:** quand l'âge est inférieur à 15 ans, aucune donnée ne doit être collectée et la personne doit être redirigée toute de suite vers un message de sortie."
     choices:
     - answer:  "Moins de 15 ans"
       score:

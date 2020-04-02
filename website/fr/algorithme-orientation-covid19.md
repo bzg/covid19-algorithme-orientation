@@ -1,24 +1,24 @@
 
 # Table des matières
 
-1.  [Présentation générale](#org34db51f)
-2.  [Questionnaire d’auto-évaluation](#orgfbe16d0)
-    1.  [Symptômes](#org97e50ca)
-    2.  [Facteur pronostique défavorable lié au terrain](#org49f693c)
-    3.  [Autre question](#org6bdbaae)
-    4.  [Définition des facteurs de gravité](#org895c9a8)
-    5.  [Calcul de l'indice de masse corporelle (IMC)](#org2106e25)
-3.  [Définition de l'arbre de décision](#org740a681)
-    1.  [Patient de moins de 15 ans](#orgd2fac4e)
-    2.  [Tout patient avec au moins un facteur de gravité majeur](#orgf08bd81)
-    3.  [Tout patient avec fièvre et toux](#org59e08b2)
-    4.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#orgbc59cd9)
-    5.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orgb965e76)
-    6.  [Tout patient sans fièvre ni aucun autre symptôme](#org23c190d)
+1.  [Présentation générale](#org429a7af)
+2.  [Questionnaire d’auto-évaluation](#org052e57f)
+    1.  [Symptômes](#orgc810654)
+    2.  [Facteur pronostique défavorable lié au terrain](#orgafe3829)
+    3.  [Autre question](#org1bf8085)
+    4.  [Définition des facteurs de gravité](#org9c5f0a6)
+    5.  [Calcul de l'indice de masse corporelle (IMC)](#orgeec2a2f)
+3.  [Définition de l'arbre de décision](#orgc16c83b)
+    1.  [Patient de moins de 15 ans](#orga6498c6)
+    2.  [Tout patient avec au moins un facteur de gravité majeur](#org68a5cff)
+    3.  [Tout patient avec fièvre et toux](#org93d2fa9)
+    4.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#orgcadc755)
+    5.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#org9d9913c)
+    6.  [Tout patient sans fièvre ni aucun autre symptôme](#org4b7b522)
 
 
 
-<a id="org34db51f"></a>
+<a id="org429a7af"></a>
 
 # Présentation générale
 
@@ -33,12 +33,12 @@ Version du document : `20200330`
 **Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.**
 
 
-<a id="orgfbe16d0"></a>
+<a id="org052e57f"></a>
 
 # Questionnaire d’auto-évaluation
 
 
-<a id="org97e50ca"></a>
+<a id="orgc810654"></a>
 
 ## Symptômes
 
@@ -59,7 +59,7 @@ Version du document : `20200330`
 -   *Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?* `OUI / NON => Facteur de gravité majeur.`
 
 
-<a id="org49f693c"></a>
+<a id="orgafe3829"></a>
 
 ## Facteur pronostique défavorable lié au terrain
 
@@ -84,14 +84,14 @@ Version du document : `20200330`
 Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** ou en gras (âge supérieur ou égal à 70 ans, indice de masse corporelle supérieur à 30 kg/m²).
 
 
-<a id="org6bdbaae"></a>
+<a id="org1bf8085"></a>
 
 ## Autre question
 
 -   *Quel est votre code postal ?*
 
 
-<a id="org895c9a8"></a>
+<a id="org9c5f0a6"></a>
 
 ## Définition des facteurs de gravité
 
@@ -105,14 +105,14 @@ Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** 
     -   Difficultés importantes pour s’alimenter ou boire depuis plus de 24 heures
 
 
-<a id="org2106e25"></a>
+<a id="orgeec2a2f"></a>
 
 ## Calcul de l'indice de masse corporelle (IMC)
 
 L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le carré de la `TAILLE` en mètres.
 
 
-<a id="org740a681"></a>
+<a id="orgc16c83b"></a>
 
 # Définition de l'arbre de décision
 
@@ -121,23 +121,23 @@ L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le 
 Pour tous : *Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000.*
 
 
-<a id="orgd2fac4e"></a>
+<a id="orga6498c6"></a>
 
 ## Patient de moins de 15 ans
 
+    Cette application n’est pas faite pour les personnes de moins de 15 ans.
     Prenez contact avec votre médecin généraliste au moindre doute.
-    Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans.
-    En cas d’urgence, appeler le 15.
+    En cas d’urgence, appelez le 15.
 
 
-<a id="orgf08bd81"></a>
+<a id="org68a5cff"></a>
 
 ## Tout patient avec au moins un facteur de gravité majeur
 
 `Appelez le 15.`
 
 
-<a id="org59e08b2"></a>
+<a id="org93d2fa9"></a>
 
 ## Tout patient avec fièvre et toux
 
@@ -164,7 +164,7 @@ Pour tous : *Restez chez vous au maximum en attendant que les symptômes dispara
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="orgbc59cd9"></a>
+<a id="orgcadc755"></a>
 
 ## Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))
 
@@ -215,7 +215,7 @@ Sinon :
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="orgb965e76"></a>
+<a id="org9d9913c"></a>
 
 ## Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
@@ -233,7 +233,7 @@ Sinon :
     Nous vous conseillons de rester à votre domicile.
 
 
-<a id="org23c190d"></a>
+<a id="org4b7b522"></a>
 
 ## Tout patient sans fièvre ni aucun autre symptôme
 
