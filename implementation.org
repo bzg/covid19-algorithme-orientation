@@ -7,6 +7,11 @@ données officiel]].
 Nous résumons ci-dessous la liste des variables à collecter, ainsi que
 d'autres éléments sur l'implémentation.
 
+* Stockage des données du formulaire
+
+- Les données ne doivent être stockée sur un serveur que lorsque le
+  répondant a répondu à /toutes/ les questions.
+
 * Liste des variables à collecter
 
 | Nom de la variable        | Description                              | Type                   | Exemple                       |
