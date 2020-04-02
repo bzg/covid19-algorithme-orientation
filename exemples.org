@@ -1,9 +1,13 @@
 #+title: Exemples pour l'implémentation de l'algorithme d'orientation COVID19
 
-** Exemple interactif
+** Démonstrateur du questionnaire
 
 Un exemple de site interactif permettant de tester l'algorithme
 d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][testable ici]].
+
+** Tester une implémentation interactivement
+
+Vous pouvez [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html][tester une implémentation de l'algorithme interactivement]].
 
 ** Exemple d'API Web pour tester l'algorithme
 
@@ -15,7 +19,7 @@ COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]
 - [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir][Elixir]]
 - [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.txt][Clojure]]
 
-** Tests à faire sur l'implémentation de votre algorithme
+** Idées de tests à faire sur l'implémentation de votre algorithme
 
 - La formule de l'indice de masse corporelle est-elle correct ?
 - Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][variables du schéma de données]] sont-elles prises en compte ?

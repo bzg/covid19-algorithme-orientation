@@ -35,7 +35,7 @@ Si vous implémentez cet algorithme, renseignez [[http://www.sesam-vitale.fr/web
 ou écrivez-nous à l'adresse =mobilisation-covid@sante.gouv.fr= pour que
 votre initiative soit référencée.
 
-Toute implémentation référencée doit 
+Toute implémentation référencée doit impérativement :
 
 1. respecter [[file:pseudo-code.org][l'algorithme d'orientation]] COVID19 ;
 2. utiliser le [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][schéma de données]] officiel ;
@@ -43,13 +43,16 @@ Toute implémentation référencée doit
 
 ** Ce que contient ce dépôt
 
-- des recommandations pour le [[file:referencement.org][référencement de votre application]] ;
 - une présentation des [[file:pseudo-code.org][éléments formels de l'algorithme]] à respecter ;
-- des exemples autour de [[file:implementation.org][son implémentation]] ;
-- une [[file:preuve-formelle/][preuve formelle]] du fait que tous les cas possibles mènent à une conclusion ;
+- des recommandations pour le [[file:referencement.org][référencement]] de votre application ;
+- des recommandations pour l'[[file:implementation.org][implémentation]] de l'algorithme ;
+- des [[file:exemples.org][exemples]] d'implémentation et de mise en oeuvre d'une API ;
+- une [[file:preuve-formelle/][validation formelle]] de l'algorithme.
+
+En outre :
+
 - le code source du [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] de l'algorithme ;
-- le code source d'une page web pour [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html][tester l'algorithme interactivement]].
-- les instructions pour [[file:INSTALL.org][installer/développer]] à partir de ce dépôt.
+- les [[file:INSTALL.org][instructions]] à destination des développeurs de ce dépôt.
 
 ** Contribuer
 
