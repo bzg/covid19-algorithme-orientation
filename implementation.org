@@ -26,7 +26,7 @@ d'autres éléments sur l'implémentation.
 | temperature_cat           | Catégorie de température                 | string                 | "35.5-35.7"                   |
 | agueusia_anosmia          | Perte de goût et d'odorat                | boolean                | true                          |
 | breathlessness            | Essoufflement                            | boolean                | false                         |
-| couch                     | Toux                                     | boolean                | false                         |
+| cough                     | Toux                                     | boolean                | false                         |
 | diarrhea                  | Diarrhée                                 | boolean                | false                         |
 | tiredness                 | Fatigue                                  | boolean                | false                         |
 | tiredness_details         | Alitement >=50% du temps diurne          | boolean                | false                         |
