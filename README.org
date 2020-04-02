@@ -35,6 +35,12 @@ Si vous implémentez cet algorithme, renseignez [[http://www.sesam-vitale.fr/web
 ou écrivez-nous à l'adresse =mobilisation-covid@sante.gouv.fr= pour que
 votre initiative soit référencée.
 
+Toute implémentation référencée doit 
+
+1. respecter [[file:pseudo-code.org][l'algorithme d'orientation]] COVID19 ;
+2. utiliser le [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][schéma de données]] officiel ;
+3. et suivre les recommandations d'[[file:implementation.org][implémentation]].
+
 ** Ce que contient ce dépôt
 
 - des recommandations pour le [[file:referencement.org][référencement de votre application]] ;
