@@ -227,7 +227,7 @@ tree:
     - answer:  "Non"
       goto: "1.3"
 
-  - node:       "1.1"
+  - node:       "1.3"
     progress:   "[3 21]"
     text:       "Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?"
     start-page: true
