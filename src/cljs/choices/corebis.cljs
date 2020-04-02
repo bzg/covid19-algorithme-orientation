@@ -427,7 +427,8 @@
     (cond
       ;; Reset history?
       (= target-page start-page)
-      (do (reset! history [{:score (:score-variables config)}])
+      (do (reset! sticky-help "")
+          (reset! history [{:score (:score-variables config)}])
           (reset! hist-to-redo {})
           (reset! hist-to-add {}))
       ;; History backward?
