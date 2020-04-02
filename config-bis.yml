@@ -484,6 +484,7 @@ tree:
     - answer:  "Non"
       goto:    "2.11"
     - answer:  "Non applicable"
+      color: "is-warning"
       goto:    "2.12"
 
   - node:    "2.11"
