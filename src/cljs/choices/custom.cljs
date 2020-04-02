@@ -83,5 +83,6 @@
           FIN8)]
     ;; Return the expected map:
     {:notification (get conclusion :notification)
+     :stick-help   (get conclusion :sticky-help)
      :node         (get conclusion :node)
      :output       (get conclusion :message)}))

@@ -1,0 +1,8 @@
+^{:watch-dirs   ["src/cljs"]
+  :css-dirs     ["resources/public/css"]
+  :open-url     "http://localhost:9500/index-bis.html"
+  :auto-testing false}
+{:main       choices.corebis
+ :output-to  "resources/public/js/choices-bis.js"
+ :output-dir "resources/public/js/dev"
+ :externs    ["externs.js"]}

@@ -2,7 +2,7 @@
 ;; SPDX-License-Identifier: EPL-2.0
 ;; License-Filename: LICENSES/EPL-2.0.txt
 
-(ns choices.core
+(ns choices.corebis
   (:require-macros [choices.macros :refer [inline-yaml-resource]])
   (:require [reagent.core :as reagent]
             [reagent.dom]
@@ -19,7 +19,7 @@
             [taoensso.tempura :refer [tr]]))
 
 ;; General configuration
-(def config (inline-yaml-resource "config.yml"))
+(def config (inline-yaml-resource "config-bis.yml"))
 
 ;; Variables
 (def show-help-global (reagent/atom (:display-help config)))

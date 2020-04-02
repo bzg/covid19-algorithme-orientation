@@ -13,9 +13,22 @@ compile_upload_js () {
     echo "static js generated"
 }
 
+# Update another implementation example
+compile_upload_js_bis () {
+    rm -fr resources/public/js/*
+    clj -A:js-bis
+    cp resources/public/js/choices-bis.js docs/js/
+    echo "static js generated"
+}
+
 # Compile js for dev.cljs.edn
 if [[ $1 == "js" ]]; then
     compile_upload_js
+fi
+
+# Compile js for dev.cljs.edn
+if [[ $1 == "js-bis" ]]; then
+    compile_upload_js_bis
 fi
 
 # Build *.html
@@ -30,8 +43,9 @@ fi
 
 if [[ $1 == "all" ]]; then
     compile_upload_js
+    compile_upload_js_bis
     clj -m choices.json
     clj -m choices.build
 else
-    echo "Ajoutez une option parmi js, web, json, all."
+    echo "Ajoutez une option parmi js, js-bis, web, json, all."
 fi
