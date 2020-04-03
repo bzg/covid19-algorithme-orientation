@@ -51,7 +51,7 @@
       [:h1 "Algorithme d'orientation COVID19"]
       [:p (md-to-string "Site développé en collaboration avec la [Direction interministérielle du numérique](https://www.numerique.gouv.fr/).")]]]]])
 
-(defn default [meta contents & [klipse?]]
+(defn default [meta contents & [klipse? buttons?]]
   (let [title    (:index-title meta)
         subtitle (:index-subtitle meta)]
     (h/html5
@@ -61,15 +61,16 @@
       (icons)
       [:nav.navbar {:role "navigation" :aria-label "main navigation"}
        [:div.navbar-brand
-        [:a.navbar-item {:href (:url meta)}
+        [:a.navbar-item
+         {:href (:url meta)}
          [:img {:src    "images/logo-marianne.svg"
                 :alt    "Logo Marianne"
-                :width  "120"
-                :height "100"}
+                :width  "220"
+                :height "200"}
           (:url meta) ;;FIXME
           ]]]
        [:div.navbar-end
-        [:div.navbar-menu
+        [:div.navbar-menu.is-size-4
          [:a.navbar-item
           {:href  (:main-url meta)
            :title "Retour au site du ministère des Solidarités et de la Santé"}
@@ -81,7 +82,33 @@
          [:h2.subtitle.column.is-8.is-offset-2.has-text-centered subtitle]]]]
       [:section.section
        [:div.column.is-8.is-offset-2
+        (when buttons?
+          [:div.tile.is-ancestor.is-size-5.has-text-centered
+           [:div.tile.is-parent
+            [:a.tile.is-child.is-success.notification
+             {:href (:algo-url meta)}
+             "Lire l'algorithme d'orientation COVID19"]]
+           [:div.tile.is-parent
+            [:a.tile.is-child.is-info.notification
+             {:href (:referencement-now-url meta)}
+             "Référencer ma solution"]]
+           [:div.tile.is-parent
+            [:div.tile.is-child.notification
+             "Lire le "[:a {:href (:pseudo-code-url meta)} "pseudo-code"]
+             " et "
+             [:a {:href (:diagram-url meta)} "le diagramme"]]]
+           [:div.tile.is-parent
+            [:div.tile.is-child.notification.is-warning
+             [:a {:href (:implementation-url meta)} "Implémentation"]
+             " et "
+             [:a {:href (:openapi-url meta)} "spécifications OpenAPI"]]]
+           [:div.tile.is-parent
+            [:a.tile.is-child.is-danger.notification
+             {:href (:demo-url meta)}
+             "Tester le démonstrateur"]]])
+        [:br]
         contents]]
+      
       (footer meta)
       (when klipse?
         [:div

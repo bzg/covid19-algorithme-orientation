@@ -5,6 +5,27 @@ keywords:    "Algorithme COVID19 DGOS DINUM"
 description: "Documentation de l'algorithme d'orientation COVID19"
 
 email:       "mobilisation-covid@sante.gouv.fr"
+
 main-url:    "https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses"
 # base-url:    "https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/"
 og-image-url: "https://solidarites-sante.gouv.fr/IMG/siteon0.jpg"
+
+referencement-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org"
+
+referencement-now-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/issues/new?assignees=bzg&labels=R%C3%A9f%C3%A9rencement&template=referencement.md&title=Impl%C3%A9mentation+%C3%A0+auditer+%3A+"
+
+demo-url: "https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html"
+
+algo-url: "https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/algorithme-orientation-covid19.html"
+
+diagram-url: "https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/diagramme-algorithme-orientation-covid19.png"
+
+pseudo-code-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#arbre-de-d%C3%A9cision"
+
+examples-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org"
+
+implementation-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org"
+
+openapi-url: "file:///home/guerry/covid19/repos/covid19-algorithme-orientation/docs/json/openapi3.json"
+
+formal-proof-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/tree/master/preuve-formelle"

@@ -7,7 +7,7 @@
   (spit "docs/index.html"
         (views/default
          vars/index-fr-meta
-         vars/index-fr-contents))
+         vars/index-fr-contents false true))
   (spit "docs/algorithme-orientation-covid19.html"
         (views/default
          vars/algo-fr-meta
