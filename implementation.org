@@ -14,35 +14,35 @@ d'autres éléments sur l'implémentation.
 
 * Liste des variables à collecter
 
-| Nom de la variable        | Description                              | Type                   | Exemple                       |
-|---------------------------+------------------------------------------+------------------------+-------------------------------|
-| =form_version=              | Version du formulaire                    | string                 | "20200330"                    |
-| =algo_version=              | Version de l'algorithme                  | string                 | "20200330"                    |
-| =date=                      | Date de saisie par le répondant          | date au format iso8601 | 2020-04-02T05:24:57.711-00:00 |
-| =duration=                  | Durée de saisie en secondes              | integer                | 316                           |
-| =age_less_15=               | Le répondant a moins de 15 ans           | boolean                | false                         |
-| =age_less_50=               | Le répondant a moins de 50 ans           | boolean                | false                         |
-| =age_less_70=               | Le répondant a moins de 70 ans           | boolean                | true                          |
-| =age_more_70=               | Le répondant a plus de 70 ans            | boolean                | false                         |
-| =height=                    | La taille du répondant en centimètre     | integer                | 172                           |
-| =weight=                    | Le poids du répondant en kilogrammes     | integer                | 69                            |
-| =postal_code=               | Le code postal                           | string                 | "75019"                       |
-| =sore_throat_aches=         | Mal de gorge ou douleurs musculaires?    | boolean                | true                          |
-| =fever=                     | Fièvre ?                                 | boolean                | false                         |
-| =temperature_cat=           | Catégorie de température                 | string                 | "35.5-35.7"                   |
-| =agueusia_anosmia=          | Perte de goût et d'odorat                | boolean                | true                          |
-| =breathlessness=            | Essoufflement                            | boolean                | false                         |
-| =cough=                     | Toux                                     | boolean                | false                         |
-| =diarrhea=                  | Diarrhée                                 | boolean                | false                         |
-| =tiredness=                 | Fatigue                                  | boolean                | false                         |
-| =tiredness_details=         | Alitement >=50% du temps diurne          | boolean                | false                         |
-| =feeding_day=               | Difficulté pour manger/boire             | boolean                | false                         |
-| =breathing_disease=         | Maladie respiratoire                     | boolean                | false                         |
-| =heart_disease=             | Maladie cardiaque                        | boolean                | false                         |
-| =kidney_disease=            | Insuffisance rénale chronique dialysée   | boolean                | false                         |
-| =liver_disease=             | Maladie chronique du foie                | boolean                | false                         |
-| =diabetes=                  | Diabète                                  | boolean                | false                         |
-| =immunosuppressant_disease= | Maladie diminuant défenses immunitaires  | boolean                | false                         |
-| =immunosuppressant_drug=    | Traitement immunodépresseur              | boolean                | false                         |
-| =cancer=                    | Cancer en cours ou il y a moins de 3 ans | boolean                | false                         |
-| =pregnant=                  | Enceinte                                 | boolean                | false                         |
+| Nom de la variable        | Description                              | Type          | Exemple                       |
+|---------------------------+------------------------------------------+---------------+-------------------------------|
+| =form_version=              | Version du formulaire                    | string        | "20200330"                    |
+| =algo_version=              | Version de l'algorithme                  | string        | "20200330"                    |
+| =date=                      | Date de saisie par le répondant          | date ISO 8601 | 2020-04-02T05:24:57.711-00:00 |
+| =duration=                  | Durée de saisie en secondes              | integer       | 316                           |
+| =age_less_15=               | Le répondant a moins de 15 ans           | boolean       | false                         |
+| =age_less_50=               | Le répondant a moins de 50 ans           | boolean       | false                         |
+| =age_less_70=               | Le répondant a moins de 70 ans           | boolean       | true                          |
+| =age_more_70=               | Le répondant a plus de 70 ans            | boolean       | false                         |
+| =height=                    | La taille du répondant en centimètre     | integer       | 172                           |
+| =weight=                    | Le poids du répondant en kilogrammes     | integer       | 69                            |
+| =postal_code=               | Le code postal                           | string        | "75019" ou "63XXX"            |
+| =sore_throat_aches=         | Mal de gorge ou douleurs musculaires?    | boolean       | true                          |
+| =fever=                     | Fièvre ?                                 | boolean       | false                         |
+| =temperature_cat=           | Catégorie de température                 | string        | "35.5-35.7"                   |
+| =pregnant=                  | Enceinte                                 | string        | "O", "1" ou "N/A"             |
+| =agueusia_anosmia=          | Perte de goût et d'odorat                | boolean       | true                          |
+| =breathlessness=            | Essoufflement                            | boolean       | false                         |
+| =cough=                     | Toux                                     | boolean       | false                         |
+| =diarrhea=                  | Diarrhée                                 | boolean       | false                         |
+| =tiredness=                 | Fatigue                                  | boolean       | false                         |
+| =tiredness_details=         | Alitement >=50% du temps diurne          | boolean       | false                         |
+| =feeding_day=               | Difficulté pour manger/boire             | boolean       | false                         |
+| =breathing_disease=         | Maladie respiratoire                     | boolean       | false                         |
+| =heart_disease=             | Maladie cardiaque                        | boolean       | false                         |
+| =kidney_disease=            | Insuffisance rénale chronique dialysée   | boolean       | false                         |
+| =liver_disease=             | Maladie chronique du foie                | boolean       | false                         |
+| =diabetes=                  | Diabète                                  | boolean       | false                         |
+| =immunosuppressant_disease= | Maladie diminuant défenses immunitaires  | boolean       | false                         |
+| =immunosuppressant_drug=    | Traitement immunodépresseur              | boolean       | false                         |
+| =cancer=                    | Cancer en cours ou il y a moins de 3 ans | boolean       | false                         |
