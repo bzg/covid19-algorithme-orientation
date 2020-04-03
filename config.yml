@@ -64,16 +64,16 @@ display-unconditionally: "Restez chez vous au maximum en attendant que les sympt
 score-variables:
   age_less_15:
     display: "Moins de 15 ans"
-    value: 0
+    value: false
   age_less_50:
     display: "Moins de 50 ans"
-    value: 0
+    value: false
   age_less_70:
     display: "Moins de 70 ans"
-    value: 0
+    value: false
   age_more_70:
     display: "Plus de 70 ans"
-    value: 0
+    value: false
   weight:
     display: "Poids (kgs)"
     value: 0
@@ -82,19 +82,19 @@ score-variables:
     value: 0
   fever:
     display: "Fièvre"
-    value: 0
+    value: false
   cough:
     display: "Toux"
-    value: 0
+    value: false
   agueusia_anosmia:
     display: "Trouble goût/odorat"
-    value: 0
+    value: false
   sore_throat_aches:
     display: "Douleurs"
-    value: 0
+    value: false
   diarrhea:
     display: "Diarrhées"
-    value: 0
+    value: false
   minor-severity-factors:
     display: "Facteurs de gravité mineurs"
     value: 0
@@ -106,14 +106,14 @@ score-variables:
     value: 0
 
 # Sync with pseudo-code.org:
-# Priority 1 -> FIN1
-# Priority 6 -> FIN2
-# Priority 4 -> FIN3
-# Priority 3 -> FIN4
-# Priority 2 -> FIN5
-# Priority 7 -> FIN6
-# Priority 5 -> FIN7
-# Priority 8 -> FIN8
+# Priority 1 -> orientation_moins_de_15_ans
+# Priority 6 -> orientation_domicile_surveillance_1
+# Priority 4 -> orientation_consultation_surveillance_1
+# Priority 3 -> orientation_consultation_surveillance_2
+# Priority 2 -> orientation_SAMU
+# Priority 7 -> orientation_consultation_surveillance_3
+# Priority 5 -> orientation_consultation_surveillance_4
+# Priority 8 -> orientation_surveillance
 #
 # Set conditional output depending on scores.
 # Each entry is composed of the name of the condition (you can pick up
@@ -124,37 +124,37 @@ score-variables:
 # (3) anything else is a "condition", which lists variables and their minimal
 # values for the condition to be met.
 conditional-score-outputs:
-  FIN1:
+  orientation_moins_de_15_ans:
     priority: 1
     node: "fin-moins-de-15-ans"
     message: "Cette application n’est pas faite pour les personnes de moins de 15 ans.<br/>Prenez contact avec votre médecin généraliste au moindre doute.<br/>En cas d’urgence, appelez le [15](tel:15)."
     notification: "is-danger"
-  FIN5:
+  orientation_SAMU:
     priority: 2
     # node: "fin"
     message: "Appelez le [15](tel:15)."
     notification: "is-danger"
-  FIN4:
+  orientation_consultation_surveillance_2:
     priority: 3
     message: "Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Si vous n'arrivez pas à obtenir de consultation, appelez le [15](tel:16)."
     notification: "is-danger"
-  FIN3:
+  orientation_consultation_surveillance_1:
     priority: 4
     notification: "is-warning"
     message: "Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le [15](tel:15) si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures."
-  FIN7:
+  orientation_consultation_surveillance_4:
     priority: 5
     notification: "is-warning"
     message: "Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le [15](tel:15). Nous vous conseillons de rester à votre domicile."
-  FIN2:
+  orientation_domicile_surveillance_1:
     priority: 6
     message: "Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile."
     notification: "is-warning"
-  FIN6:
+  orientation_consultation_surveillance_3:
     priority: 7
     notification: "is-warning"
     message: "Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)."
-  FIN8:
+  orientation_surveillance:
     priority: 8
     notification: "is-success"
     message: "Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000."
@@ -179,7 +179,7 @@ tree:
     - answer:  "Oui"
       score:
         fievre:
-          value: 1
+          value: true
       goto:    "1.1.1"
     - answer:  "Non"
       goto:    "1.2"
@@ -187,7 +187,7 @@ tree:
       goto:    "1.2"
       score:
         fievre:
-          value: 1
+          value: true
 
   - node:       "1.1.1"
     progress:   "[2 24]"
@@ -220,7 +220,7 @@ tree:
     - answer:  "Oui"
       score:
         cough:
-          value: 1
+          value: true
       goto:    "1.3"
     - answer:  "Non"
       goto:    "1.3"
@@ -233,7 +233,7 @@ tree:
       goto:    "1.4"
       score:
         agueusia_anosmia:
-          value: 1
+          value: true
     - answer:  "Non"
       goto:    "1.4"
 
@@ -244,7 +244,7 @@ tree:
     - answer:  "Oui"
       score:
         sore_throat_aches:
-          value: 1
+          value: true
       goto:    "1.5"
     - answer:  "Non"
       goto:    "1.5"
@@ -256,7 +256,7 @@ tree:
     - answer:  "Oui"
       score:
         diarrhea:
-          value: 1
+          value: true
       goto:    "1.6"
     - answer:  "Non"
       goto:    "1.6"
@@ -320,15 +320,15 @@ tree:
         default: "2.2"
       score:
         age_less_15:
-          value: 1
+          value: true
     - answer:  "Entre 15 et 49 ans"
       goto:    "2.2"
     - answer:  "Entre 50 et 69 ans"
       score:
         age_less_70:
-          value: 1
+          value: true
         age_less_50:
-          value: 0
+          value: false
       goto:    "2.2"
     - answer:  "70 ans ou plus"
       goto:    "2.2"
@@ -336,7 +336,7 @@ tree:
         pronostic-factors:
           value: 1
         age_more_70:
-          value: 1
+          value: true
 
   - node:    "2.2"
     progress:   "[11 23]"

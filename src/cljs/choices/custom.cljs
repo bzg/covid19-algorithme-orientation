@@ -38,52 +38,61 @@
 ;; major-severity-factors
 ;; pronostic-factors
 (defn conditional-score-result [resultats conclusions]
-  (let [{:keys [age_less_15 age_less_50 age_less_70 age_more_70
+  (let [{:keys [age_less_15 age_less_50
                 fever cough agueusia_anosmia sore_throat_aches diarrhea
                 minor-severity-factors
                 major-severity-factors
-                pronostic-factors]}                            resultats
+                pronostic-factors]}        resultats
         ;; Set the possible conclusions
-        {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]} conclusions
+        {:keys [orientation_moins_de_15_ans
+                orientation_domicile_surveillance_1
+                orientation_consultation_surveillance_1
+                orientation_consultation_surveillance_2
+                orientation_SAMU
+                orientation_consultation_surveillance_3
+                orientation_consultation_surveillance_4
+                orientation_surveillance]} conclusions
         ;; Set the final conclusion to one of the FIN*
         conclusion
         (cond
           ;; Branche 1
-          (= age_less_15 1)
-          FIN1
+          age_less_15
+          orientation_moins_de_15_ans
           ;; Branche 2
           (>= major-severity-factors 1)
-          FIN5
+          orientation_SAMU
           ;; Branche 3
-          (and (= fever 1) (= cough 1))
+          (and fever cough)
           (cond (= pronostic-factors 0)
-                FIN6
+                orientation_consultation_surveillance_3
                 (>= pronostic-factors 1)
                 (if (< minor-severity-factors 2)
-                  FIN6
-                  FIN4))
+                  orientation_consultation_surveillance_3
+                  orientation_consultation_surveillance_2))
           ;; Branche 4
-          (or (= fever 1) (= diarrhea 1)
-              (and (= cough 1) (= sore_throat_aches 1))
-              (and (= cough 1) (= agueusia_anosmia 1)))
+          (or fever diarrhea
+              (and cough sore_throat_aches)
+              (and cough agueusia_anosmia))
           (cond (= pronostic-factors 0)
                 (if (= minor-severity-factors 0)
-                  (if (= age_less_50 1)
-                    FIN2
-                    FIN3)
-                  FIN3)
+                  (if age_less_50
+                    orientation_domicile_surveillance_1
+                    orientation_consultation_surveillance_1)
+                  orientation_consultation_surveillance_1)
                 (>= pronostic-factors 1)
                 (if (< minor-severity-factors 2)
-                  FIN3
-                  FIN4))
+                  orientation_consultation_surveillance_1
+                  orientation_consultation_surveillance_2))
           ;; Branche 5
-          (or (= cough 1) (= sore_throat_aches 1) (= agueusia_anosmia 1))
+          (or cough sore_throat_aches agueusia_anosmia)
           (if (= pronostic-factors 0)
-            FIN2
-            FIN7)
+            orientation_domicile_surveillance_1
+            orientation_consultation_surveillance_4)
           ;; Branche 6
-          (and (= cough 0) (= sore_throat_aches 0) (= agueusia_anosmia 0))
-          FIN8)]
+          (and (not cough)
+               (not sore_throat_aches)
+               (not agueusia_anosmia))
+          orientation_surveillance)]
     ;; Return the expected map:
     {:notification (get conclusion :notification)
      :stick-help   (get conclusion :sticky-help)
