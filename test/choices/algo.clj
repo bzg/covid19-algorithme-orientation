@@ -11,17 +11,17 @@
 (def config (inline-yaml-resource "config.yml"))
 (def conditional-score-outputs (:conditional-score-outputs config))
 
-(s/def ::age (s/int-in 14 120))
-(s/def ::weight (s/int-in 40 200)) ;; kgs
-(s/def ::height (s/int-in 120 240)) ;; cm
+(s/def ::age (s/int-in 14 71))
+(s/def ::weight (s/int-in 59 111)) ;; kgs
+(s/def ::height (s/int-in 139 191)) ;; cm
 (s/def ::cough (s/int-in 0 2))
 (s/def ::fever (s/int-in 0 2))
 (s/def ::agueusia_anosmia (s/int-in 0 2))
 (s/def ::sore_throat_aches (s/int-in 0 2))
 (s/def ::diarrhea (s/int-in 0 2))
 (s/def ::pronostic-factors (s/int-in 0 12))
-(s/def ::minor-severity-factors (s/int-in 0 4))
-(s/def ::major-severity-factors (s/int-in 0 4))
+(s/def ::minor-severity-factors (s/int-in 0 3))
+(s/def ::major-severity-factors (s/int-in 0 3))
 
 (defn compute-bmi [p t] (/ p (Math/pow (/ t 100.0) 2)))
 
@@ -85,7 +85,14 @@
 
 (defn conditional-score-result [response & [println?]]
   (let [;; Set the possible conclusions
-        {:keys [FIN1 FIN2 FIN3 FIN4 FIN5 FIN6 FIN7 FIN8 FIN9]}
+        {:keys [orientation_moins_de_15_ans
+                orientation_domicile_surveillance_1
+                orientation_consultation_surveillance_1
+                orientation_consultation_surveillance_2
+                orientation_SAMU
+                orientation_consultation_surveillance_3
+                orientation_consultation_surveillance_4
+                orientation_surveillance FIN9]}
         conditional-score-outputs
         response
         (if println?
@@ -102,20 +109,20 @@
           ;; Branche 1
           (= age_less_15 1)
           (do (when println? (println "Branch 1: less than 15 years"))
-              FIN1)
+              orientation_moins_de_15_ans)
           ;; Branche 2
           (>= major-severity-factors 1)
           (do (when println? (println "Branch 2: at least one major gravity factor"))
-              FIN5)
+              orientation_SAMU)
           ;; Branche 3
           (and (= fever 1) (= cough 1))
           (do (when println? (println "Branch 3: fever and cough"))
               (cond (= pronostic-factors 0)
-                    FIN6
+                    orientation_consultation_surveillance_3
                     (>= pronostic-factors 1)
                     (if (< minor-severity-factors 2)
-                      FIN6
-                      FIN4)))
+                      orientation_consultation_surveillance_3
+                      orientation_consultation_surveillance_2)))
           ;; Branche 4
           (or (= fever 1) (= diarrhea 1)
               (and (= cough 1) (= sore_throat_aches 1))
@@ -124,23 +131,23 @@
               (cond (= pronostic-factors 0)
                     (if (= minor-severity-factors 0)
                       (if (= age_less_50 1)
-                        FIN2
-                        FIN3)
-                      FIN3)
+                        orientation_domicile_surveillance_1
+                        orientation_consultation_surveillance_1)
+                      orientation_consultation_surveillance_1)
                     (>= pronostic-factors 1)
                     (if (< minor-severity-factors 2)
-                      FIN3
-                      FIN4)))
+                      orientation_consultation_surveillance_1
+                      orientation_consultation_surveillance_2)))
           ;; Branche 5
           (or (= cough 1) (= sore_throat_aches 1) (= agueusia_anosmia 1))
           (do (when println? (println "Branch 5: no fever and one other symptom"))
               (if (= pronostic-factors 0)
-                FIN2
-                FIN7))
+                orientation_domicile_surveillance_1
+                orientation_consultation_surveillance_4))
           ;; Branche 6
           (and (= cough 0) (= sore_throat_aches 0) (= agueusia_anosmia 0))
           (do (when println? (println "Branche 6: no symptom"))
-              FIN8))]
+              orientation_surveillance))]
     ;; Return the expected map:
     {:res response
      :msg (get conclusion :message)}))
@@ -162,7 +169,7 @@
         (fd/in agueusia_anosmia bin)
         (fd/in sore_throat_aches bin)
         (fd/in diarrhea bin)
-        (fd/in pronostic-factors (fd/interval 0 10))
+        (fd/in pronostic-factors (fd/interval 0 12))
         (fd/in minor-severity-factors multi)
         (fd/in major-severity-factors multi)
         (fd/in bmi multi)
