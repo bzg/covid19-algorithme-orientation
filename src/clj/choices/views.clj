@@ -10,7 +10,7 @@
 
 (defn head [meta & [klipse?]]
   [:head
-   [:title (:title meta)]
+   [:title (:index-title meta)]
    [:meta {:charset "utf-8"}]
    [:meta {:name "keywords" :content (:keywords meta)}]
    [:meta {:name "description" :content (:description meta)}]
@@ -52,8 +52,8 @@
       [:p (md-to-string "Site développé en collaboration avec la [Direction interministérielle du numérique](https://www.numerique.gouv.fr/).")]]]]])
 
 (defn default [meta contents & [klipse? buttons?]]
-  (let [title    (:index-title meta)
-        subtitle (:index-subtitle meta)]
+  (let [title    (:title meta)
+        subtitle (:subtitle meta)]
     (h/html5
      {:lang "fr"}
      (head meta klipse?)
