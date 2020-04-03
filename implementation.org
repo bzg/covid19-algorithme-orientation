@@ -9,7 +9,7 @@ d'autres éléments sur l'implémentation.
 
 * Stockage des données du formulaire
 
-- Les données ne doivent être stockée sur un serveur que lorsque le
+- Les données ne doivent être stockées sur un serveur que lorsque le
   répondant a répondu à /toutes/ les questions.
 
 * Liste des variables à collecter
