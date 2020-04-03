@@ -12,7 +12,7 @@ d'autres éléments sur l'implémentation.
 - Les données ne doivent être stockées sur un serveur que lorsque le
   répondant a répondu à /toutes/ les questions.
 
-* Liste des variables à collecter
+* Liste des variables du formulaire à collecter
 
 | Nom de la variable        | Description                              | Type          | Exemple                       |
 |---------------------------+------------------------------------------+---------------+-------------------------------|
@@ -46,3 +46,20 @@ d'autres éléments sur l'implémentation.
 | =immunosuppressant_disease= | Maladie diminuant défenses immunitaires  | boolean       | false                         |
 | =immunosuppressant_drug=    | Traitement immunodépresseur              | boolean       | false                         |
 | =cancer=                    | Cancer en cours ou il y a moins de 3 ans | boolean       | false                         |
+
+* Liste des variables correspondant à la conclusion affichée
+
+Toutes ces variables sont des booléens =true= quand la conclusion est
+atteinte :
+
+- =orientation_domicile_surveillance_1= :: (FIN2) Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.
+- =orientation_consultation_surveillance_1= :: (FIN3)  Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.
+- =orientation_consultation_surveillance_2= :: (FIN4) Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
+- =orientation_SAMU= :: (FIN5) Appelez le 15.
+- =orientation_consultation_surveillance_3= :: (FIN6) Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)
+- =orientation_consultation_surveillance_4= :: (FIN7) Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile.
+- =orientation_surveillance= :: (FIN8)  Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000.
+
+Si le répondant a moins de quinze ans, les données du formulaire ne
+sont pas stockées, il n'y a donc pas de variable associée à cette fin.
+
