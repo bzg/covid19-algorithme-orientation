@@ -37,23 +37,21 @@
                                   ::minor-severity-factors
                                   ::major-severity-factors]))
 
+(defn get-age [scores]
+  (cond (< (:age scores) 15)
+        {:age_less_15 true :age_less_50 false}
+        (< (:age scores) 50)
+        {:age_less_15 false :age_less_50 true}
+        (< (:age scores) 70)
+        {:age_less_15 false :age_less_50 true}
+        :else
+        {:age_less_15 false :age_less_50 true}))
+
 (defn preprocess-scores [scores]
   (let [bmi-val (compute-bmi (:weight scores)
                              (:height scores))
         bmi-map {:bmi bmi-val}
-        scores  (merge scores
-                       (cond (< (:age scores) 15)
-                             {:age_less_15 1 :age_less_50 0
-                              :age_less_70 0 :age_more_70 0}
-                             (< (:age scores) 50)
-                             {:age_less_15 0 :age_less_50 1
-                              :age_less_70 1 :age_more_70 0}
-                             (< (:age scores) 70)
-                             {:age_less_15 0 :age_less_50 0
-                              :age_less_70 1 :age_more_70 0}
-                             :else
-                             {:age_less_15 0 :age_less_50 0
-                              :age_less_70 0 :age_more_70 1}))
+        scores  (merge scores (get-age scores))
         scores  (merge scores bmi-map)
         scores  (update-in scores [:pronostic-factors]
                            #(if (>= bmi-val 30) (inc %) %))
@@ -62,19 +60,7 @@
     scores))
 
 (defn preprocess-scores-no-println [scores]
-  (let [scores (merge scores
-                      (cond (< (:age scores) 15)
-                            {:age_less_15 1 :age_less_50 1
-                             :age_less_70 1 :age_more_70 0}
-                            (< (:age scores) 50)
-                            {:age_less_15 0 :age_less_50 1
-                             :age_less_70 1 :age_more_70 0}
-                            (< (:age scores) 70)
-                            {:age_less_15 0 :age_less_50 0
-                             :age_less_70 1 :age_more_70 0}
-                            :else
-                            {:age_less_15 0 :age_less_50 0
-                             :age_less_70 0 :age_more_70 1}))
+  (let [scores (merge scores (get-age scores))
         scores (update-in scores [:pronostic-factors]
                           #(if (>= (:bmi scores) 30) (inc %) %))
         scores (update-in scores [:pronostic-factors]
@@ -98,7 +84,7 @@
         (if println?
           (preprocess-scores response)
           (preprocess-scores-no-println response))
-        {:keys [age_less_15 age_less_50 age_less_70 age_more_70
+        {:keys [age_less_15 age_less_50
                 fever cough agueusia_anosmia sore_throat_aches diarrhea
                 minor-severity-factors
                 major-severity-factors
@@ -107,7 +93,7 @@
         conclusion
         (cond
           ;; Branche 1
-          (= age_less_15 1)
+          age_less_15
           (do (when println? (println "Branch 1: less than 15 years"))
               orientation_moins_de_15_ans)
           ;; Branche 2
@@ -115,7 +101,7 @@
           (do (when println? (println "Branch 2: at least one major gravity factor"))
               orientation_SAMU)
           ;; Branche 3
-          (and (= fever 1) (= cough 1))
+          (and fever cough)
           (do (when println? (println "Branch 3: fever and cough"))
               (cond (= pronostic-factors 0)
                     orientation_consultation_surveillance_3
@@ -124,13 +110,13 @@
                       orientation_consultation_surveillance_3
                       orientation_consultation_surveillance_2)))
           ;; Branche 4
-          (or (= fever 1) (= diarrhea 1)
-              (and (= cough 1) (= sore_throat_aches 1))
-              (and (= cough 1) (= agueusia_anosmia 1)))
+          (or fever diarrhea
+              (and cough sore_throat_aches)
+              (and cough agueusia_anosmia))
           (do (when println? (println "Branch 4: fever and other symptoms"))
               (cond (= pronostic-factors 0)
                     (if (= minor-severity-factors 0)
-                      (if (= age_less_50 1)
+                      (if age_less_50
                         orientation_domicile_surveillance_1
                         orientation_consultation_surveillance_1)
                       orientation_consultation_surveillance_1)
@@ -139,13 +125,15 @@
                       orientation_consultation_surveillance_1
                       orientation_consultation_surveillance_2)))
           ;; Branche 5
-          (or (= cough 1) (= sore_throat_aches 1) (= agueusia_anosmia 1))
+          (or cough sore_throat_aches agueusia_anosmia)
           (do (when println? (println "Branch 5: no fever and one other symptom"))
               (if (= pronostic-factors 0)
                 orientation_domicile_surveillance_1
                 orientation_consultation_surveillance_4))
           ;; Branche 6
-          (and (= cough 0) (= sore_throat_aches 0) (= agueusia_anosmia 0))
+          (and (not cough)
+               (not sore_throat_aches)
+               (not agueusia_anosmia))
           (do (when println? (println "Branche 6: no symptom"))
               orientation_surveillance))]
     ;; Return the expected map:
@@ -153,46 +141,44 @@
      :msg (get conclusion :message)}))
 
 (def all-inputs
-  (let [bin   (fd/interval 0 1)
-        multi (fd/interval 0 2)]
-    (logic/run* [q]
-      (logic/fresh [fever cough agueusia_anosmia
-                    sore_throat_aches diarrhea
-                    pronostic-factors
-                    minor-severity-factors
-                    major-severity-factors
-                    age bmi
-                    response]
-        (fd/in age (fd/interval 14 70))
-        (fd/in fever bin)
-        (fd/in cough bin)
-        (fd/in agueusia_anosmia bin)
-        (fd/in sore_throat_aches bin)
-        (fd/in diarrhea bin)
-        (fd/in pronostic-factors (fd/interval 0 12))
-        (fd/in minor-severity-factors multi)
-        (fd/in major-severity-factors multi)
-        (fd/in bmi multi)
-        (logic/== response {:fever                  fever
-                            :cough                  cough
-                            :agueusia_anosmia       agueusia_anosmia
-                            :age                    age
-                            :sore_throat_aches      sore_throat_aches
-                            :diarrhea               diarrhea
-                            :bmi                    bmi
-                            :pronostic-factors      pronostic-factors
-                            :minor-severity-factors minor-severity-factors
-                            :major-severity-factors major-severity-factors})
-        (logic/== q response)))))
+  (logic/run* [q]
+    (logic/fresh [fever cough agueusia_anosmia
+                  sore_throat_aches diarrhea
+                  pronostic-factors
+                  minor-severity-factors
+                  major-severity-factors
+                  age bmi
+                  response]
+      (fd/in age (fd/interval 14 71))
+      (logic/membero fever [true false])
+      (logic/membero cough [true false])
+      (logic/membero agueusia_anosmia [true false])
+      (logic/membero sore_throat_aches [true false])
+      (logic/membero diarrhea [true false])
+      (fd/in bmi (fd/interval 29 30))
+      (fd/in pronostic-factors (fd/interval 0 12))
+      (fd/in minor-severity-factors (fd/interval 0 2))
+      (fd/in major-severity-factors (fd/interval 0 2))
+      (logic/== response {:fever                  fever
+                          :cough                  cough
+                          :agueusia_anosmia       agueusia_anosmia
+                          :age                    age
+                          :sore_throat_aches      sore_throat_aches
+                          :diarrhea               diarrhea
+                          :bmi                    bmi
+                          :pronostic-factors      pronostic-factors
+                          :minor-severity-factors minor-severity-factors
+                          :major-severity-factors major-severity-factors})
+      (logic/== q response))))
 
 (def all-results (map conditional-score-result all-inputs))
 (def all-results-no-nil (remove nil? all-results))
 
-(deftest conclusion?
+(deftest each-input-as-a-conclusion?
   (testing "Is each input reaching a conclusion?"
     (is (= (count all-results) (count all-results-no-nil)))))
 
-(deftest all-conclusions?
+(deftest all-conclusions-are-reached?
   (testing "Is each conclusion reached at least once?"
     (is (= (count (distinct (map :msg all-results))) 8))))
 
