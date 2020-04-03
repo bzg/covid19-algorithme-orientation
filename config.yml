@@ -166,7 +166,7 @@ tree:
     text:       "COVID19: Algorithme d'orientation - site de démonstration"
     home-page:  true
     force-help: true
-    help:       "**Note aux développeurs**: le premier écran doit donner les explications indispensable sur le questionnaire, son usage et ses limites."
+    help:       "**Pour l'implémentation**: le premier écran doit donner les explications indispensable sur le questionnaire, son usage et ses limites."
     choices:
     - answer: "Démarrer"
       goto:   "1.1"
@@ -341,7 +341,7 @@ tree:
   - node:    "2.2"
     progress:   "[11 23]"
     text:    "Quel est votre poids en kilogrammes ?"
-    help: "**Note aux développeurs:** demandez la saisie du poids exact."
+    help: "**Pour l'implémentation:** demandez la saisie du poids exact."
     choices:
     - answer:  "<60"
       goto:    "2.3"
@@ -377,7 +377,7 @@ tree:
   - node:    "2.3"
     progress:   "[12 23]"
     text:    "Quelle est votre taille en mètres ?"
-    help: "**Note aux développeurs:** demandez la saisie de la taille exacte."
+    help: "**Pour l'implémentation:** demandez la saisie de la taille exacte."
     choices:
     - answer:  "<1m50"
       goto:    "2.4"
@@ -533,7 +533,7 @@ tree:
   - node:    "3.1"
     progress:   "[22 23]"
     text:    "Quel est votre code postal ?"
-    help: "**Note aux développeurs:** la saisie de cette information doit être facultative."
+    help: "**Pour l'implémentation:** la saisie de cette information doit être facultative."
     choices:
     - answer:  "[Code postal]"
       goto:    "fin"
