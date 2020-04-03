@@ -389,7 +389,7 @@
          [:div.notification.is-size-5
           {:class (or (:sticky-help-color config)
                       "is-warning")}
-          (md-to-string @sticky-help)])
+          (md-to-string sticky-help-message)])
        (question-help-clipboard done text force-help help)
        (when (or force-help @show-help)
          (when-let [help-message (not-empty help)]
