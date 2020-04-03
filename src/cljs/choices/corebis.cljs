@@ -169,6 +169,7 @@
        [:a {:href (str "mailto:" c)} c]])]])
 
 (defn score-details [scores]
+  (println scores)
   (for [row-score (partition-all 4 scores)]
     ^{:key (random-uuid)}
     [:div.tile.is-ancestor

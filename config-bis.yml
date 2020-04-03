@@ -65,40 +65,46 @@ display-unconditionally: "Restez chez vous au maximum en attendant que les sympt
 # (3) "as-top-result-display": what to display when the variable is
 #      the one with the highest score when the user is done.
 score-variables:
-  moins-de-15-ans:
+  age_less_15:
     display: "Moins de 15 ans"
     value: 0
-  plus-de-50-ans:
-    display: "Plus de 49 ans"
+  age_less_50:
+    display: "Moins de 50 ans"
     value: 0
-  poids:
+  age_less_70:
+    display: "Moins de 70 ans"
+    value: 0
+  age_more_70:
+    display: "Plus de 70 ans"
+    value: 0
+  weight:
     display: "Poids (kgs)"
     value: 0
-  taille:
-    display: "Taille (mètres)"
+  height:
+    display: "Taille (centimètres)"
     value: 0
-  fievre:
+  fever:
     display: "Fièvre"
     value: 0
-  toux:
+  cough:
     display: "Toux"
     value: 0
-  anosmie:
+  agueusia_anosmia:
     display: "Trouble goût/odorat"
     value: 0
-  douleurs:
+  sore_throat_aches:
     display: "Douleurs"
     value: 0
-  diarrhees:
+  diarrhea:
     display: "Diarrhées"
     value: 0
-  facteurs-gravite-mineurs:
+  minor-severity-factors:
     display: "Facteurs de gravité mineurs"
     value: 0
-  facteurs-gravite-majeurs:
+  major-severity-factors:
     display: "Facteurs de gravité majeurs"
     value: 0
-  facteurs-pronostiques:
+  pronostic-factors:
     display: "Facteurs pronostiques"
     value: 0
 
@@ -175,7 +181,7 @@ tree:
     choices:
     - answer:  "Moins de 15 ans"
       score:
-        moins-de-15-ans:
+        age_less_15:
           value: 1
       goto:
         conditional-score-outputs: true
@@ -184,15 +190,17 @@ tree:
       goto:    "1.2"
     - answer:  "Entre 50 et 69 ans"
       score:
-        plus-de-50-ans:
+        age_less_70:
           value: 1
+        age_less_50:
+          value: 0
       goto:    "1.2"
     - answer:  "70 ans ou plus"
       goto:    "1.2"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
-        plus-de-50-ans:
+        age_more_70:
           value: 1
 
   - node:    "1.2"
@@ -203,7 +211,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        facteurs-gravite-majeurs:
+        major-severity-factors:
           value: 1
       goto:
         conditional-score-outputs: true
@@ -219,7 +227,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        facteurs-gravite-majeurs:
+        major-severity-factors:
           value: 1
       goto:
         conditional-score-outputs: true
@@ -234,7 +242,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        fievre:
+        fever:
           value: 1
       goto:    "1.3bis"
     - answer:  "Non"
@@ -242,7 +250,7 @@ tree:
     - answer:  "Je ne sais pas"
       goto:    "1.4"
       score:
-        fievre:
+        fever:
           value: 1
 
   - node:       "1.3bis"
@@ -251,7 +259,7 @@ tree:
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
-        facteurs-gravite-mineurs:
+        minor-severity-factors:
           value: 1
       goto:    "1.4"
     - answer:  "Entre 35,5 et 37,7°C"
@@ -260,13 +268,13 @@ tree:
       goto:    "1.4"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
-        facteurs-gravite-mineurs:
+        minor-severity-factors:
           value: 1
       goto:    "1.4"
     - answer:  "Je ne sais pas"
       color: "is-warning"
       score:
-        facteurs-gravite-mineurs:
+        minor-severity-factors:
           value: 1
       goto:    "1.4"
 
@@ -276,7 +284,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        facteurs-gravite-mineurs:
+        minor-severity-factors:
           value: 1
       goto:    "1.5"
     - answer:  "Non"
@@ -288,7 +296,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        toux:
+        cough:
           value: 1
       goto:    "1.6"
     - answer:  "Non"
@@ -301,7 +309,7 @@ tree:
     - answer:  "Oui"
       goto:    "1.7"
       score:
-        anosmie:
+        agueusia_anosmia:
           value: 1
     - answer:  "Non"
       goto:    "1.7"
@@ -312,7 +320,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        douleurs:
+        sore_throat_aches:
           value: 1
       goto:    "1.8"
     - answer:  "Non"
@@ -324,7 +332,7 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        diarrhees:
+        diarrhea:
           value: 1
       goto:    "2.2"
     - answer:  "Non"
@@ -338,32 +346,32 @@ tree:
     - answer:  "<60"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 60
     - answer:  "60-70"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 70
     - answer:  "70-80"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 80
     - answer:  "80-90"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 90
     - answer:  "90-100"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 100
     - answer:  "Plus de 100"
       goto:    "2.3"
       score:
-        poids:
+        weight:
           value: 110
 
   - node:    "2.3"
@@ -374,33 +382,33 @@ tree:
     - answer:  "<1m50"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.40
+        height:
+          value: 140
     - answer:  "1m50-1m60"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.50
+        height:
+          value: 150
     - answer:  "1m60-1m70"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.60
+        height:
+          value: 160
     - answer:  "1m70-1m80"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.70
+        height:
+          value: 170
     - answer:  "1m80-1m90"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.80
+        height:
+          value: 180
     - answer:  "Plus de 1m90"
       goto:    "2.4"
       score:
-        taille:
-          value: 1.90
+        height:
+          value: 190
 
   - node:    "2.4"
     progress:   "[12 21]"
@@ -410,7 +418,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.5"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.5"
@@ -418,7 +426,7 @@ tree:
       color: "is-warning"
       goto:    "2.5"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
 
   - node:    "2.5"
@@ -429,7 +437,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.6"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.6"
@@ -442,7 +450,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.7"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.7"
@@ -455,7 +463,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.8"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.8"
@@ -468,7 +476,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.9"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.9"
@@ -481,7 +489,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.10"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.10"
@@ -494,7 +502,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.11"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.11"
@@ -510,7 +518,7 @@ tree:
     - answer:  "Oui"
       goto:    "2.12"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "2.12"
@@ -527,7 +535,7 @@ tree:
     - answer:  "Oui"
       goto:    "3.1"
       score:
-        facteurs-pronostiques:
+        pronostic-factors:
           value: 1
     - answer:  "Non"
       goto:    "3.1"

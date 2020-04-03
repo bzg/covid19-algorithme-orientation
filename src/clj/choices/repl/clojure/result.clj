@@ -1,67 +1,77 @@
 ;; Fonction de calcul de l'indice de masse corporelle.
-(defn compute-imc [poids taille]
-  (/ poids (Math/pow (/ taille 100.0) 2)))
+(defn compute-bmi [weight height]
+  (/ weight (Math/pow (/ height 100.0) 2)))
 
 ;; Vous pouvez modifier cette fonction pour la tester.
 (defn resultat [reponse]
   (let [reponse
-        ;; Calcul du facteur âge, de l'IMC et de son impact sur les
+        ;; Calcul du facteur âge, de l'BMI et de son impact sur les
         ;; facteurs de pronostique défavorable
         (merge reponse
-               {:imc             (compute-imc (:poids reponse)
-                                              (:taille reponse))
-                :moins-de-15-ans (if (< (:age reponse) 15) 1 0)
-                :plus-de-49-ans  (if (> (:age reponse) 50) 1 0)})
-        {:keys [fievre diarrhees toux douleurs anosmie
-                imc moins-de-15-ans plus-de-49-ans
-                facteurs-gravite-mineurs
-                facteurs-gravite-majeurs
-                facteurs-pronostiques]} reponse
-        facteurs-pronostiques
-        (if (>= imc 30)
-          (inc facteurs-pronostiques)
-          facteurs-pronostiques)]
+               {:bmi (compute-bmi (:weight reponse)
+                                  (:height reponse))}
+               (cond (< (:age scores) 15)
+                     {:age_less_15 1 :age_less_50 1
+                      :age_less_70 1 :age_more_70 0}
+                     (< (:age scores) 50)
+                     {:age_less_15 0 :age_less_50 1
+                      :age_less_70 1 :age_more_70 0}
+                     (< (:age scores) 70)
+                     {:age_less_15 0 :age_less_50 0
+                      :age_less_70 1 :age_more_70 0}
+                     :else
+                     {:age_less_15 0 :age_less_50 0
+                      :age_less_70 0 :age_more_70 1}))
+        {:keys [fever diarrhees cough douleurs agueusia_anosmia
+                bmi age_less_15 age_less_50 age_less_70 age_more_70
+                minor-severity-factors
+                major-severity-factors
+                pronostic-factors]} reponse
+        pronostic-factors
+        (if (>= bmi 30)
+          (inc pronostic-factors)
+          pronostic-factors)]
     ;; L'algorithme COVID19 proprement dit.
     (cond
       ;; Branche 1
-      (= moins-de-15-ans 1)
-      (do (println "Branche 1: moins de 15 ans")
+      (= age_less_15 1)
+      (do (when println? (println "Branch 1: less than 15 years"))
           (println "FIN1"))
       ;; Branche 2
-      (>= facteurs-gravite-majeurs 1)
-      (do (println "Branche 2: au moins un facteur de gravité majeur")
+      (>= major-severity-factors 1)
+      (do (when println? (println "Branch 2: at least one major gravity factor"))
           (println "FIN5"))
       ;; Branche 3
-      (and (= fievre 1) (= toux 1))
-      (do (println "Branche 2: fièvre et toux")
-          (cond (= facteurs-pronostiques 0)
+      (and (= fever 1) (= cough 1))
+      (do (when println? (println "Branch 3: fever and cough"))
+          (cond (= pronostic-factors 0)
                 (println "FIN6")
-                (>= facteurs-pronostiques 1)
-                (if (< facteurs-gravite-mineurs 2)
+                (>= pronostic-factors 1)
+                (if (< minor-severity-factors 2)
                   (println "FIN6")
                   (println "FIN4"))))
       ;; Branche 4
-      (or (= fievre 1) (= diarrhees 1)
-          (and (= toux 1) (= douleurs 1))
-          (and (= toux 1) (= anosmie 1)))
-      (do (println "Branche 4: fièvre ou autres symptômes")
-          (cond (= facteurs-pronostiques 0)
-                (if (= facteurs-gravite-mineurs 0)
-                  (if (not= plus-de-49-ans 1)
+      (or (= fever 1) (= diarrhea 1)
+          (and (= cough 1) (= sore_throat_aches 1))
+          (and (= cough 1) (= agueusia_anosmia 1)))
+      (do (when println? (println "Branch 4: fever and other symptoms"))
+          (cond (= pronostic-factors 0)
+                (if (= minor-severity-factors 0)
+                  (if (= age_less_50 1)
                     (println "FIN2")
                     (println "FIN3"))
                   (println "FIN3"))
-                (>= facteurs-pronostiques 1)
-                (if (< facteurs-gravite-mineurs 2)
+                (>= pronostic-factors 1)
+                (if (< minor-severity-factors 2)
                   (println "FIN3")
                   (println "FIN4"))))
       ;; Branche 5
-      (or (= toux 1) (= douleurs 1) (= anosmie 1))
-      (do (println "Branche 4: pas de fièvre et un autre symptôme")
-          (if (= facteurs-pronostiques 0)
+      (or (= cough 1) (= sore_throat_aches 1) (= agueusia_anosmia 1))
+      (do (when println? (println "Branch 5: no fever and one other symptom"))
+          (if (= pronostic-factors 0)
             (println "FIN2")
             (println "FIN7")))
       ;; Branche 6
-      (and (= toux 0) (= douleurs 0) (= anosmie 0))
-      (do (println "Branche 5: pas de symptômes")
+      (and (= cough 0) (= sore_throat_aches 0) (= agueusia_anosmia 0))
+      (do (when println? (println "Branche 6: no symptom"))
           (println "FIN8")))))
