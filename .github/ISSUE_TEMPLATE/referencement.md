@@ -6,6 +6,8 @@ labels: 'Référencement'
 assignees: 'bzg'
 ---
 
+Consultez https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/referencement.org
+
 - [ ] Nom du porteur de la solution d'orientation : 
 - [ ] URL de son site principal : 
 - [ ] URL vers son implémentation de l'algorithme :
