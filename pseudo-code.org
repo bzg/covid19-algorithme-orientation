@@ -37,17 +37,17 @@
 
 *** Facteur pronostique défavorable lié au terrain
 
-- =OUI= son âge est supérieur ou égal à 70 ans =OUI=
-- =OUI= si son indice de masse corporelle est supérieur ou égal à 30 kg/m²
-- Si =OUI= ou =Je ne sais pas= à la question sur l'hypertension
-- Si =OUI= pour diabétique
-- Si =OUI= pour a ou a eu un cancer dans les trois dernières années
-- Si =OUI= pour maladie respiratoire ou suivi pneumologique
-- Si =OUI= pour insuffisance rénale
-- Si =OUI= pour maladie chronique du foie
-- Si =OUI= pour enceinte
-- Si =OUI= pour maladie qui diminue les défenses immunitaires
-- Si =OUI= pour traitement immunosuppresseur
+- =OUI= si l'âge est supérieur ou égal à 70 ans
+- =OUI= si l'indice de masse corporelle est supérieur ou égal à 30 kg/m²
+- Si =OUI= ou =Je ne sais pas= à la question sur l'hypertension artérielle
+- Si =OUI= pour "diabétique"
+- Si =OUI= pour "a ou a eu un cancer dans les trois dernières années"
+- Si =OUI= pour "maladie respiratoire ou suivi pneumologique"
+- Si =OUI= pour "insuffisance rénale"
+- Si =OUI= pour "maladie chronique du foie"
+- Si =OUI= pour "enceinte" (=Non applicable= : =NON=)
+- Si =OUI= pour maladie qui diminue les défenses immunitaires  (=Je ne sais pas= : =NON=)
+- Si =OUI= pour traitement immunosuppresseur (=Je ne sais pas= : =NON=)
 
 *** Facteurs de gravité mineurs et majeurs
 
