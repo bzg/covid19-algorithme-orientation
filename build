@@ -46,6 +46,4 @@ if [[ $1 == "all" ]]; then
     compile_upload_js_bis
     clj -m choices.json
     clj -m choices.build
-else
-    echo "Ajoutez une option parmi js, js-bis, web, json, all."
 fi
