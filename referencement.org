@@ -1,29 +1,35 @@
-#+title: Recommandations pour le référencement de votre implémentation
+#+title: Référencement de votre solution
 
-Si vous implémentez l'algorithme d'orientation COVID 19, renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]] ou écrivez-nous à l'adresse =mobilisation-covid@sante.gouv.fr= pour que votre initiative soit référencée.
-
-Toutes les applications d'information, d'orientation et de triage qui réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère des Solidarité et de la Santé]].
-
-** Prérequis pour être référencé par le ministère de la santé
-
-- Vous =DEVEZ= indiquer quelle version de l'algorithme vous utilisez.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org#arbre-de-décision][l'arbre de décision officiel]] pour votre implémentation.
-- Vous =DEVEZ= mettre en forme les données collectées en suivant [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][ce schéma de données]].
-- Vous =DEVEZ= publier le code source de votre implémentation.
-- Vous =DEVEZ= mettre les données collectées à disposition du ministère de la santé.
-- Vous =DEVEZ= utiliser [[file:pseudo-code.org#formules][la formule standard pour le calcul de l'indice de masse corporelle]].
+*Si vous prévoyez de collecter des données et souhaitez les partager
+avec CovidTélé*, vous pouvez demander à faire référencer votre solution
+sur le site du ministère des Solidarités et de la Santé.
 
 ** Procédure de référencement
 
-1. [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/issues/new?assignees=bzg&labels=R%C3%A9f%C3%A9rencement&template=referencement.md&title=Impl%C3%A9mentation+%C3%A0+auditer+%3A+][Ouvrez un ticket]].
-2. Le groupe en charge de valider les demandes de référencement vous notifiera de la bonne réception de votre demande /dans le ticket/ et vous demandera peut-être des précisions.
-3. Après 3 jours, vous serez notifiés de l'acceptation ou du refus de votre demande de référencement, ainsi que des motifs.
+1. Renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]] ou écrivez-nous à l'adresse
+   =mobilisation-covid@sante.gouv.fr= en nous indiquant le nom de votre
+   structure et l'URL de votre solution.
 
-** Conseils pour l'implémentation de l'algorithme
+2. Si vous obtenez une réponse positive, l'équipe ouvrira un [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/issues][ticket]]
+   pour l'évaluation du respect de l'algorithme par votre solution.
 
-- Vous =POUVEZ= pointer la version de cette documentation et/ou le commit taggé avec ce numéro de version.
-- Vous =POUVEZ= demander de saisir la taille en centimètres plutôt qu'en mètres.
-- Vous =POUVEZ= utiliser les noms de variables officiels ([[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][json]]).
+Si vous êtes admis au référencement, votre solution sera listée sur le
+[[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère des Solidarité et de la Santé]].
+
+** Prérequis techniques pour le référencement
+
+- Vous =DEVEZ= indiquer quelle version de l'algorithme vous utilisez.
+- Vous =DEVEZ= utiliser [[file:pseudo-code.org#arbre-de-décision][l'arbre de décision officiel]] pour votre implémentation.
+- Vous =DEVEZ= vous assurer que vous collectez bien /toutes les réponses/.
+- Vous =DEVEZ= suivre les recommandations d'[[file:implementation.org][implémentation]].
+
+Si votre solution est référencée, vous serez invité à partager vos
+données avec CovidTélé qui vous indiquera la marche à suivre.
+
+** Autres recommandations
+
+- Vous =POUVEZ= publier le code source de votre implémentation, sous licence libre ou non.
+- Vous =POUVEZ= proposer un parcours du questionnaire différent.
 - Vous =POUVEZ= afficher une barre de progression.
 - Vous =POUVEZ= proposer des [[#tests-à-faire-sur-limplémentation-de-votre-algorithme][tests]].
 

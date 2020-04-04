@@ -90,13 +90,14 @@
              "Lire l'algorithme d'orientation COVID19"]]
            [:div.tile.is-parent
             [:a.tile.is-child.is-info.notification
-             {:href (:referencement-now-url meta)}
+             {:href (:referencement-url meta)}
              "Référencer ma solution"]]
            [:div.tile.is-parent
             [:div.tile.is-child.notification
-             "Lire le "[:a {:href (:pseudo-code-url meta)} "pseudo-code"]
+             "L'arbre de décision en "
+             [:a {:href (:decision-tree-url meta)} "pseudo-code"]
              " et "
-             [:a {:href (:diagram-url meta)} "le diagramme"]]]
+             [:a {:href (:diagram-url meta)} "en diagramme"]]]
            [:div.tile.is-parent
             [:div.tile.is-child.notification.is-warning
              [:a {:href (:implementation-url meta)} "Implémentation"]
