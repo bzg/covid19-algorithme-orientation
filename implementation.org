@@ -14,12 +14,13 @@ ultérieur que lorsque le répondant a répondu à *toutes* les questions.
 
 ** Évolution des noms de variables
 
-Vous devez respecter les noms de variables indiqués ci-dessous.
+Vous devez respecter les noms de variables, leur type et les valeurs
+possibles comme indiqué ci-dessous.
 
 Si une variable change de signification dans votre implémentation,
 elle doit aussi changer de nom.
 
-** Liste des variables à obligatoirement sauvegarder pour partage
+** Variables à obligatoirement sauvegarder pour partage
 
 | Nom de la variable             | Description                            | Type               | Exemple                                              |
 |--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
@@ -29,7 +30,7 @@ elle doit aussi changer de nom.
 | =duration=                       | Durée de saisie en secondes            | integer            | 316                                                  |
 |--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
 | =age_range=                      | Tranche d'âge                          | string             | "inf_15" "from_15_to_49" "from_50_to_69" ou "sup_70" |
-| =postal_code=                    | Le code postal                         | string             | "75019" ou "63XXX"                                   |
+| =postal_code= (1)                | Le code postal                         | string             | "75019" ou "63XXX"                                   |
 |--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
 | =sore_throat_aches=              | Mal de gorge ou douleurs musculaires?  | integer            | 0 ou 1                                               |
 | =agueusia_anosmia=               | Perte de goût et d'odorat              | integer            | 0 ou 1                                               |
@@ -59,25 +60,17 @@ elle doit aussi changer de nom.
 | =immunosuppressant_drug=         | Traitement immunodépresseur            | integer            | 0 ou 1 ou 999                                        |
 | =immunosuppressant_drug_algo=    | Traitement immunodépresseur            | integer            | 0 ou 1                                               |
 
-À noter la sauvegarde pour partage du code postal est *fortement
-recommandé*, au moins pour récupérer le département.
+(1) La sauvegarde pour partage du code postal n'est pas obligatoire mais *fortement recommandé*, au moins pour récupérer le département.
 
-** Variables intermédaires
+** Variables intermédaires (âge, poids et taille, autres)
 
-La tranche d'âge est calculée à partir de la saisie exacte de l'âge.
-Seule la tranche d'âge doit être sauvegardée pour partage éventuel des
-données.
+- =age_range= est calculé à partir de la saisie exacte de l'âge.  Seule la tranche d'âge doit être sauvegardée pour partage éventuel des données.
 
-Les variables =*_algo= sont calculées à partir de la saisie
-utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne
-sais pas") implique une valeur de =heart_disease_algo= à =1= (équivalent à
-une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées
-pour le partage éventuel des données.
+- L'indice de masse corporelle (=imc=) est calculé à partir du poids et de la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
 
-L'indice de masse corporelle (=imc=) est calculé à partir du poids et de
-la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
+- Les variables =*_algo= sont calculées à partir de la saisie utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne sais pas") implique une valeur de =heart_disease_algo= à =1= (équivalent à une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées pour le partage éventuel des données.
 
-** Variable qui peuvent ou non être calculées sur le serveur
+** Variables qui peuvent ou non être calculées sur le serveur
 
 - =duration= : cette variable peut être envoyée par le navigateur ou
   calculée sur le serveur.
@@ -87,10 +80,10 @@ la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
 
 - =algo_version= et =form_version= doivent être envoyés par le navigateur.
 
-** Liste des variables qui correspondent à la conclusion affichée
+** Variables qui correspondent à l'orientation affichée
 
 Toutes les variables sont des entier (/integer/) dont la valeur est =1=
-quand la conclusion est atteinte :
+quand le message d'orientation est affiché :
 
 - orientation_moins_de_15_ans :: FIN1
 - =orientation_domicile_surveillance_1= :: FIN2
@@ -106,4 +99,3 @@ Voir la signification des =FIN*= dans [[https://github.com/Delegation-numerique-
 Si le répondant a moins de quinze ans, les données du formulaire
 /peuvent/ ne pas être stockées : dans ce cas, la variable
 =orientation_moins_de_15_ans= aura pour valeur =888= (non applicable.)
-
