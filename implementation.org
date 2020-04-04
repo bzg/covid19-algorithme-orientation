@@ -62,7 +62,9 @@ elle doit aussi changer de nom.
 
 (1) La sauvegarde pour partage du code postal n'est pas obligatoire mais *fortement recommandé*, au moins pour récupérer le département.
 
-** Variables intermédaires (âge, poids et taille, autres)
+** Variables intermédaires (facteurs, âge, poids et taille, autres)
+
+- Les variables servant au calcul des facteurs de gravité mineurs et majeurs ou du facteur pronostique servent à la mise en oeuvre de l'algorithme et à l'affichage du message d'orientation mais elles n'ont pas à être sauvegardées pour partage ultérieur.
 
 - =age_range= est calculé à partir de la saisie exacte de l'âge.  Seule la tranche d'âge doit être sauvegardée pour partage éventuel des données.
 

@@ -49,7 +49,7 @@ Toute implémentation référencée doit impérativement :
 - des [[file:exemples.org][exemples]] d'implémentation et de mise en oeuvre d'une API ;
 - une [[file:preuve-formelle/][validation formelle]] de l'algorithme.
 
-En outre :
+Et aussi :
 
 - le code source du [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur.html][démonstrateur]] de l'algorithme ;
 - les [[file:INSTALL.org][instructions]] à destination des développeurs de ce dépôt.
