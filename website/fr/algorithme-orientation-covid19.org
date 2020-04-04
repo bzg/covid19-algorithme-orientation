@@ -13,6 +13,8 @@ Pour l'algorithme : il se présente comme un arbre de décision qui doit être p
 
 Version du document : =2020-03-30=
 
+Ce document est [[https://esante.gouv.fr/algorithme-orientation][téléchargeable en version PDF]].
+
 *Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.*
 
 * Questionnaire d’auto-évaluation
