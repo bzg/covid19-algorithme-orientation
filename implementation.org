@@ -52,13 +52,13 @@ elle doit aussi changer de nom.
 | =temperature_cat=                | Catégorie de température             | string             | "inf_35.5" "35.5-37.7" "37.7-38.9" "sup_39" "NSP"    |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =fever=                          | Fièvre                               | integer            | 0 (non) ou 1 ou 999 ("Je ne sais pas")               |
-| =fever_algo=                     | Fièvre (algo)                        | boolean            | =true= ou =false=                                        |
+| =fever_algo=                     | Fièvre (algo)                        | boolean            | =true= (1 ou 999) ou =false= (0)                         |
 | =heart_disease=                  | Maladie cardiaque                    | integer            | 0 (non) ou 1 ou 999 ("Je ne sais pas")               |
-| =heart_disease_algo=             | Maladie cardiaque (algo)             | boolean            | =true= ou =false=  ("Je ne sais pas" = true)             |
+| =heart_disease_algo=             | Maladie cardiaque (algo)             | boolean            | =true= (1 ou 999) ou =false= (0)                         |
 | =immunosuppressant_disease=      | Maladie défenses immunitaires        | integer            | 0 (non) ou 1 ou 999 ("Je ne sais pas")               |
-| =immunosuppressant_disease_algo= | Maladie défenses immunitaires (algo) | boolean            | =true= ou =false=  ("Je ne sais pas" = false)            |
+| =immunosuppressant_disease_algo= | Maladie défenses immunitaires (algo) | boolean            | =true= (1) ou =false= (0 ou 999)                         |
 | =immunosuppressant_drug=         | Traitement immunodépresseur          | integer            | 0 (non) ou 1 ou 999 ("Je ne sais pas")               |
-| =immunosuppressant_drug_algo=    | Traitement immunodépresseur (algo)   | boolean            | =true= ou =false=  ("Je ne sais pas" = false)            |
+| =immunosuppressant_drug_algo=    | Traitement immunodépresseur (algo)   | boolean            | =true= (1) ou =false= (0 ou 999)                         |
 
 (1) En fonction des détails d'implémentation, =date= et =duration= peuvent être envoyée soit depuis le navigateur soit calculée sur le serveur.
 
