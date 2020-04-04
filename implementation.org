@@ -87,7 +87,7 @@ elle doit aussi changer de nom.
 Toutes les variables sont des entier (/integer/) dont la valeur est =1=
 quand le message d'orientation est affiché :
 
-- orientation_moins_de_15_ans :: FIN1
+- =orientation_moins_de_15_ans= :: FIN1
 - =orientation_domicile_surveillance_1= :: FIN2
 - =orientation_consultation_surveillance_1= :: FIN3
 - =orientation_consultation_surveillance_2= :: FIN4
