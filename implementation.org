@@ -7,59 +7,103 @@ données officiel]].
 Nous résumons ci-dessous la liste des variables à collecter, ainsi que
 d'autres éléments sur l'implémentation.
 
-* Stockage des données du formulaire
+** Sauvegarde des données du formulaire
 
-- Les données ne doivent être stockées sur un serveur que lorsque le
-  répondant a répondu à /toutes/ les questions.
+Les données ne doivent être sauvegardées sur serveur pour partage
+ultérieur que lorsque le répondant a répondu à *toutes* les questions.
 
-* Liste des variables du formulaire à collecter
+** Évolution des noms de variables
 
-| Nom de la variable        | Description                              | Type          | Exemple                       |
-|---------------------------+------------------------------------------+---------------+-------------------------------|
-| =form_version=              | Version du formulaire                    | string        | "2020-03-30"                  |
-| =algo_version=              | Version de l'algorithme                  | string        | "2020-03-30"                  |
-| =date=                      | Date de saisie par le répondant          | date ISO 8601 | 2020-04-02T05:24:57.711-00:00 |
-| =duration=                  | Durée de saisie en secondes              | integer       | 316                           |
-| =age_less_15=               | Le répondant a moins de 15 ans           | boolean       | false                         |
-| =age_less_50=               | Le répondant a moins de 50 ans           | boolean       | false                         |
-| =age_less_70=               | Le répondant a moins de 70 ans           | boolean       | true                          |
-| =age_more_70=               | Le répondant a plus de 70 ans            | boolean       | false                         |
-| =height=                    | La taille du répondant en centimètre     | integer       | 172                           |
-| =weight=                    | Le poids du répondant en kilogrammes     | integer       | 69                            |
-| =postal_code=               | Le code postal                           | string        | "75019" ou "63XXX"            |
-| =sore_throat_aches=         | Mal de gorge ou douleurs musculaires?    | boolean       | true                          |
-| =fever=                     | Fièvre ?                                 | boolean       | false                         |
-| =temperature_cat=           | Catégorie de température                 | string        | "35.5-35.7"                   |
-| =pregnant=                  | Enceinte                                 | string        | "O", "1" ou "N/A"             |
-| =agueusia_anosmia=          | Perte de goût et d'odorat                | boolean       | true                          |
-| =breathlessness=            | Essoufflement                            | boolean       | false                         |
-| =cough=                     | Toux                                     | boolean       | false                         |
-| =diarrhea=                  | Diarrhée                                 | boolean       | false                         |
-| =tiredness=                 | Fatigue                                  | boolean       | false                         |
-| =tiredness_details=         | Alitement >=50% du temps diurne          | boolean       | false                         |
-| =feeding_day=               | Difficulté pour manger/boire             | boolean       | false                         |
-| =breathing_disease=         | Maladie respiratoire                     | boolean       | false                         |
-| =heart_disease=             | Maladie cardiaque                        | boolean       | false                         |
-| =kidney_disease=            | Insuffisance rénale chronique dialysée   | boolean       | false                         |
-| =liver_disease=             | Maladie chronique du foie                | boolean       | false                         |
-| =diabetes=                  | Diabète                                  | boolean       | false                         |
-| =immunosuppressant_disease= | Maladie diminuant défenses immunitaires  | boolean       | false                         |
-| =immunosuppressant_drug=    | Traitement immunodépresseur              | boolean       | false                         |
-| =cancer=                    | Cancer en cours ou il y a moins de 3 ans | boolean       | false                         |
+Vous devez respecter les noms de variables indiqués ci-dessous.
 
-* Liste des variables correspondant à la conclusion affichée
+Si une variable change de signification dans votre implémentation,
+elle doit aussi changer de nom.
 
-Toutes ces variables sont des booléens =true= quand la conclusion est
-atteinte :
+** Liste des variables à obligatoirement sauvegarder pour partage
 
-- =orientation_domicile_surveillance_1= :: (FIN2) Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.
-- =orientation_consultation_surveillance_1= :: (FIN3)  Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Appelez le 15 si une gêne respiratoire ou des difficultés importantes pour vous alimenter ou boire apparaissent pendant plus de 24 heures.
-- =orientation_consultation_surveillance_2= :: (FIN4) Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile. Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
-- =orientation_SAMU= :: (FIN5) Appelez le 15.
-- =orientation_consultation_surveillance_3= :: (FIN6) Votre situation peut relever d’un COVID 19. Demandez une téléconsultation ou un médecin généraliste ou une visite à domicile (SOS médecins, etc.)
-- =orientation_consultation_surveillance_4= :: (FIN7) Votre situation peut relever d’un COVID 19. Un avis médical est recommandé. Au moindre doute, appelez le 15. Nous vous conseillons de rester à votre domicile.
-- =orientation_surveillance= :: (FIN8)  Votre situation ne relève probablement pas du COVID 19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la situation. Pour toute information concernant le COVID 19, composer le 0 800 130 000.
+| Nom de la variable             | Description                            | Type               | Exemple                                              |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =algo_version=                   | Version de l'algorithme                | string             | "2020-03-30"                                         |
+| =form_version=                   | Version du formulaire                  | string             | "2020-03-30"                                         |
+| =date=                           | Date de saisie par le répondant        | date ISO 8601      | 2020-04-02T05:24:57.711-00:00                        |
+| =duration=                       | Durée de saisie en secondes            | integer            | 316                                                  |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =age_range=                      | Tranche d'âge                          | string             | "inf_15" "from_15_to_49" "from_50_to_69" ou "sup_70" |
+| =postal_code=                    | Le code postal                         | string             | "75019" ou "63XXX"                                   |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =sore_throat_aches=              | Mal de gorge ou douleurs musculaires?  | integer            | 0 ou 1                                               |
+| =agueusia_anosmia=               | Perte de goût et d'odorat              | integer            | 0 ou 1                                               |
+| =breathlessness=                 | Essoufflement                          | integer            | 0 ou 1                                               |
+| =cough=                          | Toux                                   | integer            | 0 ou 1                                               |
+| =diarrhea=                       | Diarrhée                               | integer            | 0 ou 1                                               |
+| =tiredness=                      | Fatigue                                | integer            | 0 ou 1                                               |
+| =tiredness_details=              | Alitement >=50% du temps diurne        | integer            | 0 ou 1                                               |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =imc=                            | Indice de masse corporelle             | float (1 décimale) | 29.8                                                 |
+| =breathing_disease=              | Maladie respiratoire                   | integer            | 0 ou 1                                               |
+| =cancer=                         | Cancer actuel ou il y a moins de 3 ans | integer            | 0 ou 1                                               |
+| =diabetes=                       | Diabète                                | integer            | 0 ou 1                                               |
+| =feeding_day=                    | Difficulté pour manger/boire           | integer            | 0 ou 1                                               |
+| =kidney_disease=                 | Insuffisance rénale chronique dialysée | integer            | 0 ou 1                                               |
+| =liver_disease=                  | Maladie chronique du foie              | integer            | 0 ou 1                                               |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =fever=                          | Fièvre ?                               | integer            | 0 ou 1                                               |
+| =temperature_cat=                | Catégorie de température               | string             | "inf_35.5" "35.5-37.7" "37.7-38.9" "sup_39" "NSP"    |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =pregnant=                       | Enceinte                               | integer            | 0 ou 1 ou 888 (non applicable)                       |
+|--------------------------------+----------------------------------------+--------------------+------------------------------------------------------|
+| =heart_disease=                  | Maladie cardiaque                      | integer            | 0 ou 1 ou 999                                        |
+| =heart_disease_algo=             | Maladie cardiaque (algo)               | integer            | 0 ou 1                                               |
+| =immunosuppressant_disease=      | Maladie défenses immunitaires (algo)   | integer            | 0 ou 1 ou 999                                        |
+| =immunosuppressant_disease_algo= | Maladie défenses immunitaires (algo)   | integer            | 0 ou 1                                               |
+| =immunosuppressant_drug=         | Traitement immunodépresseur            | integer            | 0 ou 1 ou 999                                        |
+| =immunosuppressant_drug_algo=    | Traitement immunodépresseur            | integer            | 0 ou 1                                               |
 
-Si le répondant a moins de quinze ans, les données du formulaire ne
-sont pas stockées, il n'y a donc pas de variable associée à cette fin.
+À noter la sauvegarde pour partage du code postal est *fortement
+recommandé*, au moins pour récupérer le département.
+
+** Variables intermédaires
+
+La tranche d'âge est calculée à partir de la saisie exacte de l'âge.
+Seule la tranche d'âge doit être sauvegardée pour partage éventuel des
+données.
+
+Les variables =*_algo= sont calculées à partir de la saisie
+utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne
+sais pas") implique une valeur de =heart_disease_algo= à =1= (équivalent à
+une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées
+pour le partage éventuel des données.
+
+L'indice de masse corporelle (=imc=) est calculé à partir du poids et de
+la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
+
+** Variable qui peuvent ou non être calculées sur le serveur
+
+- =duration= : cette variable peut être envoyée par le navigateur ou
+  calculée sur le serveur.
+
+- Les variables =*_algo= peuvent être envoyées par le navigateur ou
+  calculées sur le serveur.
+
+- =algo_version= et =form_version= doivent être envoyés par le navigateur.
+
+** Liste des variables qui correspondent à la conclusion affichée
+
+Toutes les variables sont des entier (/integer/) dont la valeur est =1=
+quand la conclusion est atteinte :
+
+- orientation_moins_de_15_ans :: FIN1
+- =orientation_domicile_surveillance_1= :: FIN2
+- =orientation_consultation_surveillance_1= :: FIN3
+- =orientation_consultation_surveillance_2= :: FIN4
+- =orientation_SAMU= :: FIN5
+- =orientation_consultation_surveillance_3= :: FIN6
+- =orientation_consultation_surveillance_4= :: FIN7
+- =orientation_surveillance= :: FIN8
+
+Voir la signification des =FIN*= dans [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/pseudo-code.org#conclusions-possibles][cette section]] du pseudo code.
+
+Si le répondant a moins de quinze ans, les données du formulaire
+/peuvent/ ne pas être stockées : dans ce cas, la variable
+=orientation_moins_de_15_ans= aura pour valeur =888= (non applicable.)
 
