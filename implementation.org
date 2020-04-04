@@ -54,8 +54,8 @@ elle doit aussi changer de nom.
 | =pregnant=                       | Enceinte                             | integer            | 0 ou 1 ou 888 ("Non applicable")                     |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =heart_disease=                  | Maladie cardiaque                    | integer            | 0 ou 1 ou 999 ("Je ne sais pas")                     |
-| =immunosuppressant_disease=      | Maladie défenses immunitaires        | integer            | 1 ou 1 ou 999 ("Je ne sais pas")                     |
-| =immunosuppressant_drug=         | Traitement immunodépresseur          | integer            | 2 ou 1 ou 999 ("Je ne sais pas")                     |
+| =immunosuppressant_disease=      | Maladie défenses immunitaires        | integer            | 0 ou 1 ou 999 ("Je ne sais pas")                     |
+| =immunosuppressant_drug=         | Traitement immunodépresseur          | integer            | 0 ou 1 ou 999 ("Je ne sais pas")                     |
 | =heart_disease_algo=             | Maladie cardiaque (algo)             | boolean            | =true= ou =false=                                        |
 | =immunosuppressant_disease_algo= | Maladie défenses immunitaires (algo) | boolean            | =true= ou =false=                                        |
 | =immunosuppressant_drug_algo=    | Traitement immunodépresseur (algo)   | boolean            | =true= ou =false=                                        |
