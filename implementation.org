@@ -72,7 +72,7 @@ elle doit aussi changer de nom.
 
 - L'indice de masse corporelle (=imc=) est calculé à partir du poids et de la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
 
-- Les variables =*_algo= sont calculées à partir de la saisie utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne sais pas") implique une valeur de =heart_disease_algo= à =1= (équivalent à une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées pour le partage éventuel des données.
+- Les variables =*_algo= sont calculées à partir de la saisie utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne sais pas") implique une valeur de =heart_disease_algo= à =true= (équivalent à une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées pour le partage éventuel des données.
 
 ** Variables qui peuvent ou non être calculées sur le serveur
 
