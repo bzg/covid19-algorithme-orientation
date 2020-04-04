@@ -33,7 +33,7 @@
 
 - /Quel est votre code postal ?/
 
-** Facteurs
+** Calcul des facteurs
 
 *** Facteur pronostique défavorable lié au terrain
 
@@ -63,9 +63,27 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
   - Gêne respiratoire
   - Difficultés importantes pour s'alimenter ou boire depuis plus de 24 heures
 
+
 ** Formule de l'indice de masse corporelle
 
 - IMC (indice de masse corporelle) :: Le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
+
+** Parcours du questionnaire
+
+Pour les questionnaires permettant une sauvegarde des données pour
+partage ultérieur, il est impératif que le répondant réponde à *toutes*
+les questions.
+
+Certains questionnaires peuvent proposer d'afficher des messages
+d'orientation sans attendre que le répondant ait répondu à toutes les
+questions (dans le cas de la détection d'un facteur de gravité majeur,
+par exemple) : dans ce cas, soit le répondant a la possibilité de
+continuer de répondre aux questions et les données peuvent être
+sauvegardées quand il a répondu à toutes, soit le répondant n'a pas
+cette possibilité et il est inutile de sauvegarder les données.
+
+Voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur-bis.html][cette variante du démonstrateur]] pour un exemple avec un message
+d'orientation affiché avant la réponse à toutes les questions.
 
 ** Arbre de décision
 
@@ -103,7 +121,7 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 
 Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de [[file:diagramme.org][ce code source]].
 
-** Conclusions possibles
+** Messages d'orientation possibles
 
 - FIN1 :: Cette application n’est pas faite pour les personnes de moins de 15 ans. Prenez contact avec votre médecin généraliste au moindre doute. En cas d’urgence, appelez le 15.
 - FIN2 :: Votre situation peut relever d’un COVID 19 qu’il faut surveiller. Si de nouveaux symptômes apparaissent, refaites le test ou consultez votre médecin. Nous vous conseillons de rester à votre domicile.
@@ -119,6 +137,6 @@ Ce diagramme est créé avec [[https://plantuml.com/][PlantUML]] à partir de [[
 Le [[preuve-formelle/][dossier "preuve-formelle"]] propose une vérification formelle de
 l'algorithme avec la bibliothèque =z3= (Python).
 
-** Exemples autour de l'implémentation
+** Exemples concernant l'implémentation
 
 Vous trouverez des exmples autour de l'implémentation sur [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org][cette page]].
