@@ -19,6 +19,8 @@ algorithme.
 
 Voir le [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/][site d'information générale]] produit à partir de ce dépôt.
 
+[[file:doc-algo-orientation-covid19.png]]
+
 ** Document officiel
 
 Le document officiel de l'algorithme d'orientation COVID19 est publié
