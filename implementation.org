@@ -76,13 +76,8 @@ elle doit aussi changer de nom.
 
 ** Variables qui peuvent ou non être calculées sur le serveur
 
-- =duration= : cette variable peut être envoyée par le navigateur ou
-  calculée sur le serveur.
-
-- Les variables =*_algo= peuvent être envoyées par le navigateur ou
-  calculées sur le serveur.
-
 - =algo_version= et =form_version= doivent être envoyés par le navigateur.
+- Les variables =*_algo=, =date= et =duration= peuvent être envoyées par le navigateur ou calculées sur le serveur.
 
 ** Variables qui correspondent à l'orientation affichée
 
