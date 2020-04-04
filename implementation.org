@@ -16,8 +16,8 @@ d'autres éléments sur l'implémentation.
 
 | Nom de la variable        | Description                              | Type          | Exemple                       |
 |---------------------------+------------------------------------------+---------------+-------------------------------|
-| =form_version=              | Version du formulaire                    | string        | "20200330"                    |
-| =algo_version=              | Version de l'algorithme                  | string        | "20200330"                    |
+| =form_version=              | Version du formulaire                    | string        | "2020-03-30"                  |
+| =algo_version=              | Version de l'algorithme                  | string        | "2020-03-30"                  |
 | =date=                      | Date de saisie par le répondant          | date ISO 8601 | 2020-04-02T05:24:57.711-00:00 |
 | =duration=                  | Durée de saisie en secondes              | integer       | 316                           |
 | =age_less_15=               | Le répondant a moins de 15 ans           | boolean       | false                         |

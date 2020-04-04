@@ -1,4 +1,4 @@
-{:version     "20200330"
+{:version     "2020-03-30"
  :description "Documentation de l'algorithme d'orientation COVID19"
  :url         "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation"
  :license     {:name "Eclipse Public License - v 2.0"
