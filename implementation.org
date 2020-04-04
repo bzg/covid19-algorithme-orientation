@@ -26,11 +26,11 @@ elle doit aussi changer de nom.
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =algo_version=                   | Version de l'algorithme              | string             | Ex. "2020-03-30"                                     |
 | =form_version=                   | Version du formulaire                | string             | Ex. "2020-03-30"                                     |
-| =date=                           | Date de saisie                       | date ISO 8601      | Ex. 2020-04-02T05:24:57.711-00:00                    |
-| =duration=                       | Durée de saisie en secondes          | integer            | Ex. 316                                              |
+| =date= (1)                       | Date de saisie                       | date ISO 8601      | Ex. 2020-04-02T05:24:57.711-00:00                    |
+| =duration= (1)                   | Durée de saisie en secondes          | integer            | Ex. 316                                              |
+| =postal_code= (2)                | Le code postal                       | string             | Ex. "75019" ou "63XXX"                               |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =age_range=                      | Tranche d'âge                        | string             | "inf_15" "from_15_to_49" "from_50_to_69" ou "sup_70" |
-| =postal_code= (1)                | Le code postal                       | string             | Ex. "75019" ou "63XXX"                               |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =sore_throat_aches=              | Mal de gorge ou douleurs             | boolean            | =true= ou =false=                                        |
 | =agueusia_anosmia=               | Perte de goût et d'odorat            | boolean            | =true= ou =false=                                        |
@@ -60,7 +60,9 @@ elle doit aussi changer de nom.
 | =immunosuppressant_disease_algo= | Maladie défenses immunitaires (algo) | boolean            | =true= ou =false=                                        |
 | =immunosuppressant_drug_algo=    | Traitement immunodépresseur (algo)   | boolean            | =true= ou =false=                                        |
 
-(1) La sauvegarde pour partage du code postal n'est pas obligatoire mais *fortement recommandé*, au moins pour récupérer le département.
+(1) En fonction des détails d'implémentation, =date= et =duration= peuvent être envoyée soit depuis le navigateur soit calculée sur le serveur.
+
+(2) La sauvegarde pour partage du code postal n'est pas obligatoire mais *fortement recommandé*, au moins pour récupérer le département.
 
 ** Variables intermédaires (facteurs, âge, poids et taille, autres)
 
