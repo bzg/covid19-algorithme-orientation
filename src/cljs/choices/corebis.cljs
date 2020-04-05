@@ -169,7 +169,6 @@
        [:a {:href (str "mailto:" c)} c]])]])
 
 (defn score-details [scores]
-  (println scores)
   (for [row-score (partition-all 4 scores)]
     ^{:key (random-uuid)}
     [:div.tile.is-ancestor
@@ -334,6 +333,18 @@
             (keyword (or (first (remove nil? matches))
                          (get goto :default)))))))
 
+(defn merge-scores [previous_score current_score]
+  (merge-with
+   (fn [a b] {:display               (:display a)
+              :as-top-result-display (:as-top-result-display a)
+              :value
+              (let [a_v (:value a) b_v (:value b)]
+                (cond (and (integer? a_v) (integer? b_v))
+                      (+ (:value a) (:value b))
+                      ;; one boolean and/or one strings, take last:
+                      :else b_v))})
+   previous_score current_score))
+
 (defn display-choices [choices text no-summary]
   (for [choices-row (partition-all 4 choices)]
     ^{:key (random-uuid)}
@@ -350,12 +361,7 @@
                   (reset! show-modal true)
                   (reset! modal-message (md-to-string (peek summary))))
                 (let [current-score
-                      (merge-with
-                       (fn [a b] {:display               (:display a)
-                                  :as-top-result-display (:as-top-result-display a)
-                                  :value                 (+ (:value a) (:value b))})
-                       (:score (peek @history))
-                       score)]
+                      (merge-scores (:score (peek @history)) score)]
                   (reset! hist-to-add
                           (merge
                            {:score current-score}
@@ -428,8 +434,7 @@
     (cond
       ;; Reset history?
       (= target-page start-page)
-      (do (reset! sticky-help "")
-          (reset! history [{:score (:score-variables config)}])
+      (do (reset! history [{:score (:score-variables config)}])
           (reset! hist-to-redo {})
           (reset! hist-to-add {}))
       ;; History backward?
