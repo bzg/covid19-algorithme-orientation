@@ -14,28 +14,28 @@
 (s/def ::age (s/int-in 14 71))
 (s/def ::weight (s/int-in 59 111)) ;; kgs
 (s/def ::height (s/int-in 139 191)) ;; cm
-(s/def ::cough (s/int-in 0 2))
-(s/def ::fever (s/int-in 0 2))
-(s/def ::agueusia_anosmia (s/int-in 0 2))
-(s/def ::sore_throat_aches (s/int-in 0 2))
-(s/def ::diarrhea (s/int-in 0 2))
+(s/def ::cough boolean?)
+(s/def ::fever boolean?)
+(s/def ::agueusia_anosmia boolean?)
+(s/def ::sore_throat_aches boolean?)
+(s/def ::diarrhea boolean?)
 (s/def ::pronostic-factors (s/int-in 0 12))
 (s/def ::minor-severity-factors (s/int-in 0 3))
 (s/def ::major-severity-factors (s/int-in 0 3))
 
 (defn compute-bmi [p t] (/ p (Math/pow (/ t 100.0) 2)))
 
-(s/def ::reponse (s/keys :req-un [::age
-                                  ::weight
-                                  ::height
-                                  ::fever
-                                  ::cough
-                                  ::agueusia_anosmia
-                                  ::sore_throat_aches
-                                  ::diarrhea
-                                  ::pronostic-factors
-                                  ::minor-severity-factors
-                                  ::major-severity-factors]))
+(s/def ::response (s/keys :req-un [::age
+                                   ::weight
+                                   ::height
+                                   ::fever
+                                   ::cough
+                                   ::agueusia_anosmia
+                                   ::sore_throat_aches
+                                   ::diarrhea
+                                   ::pronostic-factors
+                                   ::minor-severity-factors
+                                   ::major-severity-factors]))
 
 (defn get-age [scores]
   (cond (< (:age scores) 15)
@@ -184,7 +184,7 @@
 
 (defn -main [& [arg]]
   (let [samples (gen/sample
-                 (s/gen ::reponse)
+                 (s/gen ::response)
                  (or (and (not= "logic" arg) (not-empty arg) (Integer. arg)) 1))]
     (if (= arg "logic")
       (run-tests 'choices.algo)
