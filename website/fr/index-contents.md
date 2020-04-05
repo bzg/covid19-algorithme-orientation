@@ -4,7 +4,7 @@ Le ministère des Solidarités et de la Santé publie un **algorithme d'orientat
 
 Afin que toutes les initiatives qui participent à la gestion de la crise sanitaire s'appuient sur les mêmes recommendations, le ministère des Solidarités et de la Santé conseille la réutilisation de cet algorithme.
 
-**Si vous prévoyez de collecter des données et souhaitez les partager avec CovidTélé**, vous pouvez demander à faire référencer votre solution sur le site du ministère des Solidarités et de la Santé.
+**Si vous prévoyez de collecter des données et souhaitez les partager avec CovidTélé**, vous pouvez demander à [faire référencer](https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/referencement.org) votre solution par le ministère des Solidarités et de la Santé.
 
 # Contact
 

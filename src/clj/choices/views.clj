@@ -70,11 +70,11 @@
           (:url meta) ;;FIXME
           ]]]
        [:div.navbar-end
-        [:div.navbar-menu.is-size-4
+        [:div.navbar-menu.is-size-5
          [:a.navbar-item
           {:href  (:main-url meta)
-           :title "Retour au site du ministère des Solidarités et de la Santé"}
-          "Site principal"]]]]
+           :title "Retour à la page d'information COVID19 du ministère des Solidarités et de la Santé"}
+          "COVID19 / Ministère des solidarités et de la Santé"]]]]
       [:section.hero
        [:div.hero-body
         [:div.container

@@ -10,7 +10,8 @@
    :ol  :ol.list.is-size-5
    :li  :li.list-item
    :p   :p.is-size-5
-   :pre :pre.is-size-6})
+   :pre :pre.is-size-6
+   })
 
 (defn md-to-string [s]
   (-> s (md/md->hiccup) (md/component)))
