@@ -1,25 +1,25 @@
 
 # Table des matières
 
-1.  [Présentation générale](#orgb510e79)
-2.  [Questionnaire d’auto-évaluation](#orgb0f8781)
-    1.  [Symptômes](#org171bbb5)
-    2.  [Facteur pronostique défavorable lié au terrain](#org7d662ba)
-    3.  [Autre question](#org3158b8e)
-    4.  [Définition des facteurs de gravité](#org3f71946)
-    5.  [Calcul de l'indice de masse corporelle (IMC)](#org91825b0)
-3.  [Diagramme de l'arbre de décision](#org2e9674d)
-4.  [Définition de l'arbre de décision](#orge93dec8)
-    1.  [Patient de moins de 15 ans](#orgc3de5be)
-    2.  [Tout patient avec au moins un facteur de gravité majeur](#org96b1d97)
-    3.  [Tout patient avec fièvre et toux](#org81898a5)
-    4.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#org7d9abc5)
-    5.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orga7452bb)
-    6.  [Tout patient sans fièvre ni aucun autre symptôme](#org47d4799)
+1.  [Présentation générale](#org21ccd9a)
+2.  [Questionnaire d’auto-évaluation](#org5672b5a)
+    1.  [Symptômes](#orgd73729e)
+    2.  [Facteur pronostique défavorable lié au terrain](#orgaa69c89)
+    3.  [Autre question](#org7251221)
+    4.  [Définition des facteurs de gravité](#org29020ba)
+    5.  [Calcul de l'indice de masse corporelle (IMC)](#orgc8666de)
+3.  [Diagramme de l'arbre de décision](#orgd29354b)
+4.  [Définition de l'arbre de décision](#orga09d084)
+    1.  [Patient de moins de 15 ans](#org8a837fc)
+    2.  [Tout patient avec au moins un facteur de gravité majeur](#org369cc25)
+    3.  [Tout patient avec fièvre et toux](#orgb50a38c)
+    4.  [Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))](#orgbf1b390)
+    5.  [Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie](#orgb0fd0f1)
+    6.  [Tout patient sans fièvre ni aucun autre symptôme](#orgf91d5de)
 
 
 
-<a id="orgb510e79"></a>
+<a id="org21ccd9a"></a>
 
 # Présentation générale
 
@@ -36,16 +36,16 @@ Ce document est [téléchargeable en version PDF](https://esante.gouv.fr/algorit
 **Attention : cette documentation, le questionnaire et l'algorithme sont potentiellement modifiables après étude de cas et veille scientifique.**
 
 
-<a id="orgb0f8781"></a>
+<a id="org5672b5a"></a>
 
 # Questionnaire d’auto-évaluation
 
 
-<a id="org171bbb5"></a>
+<a id="orgd73729e"></a>
 
 ## Symptômes
 
--   *Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?* `OUI / NON / Je ne sais pas`
+-   *Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?* `OUI / NON / Je ne sais pas` (`Je ne sais pas > OUI`)
     -   *Quelle a été votre température la plus élevée ces dernières 48h ?*
         -   **< 35,5°C** => Facteur de gravité mineur
         -   35,5°C - 37,7°C
@@ -57,12 +57,12 @@ Ce document est [téléchargeable en version PDF](https://esante.gouv.fr/algorit
 -   *Avez-vous un mal de gorge ou des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ?* `OUI / NON`
 -   *Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?* `OUI / NON`
 -   *Avez-vous une fatigue inhabituelle ces derniers jours ?* `OUI / NON`
-    -   Si `OUI` : *Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?* `OUI / NON => Facteur de gravité mineur.`
--   *Êtes-vous dans l'impossibilité de vous alimenter ou de boire DEPUIS 24 HEURES OU PLUS ?*  `OUI / NON => Facteur de gravité majeur.`
+    -   Si `OUI` : *Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?* `OUI / NON (OUI => Facteur de gravité mineur`)
+-   *Êtes-vous dans l'impossibilité de vous alimenter ou de boire DEPUIS 24 HEURES OU PLUS ?* `OUI / NON (OUI => Facteur de gravité majeur`)
 -   *Dans les dernières 24 heures, avez-vous noté un manque de souffle INHABITUEL lorsque vous parlez ou faites un petit effort ?* `OUI / NON => Facteur de gravité majeur.`
 
 
-<a id="org7d662ba"></a>
+<a id="orgaa69c89"></a>
 
 ## Facteur pronostique défavorable lié au terrain
 
@@ -87,14 +87,14 @@ Ce document est [téléchargeable en version PDF](https://esante.gouv.fr/algorit
 Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** ou en gras (âge supérieur ou égal à 70 ans, indice de masse corporelle supérieur à 30 kg/m²).
 
 
-<a id="org3158b8e"></a>
+<a id="org7251221"></a>
 
 ## Autre question
 
 -   *Quel est votre code postal ?*
 
 
-<a id="org3f71946"></a>
+<a id="org29020ba"></a>
 
 ## Définition des facteurs de gravité
 
@@ -108,28 +108,28 @@ Le facteur pronostique est considéré positif s'il y a au moins 1 item **OUI** 
     -   Difficultés importantes pour s’alimenter ou boire depuis plus de 24 heures
 
 
-<a id="org91825b0"></a>
+<a id="orgc8666de"></a>
 
 ## Calcul de l'indice de masse corporelle (IMC)
 
 L'indice de masse corporelle est égal au `POIDS` en kilogrammes divisé par le carré de la `TAILLE` en mètres.
 
 
-<a id="org2e9674d"></a>
+<a id="orgd29354b"></a>
 
 # Diagramme de l'arbre de décision
 
 <a href="https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/diagramme-algorithme-orientation-covid19.png"><img src="https://raw.githubusercontent.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/master/diagramme-algorithme-orientation-covid19.png" alg="Diagramme de l'arbre de décision pour l'algorithme d'orientation COVID 19" /></a>
 
 
-<a id="orge93dec8"></a>
+<a id="orga09d084"></a>
 
 # Définition de l'arbre de décision
 
 Message à afficher pour tous : *Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène. Un dispositif national grand public de soutien psychologique au bénéfice des personnes qui en auraient besoin est accessible via le numéro vert : 0 800 130 000.*
 
 
-<a id="orgc3de5be"></a>
+<a id="org8a837fc"></a>
 
 ## Patient de moins de 15 ans
 
@@ -138,14 +138,14 @@ Message à afficher pour tous : *Restez chez vous au maximum en attendant que le
     En cas d’urgence, appelez le 15.
 
 
-<a id="org96b1d97"></a>
+<a id="org369cc25"></a>
 
 ## Tout patient avec au moins un facteur de gravité majeur
 
 `Appelez le 15.`
 
 
-<a id="org81898a5"></a>
+<a id="orgb50a38c"></a>
 
 ## Tout patient avec fièvre et toux
 
@@ -172,7 +172,7 @@ Message à afficher pour tous : *Restez chez vous au maximum en attendant que le
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="org7d9abc5"></a>
+<a id="orgbf1b390"></a>
 
 ## Tout patient avec fièvre ou (sans fièvre et avec (diarrhée ou (toux et douleurs) ou (toux et anosmie))
 
@@ -223,7 +223,7 @@ Sinon :
     Si vous n'arrivez pas à obtenir de consultation, appelez le 15.
 
 
-<a id="orga7452bb"></a>
+<a id="orgb0fd0f1"></a>
 
 ## Tout patient sans fièvre avec un seul symptôme parmi toux, douleurs, anosmie
 
@@ -241,7 +241,7 @@ Sinon :
     Nous vous conseillons de rester à votre domicile.
 
 
-<a id="org47d4799"></a>
+<a id="orgf91d5de"></a>
 
 ## Tout patient sans fièvre ni aucun autre symptôme
 
