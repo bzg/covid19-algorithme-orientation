@@ -61,10 +61,15 @@ Et aussi :
 Les contributions sont les bienvenues, sous forme d'/issues/ ou de /pull
 requests/.
 
+** Remerciements
+
+Merci à Denis Merigoux pour la contribution de la [[file:preuve-formelle/][preuve formelle]].
+
+Merci à Simon Chignard pour ses conseils sur la contextualisation des
+informations concernant cette documentation.
+
 ** Licence
 
 2020 Délégation ministérielle du numérique en santé et les contributeurs du dépôt.
 
 Le code source de cette application est publié sous licence [[file:LICENSE][EPL 2.0]].
-
-

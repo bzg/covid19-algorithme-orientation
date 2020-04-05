@@ -63,7 +63,6 @@ Les facteurs de gravité sont définis en réponse aux questions portant sur les
   - Gêne respiratoire
   - Difficultés importantes pour s'alimenter ou boire depuis plus de 24 heures
 
-
 ** Formule de l'indice de masse corporelle
 
 - IMC (indice de masse corporelle) :: Le =POIDS= en kilogrammes divisé par le carré de la =TAILLE= en mètres.
