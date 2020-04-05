@@ -23,7 +23,7 @@ COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]
 ** Exemples d'implémentation dans des langages de programmation
 
 - [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir][Elixir]]
-- [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/clojure.txt][Clojure]]
+- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/src/cljs/choices/custom.cljs][Clojure]]
 
 ** Idées de tests à faire sur l'implémentation de votre algorithme
 
