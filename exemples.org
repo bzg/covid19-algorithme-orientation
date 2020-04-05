@@ -28,9 +28,9 @@ COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]
 ** Idées de tests à faire sur l'implémentation de votre algorithme
 
 - La formule de l'indice de masse corporelle est-elle correct ?
-- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][variables du schéma de données]] sont-elles prises en compte ?
-- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][questions du schéma de données]] sont-elles posées ?
-- Toutes les [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/docs/json/openapi3.json][conclusions du schéma de données]] sont-elles présentes ?
+- Toutes les *variables* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles prises en compte ?
+- Toutes les *questions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles posées ?
+- Toutes les *conclusions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles présentes ?
 - Mon implémentation aboutit-elle à au moins une conclusion ?
 - Chaque conclusion est-elle atteinte au moins par une réponse ?
 
