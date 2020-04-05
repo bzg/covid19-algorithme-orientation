@@ -291,7 +291,16 @@ tree:
 
   - node:    "1.4"
     progress:   "[5 21]"
-    text:    "Avez-vous une fatigue inhabituelle ces derniers jours vous obligeant à vous reposer plus de la moitiée de la journée ?"
+    text:    "Avez-vous une fatigue inhabituelle ces derniers jours ?"
+    choices:
+    - answer:  "Oui"
+      goto:    "1.4.1"
+    - answer:  "Non"
+      goto:    "1.5"
+
+  - node:    "1.4.1"
+    progress:   "[5 21]"
+    text:    "Cette fatigue vous oblige-t-elle à vous reposer plus de la moitié de la journée ?"
     choices:
     - answer:  "Oui"
       score:
