@@ -22,7 +22,7 @@ decision-tree-url: "https://github.com/Delegation-numerique-en-sante/covid19-alg
 
 implementation-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/implementation.org"
 
-openapi-url: "file:///home/guerry/covid19/repos/covid19-algorithme-orientation/docs/json/openapi3.json"
+openapi-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir/blob/master/covid19-algorithme-orientation-openapi.json"
 
 # examples-url: "https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/exemples.org"
 
