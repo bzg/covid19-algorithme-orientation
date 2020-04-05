@@ -62,7 +62,7 @@ elle doit aussi changer de nom.
 
 - (1) En fonction des détails d'implémentation, =date= et =duration= peuvent être envoyées soit depuis le navigateur soit calculées sur le serveur.
 - (2) La sauvegarde pour partage du code postal n'est pas obligatoire mais *fortement recommandé*, au moins pour récupérer le département.
-- (3) =fever_algo= est déduit de =fever= (qui doit être =1= ou =999=) /et/ de =temperature_cat= (qui doit être =inf_35.5= ou =sup_39= ou =NSP=).
+- (3) La valeur de =fever_algo= est déduite de =fever= (qui doit être =1= ou =999=) /et/ de =temperature_cat= (qui doit être =inf_35.5= ou =sup_39= ou =NSP=).
 
 ** Variables intermédaires (facteurs, âge, poids et taille, autres)
 
