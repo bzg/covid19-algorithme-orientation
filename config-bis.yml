@@ -137,7 +137,7 @@ conditional-score-outputs:
     notification: "is-danger"
   orientation_SAMU:
     priority: 2
-    sticky-help: "Appelez le [15](tel:15).  Merci de continuer à remplir ce questionnaire si vous pouvez."
+    sticky-help: "Appelez le [15](tel:15).  Si vous en avez la possibilité, merci de continuer à remplir le questionnaire jusqu’au bout."
     message: "Appelez le [15](tel:15)."
     notification: "is-danger"
   orientation_consultation_surveillance_2:
