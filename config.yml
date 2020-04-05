@@ -82,7 +82,10 @@ score-variables:
     value: 0
   fever:
     display: "Fièvre"
-    value: false
+    value: "Non"
+  temperature:
+    display: "Température"
+    value: "NSP"
   cough:
     display: "Toux"
     value: false
@@ -178,16 +181,16 @@ tree:
     choices:
     - answer:  "Oui"
       score:
-        fievre:
-          value: true
+        fever:
+          value: "Oui"
       goto:    "1.1.1"
     - answer:  "Non"
       goto:    "1.2"
     - answer:  "Je ne sais pas"
       goto:    "1.2"
       score:
-        fievre:
-          value: true
+        fever:
+          value: "NSP"
 
   - node:       "1.1.1"
     progress:   "[2 24]"
@@ -195,12 +198,20 @@ tree:
     choices:
     - answer:  "**Inférieure** ou égale à 35,4°C"
       score:
+        temperature:
+          value: "inf_35.5"
         minor-severity-factors:
           value: 1
       goto:    "1.2"
     - answer:  "Entre 35,5 et 37,7°C"
+      score:
+        temperature:
+          value: "35.5-37.7"
       goto:    "1.2"
     - answer:  "Entre 37,8 et 38,9°C"
+      score:
+        temperature:
+          value: "37.8-38.9"
       goto:    "1.2"
     - answer:  "**Supérieure** ou égale à 39°C"
       score:
