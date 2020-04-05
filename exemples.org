@@ -9,6 +9,12 @@ d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covi
 
 Vous pouvez [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html][tester une implémentation de l'algorithme interactivement]].
 
+** Exemple de fichier csv avec les données
+
+Pour avoir une idée des données partageables par les structures
+mettant en oeuvre une implémentation de l'algorithme d'orientation,
+voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/orientation-covid19-data.csv][ce fichier csv]].
+
 ** Exemple d'API Web pour tester l'algorithme
 
 Un exemple d'API Web permettant de tester l'algorithme d'orientation
