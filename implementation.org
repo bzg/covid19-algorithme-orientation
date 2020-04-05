@@ -49,7 +49,7 @@ elle doit aussi changer de nom.
 | =liver_disease=                  | Maladie chronique du foie            | boolean            | =true= ou =false=                                        |
 | =pregnant=                       | Enceinte                             | integer            | 0 (non) ou 1 ou 888 ("Non applicable")               |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
-| =temperature_cat=                | Catégorie de température             | string             | "inf_35.5" "35.5-37.7" "37.7-38.9" "sup_39" "NSP"    |
+| =temperature_cat=                | Catégorie de température             | string             | "inf_35.5" "35.5-37.7" "37.8-38.9" "sup_39" "NSP"    |
 |--------------------------------+--------------------------------------+--------------------+------------------------------------------------------|
 | =fever=                          | Fièvre                               | integer            | 0 (non) ou 1 ou 999 ("Je ne sais pas")               |
 | =fever_algo=                     | Fièvre (algo)                        | boolean            | =true= (1 ou 999) ou =false= (0)                         |
