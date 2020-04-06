@@ -11,7 +11,7 @@ Pour le questionnaire : toutes les questions sont susceptibles de changer la val
 
 Pour l'algorithme : il se présente comme un arbre de décision qui doit être parcouru de façon séquentielle et en fonction des valeurs finales des variables.
 
-Version du document : =2020-03-30=
+Version du document : =2020-04-06=
 
 Ce document est [[https://esante.gouv.fr/algorithme-orientation][téléchargeable en version PDF]].
 
