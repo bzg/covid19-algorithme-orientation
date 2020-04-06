@@ -75,11 +75,11 @@ les questions.
 
 Certains questionnaires peuvent proposer d'afficher des messages
 d'orientation sans attendre que le répondant ait répondu à toutes les
-questions (dans le cas de la détection d'un facteur de gravité majeur,
-par exemple) : dans ce cas, soit le répondant a la possibilité de
-continuer de répondre aux questions et les données peuvent être
-sauvegardées quand il a répondu à toutes, soit le répondant n'a pas
-cette possibilité et il est inutile de sauvegarder les données.
+questions (par exemple si un facteur de gravité majeur est détecté) :
+dans ce cas, soit le répondant a la possibilité de continuer de
+répondre aux questions et les données peuvent être sauvegardées quand
+il a répondu à /toutes/, soit le répondant n'a pas cette possibilité et
+les données ne pourront pas être partagées avec CovidTélé.
 
 Voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/demonstrateur-bis.html][cette variante du démonstrateur]] pour un exemple avec un message
 d'orientation affiché avant la réponse à toutes les questions.
