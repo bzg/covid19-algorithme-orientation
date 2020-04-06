@@ -9,28 +9,27 @@ d'orientation COVID19 est [[https://delegation-numerique-en-sante.github.io/covi
 
 Vous pouvez [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/repl.html][tester une implémentation de l'algorithme interactivement]].
 
-** Exemple de fichier csv avec les données
+** Exemples d'implémentation dans des langages de programmation
+
+- [[https://github.com/etalab/covid19-orientation][Javascript]]
+- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/src/cljs/choices/custom.cljs][Clojure]]
+
+** Exemple de fichier csv avec les données à partager
 
 Pour avoir une idée des données partageables par les structures
 mettant en oeuvre une implémentation de l'algorithme d'orientation,
 voir [[https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/exemples/orientation-covid19-data.csv][ce fichier csv]].
 
-** Exemple d'API Web pour tester l'algorithme
+** Exemple d'API Web
 
-Un exemple d'API Web permettant de tester l'algorithme d'orientation
-COVID19 est [[https://covid19-orientation.herokuapp.com/swagger][disponible ici]].
-
-** Exemples d'implémentation dans des langages de programmation
-
-- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-elixir][Elixir]]
-- [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation/blob/master/src/cljs/choices/custom.cljs][Clojure]]
+Vous pouvez lire le schéma de données et tester les requêtes d'une
+l'API via le [[https://proxy-orientation.covid19.etalab.gouv.fr/swagger][swagger]] de l'API mise en place par Etalab.
 
 ** Idées de tests à faire sur l'implémentation de votre algorithme
 
-- La formule de l'indice de masse corporelle est-elle correct ?
-- Toutes les *variables* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles prises en compte ?
-- Toutes les *questions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles posées ?
-- Toutes les *conclusions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles présentes ?
-- Mon implémentation aboutit-elle à au moins une conclusion ?
-- Chaque conclusion est-elle atteinte au moins par une réponse ?
-
+- Toutes les *variables* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles prises en compte ?
+- Toutes les *questions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles posées ?
+- Toutes les *conclusions* du [[https://github.com/Delegation-numerique-en-sante/covid19-algorithme-orientation-schema-donnees][schéma de données]] sont-elles présentes ?
+- La formule de l'indice de masse corporelle est-elle correcte ?
+- Mon implémentation aboutit-elle à au moins un message d'orientation ?
+- Mon implémentation fait-elle que chaque message d'orientation est possiblement affiché ?
