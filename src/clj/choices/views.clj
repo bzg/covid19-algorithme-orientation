@@ -15,11 +15,11 @@
    [:meta {:name "keywords" :content (:keywords meta)}]
    [:meta {:name "description" :content (:description meta)}]
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1, shrink-to-fit=yes"}]
-   [:link {:rel "canonical" :href (:url meta)}]
+   [:link {:rel "canonical" :href (:base-url meta)}]
    [:meta {:property "og:locale", :content "fr_FR"}]
    [:meta {:property "og:type", :content "meta"}]
    [:meta {:property "og:title", :content (:index-title meta)}]
-   [:meta {:property "og:url", :content (:url meta)}]
+   [:meta {:property "og:url", :content (:base-url meta)}]
    [:meta {:property "og:site_name", :content (:index-title meta)}]
    [:meta {:property "og:image", :content (:image-url meta)}]
    [:meta {:name "twitter:card", :content "summary_large_image"}]
@@ -62,13 +62,10 @@
       [:nav.navbar {:role "navigation" :aria-label "main navigation"}
        [:div.navbar-brand
         [:a.navbar-item
-         {:href (:url meta)}
-         [:img {:src    "images/logo-marianne.svg"
-                :alt    "Logo Marianne"
-                :width  "220"
-                :height "200"}
-          (:url meta) ;;FIXME
-          ]]]
+         {:href (:base-url meta)}
+         [:img.image.is-128x128
+          {:src "images/logo-marianne.svg"
+           :alt "Logo Marianne"}]]]
        [:div.navbar-end
         [:div.navbar-menu.is-size-5
          [:a.navbar-item
