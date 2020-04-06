@@ -29,6 +29,7 @@ elle doit aussi changer de nom.
 | =date= (1)                       | Date de saisie                       | date ISO 8601      | Ex. 2020-04-02T05:24:57.711-00:00                                                                 |
 | =duration= (1)                   | Durée de saisie en secondes          | integer            | Ex. 316                                                                                           |
 | =postal_code= (2)                | Le code postal                       | string             | Ex. "75019" ou "63XXX"                                                                            |
+| =orientation=                    | Le message d'orientation final       | string             | Ex. "orientation_SAMU"                                                                            |
 |--------------------------------+--------------------------------------+--------------------+---------------------------------------------------------------------------------------------------|
 | =age_range=                      | Tranche d'âge                        | string             | "inf_15" "from_15_to_49" "from_50_to_69" ou "sup_70"                                              |
 |--------------------------------+--------------------------------------+--------------------+---------------------------------------------------------------------------------------------------|
@@ -66,23 +67,22 @@ elle doit aussi changer de nom.
 
 ** Variables intermédaires (facteurs, âge, poids et taille, autres)
 
+- Les variables =*_algo= sont calculées à partir de la saisie utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne sais pas") implique une valeur de =heart_disease_algo= à =true= (équivalent à une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées pour le partage éventuel des données.
+
 - Les variables servant au calcul des facteurs de gravité mineurs et majeurs ou du facteur pronostique servent à la mise en oeuvre de l'algorithme et à l'affichage du message d'orientation mais elles n'ont pas à être sauvegardées pour partage ultérieur.
 
 - =age_range= est calculé à partir de la saisie exacte de l'âge.  Seule la tranche d'âge doit être sauvegardée pour partage éventuel des données.
 
 - L'indice de masse corporelle (=imc=) est calculé à partir du poids et de la taille.  Seul l'IMC doit être sauvegardé pour partage des données.
 
-- Les variables =*_algo= sont calculées à partir de la saisie utilisateur : par exemple une valeur de =heart_disease= à =999= ("Je ne sais pas") implique une valeur de =heart_disease_algo= à =true= (équivalent à une réponse "oui").  Ces variables doivent /toutes/ être sauvegardées pour le partage éventuel des données.
-
 ** Variables qui peuvent ou non être calculées sur le serveur
 
-- =algo_version= et =form_version= doivent être envoyés par le navigateur.
+- =algo_version= et =form_version= peuvent être envoyés par le navigateur.
 - Les variables =*_algo=, =date= et =duration= peuvent être envoyées par le navigateur ou calculées sur le serveur.
 
 ** Variables qui correspondent à l'orientation affichée
 
-Toutes les variables sont des entier (/integer/) dont la valeur est =1=
-quand le message d'orientation est affiché :
+Toutes les variables sont des entier (/integer/) dont la valeur est =1= quand le message d'orientation est affiché :
 
 - =orientation_moins_de_15_ans= : FIN1
 - =orientation_domicile_surveillance_1= : FIN2
