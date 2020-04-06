@@ -110,7 +110,7 @@ Cet arbre de décision doit être parcouru de façon *séquentielle* en testant 
 : 19:
 : 20: SI toux OU douleurs OU anosmie
 : 21:    SI 0 facteur pronostique => FIN2
-: 22:    SI >= 1 facteur pronostique => FIN7
+: 22:    SI >= 1 facteurs pronostiques => FIN7
 : 23:
 : 24: SI NI toux NI douleurs NI anosmie => FIN8
 
