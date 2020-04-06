@@ -19,9 +19,9 @@
 (s/def ::agueusia_anosmia boolean?)
 (s/def ::sore_throat_aches boolean?)
 (s/def ::diarrhea boolean?)
-(s/def ::pronostic-factors (s/int-in 0 12))
-(s/def ::minor-severity-factors (s/int-in 0 3))
-(s/def ::major-severity-factors (s/int-in 0 3))
+(s/def ::pronostic-factors (s/int-in 0 2))
+(s/def ::minor-severity-factors (s/int-in 0 2))
+(s/def ::major-severity-factors (s/int-in 0 2))
 
 (defn compute-bmi [p t] (/ p (Math/pow (/ t 100.0) 2)))
 
@@ -37,40 +37,30 @@
                                    ::minor-severity-factors
                                    ::major-severity-factors]))
 
-(defn get-age [scores]
-  (cond (< (:age scores) 15)
-        {:age_less_15 true :age_less_50 false}
-        (< (:age scores) 50)
-        {:age_less_15 false :age_less_50 true}
-        (< (:age scores) 70)
-        {:age_less_15 false :age_less_50 true}
-        :else
-        {:age_less_15 false :age_less_50 true}))
+(defn get-age-range [scores]
+  (cond (< (:age scores) 15) "inf_15"
+        (< (:age scores) 50) "from_15_to_49"
+        (< (:age scores) 70) "from_50_to_69"
+        :else                "sup_70"))
 
 (defn preprocess-scores [scores]
-  (let [bmi-val (compute-bmi (:weight scores)
-                             (:height scores))
-        bmi-map {:bmi bmi-val}
-        scores  (merge scores (get-age scores))
-        scores  (merge scores bmi-map)
-        scores  (update-in scores [:pronostic-factors]
-                           #(if (>= bmi-val 30) (inc %) %))
-        scores  (dissoc scores :weight :height :age)]
-    ;; Returned preprocessed scores:
-    scores))
-
-(defn preprocess-scores-no-println [scores]
-  (let [scores (merge scores (get-age scores))
-        scores (update-in scores [:pronostic-factors]
-                          #(if (>= (:bmi scores) 30) (inc %) %))
-        scores (update-in scores [:pronostic-factors]
-                          #(if (>= (:age scores) 70) (inc %) %))
-        scores (dissoc scores :weight :height :age)]
+  (let [bmi-val   (or (:bmi scores)
+                      (compute-bmi (:weight scores)
+                                   (:height scores)))
+        age-range (or (not-empty (:age-range scores))
+                      (get-age-range scores))
+        scores    (merge scores {:bmi bmi-val})
+        scores    (merge scores {:age-range age-range})
+        scores    (update-in scores [:pronostic-factors]
+                             #(if (= (:age-range scores) "sup_70") (inc %) %))
+        scores    (update-in scores [:pronostic-factors]
+                             #(if (>= bmi-val 30) (inc %) %))
+        scores    (dissoc scores :weight :height :age)]
     ;; Returned preprocessed scores:
     scores))
 
 (defn conditional-score-result [response & [println?]]
-  (let [;; Set the possible conclusions
+  (let [;; Set the possible final orientations:
         {:keys [orientation_moins_de_15_ans
                 orientation_domicile_surveillance_1
                 orientation_consultation_surveillance_1
@@ -78,22 +68,21 @@
                 orientation_SAMU
                 orientation_consultation_surveillance_3
                 orientation_consultation_surveillance_4
-                orientation_surveillance FIN9]}
-        conditional-score-outputs
-        response
-        (if println?
-          (preprocess-scores response)
-          (preprocess-scores-no-println response))
-        {:keys [age_less_15 age_less_50
-                fever cough agueusia_anosmia sore_throat_aches diarrhea
+                orientation_surveillance FIN9]} conditional-score-outputs
+        ;; Preprocess the response to set age-range, bmi, and possibly
+        ;; increment pronostic-factors and minor/major-severity-factors:
+        response                                (preprocess-scores response)
+        ;; Get the value needed for computing the orientation:
+        {:keys [age-range fever cough agueusia_anosmia
+                sore_throat_aches diarrhea
                 minor-severity-factors
                 major-severity-factors
-                pronostic-factors]} response
-        ;; Set the final conclusion to one of the FIN*
+                pronostic-factors]}             response
+        ;; Set the final conclusion to one of the orientation message:
         conclusion
         (cond
           ;; Branche 1
-          age_less_15
+          (= age-range "inf_15")
           (do (when println? (println "Branch 1: less than 15 years"))
               orientation_moins_de_15_ans)
           ;; Branche 2
@@ -116,7 +105,7 @@
           (do (when println? (println "Branch 4: fever and other symptoms"))
               (cond (= pronostic-factors 0)
                     (if (= minor-severity-factors 0)
-                      (if age_less_50
+                      (if (= age-range "from_15_to_49")
                         orientation_domicile_surveillance_1
                         orientation_consultation_surveillance_1)
                       orientation_consultation_surveillance_1)
@@ -147,22 +136,23 @@
                   pronostic-factors
                   minor-severity-factors
                   major-severity-factors
-                  age bmi
+                  age-range bmi
                   response]
-      (fd/in age (fd/interval 14 71))
+      (logic/membero
+       age-range ["inf_15" "from_15_to_49" "from_50_to_69" "sup_70"])
+      (fd/in bmi (fd/interval 29 30))
       (logic/membero fever [true false])
       (logic/membero cough [true false])
       (logic/membero agueusia_anosmia [true false])
       (logic/membero sore_throat_aches [true false])
       (logic/membero diarrhea [true false])
-      (fd/in bmi (fd/interval 29 30))
       (fd/in pronostic-factors (fd/interval 0 12))
       (fd/in minor-severity-factors (fd/interval 0 2))
       (fd/in major-severity-factors (fd/interval 0 2))
       (logic/== response {:fever                  fever
                           :cough                  cough
                           :agueusia_anosmia       agueusia_anosmia
-                          :age                    age
+                          :age-range              age-range
                           :sore_throat_aches      sore_throat_aches
                           :diarrhea               diarrhea
                           :bmi                    bmi
