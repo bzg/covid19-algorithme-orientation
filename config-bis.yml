@@ -65,18 +65,9 @@ display-unconditionally: "Restez chez vous au maximum en attendant que les sympt
 # (3) "as-top-result-display": what to display when the variable is
 #      the one with the highest score when the user is done.
 score-variables:
-  age_less_15:
-    display: "Moins de 15 ans"
-    value: false
-  age_less_50:
-    display: "Moins de 50 ans"
-    value: false
-  age_less_70:
-    display: "Moins de 70 ans"
-    value: false
-  age_more_70:
-    display: "Plus de 70 ans"
-    value: false
+  age_range:
+    display: "Tranche d'âge"
+    value: ""
   weight:
     display: "Poids (kgs)"
     value: 0
@@ -184,8 +175,8 @@ tree:
     choices:
     - answer:  "Moins de 15 ans"
       score:
-        age_less_15:
-          value: true
+        age_range:
+          value: "inf_15"
       goto:
         conditional-score-outputs: true
         default: "1.2"
@@ -193,18 +184,16 @@ tree:
       goto:    "1.2"
     - answer:  "Entre 50 et 69 ans"
       score:
-        age_less_70:
-          value: true
-        age_less_50:
-          value: false
+        age_range:
+          value: "from_15_to_49"
       goto:    "1.2"
     - answer:  "70 ans ou plus"
       goto:    "1.2"
       score:
         pronostic-factors:
           value: 1
-        age_more_70:
-          value: true
+        age_range:
+          value: "sup_70"
 
   - node:    "1.2"
     start-page: true

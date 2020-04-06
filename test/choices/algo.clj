@@ -68,16 +68,16 @@
                 orientation_SAMU
                 orientation_consultation_surveillance_3
                 orientation_consultation_surveillance_4
-                orientation_surveillance FIN9]} conditional-score-outputs
+                orientation_surveillance]} conditional-score-outputs
         ;; Preprocess the response to set age-range, bmi, and possibly
         ;; increment pronostic-factors and minor/major-severity-factors:
-        response                                (preprocess-scores response)
+        response                           (preprocess-scores response)
         ;; Get the value needed for computing the orientation:
         {:keys [age-range fever cough agueusia_anosmia
                 sore_throat_aches diarrhea
                 minor-severity-factors
                 major-severity-factors
-                pronostic-factors]}             response
+                pronostic-factors]}        response
         ;; Set the final conclusion to one of the orientation message:
         conclusion
         (cond

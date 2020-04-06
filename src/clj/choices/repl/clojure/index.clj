@@ -1,6 +1,9 @@
 (ns choices.repl.clojure.index
   (:require [clojure.tools.reader]))
 
+(def pretraitement
+  (slurp "src/clj/choices/repl/clojure/preprocess.clj"))
+
 (def exemple-de-reponse
   (slurp "src/clj/choices/repl/clojure/response.clj"))
 
@@ -13,6 +16,12 @@
 
 (def repl-fr-contents
   [:section
+
+   [:div.container
+    [:br]
+    [:h1.title "Fonctions de prétraitement"]
+    [:pre.language-klipse resultat]]
+
    [:div.container
     [:br]
     [:h1.title "Fonction de calcul du résultat"]
@@ -20,7 +29,7 @@
 
    [:div.container
     [:br]
-    [:h1.title "Variable avec un exemple de réponse"]
+    [:h1.title "Exemple de réponse"]
     [:pre.language-klipse exemple-de-reponse]]
 
    [:div.container
@@ -31,7 +40,7 @@
 
    [:div.container
     [:br]
-    [:h1.title "Réponses possibles"]
+    [:h1.title "Orientations possibles"]
     [:ul.list
      (for [[k v] conclusions]
        ^{:key (pr-str v)}

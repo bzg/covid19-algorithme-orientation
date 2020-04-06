@@ -30,10 +30,7 @@
     scores))
 
 ;; Available variables:
-;; age_less_15
-;; age_less_50
-;; age_less_70
-;; age_more_70
+;; age_range
 ;; weight
 ;; height
 ;; fever
@@ -45,8 +42,8 @@
 ;; major-severity-factors
 ;; pronostic-factors
 (defn conditional-score-result [resultats conclusions]
-  (let [{:keys [age_less_15 age_less_50
-                fever cough agueusia_anosmia sore_throat_aches diarrhea
+  (let [{:keys [age_range fever cough agueusia_anosmia
+                sore_throat_aches diarrhea
                 minor-severity-factors
                 major-severity-factors
                 pronostic-factors]}        resultats
@@ -63,7 +60,7 @@
         conclusion
         (cond
           ;; Branche 1
-          age_less_15
+          (= age_range "inf_15")
           orientation_moins_de_15_ans
           ;; Branche 2
           (>= major-severity-factors 1)
@@ -82,7 +79,7 @@
               (and cough agueusia_anosmia))
           (cond (= pronostic-factors 0)
                 (if (= minor-severity-factors 0)
-                  (if age_less_50
+                  (if (= age_range "from_15_to_49")
                     orientation_domicile_surveillance_1
                     orientation_consultation_surveillance_1)
                   orientation_consultation_surveillance_1)
