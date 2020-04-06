@@ -33,9 +33,10 @@ Toutes les applications d'information, d'orientation et de triage qui
 réutilisent cet algorithme sont référencées sur le [[https://solidarites-sante.gouv.fr/soins-et-maladies/maladies/maladies-infectieuses/coronavirus/coronavirus-questions-reponses][site du ministère
 des Solidarité et de la Santé]].
 
-Si vous implémentez cet algorithme, renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]]
-ou écrivez-nous à l'adresse =mobilisation-covid@sante.gouv.fr= pour que
-votre initiative soit référencée.
+Si vous implémentez cet algorithme et souhaitez partager vos données,
+renseignez [[http://www.sesam-vitale.fr/web/sesam-vitale/recensement-innovations-covid-19][ce formulaire en ligne]] ou écrivez-nous à l'adresse
+=mobilisation-covid@sante.gouv.fr= pour que votre initiative soit
+référencée sur le site du ministère des Solidarité et de la Santé.
 
 Toute implémentation référencée doit impérativement :
 
