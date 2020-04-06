@@ -24,8 +24,8 @@ elle doit aussi changer de nom.
 
 | Nom de la variable             | Description                          | Type               | Exemple ou valeurs possibles                                                                      |
 |--------------------------------+--------------------------------------+--------------------+---------------------------------------------------------------------------------------------------|
-| =algo_version=                   | Version de l'algorithme              | string             | Ex. "2020-03-30"                                                                                  |
-| =form_version=                   | Version du formulaire                | string             | Ex. "2020-03-30"                                                                                  |
+| =algo_version=                   | Version de l'algorithme              | string YYYY-MM-DD  | Ex. "2020-03-30"                                                                                  |
+| =form_version=                   | Version du formulaire                | string YYYY-MM-DD  | Ex. "2020-03-30"                                                                                  |
 | =date= (1)                       | Date de saisie                       | date ISO 8601      | Ex. 2020-04-02T05:24:57.711-00:00                                                                 |
 | =duration= (1)                   | Durée de saisie en secondes          | integer            | Ex. 316                                                                                           |
 | =postal_code= (2)                | Le code postal                       | string             | Ex. "75019" ou "63XXX"                                                                            |
