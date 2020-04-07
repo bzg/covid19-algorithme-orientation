@@ -71,7 +71,7 @@
          [:a.navbar-item
           {:href  (:main-url meta)
            :title "Retour à la page d'information COVID19 du ministère des Solidarités et de la Santé"}
-          "COVID19 / Ministère des solidarités et de la Santé"]]]]
+          "COVID19 / Ministère des Solidarités et de la Santé"]]]]
       [:section.hero
        [:div.hero-body
         [:div.container
