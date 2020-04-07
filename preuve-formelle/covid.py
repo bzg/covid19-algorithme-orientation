@@ -63,8 +63,8 @@ def algo_6e5e17a():
 
     # L'accumulateur est initialisé à False car c'est une série de ou logiques.
     implies_done_acc = BoolVal(False)
-    # L'algotithme définit DONE_LENGTH cas de terminaison que l'on stockera dans cette liste
-    # "done"
+    # L'algorithme définit DONE_LENGTH cas de terminaison que l'on stockera dans cette liste
+    # comme autant de booléens Z3.
     done = [BoolVal(False) for i in range(1, DONE_LENGTH + 1)]
 
     def implies_done(cond, number):
@@ -177,6 +177,8 @@ def check_every_exit_reached(done, msg):
     for i in range(0, DONE_LENGTH):
         print("Atteindre la sortie FIN{} ?".format(i + 1))
         s.push()
+        # Ici, la condition à donner à Z3 est simplement done[i] car il s'agit
+        # de trouver une manière d'atteindre la sortie i.
         cond = done[i]
         s.add(cond)
         check_and_print(
@@ -187,12 +189,19 @@ def check_every_exit_reached(done, msg):
 check_every_exit_reached(done, done_msg)
 
 
+# Cette fonction permet de comparer deux algorithmes entre eux en essayant
+# de trouver des situations sur lesquelles les deux algorithmes donnent des
+# sorties différentes. Si il n'existe pas de telle situation, alors les
+# deux algorithmes sont fonctionnellement équivalents, i.e. ils retournent
+# toujours le même résultat dans tous les cas.
 def check_same(done1, msg1, done2, msg2):
     print(">>> Théorème: deux algorithmes ({} et {}) donnent les mêmes réponses".format(
         msg1, msg2))
     for i in range(0, DONE_LENGTH):
         print("Analyse de la sortie FIN{}:".format(i + 1))
         s.push()
+        # La condition est : on veut que l'un des deux algorithmes affiche
+        # la sortie voulue mais pas l'autre, d'où le Xor.
         cond = Xor(done1[i], done2[i])
         s.add(cond)
         check_and_print([(done1, msg1), (done2, msg2)],
