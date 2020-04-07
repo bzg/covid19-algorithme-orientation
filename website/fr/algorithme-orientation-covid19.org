@@ -1,6 +1,6 @@
 #+title: Algorithme d'orientation COVID 19
-#+author: Ministère des Solidarité et de la Santé
-#+date: 30 mars 2020
+#+author: Ministère des Solidarités et de la Santé
+#+date: 6 avril 2020
 #+options: toc:2 num:2 H:4
 
 * Présentation générale
