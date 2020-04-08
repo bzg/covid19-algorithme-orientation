@@ -3,7 +3,6 @@
 compile_upload_js () {
     rm -fr resources/public/js/*
     clj -A:js
-    cp resources/public/js/choices.js docs/js/
     echo "static js generated"
 }
 
@@ -11,7 +10,6 @@ compile_upload_js () {
 compile_upload_js_bis () {
     rm -fr resources/public/js/*
     clj -A:js-bis
-    cp resources/public/js/choices-bis.js docs/js/
     echo "static js generated"
 }
 
