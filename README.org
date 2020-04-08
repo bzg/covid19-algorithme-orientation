@@ -73,6 +73,6 @@ informations concernant cette documentation.
 
 2020 Délégation ministérielle du numérique en santé et les contributeurs du dépôt.
 
-Le code source de ce dépôt est publié sous licence [[file:LICENSE.EPL-2.0.txt][EPL-2.0]].
+Le code source de ce dépôt est publié sous licence [[file:LICENSE][EPL-2.0]].
 
 Le contenu du [[file:website/algorithme-orientation-covid19.org][document de présentation]] de l'algorithme est publié sous [[file:LICENSE.Etalab-2.0.md][licence Ouverte 2.0]].
