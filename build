@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Suppress existing compiled js files
-rm -fr resources/public/js/*
-
 compile_upload_js () {
     rm -fr resources/public/js/*
     clj -A:js
