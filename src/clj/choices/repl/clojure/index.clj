@@ -20,7 +20,7 @@
    [:div.container
     [:br]
     [:h1.title "Fonctions de prétraitement"]
-    [:pre.language-klipse resultat]]
+    [:pre.language-klipse pretraitement]]
 
    [:div.container
     [:br]
