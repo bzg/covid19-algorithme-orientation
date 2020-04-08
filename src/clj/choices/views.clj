@@ -93,13 +93,16 @@
             [:div.tile.is-child.notification
              "L'arbre de décision en "
              [:a {:href (:decision-tree-url meta)} "pseudo-code"]
-             " et "
-             [:a {:href (:diagram-url meta)} "en diagramme"]]]
+             ", "
+             [:a {:href (:diagram-url meta)} "en diagramme"]
+             " et en "
+             [:a {:href (:repl-url meta)} "version interactive"]]]
            [:div.tile.is-parent
             [:div.tile.is-child.notification.is-warning
-             [:a {:href (:implementation-url meta)} "Implémentation"]
+             "Lire les recommandations pour"
+             [:a {:href (:implementation-url meta)} "l'implémentation"]
              " et "
-             [:a {:href (:openapi-url meta)} "spécifications OpenAPI"]]]
+             [:a {:href (:openapi-url meta)} "les spécifications OpenAPI"]]]
            [:div.tile.is-parent
             [:a.tile.is-child.is-danger.notification
              {:href (:demo-url meta)}
