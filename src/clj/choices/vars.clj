@@ -25,20 +25,20 @@
   (fix-ordered-map (:conditional-score-outputs config)))
 
 (def index-fr-meta
-  (inline-yaml-resource "website/fr/index-meta.yml"))
+  (inline-yaml-resource "website/index-meta.yml"))
 
 (def algo-fr-meta
-  (inline-yaml-resource "website/fr/algo-meta.yml"))
+  (inline-yaml-resource "website/algo-meta.yml"))
 
 (def index-fr-contents
   (walk/prewalk-replace
    bulma-class-replacements
-   (md-to-string (slurp "website/fr/index-contents.md"))))
+   (md-to-string (slurp "website/index-contents.md"))))
 
 (def algo-fr-contents
   (walk/prewalk-replace
    bulma-class-replacements
-   (md-to-string (slurp "website/fr/algorithme-orientation-covid19.md"))))
+   (md-to-string (slurp "website/algorithme-orientation-covid19.md"))))
 
 (def repl-fr-meta
-  (inline-yaml-resource "website/fr/repl-meta.yml"))
+  (inline-yaml-resource "website/repl-meta.yml"))
