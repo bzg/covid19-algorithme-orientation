@@ -88,21 +88,19 @@
            [:div.tile.is-parent
             [:a.tile.is-child.is-info.notification
              {:href (:referencement-url meta)}
-             "Référencer ma solution"]]
+             "Demander le référencement de votre solution"]]
            [:div.tile.is-parent
             [:div.tile.is-child.notification
-             "L'arbre de décision en "
-             [:a {:href (:decision-tree-url meta)} "pseudo-code"]
+             [:a {:href (:decision-tree-url meta)} "Pseudo-code"]
              ", "
-             [:a {:href (:diagram-url meta)} "en diagramme"]
-             " et en "
+             [:a {:href (:diagram-url meta)} "diagramme"]
+             " et "
              [:a {:href (:repl-url meta)} "version interactive"]]]
            [:div.tile.is-parent
             [:div.tile.is-child.notification.is-warning
-             "Lire les recommandations pour"
-             [:a {:href (:implementation-url meta)} "l'implémentation"]
+             [:a {:href (:implementation-url meta)} "Implémentation"]
              " et "
-             [:a {:href (:openapi-url meta)} "les spécifications OpenAPI"]]]
+             [:a {:href (:openapi-url meta)} "spécifications OpenAPI"]]]
            [:div.tile.is-parent
             [:a.tile.is-child.is-danger.notification
              {:href (:demo-url meta)}
