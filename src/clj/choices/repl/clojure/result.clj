@@ -1,11 +1,22 @@
 ;; Fonction pour calculer l'orientation en fonction de la réponse
 (defn orientation [reponse]
-  (let [reponse                     (preprocess-scores reponse)
+  ;; Initialisation des valeurs d'entrées
+  (let [reponse
+        (preprocess-scores reponse)
         {:keys [bmi age-range agueusia_anosmia
                 fever diarrhea cough sore_throat_aches
                 minor-severity-factors
                 major-severity-factors
-                pronostic-factors]} reponse]
+                pronostic-factors]}  reponse
+        {:keys
+         [orientation_moins_de_15_ans
+          orientation_domicile_surveillance_1
+          orientation_consultation_surveillance_1
+          orientation_consultation_surveillance_2
+          orientation_SAMU
+          orientation_consultation_surveillance_3
+          orientation_consultation_surveillance_4
+          orientation_surveillance]} orientations]
     ;; L'algorithme COVID19 proprement dit
     (cond
       ;; Branche 1
